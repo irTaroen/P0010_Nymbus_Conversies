@@ -1,0 +1,305 @@
+{
+  "columns": [
+    {
+      "column": "Medewerker",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "unique" }, { "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Voornaam",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 50 }]
+    },
+    {
+      "column": "Roepnaam",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 80 }]
+    },
+    {
+      "column": "Voorletters",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "regex",
+          "pattern": "^([A-Z]\\.)+$",
+          "message": "Formaat: X.X. — uitsluitend hoofdletters, elk gevolgd door een punt",
+          "messageEn": "Format: X.X. — uppercase letters only, each followed by a full stop"
+        },
+        { "check": "length", "max": 15 }
+      ]
+    },
+    {
+      "column": "Voorvoegsel",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Achternaam",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 80 }]
+    },
+    {
+      "column": "Geslacht",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "enum",
+          "values": ["M", "V", "X"],
+          "message": "Moet M, V of X zijn",
+          "messageEn": "Must be M, V or X"
+        }
+      ]
+    },
+    {
+      "column": "Nationaliteit",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Nationaliteiten",
+          "message": "Ongeldige nationaliteit",
+          "messageEn": "Invalid nationality"
+        }
+      ]
+    },
+    {
+      "column": "Geboorteland",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Landen",
+          "allowUnlisted": true,
+          "omitUnlisted": true,
+          "message": "Onbekende landcode — geboorteland en geboorteplaats worden dan niet naar AFAS gestuurd. Kies de juiste landcode met de zoekfunctie.",
+          "messageEn": "Unknown country code — the country and place of birth are then not sent to AFAS. Choose the correct country code with the search function."
+        }
+      ]
+    },
+    {
+      "column": "Geboorteplaats",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Woonplaatsen",
+          "scopeColumn": "Geboorteland",
+          "allowUnlisted": true,
+          "omitUnlisted": true,
+          "message": "Plaats staat niet in AFAS voor dit geboorteland — geboorteland en geboorteplaats worden dan niet naar AFAS gestuurd. Kies een plaats met de zoekfunctie, of laat een beheerder hem toevoegen.",
+          "messageEn": "Place is not in AFAS for this country of birth — the country and place of birth are then not sent to AFAS. Choose a place with the search function, or ask an administrator to add it."
+        },
+        { "check": "length", "max": 50 }
+      ]
+    },
+    {
+      "column": "Mobiel werk",
+      "type": "text",
+      "rules": [{ "check": "phone" }]
+    },
+    {
+      "column": "Mobiel privé",
+      "type": "text",
+      "rules": [{ "check": "phone" }]
+    },
+    {
+      "column": "E-mail werk",
+      "type": "text",
+      "rules": [{ "check": "email" }]
+    },
+    {
+      "column": "E-mail privé",
+      "type": "text",
+      "rules": [{ "check": "email" }]
+    },
+    {
+      "column": "Straat",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 60 }]
+    },
+    {
+      "column": "Huisnummer",
+      "type": "integer",
+      "rules": [
+        { "check": "required" },
+        { "check": "split-huisnummer", "intoColumn": "Toev. aan huisnr." }
+      ]
+    },
+    {
+      "column": "Toev. aan huisnr.",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 30 }]
+    },
+    {
+      "column": "Postcode",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "postcode",
+          "scopeColumn": "Land",
+          "scopeDefault": "NL",
+          "message": "Ongeldige postcode — een Nederlandse postcode is 4 cijfers en 2 letters (bijv. 1013 BG)",
+          "messageEn": "Invalid postcode — a Dutch postcode is 4 digits and 2 letters (e.g. 1013 BG)"
+        },
+        { "check": "length", "max": 15 }
+      ]
+    },
+    {
+      "column": "Woonplaats",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Woonplaatsen",
+          "scopeColumn": "Land",
+          "allowUnlisted": true,
+          "message": "Woonplaats staat niet in AFAS voor dit land. Kies een woonplaats met de zoekfunctie, of laat een beheerder hem toevoegen.",
+          "messageEn": "Town/city is not in AFAS for this country. Choose a town/city with the search function, or ask an administrator to add it."
+        },
+        { "check": "length", "max": 50 }
+      ]
+    },
+    {
+      "column": "Land",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Landen",
+          "message": "Onbekende landcode — gebruik een code uit de AFAS-landenlijst (bijv. NL, B, D)",
+          "messageEn": "Unknown country code — use a code from the AFAS country list (e.g. NL, B, D)"
+        }
+      ]
+    },
+    {
+      "column": "Werkgever",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Werkgevers",
+          "message": "Onbekende werkgever. Gebruik de zoek functie om de juiste werkgever te selecteren.",
+          "messageEn": "Unknown employer. Use the search function to select the correct employer."
+        }
+      ]
+    },
+    {
+      "column": "Datum in dienst",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Datum in dienst ivm dienstjaren",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Cao",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Caos",
+          "message": "Onbekende cao voor deze werkgever",
+          "messageEn": "Unknown CAO for this employer"
+        }
+      ]
+    },
+    {
+      "column": "Arbeidsvoorwaarde",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Arbeidsvoorwaarden",
+          "scopeColumn": "Cao",
+          "message": "Onbekende arbeidsvoorwaarde voor deze cao",
+          "messageEn": "Unknown employment condition for this CAO"
+        }
+      ]
+    },
+    {
+      "column": "Type Contract",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["O", "B"], "message": "Moet O of B zijn", "messageEn": "Must be O or B" }
+      ]
+    },
+    {
+      "column": "Begindatum contract",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Einddatum contract",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Org. eenheid",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Organisatie-eenheden",
+          "message": "Onbekende organisatie-eenheid",
+          "messageEn": "Unknown organisation unit"
+        }
+      ]
+    },
+    {
+      "column": "Functie",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Functies",
+          "scopeColumn": "Werkgever",
+          "message": "Onbekende functie voor deze werkgever",
+          "messageEn": "Unknown function for this employer"
+        }
+      ]
+    },
+    {
+      "column": "UitzBureau",
+      "type": "text",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Dagen per week",
+      "type": "integer",
+      "rules": [
+        { "check": "default-if-empty", "defaultValue": "5" },
+        { "check": "min", "value": 0 },
+        { "check": "max", "value": 7 }
+      ]
+    },
+    {
+      "column": "Uren per week",
+      "type": "decimal",
+      "rules": [{ "check": "default-if-empty", "defaultValue": "38" }]
+    }
+  ],
+  "crossField": [
+    {
+      "if": { "column": "Type Contract", "op": "==", "value": "B" },
+      "then": { "column": "Einddatum contract", "op": "isNotEmpty" },
+      "message": "Verplicht bij Type Contract = B (bepaalde tijd)",
+      "messageEn": "Required when Type Contract = B (fixed term)"
+    }
+  ]
+}

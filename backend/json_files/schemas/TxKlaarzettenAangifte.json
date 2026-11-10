@@ -1,0 +1,1 @@
+{"id":"TxKlaarzettenAangifte","description":"Klaarzetten aangifte","name":"TxKlaarzettenAangifte","fields":[{"fieldId":"BaCd","label":"Barcode","dataType":"string","mandatory":true,"primaryKey":false,"length":24,"decimals":0,"notzero":false,"controlType":0,"values":null}],"objects":[]}

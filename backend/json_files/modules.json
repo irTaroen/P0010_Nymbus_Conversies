@@ -1,0 +1,100 @@
+{
+  "_comment": [
+    "The module catalog: every module the tool knows, its category (HRM / ERP) and its",
+    "place in the sidebar. Which of them a project has is that project's own list in",
+    "project_modules.json, picked when the project is created. `moduleId` is the app's",
+    "module id — the one in the URL, the rule set, the help content and the mapping",
+    "file. Keep this file in step with MODULE_CATALOG in frontend/src/lib/modules.tsx,",
+    "which carries the same ids and labels."
+  ],
+  "mappings": {
+    "HRM": [
+      {
+        "moduleId": "hrm-medewerkers",
+        "moduleName": "Medewerkers"
+      },
+      {
+        "moduleId": "hrm-uitzendkrachten",
+        "moduleName": "Uitzendkrachten"
+      },
+      {
+        "moduleId": "hrm-verlofsaldo",
+        "moduleName": "Verlofsaldo"
+      },
+      {
+        "moduleId": "hrm-salarisparameters",
+        "moduleName": "Salarisparameters"
+      },
+      {
+        "moduleId": "hrm-wagenpark",
+        "moduleName": "Wagenpark"
+      },
+      {
+        "moduleId": "hrm-vakantietoeslag",
+        "moduleName": "Vakantietoeslag"
+      }
+    ],
+    "ERP": [
+      {
+        "moduleId": "erp-debiteuren",
+        "moduleName": "Debiteuren"
+      },
+      {
+        "moduleId": "erp-crediteuren",
+        "moduleName": "Crediteuren"
+      },
+      {
+        "moduleId": "erp-artikelen",
+        "moduleName": "Artikelen"
+      },
+      {
+        "moduleId": "erp-projecten",
+        "moduleName": "Projecten"
+      },
+      {
+        "moduleId": "erp-voorcalculatie",
+        "moduleName": "Voorcalculatie"
+      },
+      {
+        "moduleId": "erp-abonnementen",
+        "moduleName": "Abonnementen"
+      },
+      {
+        "moduleId": "erp-openstaandposten",
+        "moduleName": "Openstaande posten"
+      },
+      {
+        "moduleId": "erp-vasteActiva",
+        "moduleName": "Vaste activa"
+      },
+      {
+        "moduleId": "erp-contactpersonen",
+        "moduleName": "Contactpersonen"
+      },
+      {
+        "moduleId": "erp-nacalculatie",
+        "moduleName": "Nacalculatie"
+      },
+      {
+        "moduleId": "erp-financielecontracten",
+        "moduleName": "Financiële contracten"
+      },
+      {
+        "moduleId": "erp-inkoopoffertes",
+        "moduleName": "Inkoopoffertes"
+      },
+      {
+        "moduleId": "erp-inkooporders",
+        "moduleName": "Inkooporders"
+      },
+      {
+        "moduleId": "erp-beginbalansen",
+        "moduleName": "Beginbalansen"
+      },
+      {
+        "moduleId": "erp-dossieritems",
+        "moduleName": "Dossieritems"
+      }
+    ]
+  }
+}

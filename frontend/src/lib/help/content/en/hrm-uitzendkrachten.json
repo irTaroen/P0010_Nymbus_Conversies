@@ -1,0 +1,146 @@
+{
+  "general": [
+    "Contractors make up a large part of the daily staffing, but they are registered differently from your own employees. Their salary is processed by the staffing agency; in AFAS Profit they are recorded for planning and time management. Correct registration means Appreo can schedule the right people in the right place from the first working day in the new system.",
+    "To do a complete and correct data conversion, it is important to know which information is needed. Below, the import template for contractors is described at column level — from personal details and staffing agency to available days and hours per week.",
+    "Example data and frequently asked questions are also included, to make filling in the import template as easy as possible."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Employee number of the contractor.",
+      "example": "100001"
+    },
+    "Voornaam": {
+      "description": "Official first name.",
+      "example": "Jan"
+    },
+    "Roepnaam": {
+      "description": "The name the employee is addressed by day to day."
+    },
+    "Voorletters": {
+      "description": "Initials including full stops. Format: X.X.",
+      "example": "F.K."
+    },
+    "Voorvoegsel": {
+      "description": "Name prefix in lowercase. Leave empty if not applicable."
+    },
+    "Achternaam": {
+      "description": "Official surname without the name prefix."
+    },
+    "Geslacht": {
+      "description": "The gender: M (Man), V (Vrouw) or X (Non-binair). Required; other values are rejected.",
+      "example": "M"
+    },
+    "Nationaliteit": {
+      "description": "The nationality as a code (e.g. NL, B), checked against the nationality list in AFAS — so the code, not the description. Leave empty if not available from the staffing agency.",
+      "example": "NL"
+    },
+    "Geboorteland": {
+      "description": "The country of birth as an AFAS country code, checked against the country list in AFAS. Note: this is not the ISO code — Belgium is B, Germany D. Leave empty if not available from the staffing agency. A code that is not on that list is highlighted yellow; then both Geboorteland and Geboorteplaats are not sent to AFAS, but the rest of the contractor is.",
+      "example": "NL"
+    },
+    "Geboorteplaats": {
+      "description": "Leave empty if not available from the staffing agency. With Geboorteland NL it is checked against the town/city list in AFAS, so in the official spelling ('s-Gravenhage, not Den Haag); with a foreign country of birth the place is not checked. If the place is not on that list, the cell is highlighted yellow instead of red: this does not block submission, but then both Geboorteland and Geboorteplaats are not sent to AFAS. An administrator can have it added to AFAS.",
+      "example": "Sittard"
+    },
+    "Mobiel werk": {
+      "description": "Usually not available for contractors. Leave empty.",
+      "example": "06-1234567"
+    },
+    "Mobiel privé": {
+      "description": "Usually not available for contractors. Leave empty.",
+      "example": "06-1234567"
+    },
+    "E-mail werk": {
+      "description": "Usually not available for contractors. Leave empty."
+    },
+    "E-mail privé": {
+      "description": "Usually not available for contractors. Leave empty."
+    },
+    "Straat": {
+      "description": "Street name without house number. For an unknown address: use 'Onbekend adres'.",
+      "example": "Onbekend adres"
+    },
+    "Huisnummer": {
+      "description": "The number only. If the addition is included (17-19, 12 A), the tool splits the number itself: 17 stays here, -19 goes to 'Toev. aan huisnr.', in front of what is already there (250- with addition 252 becomes 250 and -252). For an unknown address: use 1.",
+      "example": "1"
+    },
+    "Toev. aan huisnr.": {
+      "description": "Leave empty if not known."
+    },
+    "Postcode": {
+      "description": "The postcode of the home address. With Land NL the tool checks the spelling: 4 digits and 2 letters, e.g. 1013 BG. A foreign postcode is not checked for format. For an unknown address: use '1000 AA'.",
+      "example": "1000 AA"
+    },
+    "Woonplaats": {
+      "description": "With Land NL checked against the town/city list in AFAS, so in the official spelling ('s-Gravenhage, not Den Haag). If the place is not on that list, the cell is highlighted yellow instead of red: this does not block submission, and an administrator can have the place added to AFAS. For an unknown address: use 'Amsterdam', the place for postcode '1000 AA'.",
+      "example": "Amsterdam"
+    },
+    "Land": {
+      "description": "Country of the home address as an AFAS country code, checked against the country list in AFAS. For the Netherlands: NL. Note: this is not the ISO code — Belgium is B, Germany D.",
+      "example": "NL"
+    },
+    "Werkgever": {
+      "description": "Employer code of the hiring entity. Checked against the employer table in the AFAS environment of this project.",
+      "example": "01"
+    },
+    "Datum in dienst": {
+      "description": "Start date of the hiring assignment. Use 01-01-2026 as a bulk date when the exact date is unknown.",
+      "example": "01-01-2025"
+    },
+    "Datum in dienst ivm dienstjaren": {
+      "description": "Usually not applicable to contractors."
+    },
+    "Cao": {
+      "description": "Code of the applicable collective labour agreement (CAO), the same table as for Medewerkers: set up per employer and checked against the AFAS environment of this project.",
+      "example": "SG"
+    },
+    "Arbeidsvoorwaarde": {
+      "description": "Employment condition of the employer. Not used for contractors, but it must be filled in. As with Medewerkers, an employment condition belongs to exactly one CAO, so the valid codes depend on the Cao column on the same row.",
+      "example": "SG"
+    },
+    "Type Contract": {
+      "description": "O = permanent (onbepaalde tijd), B = fixed-term (bepaalde tijd). For contractors almost always B; choose O when the end date is not known.",
+      "example": "B"
+    },
+    "Begindatum contract": {
+      "description": "Start date of the hiring assignment."
+    },
+    "Einddatum contract": {
+      "description": "Required when Type Contract = B (fixed-term). Leave empty for ongoing assignments (Type Contract = O)."
+    },
+    "Org. eenheid": {
+      "description": "Organisational unit (department), as set up in the organisation chart. Codes are case-sensitive and are checked against the organisation chart in the AFAS environment of this project.",
+      "example": "MDW-R1"
+    },
+    "Functie": {
+      "description": "Job code as defined for the employee's employer in AFAS (Functie tab). Jobs belong to one employer, so the valid codes depend on the Werkgever column on the same row; checked against the job table in the AFAS environment of this project.",
+      "example": "OA.1"
+    },
+    "UitzBureau": {
+      "description": "Code of the staffing agency as added in the free table. Use the exact code as registered in AFAS.",
+      "example": "Loyal Flex"
+    },
+    "Dagen per week": {
+      "description": "Available working days per week, used for the planning capacity in AFAS and Appreo. If left empty or not supplied, the check automatically assumes 5 (highlighted orange, not an error) — fill in a different value where there is one.",
+      "example": "5"
+    },
+    "Uren per week": {
+      "description": "Available hours per week, used for the planning capacity in AFAS and Appreo. If left empty or not supplied, the check automatically assumes 38 (highlighted orange, not an error) — fill in a different value where there is one.",
+      "example": "38"
+    }
+  },
+  "faq": [
+    {
+      "question": "Are contractors included in AFAS salary processing?",
+      "answer": "No. Contractors are registered for planning and time management. The salary processing takes place at the staffing agency itself."
+    },
+    {
+      "question": "What are the columns 'Dagen per week' and 'Uren per week' used for?",
+      "answer": "They indicate the planning capacity in AFAS and Appreo, so that planning can be carried out correctly based on the available hours. If a cell is left empty or the column is missing, the check assumes 5 days and 38 hours per week by default (highlighted orange, not an error); fill in a different value where there is one."
+    },
+    {
+      "question": "What do I do with contractors whose address is unknown?",
+      "answer": "Use the standard fill-in address: Straat = 'Onbekend adres', Huisnummer = 1, Postcode = '1000 AA', Woonplaats = 'Amsterdam', Land = NL."
+    }
+  ]
+}

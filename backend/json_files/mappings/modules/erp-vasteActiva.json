@@ -1,0 +1,46 @@
+{
+  "group": "modules",
+  "connector": "FiFixedAssets",
+  "module": "erp-vasteActiva",
+  "root": "FiFixedAssets",
+  "file": "ERP_8_Vaste Activa.xlsx",
+  "sheet": "Vaste activa",
+  "fields": [
+    { "object": ["FiFixedAssets"], "field": "AutoNum", "label": "Vast actief autonummeren", "mandatory": true, "source": "fixed", "value": true },
+    { "object": ["FiFixedAssets"], "field": "Ds", "label": "Naam actief", "mandatory": true, "source": "column", "column": "Naam actief", "columnIndex": 0 },
+    { "object": ["FiFixedAssets"], "field": "FgSn", "label": "Activagroep", "mandatory": true, "source": "column", "column": "Activagroep", "columnIndex": 6 },
+    { "object": ["FiFixedAssets"], "field": "DaPu", "label": "Datum aanschaf", "mandatory": true, "source": "column", "column": "Datum aanschaf", "columnIndex": 1 },
+    { "object": ["FiFixedAssets"], "field": "DaSe", "label": "Datum in gebruik", "mandatory": false, "source": "column", "column": "Datum in gebruik", "columnIndex": 2 },
+    { "object": ["FiFixedAssets"], "field": "BuVa", "label": "Aanschafwaarde", "mandatory": false, "source": "column", "column": "Aanschafwaarde", "columnIndex": 7 },
+    { "object": ["FiFixedAssets"], "field": "ANO1", "label": "Verbijzondering 1", "mandatory": false, "source": "column", "column": "Verbijzondering 1", "columnIndex": 3 },
+    { "object": ["FiFixedAssets"], "field": "ANO2", "label": "Verbijzondering 2", "mandatory": false, "source": "column", "column": "Verbijzondering 2", "columnIndex": 4 },
+    { "object": ["FiFixedAssets"], "field": "FiYn", "label": "Fiscale afschrijving", "mandatory": false, "source": "column", "column": "Fiscale afschrijving (F)", "columnIndex": 13 },
+    { "object": ["FiFixedAssets"], "field": "ViDf", "label": "Afschrijvingsmethode", "mandatory": false, "source": "column", "column": "Afschrijvingsmethode (F)", "columnIndex": 11 },
+    { "object": ["FiFixedAssets"], "field": "LiYe", "label": "Afschrijvingstermijn", "mandatory": false, "source": "column", "column": "Afschrijvingstermijn (F)", "columnIndex": 10 },
+    { "object": ["FiFixedAssets"], "field": "SaVa", "label": "Restwaarde", "mandatory": false, "source": "column", "column": "Restwaarde (F)", "columnIndex": 8 },
+    { "object": ["FiFixedAssets"], "field": "DaSd", "label": "Begindatum afschrijving", "mandatory": false, "source": "column", "column": "Begindatum afschrijving (F)", "columnIndex": 9 },
+    { "object": ["FiFixedAssets"], "field": "FyLi", "label": "Afschrijving initieel t/m boekjaar", "mandatory": false, "source": "column", "column": "Jaar (initieel) (F)", "columnIndex": 14 },
+    { "object": ["FiFixedAssets"], "field": "FpLi", "label": "Afschrijving initieel t/m periode", "mandatory": false, "source": "column", "column": "Periode (initieel) (F)", "columnIndex": 15 },
+    { "object": ["FiFixedAssets"], "field": "FiDi", "label": "Afschrijving initieel", "mandatory": false, "source": "column", "column": "Afschrijving initieel (F)", "columnIndex": 12 }
+  ],
+  "notes": [
+    "NOT grouped, unlike erp-voorcalculatie and erp-abonnementen: one row is one vast actief, and FiFixedAssets has no nested regel object at all (57 fields, zero sub-objects). The ordinary one-row-one-record path applies.",
+    "THE `(F)` SUFFIX IS THE WHOLE READING OF THIS TEMPLATE: it means fiscaal, and AFAS carries two parallel sets of afschrijvingsvelden on this connector — a fiscal set (FiYn, ViDf, FiAm, LiYe, SaVa, DaSd, FyLi, FpLi, FiDi) and a commercial one with different codes for the same concepts (CoYn, ViDc, FiCa, LiCo, SaCo, DaCo, CyLi, CpLi, CoCu). Every `(F)` column above is mapped to the FISCAL field. Getting this wrong is the silent-bad-data failure on this connector: 'Restwaarde (F)' into SaCo instead of SaVa lands a real number in the commercial ledger and nothing complains. The template has no commercial columns, so the commercial set is left entirely unmapped.",
+    "AutoNum (Vast actief autonummeren) is mandatory and fixed `true`: the template has no Activacode column, so AFAS assigns the number itself. Same precedent as KnPerson/KnOrganisation's AutoNum on the medewerkers and relatie mappings. `SeNo` (Activacode) is therefore deliberately unmapped — filling both would be a contradiction.",
+    "NOT MAPPED — `Administratie` (kolom 6 of the template, 'Administratienummer in AFAS'). FiFixedAssets has NO administratie field: all 57 fields were checked against live metainfo and there is no UnId/UnFi on this connector, unlike FiEntries (erp-openstaandposten) which carries UnId at kop level. So the administratie is not part of this body — it is presumably decided by the environment the call is made against, or implied by the activagroep, which the template's own note supports ('Activagroepcode (verschilt per administratie)'). Worth confirming before a multi-administratie conversion: if a customer's activagroepcodes repeat across administraties, this mapping cannot tell them apart and the column has nowhere to go.",
+    "Values that need NO translation: `Afschrijvingsmethode (F)` — the template's Hulptabel offers L, M, D, P, B, W and all six are ids in ViDf's own allowed-value list (which also holds R and A, unused by the sjabloon), with matching descriptions (L = Bedrag lineaire afschrijving, M = Degressieve methode, D = Direct afschrijven, P = Percentage lineaire afschrijving, B = Percentage van de boekwaarde, W = Willekeurig afschrijven). Unlike erp-voorcalculatie's VaIt, this column can go straight through.",
+    "`Fiscale afschrijving (F)` is a J/N column feeding a boolean field. `afasValue()` reads 'J' as true and 'N' as false (its yes-list is true/ja/j/1/waar), so no transform is needed — but note it converts on the field's declared type, so this only holds because FiYn really is a boolean in the schema.",
+    "The rule set and the template agree here, unlike erp-abonnementen: all 15 rule columns exist in the sjabloon under exactly those names, and the template's one extra column is `Administratie`, which the rules do not check and this mapping cannot place (above). Nothing to reconcile.",
+    "Left out entirely: the commercial afschrijving set (see above), the second/third/fourth/fifth verbijzonderingen (ANO3-ANO5 — the template has only two), and the ~30 remaining optional fields (medewerker, leverancier, locatie, aantal stuks, referentienummer, gekoppeld actief, additionele kosten, type actief ViAk, bodemwaarde, herinvesteringsreserve, vervroegde afschrijving, serienummer/puk/garantie, memo, project/projectfase, item, bewakingscode, bijlage). No column feeds any of them.",
+    "No mandatory field is left unmapped: AutoNum (fixed), Ds, FgSn and DaPu are the four AFAS marks mandatory, and all four are filled."
+  ],
+  "verifiedAgainst": {
+    "description": "Live GET /api/afas/updateconnectors/modules/FiFixedAssets — root/name 'FiFixedAssets' (same as the connector id), 57 fields and NO nested objects. Mandatory: AutoNum, Ds, FgSn, DaPu. ViDf's allowed values read from the same call and matched against the template's Hulptabel.",
+    "source": "GET /api/afas/updateconnectors/modules/FiFixedAssets",
+    "liveMetaInfoConfirmed": true,
+    "checkedAt": "2026-08-13"
+  },
+  "savedAt": "2026-08-13T16:22:00Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

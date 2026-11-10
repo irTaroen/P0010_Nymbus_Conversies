@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#ffffff"/>
+  <!-- The sheet: three columns of cells, the shape a spreadsheet has at any size. -->
+  <g fill="#f1941f">
+    <rect x="7" y="7" width="5.5" height="4" rx="1"/>
+    <rect x="14.5" y="7" width="5.5" height="4" rx="1"/>
+    <rect x="7" y="13" width="5.5" height="4" rx="1"/>
+    <rect x="14.5" y="13" width="5.5" height="4" rx="1"/>
+    <rect x="7" y="19" width="5.5" height="4" rx="1"/>
+  </g>
+  <!-- The check: what the tool adds to the sheet. Sits in the cleared bottom-right
+       corner with a white keyline, so it stays legible over the cells at 16px. -->
+  <path d="M15.5 22.5 19 26 27 18" fill="none" stroke="#ffffff" stroke-width="6"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M15.5 22.5 19 26 27 18" fill="none" stroke="#1a1f36" stroke-width="3"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

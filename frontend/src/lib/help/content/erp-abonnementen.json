@@ -1,0 +1,104 @@
+{
+  "general": [
+    "Met abonnementen factureer je eenvoudig vaste bedragen per periode: per maand, kwartaal of jaar. De conversie leidt tot abonnementsgegevens die direct de structurele factuurstroom bepalen, dus een fout hier komt elke periode opnieuw terug op een factuur.",
+    "Bespreek de import altijd eerst met je consultant of beheerder. Wij adviseren de conversie eerst in de testomgeving te doen, daar een datacontrole uit te voeren en de importdefinitie pas daarna naar de live-omgeving te exporteren. Een standaard importdefinitie is al in de omgeving aanwezig.",
+    "Voorwaarden voor de import: basiskennis van importdefinities, een csv-bestand met data, en minimaal verkooprelaties en abonnementsartikelen in de omgeving. Elk abonnement heeft ten minste één abonnementsregel nodig.",
+    "Elke regel in dit bestand is één abonnementsregel. De kopkolommen (Projectnummer tot en met Begindatum factuurcyclus) horen bij het abonnement als geheel en herhalen zich op elke regel van hetzelfde abonnement; de regelkolommen (Artikel tot en met Afwijkende prijs) beschrijven de regel zelf. Gelijke waarden in Abonnement nummer worden bij de import samengevoegd tot één abonnement met meerdere regels.",
+    "Let op bij historische en langlopende abonnementen: verwerkte facturatie van vóór het gebruik van AFAS vraagt extra aandacht. De begindatum kan ver in het verleden liggen terwijl er al een periode is gefactureerd. Sluit de 'Begindatum factuurcyclus' aan op de reeds gefactureerde periode en op het moment dat AFAS de facturatie overneemt. Dat kan betekenen dat een abonnement tot een jaar in de toekomst begint te factureren, terwijl je het leeftijdsinzicht van het abonnement wel behoudt."
+  ],
+  "columns": {
+    "Projectnummer": {
+      "description": "Het projectnummer waaraan het abonnement gekoppeld is. De debiteur (verkooprelatie) en de organisatie van het abonnement worden uit dit project in AFAS overgenomen, dus het project moet daar al bestaan, met een debiteur en een organisatie. Op elke regel van het abonnement hetzelfde nummer. Laat je het leeg, dan krijgt het abonnement geen debiteur en geen organisatie mee.",
+      "example": "31508001"
+    },
+    "Abonnement nummer": {
+      "description": "Het nummer van het abonnement, handmatig doorgenummerd. Alle regels van hetzelfde abonnement dragen hetzelfde nummer: gelijke abonnementnummers worden bij de import samengevoegd tot één abonnement met meerdere regels. Projectnummer, Type Abonnement, Begindatum en Einddatum Abonnement, Betaalvoorwaarde en Cyclus Facturering horen bij het abonnement, niet bij de regel: ze moeten op elke regel met hetzelfde abonnementnummer gelijk zijn.",
+      "example": "350"
+    },
+    "Type Abonnement": {
+      "description": "Het type abonnement, als code uit de abonnementtypetabel van AFAS. Wordt daartegen gecontroleerd; klopt de code niet, dan toont de tool de geldige codes.",
+      "example": "SO"
+    },
+    "Begindatum Abonnement": {
+      "description": "Het moment waarop het abonnement historisch is gestart. Bij een langlopend abonnement mag dit ver in het verleden liggen; de facturatie start pas op de begindatum van de factuurcyclus. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2020"
+    },
+    "Einddatum Abonnement": {
+      "description": "Het moment waarop het abonnement is beëindigd. Tot en met deze datum wordt gefactureerd, daarna niet meer. Laat leeg zolang het abonnement doorloopt — dan op elke regel van het abonnement; anders staat op elke regel dezelfde datum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "31-12-2026"
+    },
+    "Betaalvoorwaarde": {
+      "description": "De code van de betalingsvoorwaarde die de standaard betalingstermijn van het abonnement bepaalt, gecontroleerd tegen de betalingsvoorwaardentabel uit AFAS.",
+      "example": "30"
+    },
+    "Cyclus Facturering": {
+      "description": "De cyclus waarin gefactureerd wordt (bijv. maand, kwartaal, jaar), als code uit de cyclitabel van AFAS. Wordt daartegen gecontroleerd; klopt de code niet, dan toont de tool de geldige codes. Het is een vrije tabel, dus de codes zijn per omgeving ingericht — is de tabel in deze omgeving nog niet beschikbaar, dan kan de tool de kolom niet controleren en controleer je de codes zelf via het zoekvenster in AFAS.",
+      "example": "M1"
+    },
+    "Begindatum factuurcyclus": {
+      "description": "Het moment waarop het abonnement moet starten met factureren. Mag afwijken van de begindatum, maar nooit eerder liggen. Bij een abonnement waarvan al een periode buiten AFAS is gefactureerd, zet je hier het moment waarop AFAS de facturatie overneemt. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2026"
+    },
+    "Artikel": {
+      "description": "De artikelcode van de abonnementsregel, gecontroleerd tegen de artikelen uit AFAS — alleen items van het type Artikel tellen mee, dus een werksoort- of kostencode wordt afgekeurd, ook als die code wel bestaat. Klopt de code niet, dan toont de tool de geldige artikelen. Elk abonnement heeft minimaal één regel met een artikelcode nodig.",
+      "example": "GB"
+    },
+    "Begindatum Regel": {
+      "description": "De begindatum van deze abonnementsregel. Vaak gelijk aan de begindatum in de kop en nooit eerder; bij meerdere regels mag een regel later beginnen dan de kop. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2020"
+    },
+    "Einddatum Regel": {
+      "description": "De einddatum van deze abonnementsregel. Mag niet later liggen dan de einddatum van het abonnement, en is verplicht wanneer de kop een einddatum heeft. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "31-12-2026"
+    },
+    "Factureren Vanaf": {
+      "description": "Vanaf welk moment deze regel meegaat in de facturatie. Vaak gelijk aan de begindatum factuurcyclus in de kop en nooit eerder; bij meerdere regels mag een regel later starten. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2026"
+    },
+    "Afwijkende factuurtekst": {
+      "description": "Een afwijkende factuurtekst voor deze regel, in plaats van de standaardtekst. Vrije tekst; laat leeg wanneer de standaardtekst gebruikt mag worden."
+    },
+    "Afwijkende prijs": {
+      "description": "Een prijs die afwijkt van de prijs die bij het artikel hoort. Deze overschrijft de artikelprijs bij het genereren van facturen. Laat leeg wanneer de standaardprijs van het artikel geldt.",
+      "example": "125.50"
+    }
+  },
+  "faq": [
+    {
+      "question": "Incorrecte datum.",
+      "answer": "De datum ontbreekt volledig of is onjuist geformatteerd of ingevoerd. Gebruik het formaat DD-MM-JJJJ of DD/MM/JJJJ en controleer op een datum 0 (een lege of nulwaarde die als datum in het bestand staat)."
+    },
+    {
+      "question": "Begindatum factuurcyclus moet groter zijn dan of gelijk zijn aan Begindatum Abonnement.",
+      "answer": "Zoals de melding zegt: de factuurcyclus kan niet eerder beginnen dan het abonnement zelf. Pas waar nodig de data aan. De tool controleert dit ook, dus je ziet dit al vóór de import."
+    },
+    {
+      "question": "De ingevulde waarde voor veld 'Cyclus Facturering' bestaat niet.",
+      "answer": "De code staat niet in de cyclitabel van deze omgeving. Klik op het zoekicoon in de cel om de geldige codes te zien en de juiste te kiezen. Ziet de tool de tabel niet (dan blijft de kolom ongecontroleerd), selecteer de code dan via het zoekvenster in AFAS."
+    },
+    {
+      "question": "Dit artikel is geen abonnementsartikel.",
+      "answer": "AFAS accepteert op een abonnementsregel alleen een artikel dat als abonnementsartikel is ingericht. De tool controleert de kolom tegen de artikelen uit AFAS en vangt daarmee codes af die helemaal niet bestaan of die een werksoort of kostensoort zijn; of een bestaand artikel ook als abonnementsartikel is ingericht, ziet de tool niet. Komt deze melding uit AFAS, zet het artikel dan in AFAS om naar een geldig abonnementsartikel of kies een ander artikel."
+    },
+    {
+      "question": "Er is geen waarde ingevuld in verplicht veld 'Itemcode' (ItCd).",
+      "answer": "De artikelcode (kolom Artikel) ontbreekt. Minimaal één artikel is nodig om een abonnement op te zetten."
+    },
+    {
+      "question": "Debiteur komt niet overeen met bestaand abonnement.",
+      "answer": "Je probeert een bestaand abonnement te wijzigen, maar de combinatie van abonnement en verkooprelatie komt niet overeen met wat er in AFAS staat."
+    },
+    {
+      "question": "Debiteur is niet gekoppeld aan deze relatie, kies een andere debiteur.",
+      "answer": "De verkooprelatie wijkt af van de organisatie. Beide worden uit het project overgenomen: controleer in AFAS dat de debiteur van het project aan de organisatie van het project gekoppeld is."
+    },
+    {
+      "question": "Hoe importeer ik het bestand in AFAS?",
+      "answer": "Voor nieuwe abonnementen: Abonnementen > Beheer > Import > Abonnement, kies 'Import via bestaande definitie', doorloop de schermen en selecteer de definitie, selecteer het csv-bestand, voer de controle uit en importeer pas wanneer de controle geen fouten geeft. Bekijk daarna de foutenrapportage en bewaar een kopie. Voor wijzigingen op bestaande abonnementen gaat dat via Abonnementen > Beheer > Import > Abonnementmutatie, waar je ook 'Bestaande definitie bewerken en importeren' kunt kiezen om bijvoorbeeld alleen abonnementen of alleen abonnementsregels te wijzigen. Herhaal het proces voor eventuele uitval."
+    },
+    {
+      "question": "Moet het abonnement nummer uniek zijn in het bestand?",
+      "answer": "Nee. Een abonnement met meerdere regels staat op meerdere rijen, elk met hetzelfde abonnement nummer; AFAS voegt die bij de import samen tot één abonnement. Zorg er wel voor dat de kopkolommen op al die rijen dezelfde waarden hebben — de tool controleert dat nog niet."
+    }
+  ]
+}

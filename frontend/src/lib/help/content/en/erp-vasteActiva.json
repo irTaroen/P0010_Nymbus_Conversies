@@ -1,0 +1,98 @@
+{
+  "general": [
+    "Assets and asset groups together make up the asset register and process the depreciation. In the asset group you record the general settings — depreciation method, number of years and the journal structure — and when you create an individual asset, you link that asset to such a group. This fixes the structure for the future.",
+    "Asset groups can also be imported, but experience shows that entering them manually and then blocking them is more effective. So record the asset groups in AFAS first; this file only contains the assets themselves.",
+    "Below, the import template for the assets is described at field level. The 'Conversie' tab contains the asset dates, and the 'Hulptabel' tab can be used to fill in certain columns. The template contains one example row, whose values are used below as examples.",
+    "The columns marked (F) relate to the tax depreciation. If you have assets that have already been partly depreciated in the source system, use the three initial columns (Afschrijving initieel, Jaar (initieel) and Periode (initieel)) to take over that starting position."
+  ],
+  "columns": {
+    "Naam actief": {
+      "description": "The description under which the asset is recognisable in the administration. Use a clear, unambiguous name and keep the naming consistent when you import several similar assets.",
+      "example": "iPhone type X"
+    },
+    "Datum aanschaf": {
+      "description": "The date on which the asset was acquired. This date is used for the financial accounting and is the basis for calculating the depreciation. Must be equal to or earlier than the date put into use and the depreciation start date. Format DD-MM-YYYY or DD/MM/YYYY.",
+      "example": "01-01-2022"
+    },
+    "Datum in gebruik": {
+      "description": "The date on which the asset was actually put into use — the relevant date for the start of depreciation when no deviating depreciation start date is given. Must not be earlier than the acquisition date. Format DD-MM-YYYY or DD/MM/YYYY.",
+      "example": "01-01-2022"
+    },
+    "Verbijzondering 1": {
+      "description": "The first subdivision that applies to the asset (cost centre, cost unit or another axis). Mandatory when the option 'Verbijzonderen aan' is enabled on the account; leave empty when subdivision does not apply. Check the administration settings for the valid values — the tool cannot check them for you."
+    },
+    "Verbijzondering 2": {
+      "description": "The second subdivision on the asset. Mandatory when the account requires a second subdivision; otherwise the same rules as for Verbijzondering 1 apply."
+    },
+    "Administratie": {
+      "description": "The administration number in AFAS under which this asset is recorded. Asset group codes differ per administration, so this column is mainly needed for a conversion with multiple administrations. Leave empty when you work with one administration. Checked against the administration table from the AFAS environment of this project. AFAS writes the codes with a leading zero (01, 02); a 1 from Excel is read as the same administration.",
+      "example": "1"
+    },
+    "Activagroep": {
+      "description": "The asset group code to which the asset is assigned. The asset group determines, among other things, the general ledger accounts for acquisition, depreciation and book value. Asset groups are registered per administration and have their own code per administration, so check which codes are available in the correct administration before you import.",
+      "example": "1"
+    },
+    "Aanschafwaarde": {
+      "description": "The total acquisition amount of the asset, including the incidental costs that are capitalised. This amount is the basis for calculating the depreciation. Enter an amount without a currency symbol and without thousands separators; 1250.00 and 1250,00 are both read.",
+      "example": "1000"
+    },
+    "Restwaarde (F)": {
+      "description": "The tax residual value of the asset at the end of its useful life. Depreciation runs up to the residual value; the remaining amount stays on the balance sheet. Cannot be higher than the acquisition value. Leave empty or enter 0 when there is no residual value.",
+      "example": "0"
+    },
+    "Begindatum afschrijving (F)": {
+      "description": "The date on which the tax depreciation takes place for the first time: the start date of the depreciation cycle. Must not be earlier than the acquisition date. Format DD-MM-YYYY or DD/MM/YYYY.",
+      "example": "01-01-2022"
+    },
+    "Afschrijvingstermijn (F)": {
+      "description": "The tax useful life of the asset in whole years. Based on this term, the depreciation percentage per year is calculated when the method 'Percentage lineaire afschrijving' (straight-line percentage, P) is chosen. Enter a positive whole number; consult the tax regulations or your tax adviser for the term per asset category.",
+      "example": "5"
+    },
+    "Afschrijvingsmethode (F)": {
+      "description": "The tax method by which the asset is depreciated; the method determines the system of the annual depreciation. Use a code from the Hulptabel: L = Bedrag lineaire afschrijving (fixed-amount straight-line), M = Degressieve methode (declining balance), D = Direct afschrijven (immediate write-off), P = Percentage lineaire afschrijving (straight-line percentage), B = Percentage van de boekwaarde (percentage of book value), W = Willekeurig afschrijven (discretionary depreciation).",
+      "example": "P"
+    },
+    "Afschrijving initieel (F)": {
+      "description": "The amount that has already been depreciated on this asset before the import, when an asset has already been partly depreciated in the source system and the ongoing depreciation is taken over. Cannot be higher than the acquisition value. If you fill this in, Jaar (initieel) and Periode (initieel) are also needed; leave all three empty when nothing has been depreciated yet.",
+      "example": "200"
+    },
+    "Fiscale afschrijving (F)": {
+      "description": "Whether the asset is depreciated for tax purposes. With J the asset takes part in the tax depreciation cycle; with N it does not.",
+      "example": "J"
+    },
+    "Jaar (initieel) (F)": {
+      "description": "The calendar year up to which depreciation has already taken place in the source system. Together with Periode (initieel) it forms the starting position of the depreciation. Mandatory when Afschrijving initieel is given. Enter the four-digit year.",
+      "example": "2022"
+    },
+    "Periode (initieel) (F)": {
+      "description": "The period number (the month, 1 through 12) up to and including which depreciation has already taken place in the source system. Mandatory when Afschrijving initieel is given.",
+      "example": "12"
+    }
+  },
+  "faq": [
+    {
+      "question": "Do I have to create a separate asset for each item?",
+      "answer": "Preferably, you register as many assets separately as possible. Bundling several assets under one asset number causes confusion later about what they contain and about any corrections."
+    },
+    {
+      "question": "Does every asset need an asset group?",
+      "answer": "Yes, an asset group is mandatory."
+    },
+    {
+      "question": "The asset group does not exist, but it is visible for other assets.",
+      "answer": "You register asset groups per administration, and within each administration an asset group has its own code. Do you work with different administrations? Then first check whether you have the correct asset group from the correct administration in mind, and whether any groups are blocked."
+    },
+    {
+      "question": "How do I deal with historical depreciation in previous years?",
+      "answer": "Use the columns Afschrijving initieel, Jaar (initieel) and Periode (initieel) and enter the amount, the period and the year there. Example: you start with AFAS as of January 2030 and have already depreciated up to and including December 2029, a total of 1000 EUR. Then enter period 12, year 2029 and, as the depreciation amount, 1000."
+    },
+    {
+      "question": "Can I add assets without any further depreciation having to take place?",
+      "answer": "Yes. This often happens with assets without a residual value, or with assets that have been taken out of use or sold. You can bring historical assets into AFAS without depreciation by using the situation around historical depreciation — see the previous question."
+    },
+    {
+      "question": "Why doesn't the tool check my asset group and subdivision?",
+      "answer": "Those codes are set up per administration in your own AFAS environment, and the tool cannot yet read that environment. The tool therefore only checks whether a number or code is present, not whether it exists in your administration. So check those columns yourself in AFAS before you deliver the file."
+    }
+  ]
+}

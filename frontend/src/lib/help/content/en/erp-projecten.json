@@ -1,0 +1,76 @@
+{
+  "general": [
+    "Projects are the basis for a number of sales processes: pre-calculation/quotation, post-calculation and invoices. From all those sources, reference is made to a project. A clean and well-organised projects file ensures, for example, that new quotations can easily be created and assessed.",
+    "Now that the data conversion of the projects is around the corner, this is a good moment to tackle the current projects file. Only bring along the projects you will actually use, and check that projects do not occur twice. Use this moment to properly clean up the current data.",
+    "Below, the import template for the projects is described at field level. The 'Conversie' (conversion) tab contains the project data. The template contains one example row, whose values are used below as examples.",
+    "Frequently asked questions are also described, to make filling in the import template as easy as possible. You receive the template from the Nymbus conversion consultant."
+  ],
+  "columns": {
+    "Projectnummer": {
+      "description": "The unique code by which the project is identified within AFAS. This number is the primary key on import: use the existing project number from the source system, and let each number appear only once in the file.",
+      "example": "31508001"
+    },
+    "Project Naam": {
+      "description": "The full name or description of the project. This name is shown in overviews, reports and on invoices linked to the project. Use a recognisable and unambiguous project name that matches the internal project administration. Maximum 80 characters.",
+      "example": "1A Huygensstraat 15 complex 8001"
+    },
+    "Projectgroep": {
+      "description": "The code of the project group under which this project is categorised. The project group determines the structure for reporting and budget monitoring within AFAS. Use only codes that exist in the project group register of AFAS Profit (Projecten / Project / Projectgroep); the tool checks the code against that register from the AFAS environment of this project.",
+      "example": "ALG"
+    },
+    "Administratie": {
+      "description": "The code of the administrative unit (entity or company) to which the project is linked. This determines in which bookkeeping the project and revenue data are processed. Use the administration code that corresponds to the correct entity in AFAS Profit. Checked against the administration table from the AFAS environment of this project. AFAS writes the codes with a leading zero (01, 02); a 1 from Excel is read as the same administration.",
+      "example": "1"
+    },
+    "Debiteur Nummer": {
+      "description": "The relation number of the debtor (client) to whom the project is linked. This number must match the relation number in the debtors administration of AFAS Profit — use the existing debtor number from the conversion file for debtors. A non-existent relation number leads to an import error.",
+      "example": "10007"
+    },
+    "Begindatum": {
+      "description": "The date on which the project starts and from which hours and costs may be booked on the project. Hours that fall before this date are rejected by AFAS. Use the format DD-MM-JJJJ or DD/MM/JJJJ; deviating date notations are not recognised during import.",
+      "example": "01-01-2025"
+    },
+    "Straatnaam Adres": {
+      "description": "The street name of the project's execution address — the building or construction site to which the project relates. Enter only the street name, without house number; that goes in 'Nummer Adres'. Leave empty when the project address does not apply. Required when one of the other address fields is filled in.",
+      "example": "1e C. Huygensstraat"
+    },
+    "Nummer Adres": {
+      "description": "The house number of the project address. Enter only the house number, as a whole number; any addition (letter, floor) goes in 'Nummer toevoeging Adres'. If the addition is included (17-19, 12 A), the tool splits the number itself: 17 stays here, -19 goes to 'Nummer toevoeging Adres', in front of what is already there (250- with addition 252 becomes 250 and -252). Required when one of the other address fields is filled in.",
+      "example": "78"
+    },
+    "Nummer toevoeging Adres": {
+      "description": "The addition to the house number, such as a letter, floor indication or complex code. Leave empty when no addition applies. If you do fill it in, the rest of the address must also be complete.",
+      "example": "a-f"
+    },
+    "Postcode Adres": {
+      "description": "The postcode of the project location, in local notation. Required when one of the other address fields is filled in. For Land Adres NL the tool checks the spelling: 4 digits and 2 letters, e.g. 1054 BW. Foreign postcodes differ from that and are not checked for format.",
+      "example": "1054 BW"
+    },
+    "Plaats Adres": {
+      "description": "The official place name of the project location, checked against the list of places from AFAS for the country in the column 'Land Adres'. Use the official spelling: 's-Gravenhage, not Den Haag. Required when one of the other address fields is filled in. Only Dutch places are on that list; for a foreign country the place is not checked.",
+      "example": "AMSTERDAM"
+    },
+    "Land Adres": {
+      "description": "The AFAS country code of the country where the project location is situated, checked against the country list from AFAS. It belongs to the project address: if one of the address fields is filled in, they are all required, Land Adres too — for a Dutch project location fill in NL. If the project has no address, leave all address fields empty. Note: this is not the ISO code — Belgium is B, Germany D, Afghanistan AFG.",
+      "example": "NL"
+    }
+  },
+  "faq": [
+    {
+      "question": "How can I look up the project groups in AFAS?",
+      "answer": "In AFAS Profit go to: Projecten / Project / Projectgroep."
+    },
+    {
+      "question": "Which status must a project have for the Appreo integration?",
+      "answer": "Projects with status 200 (Active / In progress) go along to Appreo with the integration."
+    },
+    {
+      "question": "Why does the tool check postcode and place only for the Netherlands?",
+      "answer": "For a Dutch address (Land Adres NL) the tool checks the postcode against the notation of 4 digits and 2 letters, and the place against the list of places from AFAS. Foreign postcodes differ per country and are not checked for format; for a foreign address the place is not checked against that list either."
+    },
+    {
+      "question": "Should I bring along projects that have already been closed?",
+      "answer": "Only if you still need them, for example for history or post-calculation. Bring along closed projects with status 300; leave out projects you no longer use. This is the moment to clean up."
+    }
+  ]
+}

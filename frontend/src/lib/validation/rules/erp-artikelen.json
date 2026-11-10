@@ -1,0 +1,57 @@
+{
+  "columns": [
+    {
+      "column": "Itemcode",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "unique" },
+        { "check": "length", "max": 40 }
+      ]
+    },
+    {
+      "column": "Omschrijving",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 100 }]
+    },
+    {
+      "column": "Voorraad bijhouden",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Artikelgroep",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Basiseenheid",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "enum",
+          "values": ["BLK", "DOZ", "FLS", "GEEN", "KG", "KM", "KRT", "L", "M", "STK", "UUR"],
+          "message": "Moet een geldige code uit de Hulptabel zijn",
+          "messageEn": "Must be a valid code from the Lookup table"
+        }
+      ]
+    },
+    {
+      "column": "BTW-Tariefgroep",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["0", "1", "2", "Geen", "U"],
+          "message": "Moet een geldige code uit de Hulptabel zijn",
+          "messageEn": "Must be a valid code from the Lookup table"
+        }
+      ]
+    }
+  ],
+  "crossField": []
+}

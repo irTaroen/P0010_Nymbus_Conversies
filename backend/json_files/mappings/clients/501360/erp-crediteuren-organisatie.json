@@ -1,0 +1,317 @@
+{
+  "connector": "KnPurchaseRelationOrg",
+  "root": "KnPurchaseRelationOrg",
+  "file": "501342_ERP 2_5fCrediteuren versie 2 gecorrigeerd_2026-10-09_023243.xlsx",
+  "sheet": "Conversie",
+  "fields": [
+    {
+      "object": [
+        "KnPurchaseRelationOrg"
+      ],
+      "field": "CrId",
+      "label": "Nummer crediteur",
+      "mandatory": false,
+      "source": "column",
+      "column": "Crediteur Nummer",
+      "columnIndex": 0
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg"
+      ],
+      "field": "IsCr",
+      "label": "Is crediteur",
+      "mandatory": false,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg"
+      ],
+      "field": "VaId",
+      "label": "Btw-identificatienummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "BTW Nummer",
+      "columnIndex": 9
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg"
+      ],
+      "field": "PaCd",
+      "label": "Betaalvoorwaarde",
+      "mandatory": false,
+      "source": "column",
+      "column": "Betalingsvoorwaarde",
+      "columnIndex": 11
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg"
+      ],
+      "field": "CuId",
+      "label": "Valuta",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "EUR"
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg"
+      ],
+      "field": "VaDu",
+      "label": "Btw-plicht",
+      "mandatory": false,
+      "source": "column",
+      "column": "BTW Plicht",
+      "columnIndex": 13
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg"
+      ],
+      "field": "PaSp",
+      "label": "Betaalspecificatie",
+      "mandatory": false,
+      "source": "column",
+      "column": "Betaalspecificatie",
+      "columnIndex": 12
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg"
+      ],
+      "field": "AuPa",
+      "label": "Automatisch betalen",
+      "mandatory": false,
+      "source": "column",
+      "column": "Automatisch betalen",
+      "columnIndex": 10
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg"
+      ],
+      "field": "ColA",
+      "label": "Verzamelrekening",
+      "mandatory": false,
+      "source": "column",
+      "column": "Verzamelrekening",
+      "columnIndex": 7
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "PadAdr",
+      "label": "Postadres is adres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "AutoNum",
+      "label": "Autonummering",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "MatchOga",
+      "label": "Organisatie vergelijken op",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "3"
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "Nm",
+      "label": "Naam",
+      "mandatory": true,
+      "source": "column",
+      "column": "Organisatie Naam",
+      "columnIndex": 2
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "CcNr",
+      "label": "KVK-nummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "KvK-nummer",
+      "columnIndex": 8
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "TeNr",
+      "label": "Telefoonnr. werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Telefoon werk",
+      "columnIndex": 19
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "EmAd",
+      "label": "E-mail werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Email",
+      "columnIndex": 18
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBankAccount"
+      ],
+      "field": "CoId",
+      "label": "Land van de bank",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land van Bank",
+      "columnIndex": 16
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBankAccount"
+      ],
+      "field": "Iban",
+      "label": "IBAN-nummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "IBAN-Nummer",
+      "columnIndex": 15
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "CoId",
+      "label": "Land",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land",
+      "columnIndex": 26
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "PbAd",
+      "label": "Postbusadres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Ad",
+      "label": "Straat",
+      "mandatory": false,
+      "source": "column",
+      "column": "Straatnaam",
+      "columnIndex": 21
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmNr",
+      "label": "Huisnummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "Huisnummer",
+      "columnIndex": 22
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmAd",
+      "label": "Toev. aan huisnr.",
+      "mandatory": false,
+      "source": "column",
+      "column": "Toevoeging Huisnummer",
+      "columnIndex": 23
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ZpCd",
+      "label": "Postcode",
+      "mandatory": false,
+      "source": "column",
+      "column": "Postcode",
+      "columnIndex": 24
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Rs",
+      "label": "Woonplaats",
+      "mandatory": false,
+      "source": "column",
+      "column": "Woonplaats",
+      "columnIndex": 25
+    },
+    {
+      "object": [
+        "KnPurchaseRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ResZip",
+      "label": "Zoek woonplaats bij postcode",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    }
+  ],
+  "savedAt": "2026-10-09T00:33:09Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

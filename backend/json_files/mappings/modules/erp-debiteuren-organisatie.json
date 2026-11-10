@@ -1,0 +1,318 @@
+{
+  "group": "modules",
+  "connector": "KnSalesRelationOrg",
+  "root": "KnSalesRelationOrg",
+  "file": "",
+  "sheet": "",
+  "fields": [
+    {
+      "object": [
+        "KnSalesRelationOrg"
+      ],
+      "field": "DbId",
+      "label": "Nummer debiteur",
+      "mandatory": false,
+      "source": "column",
+      "column": "Debiteur Nummer",
+      "columnIndex": 0
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg"
+      ],
+      "field": "IsDb",
+      "label": "Is debiteur",
+      "mandatory": false,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg"
+      ],
+      "field": "VaId",
+      "label": "Btw-identificatienummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "BTW Nummer",
+      "columnIndex": 9
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg"
+      ],
+      "field": "PaCd",
+      "label": "Betaalvoorwaarde",
+      "mandatory": false,
+      "source": "column",
+      "column": "Betalingsvoorwaarde",
+      "columnIndex": 11
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg"
+      ],
+      "field": "ColA",
+      "label": "Verzamelrekening",
+      "mandatory": false,
+      "source": "column",
+      "column": "Verzamelrekening",
+      "columnIndex": 7
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg"
+      ],
+      "field": "CuId",
+      "label": "Valuta",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "EUR"
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg"
+      ],
+      "field": "VaDu",
+      "label": "Btw-plicht",
+      "mandatory": false,
+      "source": "column",
+      "column": "BTW Plicht",
+      "columnIndex": 12
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg"
+      ],
+      "field": "DuYN",
+      "label": "Aanmaning verzenden",
+      "mandatory": false,
+      "source": "column",
+      "column": "Aanmanen",
+      "columnIndex": 13
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg"
+      ],
+      "field": "AuPa",
+      "label": "Automatisch incasseren",
+      "mandatory": false,
+      "source": "column",
+      "column": "Automatisch Incasseren",
+      "columnIndex": 10
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "PadAdr",
+      "label": "Postadres is adres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "AutoNum",
+      "label": "Autonummering",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "MatchOga",
+      "label": "Organisatie vergelijken op",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "3"
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "Nm",
+      "label": "Naam",
+      "mandatory": true,
+      "source": "column",
+      "column": "Organisatie Naam",
+      "columnIndex": 2
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "CcNr",
+      "label": "KVK-nummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "KvK-nummer",
+      "columnIndex": 8
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "TeNr",
+      "label": "Telefoonnr. werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Telefoon werk",
+      "columnIndex": 17
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation"
+      ],
+      "field": "EmAd",
+      "label": "E-mail werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Email",
+      "columnIndex": 16
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBankAccount"
+      ],
+      "field": "CoId",
+      "label": "Land van de bank",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land van Bank",
+      "columnIndex": 15
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBankAccount"
+      ],
+      "field": "Iban",
+      "label": "IBAN-nummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "IBAN-Nummer",
+      "columnIndex": 14
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "CoId",
+      "label": "Land",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land",
+      "columnIndex": 24
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "PbAd",
+      "label": "Postbusadres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Ad",
+      "label": "Straat",
+      "mandatory": false,
+      "source": "column",
+      "column": "Straatnaam",
+      "columnIndex": 19
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmNr",
+      "label": "Huisnummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "Huisnummer",
+      "columnIndex": 20
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmAd",
+      "label": "Toev. aan huisnr.",
+      "mandatory": false,
+      "source": "column",
+      "column": "Toevoeging Huisnummer",
+      "columnIndex": 21
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ZpCd",
+      "label": "Postcode",
+      "mandatory": false,
+      "source": "column",
+      "column": "Postcode",
+      "columnIndex": 22
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Rs",
+      "label": "Woonplaats",
+      "mandatory": false,
+      "source": "column",
+      "column": "Woonplaats",
+      "columnIndex": 23
+    },
+    {
+      "object": [
+        "KnSalesRelationOrg",
+        "KnOrganisation",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ResZip",
+      "label": "Zoek woonplaats bij postcode",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    }
+  ],
+  "savedAt": "2026-09-23T08:25:41Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

@@ -1,0 +1,91 @@
+{
+  "general": [
+    "Voorcalculaties zijn projectbegrotingen van uren en materialen. De voorcalculatie in AFAS gaat via de API-integratie naar APPREO en kan daar als werkbon ingepland worden. Ook kan een voorcalculatie als offerte verstrekt worden aan de verkooprelatie.",
+    "Voor de APPREO-workshop is het van belang dat er projecten mét voorcalculaties in de AFAS-omgeving aanwezig zijn. Zorg dus dat de projecten waarnaar je hier verwijst ook in de conversie van de module Projecten voorkomen.",
+    "Elke regel in dit bestand is één offerteregel. De kolommen Projectnummer, Offerte, Begindatum Offerte en Einddatum Offerte horen bij de offerte als geheel en herhalen zich dus op elke regel van diezelfde offerte; de overige kolommen beschrijven de regel zelf.",
+    "Hieronder is het importsjabloon voor de voorcalculatie op veldniveau beschreven. Het tabblad 'Conversie' bevat de voorcalculatiedata; de tabbladen 'Hulptabel' en 'Landen' kun je gebruiken om bepaalde kolommen te vullen. Het sjabloon bevat één voorbeeldvoorcalculatie, waarvan de waarden hieronder als voorbeeld zijn overgenomen."
+  ],
+  "columns": {
+    "Projectnummer": {
+      "description": "De unieke identificatiecode van het project waaraan de offerte en de bijbehorende regels gekoppeld zijn. Dit nummer moet exact overeenkomen met het projectnummer uit het bronsysteem — en dus met het projectnummer in de conversie van de module Projecten. Geen spaties of speciale tekens. Alle regels van één offerte hebben hetzelfde projectnummer.",
+      "example": "31508001"
+    },
+    "Offerte": {
+      "description": "Het offertenummer binnen het project. Meerdere offerteregels delen hetzelfde offertenummer wanneer ze onderdeel zijn van dezelfde offerte; een nieuw nummer betekent een nieuwe voorcalculatie. Projectnummer, Begindatum Offerte en Einddatum Offerte horen bij de offerte, niet bij de regel: ze moeten op elke regel van hetzelfde offertenummer gelijk zijn.",
+      "example": "VC001"
+    },
+    "Begindatum Offerte": {
+      "description": "De startdatum van de offerte als geheel: vanaf wanneer de offerte geldig of van toepassing is. Deze datum moet gelijk aan of eerder zijn dan de begindatum van alle bijbehorende offerteregels, en op elke regel van de offerte dezelfde. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2026"
+    },
+    "Einddatum Offerte": {
+      "description": "De einddatum van de offerte als geheel: tot wanneer de offerte geldig is. Deze datum moet gelijk aan of later zijn dan de einddatum van alle bijbehorende offerteregels. Laat leeg wanneer de offerte geen einddatum kent — dan op elke regel van de offerte; anders staat op elke regel dezelfde datum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "31-12-2026"
+    },
+    "Begindatum Regel": {
+      "description": "De startdatum van deze specifieke offerteregel. Mag afwijken van de begindatum van de offerte, maar nooit eerder liggen. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2026"
+    },
+    "Einddatum Regel": {
+      "description": "De einddatum van deze specifieke offerteregel; mag niet later liggen dan de einddatum van de offerte. Laat leeg wanneer de einddatum gelijk is aan die van de offerte of wanneer geen specifieke einddatum van toepassing is. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "31-05-2026"
+    },
+    "Type item": {
+      "description": "Het type item waarop deze offerteregel betrekking heeft, uit de vaste waarden van de Hulptabel: Art = Artikel, Kst = Kosten, Sam = Samenstelling, Wst = Werksoort. Afwijkende of aanvullende waarden accepteert AFAS niet. Let op de schrijfwijze met één hoofdletter.",
+      "example": "Wst"
+    },
+    "Itemcode": {
+      "description": "De code van het artikel, de kostensoort, de samenstelling of de werksoort — afhankelijk van wat in Type item staat. Wordt gecontroleerd tegen de itemtabel uit de AFAS-omgeving van dit project; klopt de code niet, dan toont de tool de geldige codes met hun type. Let op: die tabel bevat op dit moment geen samenstellingen, dus een code van het type Sam wordt afgekeurd zolang die niet in AFAS is ingericht.",
+      "example": "SK0001"
+    },
+    "APPREO Facturatie": {
+      "description": "Facturatieparameter voor APPREO: bepaalt op welke wijze de facturatie vanuit APPREO plaatsvindt. Verplicht wanneer de regel via APPREO wordt gefactureerd. Raadpleeg de APPREO-documentatie voor de toegestane waarden en het toepassingsbereik."
+    },
+    "APPREO Frequentie Uitvoer": {
+      "description": "De uitvoerfrequentie zoals in APPREO geconfigureerd: hoe vaak de werkbon per jaar wordt uitgevoerd. Verplicht wanneer de regel als werkbon in APPREO wordt ingepland. Raadpleeg de APPREO-documentatie voor de geldige frequentiecodes."
+    },
+    "APPREO Planuren": {
+      "description": "Het aantal geplande uren per uitvoering, conform de APPREO-configuratie. Bij een klus die eenmalig of een aantal keer per jaar terugkomt: het aantal uren dat de beurt in die week of weken duurt. Bij een klus die wekelijks terugkeert: het totale aantal uren per week. Voer een decimaal getal in — 2,5 is tweeënhalf uur.",
+      "example": "2,5"
+    },
+    "APPREO OE": {
+      "description": "De organisatie-eenheid (OE) zoals in APPREO gedefinieerd. Dit veld koppelt de offerteregel aan een afdeling of kostenplaats binnen de APPREO-omgeving. Raadpleeg APPREO voor de geldige OE-codes."
+    },
+    "APPREO Afwijkende Factuurtekst": {
+      "description": "Een alternatieve omschrijving die in plaats van de standaard itembeschrijving op de factuur komt. Laat leeg wanneer de standaard omschrijving van het item volstaat. Vrij tekstveld; maximale lengte en opmaak hangen af van de APPREO-instellingen.",
+      "example": "Onderhoud CV-installatie 1e kwartaal"
+    },
+    "APPREO Werkinstructies": {
+      "description": "Specifieke werkinstructies die via APPREO aan de uitvoerende medewerker worden doorgegeven: aanvullende taakomschrijvingen, veiligheidsvoorschriften of klantspecifieke afspraken die niet in de itemomschrijving staan. Laat leeg wanneer er geen specifieke instructies zijn.",
+      "example": "Sleutel ophalen bij de huismeester; uitvoeren tussen 08:00 en 16:00"
+    },
+    "APPREO Afwijkende Prijs": {
+      "description": "Een van de standaard itemprijs afwijkende prijs voor deze specifieke offerteregel. Laat leeg wanneer de standaardprijs van het item geldt. Voer een decimaal getal in; zowel 125.50 als 125,50 wordt gelezen.",
+      "example": "125.50"
+    },
+    "APPREO Werksoort": {
+      "description": "De werksoort die de uren krijgen die in Nacalculatie via de werkbon in APPREO worden geboekt. Raadpleeg APPREO voor de geldige werksoortcodes en om na te gaan wanneer dit veld gevuld moet zijn."
+    },
+    "APPREO Onderaannemer": {
+      "description": "De code of naam van de onderaannemer die het werk uitvoert, conform de APPREO-registratie. Alleen van toepassing wanneer deze offerteregel door een onderaannemer wordt uitgevoerd; laat leeg wanneer eigen personeel het werk doet. Zorg dat de onderaannemer als leverancier in het systeem staat vóór de import."
+    }
+  },
+  "faq": [
+    {
+      "question": "Kan een project meerdere voorcalculaties hebben?",
+      "answer": "Ja. Het offertenummer is uniek binnen het project, dus een project kan meerdere voorcalculaties hebben: VC001, VC002, enzovoort. Alle regels van dezelfde voorcalculatie delen hetzelfde offertenummer en dezelfde begin- en einddatum van de offerte."
+    },
+    {
+      "question": "Gaan alle voorcalculaties in AFAS met de API-koppeling mee naar APPREO?",
+      "answer": "Nee, niet zonder meer. De integratie kijkt naar de projectstatus — projecten met status 200 (Actief / In uitvoering) gaan mee — en een regel kan alleen als werkbon worden ingepland wanneer de APPREO-kolommen gevuld zijn. Welke voorcalculaties in jouw situatie meegaan, stem je af met je conversieconsultant."
+    },
+    {
+      "question": "Wat vul ik in de APPREO-kolommen in?",
+      "answer": "Die velden zijn conditioneel verplicht: ze zijn nodig zodra de offerteregel als werkbon in APPREO moet worden ingepland, en anders mogen ze leeg blijven. De toegestane codes komen uit APPREO en niet uit AFAS, daarom controleert de tool ze niet. Raadpleeg de APPREO-documentatie of je consultant."
+    },
+    {
+      "question": "Waarom wordt mijn datum afgekeurd terwijl hij goed in Excel staat?",
+      "answer": "De tool leest de cel zoals hij in het bestand staat en verwacht dag-maand-jaar met vier cijfers voor het jaar: 01-01-2026 of 01/01/2026. Een cel met een andere notatie (2026-01-01 of 1-1-26) of een datum die niet bestaat (31-02-2026) wordt afgekeurd. Zet de kolom in Excel op een van die twee notaties, of vul de datum als tekst in."
+    }
+  ]
+}

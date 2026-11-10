@@ -1,0 +1,42 @@
+{
+  "general": [
+    "Verlof is een opgebouwd recht dat moet kloppen op de eerste dag in het nieuwe systeem — een verkeerd verlofsaldo valt direct op bij het eerste verlofverzoek.",
+    "Dit tabblad bevat de beginstand van de verlofsaldi per medewerker per verlofsoort als openingsbalans op de livegangdatum van AFAS. Hieronder de kolommen met voorbeelddata en veelgestelde vragen."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Medewerkernummer in AFAS. Moet overeenkomen met de kolom Medewerker uit het medewerkersbestand. Let op: meerdere regels per medewerker zijn mogelijk (één per verlofsoort/boekjaar).",
+      "example": "100001"
+    },
+    "Type Verlof": {
+      "description": "Verlofcode in AFAS. Bevat doorgaans het jaar (W2025 = wettelijk 2025, B2025 = bovenwettelijk 2025), dus de tabel verschilt per jaar én per klant. Wordt gecontroleerd tegen de verlofsoortentabel uit de AFAS-omgeving van dit project.",
+      "example": "W2025"
+    },
+    "Boekjaar": {
+      "description": "Het boekjaar waarop het saldo betrekking heeft. Gebruik het jaar dat overeenkomt met het jaar in de verlofcode. Nodig bij verlof uit meerdere jaren tegelijk.",
+      "example": "2025"
+    },
+    "Datum Boeking": {
+      "description": "De boekingsdatum van deze verlofcorrectie. Laat je dit leeg, dan kiest de tool zelf: valt het Boekjaar in het jaar van de livegang, dan de datum livegang; anders 31 december van het Boekjaar.",
+      "example": "31-12-2025"
+    },
+    "Huidig Saldo (in Uren)": {
+      "description": "Verlofsaldo in uren op de peildatum. Max. 2 decimalen, punt als scheidingsteken. Een negatief saldo is alleen mogelijk als medewerkers negatief mogen staan of genoeg hebben opgebouwd in het nieuwe jaar. Tip: controleer afwijkingen van meer dan 1 uur t.o.v. het bronsysteem vóór import.",
+      "example": "37.25"
+    }
+  },
+  "faq": [
+    {
+      "question": "Waarvoor dient de kolom Boekjaar?",
+      "answer": "Boekjaar koppelt het saldo aan een specifiek verlofopbouwjaar. Het zorgt ook voor een financiële reservering van verlof in dat jaar."
+    },
+    {
+      "question": "Hoe bepaal ik het verlofsaldo op de peildatum?",
+      "answer": "Exporteer de verlofregistratie uit het bronsysteem per de afgesproken conversiepeildatum. Controleer per verlofsoort: opgebouwd verlof minus opgenomen verlof = te importeren saldo in de kolom Huidig Saldo."
+    },
+    {
+      "question": "Welke verlofsoorten kan ik importeren?",
+      "answer": "Alle verlofsoorten die zijn geïmplementeerd bij het maken van de arbeidsvoorwaarden kun je bij de medewerker in AFAS importeren."
+    }
+  ]
+}

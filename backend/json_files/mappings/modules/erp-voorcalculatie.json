@@ -1,0 +1,261 @@
+{
+  "group": "modules",
+  "connector": "KnQuotation",
+  "module": "erp-voorcalculatie",
+  "root": "KnQuotation",
+  "file": "ERP_6_Voorcalculatie.xlsx",
+  "sheet": "Conversie",
+  "fields": [
+    {
+      "object": [
+        "KnQuotation"
+      ],
+      "field": "QuId",
+      "label": "Nummer offerte",
+      "mandatory": false,
+      "source": "column",
+      "column": "Offerte",
+      "columnIndex": 1,
+      "key": true
+    },
+    {
+      "object": [
+        "KnQuotation"
+      ],
+      "field": "QuDa",
+      "label": "Datum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Begindatum Offerte",
+      "columnIndex": 2,
+      "key": true
+    },
+    {
+      "object": [
+        "KnQuotation"
+      ],
+      "field": "PrId",
+      "label": "Project",
+      "mandatory": false,
+      "source": "column",
+      "column": "Projectnummer",
+      "columnIndex": 0,
+      "key": true,
+      "lookup": {
+        "connector": "CON_ERP_Projecten",
+        "matchField": "Project",
+        "valueField": "Project",
+        "noun": "Project"
+      }
+    },
+    {
+      "object": [
+        "KnQuotation"
+      ],
+      "field": "VaDa",
+      "label": "Geldigheidsdatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Einddatum Offerte",
+      "columnIndex": 3,
+      "key": true
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "VaIt",
+      "label": "Type item",
+      "mandatory": true,
+      "source": "column",
+      "column": "Type item",
+      "columnIndex": 6,
+      "valueMap": {
+        "Wst": "1",
+        "Art": "2",
+        "Kst": "6",
+        "Sam": "7"
+      }
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "ItCd",
+      "label": "Itemcode",
+      "mandatory": false,
+      "source": "column",
+      "column": "Itemcode",
+      "columnIndex": 7
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U9C679752E4334B64AE3E5FD3C326F304",
+      "label": "Afwijkende prijs",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Afwijkende Prijs",
+      "columnIndex": 14
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UA4C1F38C4767EA1B16B571AF1B33EAA2",
+      "label": "Werksoort",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Werksoort",
+      "columnIndex": 15
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U49E4BD6F4682C83B5C2DDD91BE3BAEED",
+      "label": "Afwijkende factuurtekst",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Afwijkende Factuurtekst",
+      "columnIndex": 12
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UE1D7ED504E80C1FD7400B39F7BF65ACF",
+      "label": "Planuren per week/beurt",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Planuren",
+      "columnIndex": 10
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U5B16130742B0275A821FC897815E9786",
+      "label": "Facturatie",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Facturatie",
+      "columnIndex": 8
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UC7CD98FD4EBDEBC91BB29093A5CCB30A",
+      "label": "Frequentie",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Frequentie Uitvoer",
+      "columnIndex": 9
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UC31265064AF8444A7B8B92A35976693D",
+      "label": "Onderaannemer",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Onderaannemer",
+      "columnIndex": 16
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UDB1AFF3949738A2D91F24B862713ACA4",
+      "label": "Werkinstructie",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Werkinstructies",
+      "columnIndex": 13
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U7850903E41E607EE7325C3A7CB8A0E03",
+      "label": "Status",
+      "mandatory": false,
+      "source": "fixed",
+      "value": "2"
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U734366F14163E86CA6E8D98C6E5C872A",
+      "label": "Einddatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Einddatum Regel",
+      "columnIndex": 5
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U8D2F47074CCF67717BB33C89AC8987F9",
+      "label": "Begindatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Begindatum Regel",
+      "columnIndex": 4
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UA78D1E8CFEF045A1B068CA3106A67F02",
+      "label": "Plantype (OE)",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO OE",
+      "columnIndex": 11
+    }
+  ],
+  "notes": [
+    "THIS IS THE FIRST GROUPED MAPPING, and it does not work like the others: one offerte carries several regels, and the sheet states that flat — Projectnummer, Offerte, Begindatum Offerte and Einddatum Offerte repeat identically on every row of one offerte, and only the regel columns differ. So the four `key: true` entries above are the group key: rows agreeing on all four are ONE KnQuotation with one KnQuotationLine per row, written as AFAS's array form (`\"Element\": [ … ]`, referentie §3.2/§6.3), not one quotation per row. See docs/afas-integration.md#several-rows-one-record--grouping. Anything that turns these rows into AFAS calls MUST group them the same way — one record per row here would create three offertes where there is one.",
+    "All four kop columns are marked as key because that is what the business asked for. Worth knowing what that chooses: a key column cannot disagree within a group (a different value IS a different group), so a typo in Begindatum Offerte silently produces a SECOND offerte rather than an error. Dropping the two dates to ordinary kop columns (unticking their key, leaving Projectnummer + Offerte as the identity) would instead have the tool report them — `groupDisagreements()` names the row and both values. One toggle either way, per module; recorded here so the choice is visible rather than implicit.",
+    "RESOLVED (25-08-2026) — `VaIt` (Type item) now carries a `valueMap`: Wst→1, Art→2, Kst→6, Sam→7, the translation from metainfo/update/KnQuotation (13-08-2026) recorded in docs/todo.md item 6. `FieldSource` gained a `valueMap` (keyed by the trimmed cell text) precisely for this — a column source can now say 'this raw value becomes that AFAS value' instead of only 'this column, unchanged', and `fieldValues()` in lib/field-mapping.ts applies it ahead of `afasValue()`. It is the general mechanism todo.md item 6 asked for, not a one-off: any column whose codes are the client's own can carry one, edited in the explorer via the translate button beside a mapped column's pill. CAVEAT — the four id→code pairs above are exactly what the 13-08-2026 metainfo read reported, not re-confirmed against a fresh live call while building the mechanism; re-check against `update_connector_metainfo(env, 'KnQuotation')` before relying on this in a real conversion, same as any other value list in this file. Note the module's help text says 'Afwijkende of aanvullende waarden accepteert AFAS niet', which reads as though Art/Kst/Sam/Wst were AFAS's own values — they are not; they are this template's Hulptabel, which is exactly what the value map now bridges.",
+    "NOT MAPPED — `APPREO OE`. The help calls it the organisatie-eenheid: 'koppelt de offerteregel aan een afdeling of kostenplaats binnen de APPREO-omgeving'. KnQuotationLine has no organisatorische-eenheid field; the AFAS mechanism for a per-line afdeling/kostenplaats is a verbijzonderingsas (`V1Cd`–`V5Cd`, 'Code verbijzonderingsas 1..5'), but WHICH axis holds afdeling or kostenplaats is inrichting per environment and nothing in the schema says. Left unmapped rather than picked: a wrong axis stores a real value under the wrong dimension silently, where a wrong value gets refused. To close it, someone has to name the axis this environment uses for afdeling/kostenplaats — then it is a one-line addition. (Note `UnCo` 'Omrekeneenheid' is NOT it, despite the abbreviation: OE here is organisatie-eenheid.)",
+    "JUDGMENT CALL — the two kop dates. KnQuotation has no begin/end period pair at header level; its date fields are QuDa (Datum), VaDa (Geldigheidsdatum), PlDa (Datum planning) and DaTi (Peildatum). Read against the help — Begindatum Offerte is 'vanaf wanneer de offerte geldig of van toepassing is', Einddatum Offerte 'tot wanneer de offerte geldig is' — Einddatum Offerte → VaDa (Geldigheidsdatum) is a close fit and Begindatum Offerte → QuDa (Datum, the offerte's own date) is the defensible remainder. Confirm both with the business before a live conversion; they are also two of the four group keys, so getting them wrong changes how rows group, not just which field they land in.",
+    "`APPREO Afwijkende Prijs` → `U9C679752E4334B64AE3E5FD3C326F304` (free field *Afwijkende prijs* on KnQuotationLine), Taroen 13-10-2026. It replaced an earlier judgment call that sent it to `Upri` (Prijs per eenheid), made when no such free field was known; the template environment (38690) has one with exactly this label.",
+    "The seven APPREO columns that DO map go to custom fields whose labels match them exactly (Werksoort, Afwijkende factuurtekst, Planuren per week/beurt, Facturatie, Frequentie, Onderaannemer, Werkinstructie) — those custom fields almost certainly exist in this environment for precisely these columns. Two caveats: the field codes are custom-field GUIDs (`U…`), so they are inrichting rather than standard AFAS, and a customer environment that has drifted from the template would fail on exactly these; and `Facturatie` (01/02/03) and `Frequentie` (00/-/01..06) have allowed-value lists whose codes the sheet's APPREO values may not match — the same translation problem as VaIt, unconfirmed because the valid APPREO codes live in APPREO and the rule set deliberately leaves them unchecked (docs/todo.md).",
+    "NO REGELNUMMER, by design. The template's Conversie sheet has no line-number column and the rule set no longer declares one (it did, required, which made every file from this template report a missing column — removed 21-09-2026). There is nothing to map it to either: KnQuotationLine has no line-number field, so the ORDER OF THE ELEMENTS IN THE ARRAY is the line order. The sheet's row order within a group is what decides it.",
+    "`PrId` (Project) is set on the kop only, though KnQuotationLine carries a `PrId` of its own. One offerte belongs to one project here, so repeating it per regel adds nothing; the line-level field is for regels belonging to a different project than the kop, which this template cannot express.",
+    "Left out entirely: the ~70 other optional KnQuotationLine fields (quantities, discounts, btw-tariefgroep, magazijn, the weekday hour fields, Materiaal/Werkbonnummer/Abonnement/Status/Plantype customs), the remaining ~30 kop fields (verkooprelatie, adresregels, valuta, kortingen, betaalvoorwaarde), and both deeper objects — `PtProjectActivities` and `FbOrderCompLines`. No column feeds any of them, and because those two objects are absent from the payload their own mandatory fields (Ds/Qu and VaIt/ItCd) never apply. Note they nest INSIDE a regel, so they could hold at most one entry per row: a flat sheet can express one level of repetition, which is the level this mapping uses.",
+    "No mandatory field is left unmapped: KnQuotation's root has none at all (confirmed against live metainfo — unusual, but that is what it reports), and the line's only one is VaIt, mapped above with the translation blocker on it.",
+    "WATCH — an empty cell currently renders as an empty string, not as an omitted field. This module is the first where that is plainly visible, because several of its columns are documented as legitimately blank ('Einddatum Regel: laat leeg wanneer…', and most APPREO columns are conditional): a regel with no Einddatum produces `\"U734366F14163E86CA6E8D98C6E5C872A\": \"\"` in a DATE field, and the unfilled APPREO customs come out as `\"\"` too. `afasValue()` only converts int/decimal/boolean, so text and date cells pass through as they are. Whether AFAS accepts `\"\"` in an optional date, ignores it, or refuses the call is not documented in the referentie and is not something to guess — it needs one test call per type against the test environment, and the answer belongs in the upload builder (omit the key, send null, or send the empty string), not in this file. Not specific to Voorcalculatie: it applies to every mapping written so far. Recorded in docs/todo.md.",
+    "CLEANED UP 13-10-2026 against the standard sjabloon (ERP_6_Voorcalculatie.xlsx) and the template environment 38690. This file had been saved from a Balans sheet (501342) and carried Balans's own columns: `ma`–`zo`, a second `Terugkeerpatroon` field (`U3B4B…`) and `Abonnement nummer` (`UC5CC…`) were removed — none of those free fields exists at 38690 and none of those columns is in the sjabloon. Frequentie (`UC7CD…`) now reads `APPREO Frequentie Uitvoer` and Facturatie (`U5B16…`) `APPREO Facturatie`, the sjabloon's own headers. Balans keeps all of it in its own copy, `mappings/clients/501342/erp-voorcalculatie.json`."
+  ],
+  "verifiedAgainst": {
+    "description": "Live GET /api/afas/updateconnectors/modules/KnQuotation — root/name 'KnQuotation' (same as the connector id), 35 kop fields with none mandatory, nested KnQuotationLine (83 fields, VaIt the only mandatory one), which itself nests PtProjectActivities and FbOrderCompLines (both unused here). The grouping was exercised end to end against this schema and the template's own sample rows: 2 offertes out of 4 rows, KnQuotationLine.Element an array of 3 carrying itemcodes SG/GB/GR and their own Begindatum Regel, kop fields written once from the group's first row. Re-checked 13-10-2026 against KnQuotation at the template environment 38690: every mapped field exists there.",
+    "source": "GET /api/afas/updateconnectors/modules/KnQuotation",
+    "liveMetaInfoConfirmed": true,
+    "checkedAt": "2026-10-13"
+  },
+  "savedAt": "2026-10-09T01:05:24Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

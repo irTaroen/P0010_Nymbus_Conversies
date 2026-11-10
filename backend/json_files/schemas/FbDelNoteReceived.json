@@ -1,0 +1,1 @@
+{"id":"FbDelNoteReceived","description":"Intercompany ontvangst van pakbon","name":"FbDelNoteReceived","fields":[{"fieldId":"OrNu","label":"Ordernummer","dataType":"string","mandatory":true,"primaryKey":false,"length":12,"decimals":0,"notzero":false,"controlType":0,"values":null}],"objects":[]}

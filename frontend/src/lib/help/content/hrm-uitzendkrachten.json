@@ -1,0 +1,146 @@
+{
+  "general": [
+    "Uitzendkrachten vormen een belangrijk deel van de dagelijkse bezetting, maar worden anders geregistreerd dan eigen medewerkers. Hun salaris wordt verwerkt door het uitzendbureau; in AFAS Profit worden zij opgenomen voor planning en urenbeheer. Een correcte registratie zorgt ervoor dat Appreo de juiste mensen op de juiste plek kan inplannen vanaf de eerste werkdag in het nieuwe systeem.",
+    "Om een volledige en correcte dataconversie te kunnen doen is het belangrijk om inzicht te hebben in de benodigde informatie. Hieronder is het importsjabloon voor uitzendkrachten beschreven op kolomniveau — van persoonsgegevens en uitzendbureau tot beschikbare dagen en uren per week.",
+    "Ook zijn er voorbeelddata en veelgestelde vragen beschreven om het vullen van het importsjabloon zo gemakkelijk mogelijk te maken."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Medewerkernummer van de uitzendkracht.",
+      "example": "100001"
+    },
+    "Voornaam": {
+      "description": "Officiële voornaam.",
+      "example": "Jan"
+    },
+    "Roepnaam": {
+      "description": "De naam waarop de medewerker dagelijks wordt aangesproken."
+    },
+    "Voorletters": {
+      "description": "Initialen inclusief punten. Formaat: X.X.",
+      "example": "F.K."
+    },
+    "Voorvoegsel": {
+      "description": "Tussenvoegsel in kleine letters. Laat leeg indien niet van toepassing."
+    },
+    "Achternaam": {
+      "description": "Officiële achternaam zonder tussenvoegsel."
+    },
+    "Geslacht": {
+      "description": "Het geslacht: M (Man), V (Vrouw) of X (Non-binair). Verplicht; andere waarden worden afgekeurd.",
+      "example": "M"
+    },
+    "Nationaliteit": {
+      "description": "De nationaliteit als code (bijv. NL, B), gecontroleerd tegen de nationaliteitenlijst uit AFAS — dus de code, niet de omschrijving. Laat leeg indien niet beschikbaar via het uitzendbureau.",
+      "example": "NL"
+    },
+    "Geboorteland": {
+      "description": "Het land van geboorte als AFAS-landcode, gecontroleerd tegen de landenlijst uit AFAS. Let op: dit is niet de ISO-code — België is B, Duitsland D. Laat leeg indien niet beschikbaar via het uitzendbureau. Een code die niet in die lijst staat wordt geel gemarkeerd; geboorteland en geboorteplaats gaan dan allebei niet naar AFAS, de rest van de uitzendkracht wel.",
+      "example": "NL"
+    },
+    "Geboorteplaats": {
+      "description": "Laat leeg indien niet beschikbaar via het uitzendbureau. Bij Geboorteland NL gecontroleerd tegen de woonplaatsenlijst uit AFAS, dus in de officiële schrijfwijze ('s-Gravenhage, niet Den Haag); bij een buitenlands geboorteland wordt de plaats niet gecontroleerd. Staat de plaats niet in die lijst, dan wordt de cel geel gemarkeerd in plaats van rood: dat blokkeert het aanleveren niet, maar geboorteland en geboorteplaats gaan dan allebei niet naar AFAS. Een beheerder kan hem laten toevoegen aan AFAS.",
+      "example": "Sittard"
+    },
+    "Mobiel werk": {
+      "description": "Doorgaans niet beschikbaar bij uitzendkrachten. Laat leeg.",
+      "example": "06-1234567"
+    },
+    "Mobiel privé": {
+      "description": "Doorgaans niet beschikbaar bij uitzendkrachten. Laat leeg.",
+      "example": "06-1234567"
+    },
+    "E-mail werk": {
+      "description": "Doorgaans niet beschikbaar bij uitzendkrachten. Laat leeg."
+    },
+    "E-mail privé": {
+      "description": "Doorgaans niet beschikbaar bij uitzendkrachten. Laat leeg."
+    },
+    "Straat": {
+      "description": "Straatnaam zonder huisnummer. Bij onbekend adres: gebruik 'Onbekend adres'.",
+      "example": "Onbekend adres"
+    },
+    "Huisnummer": {
+      "description": "Alleen het getal. Staat de toevoeging erbij (17-19, 12 A), dan splitst de tool het nummer zelf: 17 blijft hier staan, -19 gaat naar 'Toev. aan huisnr.', vóór wat daar al staat (250- met toevoeging 252 wordt 250 en -252). Bij onbekend adres: gebruik 1.",
+      "example": "1"
+    },
+    "Toev. aan huisnr.": {
+      "description": "Laat leeg indien niet bekend."
+    },
+    "Postcode": {
+      "description": "De postcode van het woonadres. Bij Land NL controleert de tool de schrijfwijze: 4 cijfers en 2 letters, bijv. 1013 BG. Een buitenlandse postcode wordt niet op formaat gecontroleerd. Bij onbekend adres: gebruik '1000 AA'.",
+      "example": "1000 AA"
+    },
+    "Woonplaats": {
+      "description": "Bij Land NL gecontroleerd tegen de woonplaatsenlijst uit AFAS, dus in de officiële schrijfwijze ('s-Gravenhage, niet Den Haag). Staat de plaats niet in die lijst, dan wordt de cel geel gemarkeerd in plaats van rood: dat blokkeert het aanleveren niet, en een beheerder kan de plaats laten toevoegen aan AFAS. Bij onbekend adres: gebruik 'Amsterdam', de plaats bij postcode '1000 AA'.",
+      "example": "Amsterdam"
+    },
+    "Land": {
+      "description": "Land van het woonadres als AFAS-landcode, gecontroleerd tegen de landenlijst uit AFAS. Voor Nederland: NL. Let op: dit is niet de ISO-code — België is B, Duitsland D.",
+      "example": "NL"
+    },
+    "Werkgever": {
+      "description": "Werkgeverscode van de inlenende entiteit. Wordt gecontroleerd tegen de werkgeverstabel uit de AFAS-omgeving van dit project.",
+      "example": "01"
+    },
+    "Datum in dienst": {
+      "description": "Startdatum van de inleenopdracht. Gebruik 01-01-2026 als bulkdatum bij een onbekende exacte datum.",
+      "example": "01-01-2025"
+    },
+    "Datum in dienst ivm dienstjaren": {
+      "description": "Doorgaans niet van toepassing voor uitzendkrachten."
+    },
+    "Cao": {
+      "description": "Code van de van toepassing zijnde CAO, dezelfde tabel als bij Medewerkers: ingericht per werkgever en gecontroleerd tegen de AFAS-omgeving van dit project.",
+      "example": "SG"
+    },
+    "Arbeidsvoorwaarde": {
+      "description": "Arbeidsvoorwaarde van de werkgever. Wordt niet gebruikt bij uitzendkrachten, maar moet wel gevuld worden. Net als bij Medewerkers hoort een arbeidsvoorwaarde bij precies één CAO, dus de geldige codes hangen af van de kolom Cao op dezelfde regel.",
+      "example": "SG"
+    },
+    "Type Contract": {
+      "description": "O = onbepaalde tijd, B = bepaalde tijd. Bij uitzendkrachten vrijwel altijd B; kies O wanneer de einddatum niet bekend is.",
+      "example": "B"
+    },
+    "Begindatum contract": {
+      "description": "Startdatum van de inleenopdracht."
+    },
+    "Einddatum contract": {
+      "description": "Verplicht bij Type Contract = B (bepaalde tijd). Laat leeg bij doorlopende opdrachten (Type Contract = O)."
+    },
+    "Org. eenheid": {
+      "description": "Organisatorische eenheid (afdeling), zoals in het organigram is ingericht. Codes zijn hoofdlettergevoelig en worden gecontroleerd tegen het organigram uit de AFAS-omgeving van dit project.",
+      "example": "MDW-R1"
+    },
+    "Functie": {
+      "description": "Functiecode zoals gedefinieerd bij de werkgever van de medewerker in AFAS (tabblad Functie). Functies horen bij één werkgever, dus de geldige codes hangen af van de kolom Werkgever op dezelfde regel; gecontroleerd tegen de functietabel uit de AFAS-omgeving van dit project.",
+      "example": "OA.1"
+    },
+    "UitzBureau": {
+      "description": "Code van het uitzendbureau zoals toegevoegd in de vrije tabel. Gebruik de exacte code zoals geregistreerd in AFAS.",
+      "example": "Loyal Flex"
+    },
+    "Dagen per week": {
+      "description": "Beschikbare werkdagen per week, gebruikt voor de planningscapaciteit in AFAS en Appreo. Leeg gelaten of niet aangeleverd wordt bij de controle automatisch 5 aangehouden (oranje gemarkeerd, geen fout) — vul een afwijkende waarde in als die er is.",
+      "example": "5"
+    },
+    "Uren per week": {
+      "description": "Beschikbare uren per week, gebruikt voor de planningscapaciteit in AFAS en Appreo. Leeg gelaten of niet aangeleverd wordt bij de controle automatisch 38 aangehouden (oranje gemarkeerd, geen fout) — vul een afwijkende waarde in als die er is.",
+      "example": "38"
+    }
+  },
+  "faq": [
+    {
+      "question": "Worden uitzendkrachten meegenomen in de AFAS-salarisverwerking?",
+      "answer": "Nee. Uitzendkrachten worden geregistreerd voor planning en urenbeheer. De salarisverwerking vindt plaats bij het uitzendbureau zelf."
+    },
+    {
+      "question": "Waarvoor worden de kolommen 'Dagen per week' en 'Uren per week' gebruikt?",
+      "answer": "Ze geven de planningscapaciteit aan in AFAS en Appreo, zodat de planning correct kan worden uitgevoerd op basis van de beschikbare uren. Blijft een cel leeg of ontbreekt de kolom, dan houdt de controle standaard 5 dagen en 38 uur per week aan (oranje gemarkeerd, geen fout); vul een afwijkende waarde in als die er is."
+    },
+    {
+      "question": "Wat doe ik met uitzendkrachten waarvan het adres onbekend is?",
+      "answer": "Gebruik het standaard vul-adres: Straat = 'Onbekend adres', Huisnummer = 1, Postcode = '1000 AA', Woonplaats = 'Amsterdam', Land = NL."
+    }
+  ]
+}

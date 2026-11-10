@@ -1,0 +1,91 @@
+{
+  "general": [
+    "Dossieritems zijn de vastleggingen die in AFAS aan een medewerker, relatie, project of factuur hangen: correspondentie, afspraken, klachten, meldingen en de bijlagen daarbij. Ook ingescande inkoopfacturen komen als dossieritem mee.",
+    "Elke regel is één dossieritem. De kolom Type bestemming bepaalt waaraan het item hangt, en daarmee welke kolom eronder gevuld moet zijn: bij bestemming Medewerker de kolom Medewerker, bij Organisatie/persoon de kolom Organisatie of persoon.",
+    "Wil je documenten meenemen, dan hoort bij elke regel met een bestandsnaam ook het bestand zelf te worden aangeleverd. Stem met Nymbus af hoe de bijlagen worden overgedragen.",
+    "De kolommen hieronder zijn afgeleid van de AFAS-specificatie van het dossieritem (UpdateConnector KnSubject). Het importsjabloon voor deze module wordt nog opgeleverd."
+  ],
+  "columns": {
+    "Type dossieritem": {
+      "description": "Het nummer van het dossieritemtype, dat bepaalt wat voor soort vastlegging dit is — bijvoorbeeld een klacht, een afspraak of een ingescande factuur. De beschikbare types zijn in de AFAS-omgeving ingericht; stem met Nymbus af welke nummers voor deze conversie gelden.",
+      "example": "1"
+    },
+    "Onderwerp": {
+      "description": "De titel van het dossieritem: waar het in één regel over gaat. Dit is wat gebruikers in AFAS in het dossier zien staan. Maximaal 255 tekens.",
+      "example": "Klacht over levering"
+    },
+    "Toelichting": {
+      "description": "De volledige tekst of toelichting bij het dossieritem. Hier kan een langere beschrijving staan; regeleindes blijven bewaard.",
+      "example": "Levering was incompleet; leverancier heeft nalevering toegezegd."
+    },
+    "Instuurdatum": {
+      "description": "De datum waarop het dossieritem is aangemaakt of ingestuurd. Bij een conversie is dit de oorspronkelijke datum uit het bronsysteem, niet de datum van converteren. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-02-2026"
+    },
+    "Instuurder": {
+      "description": "De naam of het nummer van degene die het dossieritem heeft ingestuurd. Maximaal 80 tekens.",
+      "example": "1001"
+    },
+    "Verantwoordelijke": {
+      "description": "De naam of het nummer van degene die het dossieritem moet behandelen. Maximaal 80 tekens.",
+      "example": "1002"
+    },
+    "Prioriteit": {
+      "description": "Hoe urgent het item is: H = Hoog, N = Normaal, L = Laag. Laat leeg om de standaardprioriteit van het type te gebruiken.",
+      "example": "N"
+    },
+    "Begindatum": {
+      "description": "De datum waarop het item ingaat of waarop de actie start. Laat leeg wanneer alleen de instuurdatum van belang is. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-02-2026"
+    },
+    "Einddatum": {
+      "description": "De datum waarop het item afloopt of de actie uiterlijk klaar moet zijn. Mag niet eerder liggen dan de begindatum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "15-02-2026"
+    },
+    "Afgehandeld": {
+      "description": "Of het dossieritem is afgerond (Ja) of nog openstaat (Nee). Bij Ja is de datum van afhandeling verplicht; bij Nee moet die leeg blijven.",
+      "example": "Ja"
+    },
+    "Datum afgehandeld": {
+      "description": "De datum waarop het item is afgehandeld. Alleen te vullen wanneer Afgehandeld op Ja staat, en niet eerder dan de instuurdatum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "05-02-2026"
+    },
+    "Type bestemming": {
+      "description": "Waaraan het dossieritem hangt, als code: 1 = Geen, 2 = Medewerker, 3 = Organisatie/persoon, 4 = Verkooprelatie, en verder 8, 9, 10, 11, 17 en 66 voor de overige bestemmingen. Deze kolom bepaalt welke van de kolommen hieronder gevuld moet zijn.",
+      "example": "2"
+    },
+    "Bestemming": {
+      "description": "De vrije aanduiding van de bestemming, voor bestemmingstypen die geen eigen kolom in dit sjabloon hebben. Laat leeg wanneer je Medewerker of Organisatie of persoon gebruikt. Maximaal 50 tekens.",
+      "example": "1001"
+    },
+    "Organisatie of persoon": {
+      "description": "Het nummer van de organisatie of persoon waaraan het item hangt. Verplicht bij Type bestemming 3. Maximaal 15 tekens.",
+      "example": "50014"
+    },
+    "Medewerker": {
+      "description": "Het medewerkernummer waaraan het item hangt. Verplicht bij Type bestemming 2, en moet overeenkomen met de conversie van de module Medewerkers. Maximaal 15 tekens.",
+      "example": "1001"
+    },
+    "Projectnummer": {
+      "description": "Het project waaraan het dossieritem hangt, wanneer het projectgebonden is. Maximaal 15 tekens.",
+      "example": "31508001"
+    },
+    "Contractnummer": {
+      "description": "Het contract waaraan het dossieritem hangt, wanneer het bij een contract hoort. Moet overeenkomen met de conversie van de module Financiële contracten. Maximaal 16 tekens.",
+      "example": "CON0001"
+    },
+    "Organisatorische eenheid": {
+      "description": "De organisatorische eenheid waaronder het item valt. Wordt gecontroleerd tegen de organisatie-eenhedentabel uit de AFAS-omgeving van dit project. Maximaal 10 tekens.",
+      "example": "OE01"
+    },
+    "Geblokkeerd": {
+      "description": "Of het dossieritem is geblokkeerd voor verdere bewerking (Ja) of gewoon toegankelijk is (Nee).",
+      "example": "Nee"
+    },
+    "Bestandsnaam bijlage": {
+      "description": "De naam van het bijgevoegde bestand, inclusief extensie. Staat hier een bestandsnaam, dan moet het bestand zelf ook worden aangeleverd; stem met Nymbus af hoe. Maximaal 255 tekens.",
+      "example": "klacht-20260201.pdf"
+    }
+  },
+  "faq": []
+}

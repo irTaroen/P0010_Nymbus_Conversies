@@ -1,0 +1,1319 @@
+{
+  "columns": [
+    {
+      "column": "Medewerker",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "unique"
+        },
+        {
+          "check": "length",
+          "max": 15
+        }
+      ]
+    },
+    {
+      "column": "Voornaam",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "length",
+          "max": 50
+        }
+      ]
+    },
+    {
+      "column": "Roepnaam",
+      "type": "text",
+      "rules": [
+        {
+          "check": "length",
+          "max": 80
+        }
+      ]
+    },
+    {
+      "column": "Voorletters",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "regex",
+          "pattern": "^([A-Z]\\.)+$",
+          "message": "Formaat: X.X. — uitsluitend hoofdletters, elk gevolgd door een punt",
+          "messageEn": "Format: X.X. — uppercase letters only, each followed by a full stop"
+        },
+        {
+          "check": "length",
+          "max": 15
+        }
+      ]
+    },
+    {
+      "column": "Voorvoegsel",
+      "type": "text",
+      "rules": [
+        {
+          "check": "length",
+          "max": 15
+        }
+      ]
+    },
+    {
+      "column": "Achternaam",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "length",
+          "max": 80
+        }
+      ]
+    },
+    {
+      "column": "Geboortenaam apart vastleggen",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": [
+            "J",
+            "N"
+          ],
+          "message": "Moet J of N zijn",
+          "messageEn": "Must be J (yes) or N (no)"
+        }
+      ]
+    },
+    {
+      "column": "Voorv. geb.naam",
+      "type": "text",
+      "rules": [
+        {
+          "check": "length",
+          "max": 15
+        }
+      ]
+    },
+    {
+      "column": "Geboortenaam",
+      "type": "text",
+      "rules": [
+        {
+          "check": "length",
+          "max": 80
+        }
+      ]
+    },
+    {
+      "column": "Geslacht",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "enum",
+          "values": [
+            "M",
+            "V",
+            "X"
+          ],
+          "message": "Moet M, V of X zijn",
+          "messageEn": "Must be M, V or X"
+        }
+      ]
+    },
+    {
+      "column": "Nationaliteit",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Nationaliteiten",
+          "message": "Ongeldige nationaliteit. Gebruik de zoek functie om de juiste nationaliteit te selecteren.",
+          "messageEn": "Invalid nationality. Use the search function to select the correct nationality."
+        }
+      ]
+    },
+    {
+      "column": "Geboortedatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [
+        {
+          "check": "required"
+        }
+      ]
+    },
+    {
+      "column": "Leeftijd",
+      "type": "integer",
+      "rules": []
+    },
+    {
+      "column": "Geboorteland",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Landen",
+          "allowUnlisted": true,
+          "omitUnlisted": true,
+          "message": "Onbekende landcode — geboorteland en geboorteplaats worden dan niet naar AFAS gestuurd. Kies de juiste landcode met de zoekfunctie.",
+          "messageEn": "Unknown country code — the country and place of birth are then not sent to AFAS. Choose the correct country code with the search function."
+        }
+      ]
+    },
+    {
+      "column": "Geboorteplaats",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Woonplaatsen",
+          "scopeColumn": "Geboorteland",
+          "allowUnlisted": true,
+          "omitUnlisted": true,
+          "message": "Plaats staat niet in AFAS voor dit geboorteland — geboorteland en geboorteplaats worden dan niet naar AFAS gestuurd. Kies een plaats met de zoekfunctie, of laat een beheerder hem toevoegen.",
+          "messageEn": "Place is not in AFAS for this country of birth — the country and place of birth are then not sent to AFAS. Choose a place with the search function, or ask an administrator to add it."
+        },
+        {
+          "check": "length",
+          "max": 50
+        }
+      ]
+    },
+    {
+      "column": "BSN",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "bsn"
+        }
+      ]
+    },
+    {
+      "column": "Burgerlijke staat",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "BurgerlijkeStaat"
+        }
+      ]
+    },
+    {
+      "column": "Bewindvoering",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": [
+            "J",
+            "N"
+          ],
+          "message": "Moet J of N zijn",
+          "messageEn": "Must be J (yes) or N (no)"
+        }
+      ]
+    },
+    {
+      "column": "Mobiel werk",
+      "type": "text",
+      "rules": [
+        {
+          "check": "phone"
+        }
+      ]
+    },
+    {
+      "column": "Mobiel privé",
+      "type": "text",
+      "rules": [
+        {
+          "check": "phone"
+        }
+      ]
+    },
+    {
+      "column": "Telefoonnr. werk",
+      "type": "text",
+      "rules": [
+        {
+          "check": "phone"
+        }
+      ]
+    },
+    {
+      "column": "Telefoonnr. privé",
+      "type": "text",
+      "rules": [
+        {
+          "check": "phone"
+        }
+      ]
+    },
+    {
+      "column": "E-mail werk",
+      "type": "text",
+      "rules": [
+        {
+          "check": "email"
+        }
+      ]
+    },
+    {
+      "column": "E-mail privé",
+      "type": "text",
+      "rules": [
+        {
+          "check": "email"
+        }
+      ]
+    },
+    {
+      "column": "Straat",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "length",
+          "max": 60
+        }
+      ]
+    },
+    {
+      "column": "Huisnummer",
+      "type": "integer",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "split-huisnummer",
+          "intoColumn": "Toev. aan huisnr."
+        }
+      ]
+    },
+    {
+      "column": "Toev. aan huisnr.",
+      "type": "text",
+      "rules": [
+        {
+          "check": "length",
+          "max": 30
+        }
+      ]
+    },
+    {
+      "column": "Postcode",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "postcode",
+          "scopeColumn": "Land (Adres)",
+          "scopeDefault": "NL",
+          "values": [
+            "NL",
+            "B",
+            "D",
+            "PL",
+            "E"
+          ]
+        },
+        {
+          "check": "length",
+          "max": 15
+        }
+      ]
+    },
+    {
+      "column": "Woonplaats",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Woonplaatsen",
+          "scopeColumn": "Land (Adres)",
+          "allowUnlisted": true,
+          "message": "Woonplaats staat niet in AFAS voor dit land. Kies een woonplaats met de zoekfunctie, of laat een beheerder hem toevoegen.",
+          "messageEn": "Town/city is not in AFAS for this country. Choose a town/city with the search function, or ask an administrator to add it."
+        },
+        {
+          "check": "length",
+          "max": 50
+        }
+      ]
+    },
+    {
+      "column": "Land (Adres)",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Landen",
+          "message": "Onbekende landcode. Gebruik de zoek functie om de juiste landcode te selecteren.",
+          "messageEn": "Unknown country code. Use the search function to select the correct country code."
+        }
+      ]
+    },
+    {
+      "column": "Nr. inkomstenverhouding",
+      "type": "integer",
+      "rules": [
+        {
+          "check": "required"
+        }
+      ]
+    },
+    {
+      "column": "IBAN",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "iban"
+        }
+      ]
+    },
+    {
+      "column": "Land (Bank)",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Landen",
+          "message": "Onbekende landcode. Gebruik de zoek functie om de juiste landcode te selecteren.",
+          "messageEn": "Unknown country code. Use the search function to select the correct country code."
+        }
+      ]
+    },
+    {
+      "column": "Datum in dienst",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [
+        {
+          "check": "required"
+        }
+      ]
+    },
+    {
+      "column": "Datum in dienst i.v.m. dienstjaren",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [
+        {
+          "check": "required"
+        }
+      ]
+    },
+    {
+      "column": "Werkgever",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Werkgevers",
+          "message": "Onbekende werkgever. Gebruik de zoek functie om de juiste werkgever te selecteren.",
+          "messageEn": "Unknown employer. Use the search function to select the correct employer."
+        }
+      ]
+    },
+    {
+      "column": "Cao",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Caos",
+          "message": "Onbekende cao voor deze werkgever",
+          "messageEn": "Unknown CAO for this employer"
+        }
+      ]
+    },
+    {
+      "column": "Arbeidsvoorwaarde",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Arbeidsvoorwaarden",
+          "scopeColumn": "Cao",
+          "message": "Onbekende arbeidsvoorwaarde voor deze cao",
+          "messageEn": "Unknown employment condition for this CAO"
+        }
+      ]
+    },
+    {
+      "column": "Dienstbetrekking",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Dienstbetrekkingen",
+          "scopeColumn": "Cao",
+          "message": "Onbekende dienstbetrekking voor deze cao",
+          "messageEn": "Unknown employment relationship for this CAO"
+        }
+      ]
+    },
+    {
+      "column": "Soort medewerker",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "E",
+            "N",
+            "T"
+          ],
+          "message": "Moet een AFAS-code zijn: 1 t/m 8, E, N of T",
+          "messageEn": "Must be an AFAS code: 1 to 8, E, N or T"
+        }
+      ]
+    },
+    {
+      "column": "Type contract",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Contracttypes",
+          "message": "Onbekend type contract. Gebruik de zoek functie om het juiste type contract te selecteren.",
+          "messageEn": "Unknown contract type. Use the search function to select the correct contract type."
+        }
+      ]
+    },
+    {
+      "column": "Einddatum contract",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Begindatum contractketen",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Ketennummer",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "Ntb"
+          ],
+          "message": "Moet 0 t/m 6 of Ntb zijn",
+          "messageEn": "Must be 0 to 6 or Ntb"
+        }
+      ]
+    },
+    {
+      "column": "Org. eenheid",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Organisatie-eenheden",
+          "message": "Onbekende organisatie-eenheid",
+          "messageEn": "Unknown organisation unit"
+        }
+      ]
+    },
+    {
+      "column": "Functie",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "codetabel",
+          "tableRef": "Functies",
+          "scopeColumn": "Werkgever",
+          "message": "Onbekende functie voor deze werkgever",
+          "messageEn": "Unknown function for this employer"
+        }
+      ]
+    },
+    {
+      "column": "Kostendrager",
+      "type": "text",
+      "rules": [
+        {
+          "check": "default-if-empty",
+          "defaultValue": "Profit"
+        },
+        {
+          "check": "length",
+          "max": 30
+        }
+      ]
+    },
+    {
+      "column": "Kostenplaats",
+      "type": "text",
+      "rules": [
+        {
+          "check": "default-if-empty",
+          "defaultValue": "Profit"
+        },
+        {
+          "check": "length",
+          "max": 30
+        }
+      ]
+    },
+    {
+      "column": "Soort salaris",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "enum",
+          "values": [
+            "U",
+            "V",
+            "S",
+            "Su"
+          ],
+          "message": "Moet U, V, S of Su zijn",
+          "messageEn": "Must be U, V, S or Su"
+        }
+      ]
+    },
+    {
+      "column": "Soort loonschaal",
+      "type": "integer",
+      "rules": []
+    },
+    {
+      "column": "Loonschaal",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["GR1", "GR2", "GR3", "GR4", "GR5", "GR6", "GR7", "GR8", "GR9", "GR10", "GR11", "GR12"],
+          "message": "Moet GR1 t/m GR12 zijn",
+          "messageEn": "Must be GR1 to GR12"
+        }
+      ]
+    },
+    {
+      "column": "Trede",
+      "type": "integer",
+      "rules": []
+    },
+    {
+      "column": "Salaris",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "Jaarloon BT",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "Gedrag periodiek toekennen code",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "enum",
+          "values": [
+            "0",
+            "1"
+          ],
+          "aliases": {
+            "0": [
+              "N",
+              "Nee"
+            ],
+            "1": [
+              "J",
+              "Ja"
+            ]
+          },
+          "message": "Moet 0 of 1 zijn — 1 bij schaaluurloon, 0 bij vast salaris",
+          "messageEn": "Must be 0 or 1 — 1 for scale hourly wage, 0 for fixed salary"
+        }
+      ]
+    },
+    {
+      "column": "Periodenummer periodiek",
+      "type": "integer",
+      "rules": [
+        {
+          "check": "min",
+          "value": 1
+        },
+        {
+          "check": "max",
+          "value": 13
+        }
+      ]
+    },
+    {
+      "column": "Rooster toepassen in Payroll",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "enum",
+          "values": [
+            "J",
+            "N"
+          ],
+          "message": "Moet J of N zijn",
+          "messageEn": "Must be J (yes) or N (no)"
+        }
+      ]
+    },
+    {
+      "column": "Oproepovereenkomst",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": [
+            "J",
+            "N"
+          ],
+          "message": "Moet J of N zijn",
+          "messageEn": "Must be J (yes) or N (no)"
+        }
+      ]
+    },
+    {
+      "column": "Min/Max toepassen",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": [
+            "J",
+            "N"
+          ],
+          "message": "Moet J of N zijn",
+          "messageEn": "Must be J (yes) or N (no)"
+        }
+      ]
+    },
+    {
+      "column": "Min. uren/wk",
+      "type": "decimal",
+      "rules": [
+        {
+          "check": "clear",
+          "values": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "column": "Max. uren/wk",
+      "type": "decimal",
+      "rules": [
+        {
+          "check": "clear",
+          "values": [
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "column": "Type rooster",
+      "type": "text",
+      "rules": [
+        {
+          "check": "required"
+        },
+        {
+          "check": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "message": "Moet 1, 2, 3, 4 of 5 zijn",
+          "messageEn": "Must be 1, 2, 3, 4 or 5"
+        },
+        {
+          "check": "notice",
+          "values": [
+            "2"
+          ],
+          "message": "Type 2 (uren per dag, wisselende weken) kan niet geïmporteerd worden. Het rooster wordt als type 1 (uren per dag, gelijke weken) aangemaakt; leg de wisselende weken daarna handmatig vast in AFAS.",
+          "messageEn": "Type 2 (hours per day, alternating weeks) cannot be imported. The schedule is created as type 1 (hours per day, equal weeks); record the alternating weeks afterwards manually in AFAS."
+        },
+        {
+          "check": "notice",
+          "values": [
+            "4"
+          ],
+          "message": "Type 4 (werktijden, wisselende weken) kan niet geïmporteerd worden. Het rooster wordt als type 3 (werktijden, gelijke weken) aangemaakt; leg de wisselende weken daarna handmatig vast in AFAS.",
+          "messageEn": "Type 4 (working times, alternating weeks) cannot be imported. The schedule is created as type 3 (working times, equal weeks); record the alternating weeks afterwards manually in AFAS."
+        }
+      ]
+    },
+    {
+      "column": "Standaardrooster",
+      "type": "integer",
+      "rules": []
+    },
+    {
+      "column": "Aantal dagen per week",
+      "type": "integer",
+      "rules": [
+        {
+          "check": "min",
+          "value": 0
+        },
+        {
+          "check": "max",
+          "value": 7
+        },
+        {
+          "check": "matches-count",
+          "columns": [
+            "Uren Maandag",
+            "Uren Dinsdag",
+            "Uren Woensdag",
+            "Uren Donderdag",
+            "Uren Vrijdag",
+            "Uren Zaterdag",
+            "Uren Zondag"
+          ],
+          "message": "Er zijn uren ingevuld op {aantal} dag(en) — AFAS wil evenveel dagen per week als werkdagen met uren. Pas het aantal dagen aan, of laat de uren per dag leeg",
+          "messageEn": "Hours are filled in on {aantal} day(s) — AFAS wants as many days per week as there are working days with hours. Adjust the number of days, or leave the hours per day empty"
+        }
+      ]
+    },
+    {
+      "column": "Aantal uren per week",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "Uren Maandag",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "Uren Dinsdag",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "Uren Woensdag",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "Uren Donderdag",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "Uren Vrijdag",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "Uren Zaterdag",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "Uren Zondag",
+      "type": "decimal",
+      "rules": []
+    },
+    {
+      "column": "APG Beroep",
+      "type": "text",
+      "rules": []
+    }
+  ],
+  "crossField": [
+    {
+      "if": {
+        "column": "Geboortenaam apart vastleggen",
+        "op": "==",
+        "value": "J"
+      },
+      "then": {
+        "column": "Geboortenaam",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht als 'Geboortenaam apart vastleggen' = J",
+      "messageEn": "Required when 'Geboortenaam apart vastleggen' = J"
+    },
+    {
+      "if": {
+        "column": "Type contract",
+        "op": "==",
+        "value": "B"
+      },
+      "then": {
+        "column": "Einddatum contract",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht bij type contract = B (bepaalde tijd)",
+      "messageEn": "Required when type contract = B (fixed term)"
+    },
+    {
+      "if": {
+        "column": "Type contract",
+        "op": "==",
+        "value": "O"
+      },
+      "then": {
+        "column": "Ketennummer",
+        "op": "<=",
+        "value": "0"
+      },
+      "message": "Moet 0 (niet van toepassing) zijn bij type contract = O (onbepaalde tijd)",
+      "messageEn": "Must be 0 (not applicable) when type contract = O (permanent)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "Su"
+      },
+      "then": {
+        "column": "Soort loonschaal",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht bij schaaluurloon (Soort salaris = Su)",
+      "messageEn": "Required for scale hourly wage (Soort salaris = Su)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "Su"
+      },
+      "then": {
+        "column": "Loonschaal",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht bij schaaluurloon (Soort salaris = Su)",
+      "messageEn": "Required for scale hourly wage (Soort salaris = Su)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "Su"
+      },
+      "then": {
+        "column": "Trede",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht bij schaaluurloon (Soort salaris = Su)",
+      "messageEn": "Required for scale hourly wage (Soort salaris = Su)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "Su"
+      },
+      "then": {
+        "column": "Salaris",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht bij schaaluurloon (Soort salaris = Su)",
+      "messageEn": "Required for scale hourly wage (Soort salaris = Su)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "S"
+      },
+      "then": {
+        "column": "Soort loonschaal",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht bij schaalsalaris (Soort salaris = S)",
+      "messageEn": "Required for scale salary (Soort salaris = S)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "S"
+      },
+      "then": {
+        "column": "Loonschaal",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht bij schaalsalaris (Soort salaris = S)",
+      "messageEn": "Required for scale salary (Soort salaris = S)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "S"
+      },
+      "then": {
+        "column": "Trede",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht bij schaalsalaris (Soort salaris = S)",
+      "messageEn": "Required for scale salary (Soort salaris = S)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "S"
+      },
+      "then": {
+        "column": "Salaris",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht bij schaalsalaris (Soort salaris = S)",
+      "messageEn": "Required for scale salary (Soort salaris = S)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "V"
+      },
+      "then": {
+        "anyOf": [
+          { "column": "Gedrag periodiek toekennen code", "op": "==", "value": "0" },
+          { "column": "Gedrag periodiek toekennen code", "op": "==", "value": "N" },
+          { "column": "Gedrag periodiek toekennen code", "op": "==", "value": "Nee" }
+        ]
+      },
+      "message": "Moet 0 zijn bij vast salaris (Soort salaris = V)",
+      "messageEn": "Must be 0 for fixed salary (Soort salaris = V)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "V"
+      },
+      "then": {
+        "column": "Soort loonschaal",
+        "op": "isEmpty"
+      },
+      "message": "Laat leeg bij vast salaris (Soort salaris = V)",
+      "messageEn": "Leave empty for fixed salary (Soort salaris = V)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "V"
+      },
+      "then": {
+        "column": "Loonschaal",
+        "op": "isEmpty"
+      },
+      "message": "Laat leeg bij vast salaris (Soort salaris = V)",
+      "messageEn": "Leave empty for fixed salary (Soort salaris = V)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "V"
+      },
+      "then": {
+        "column": "Trede",
+        "op": "isEmpty"
+      },
+      "message": "Laat leeg bij vast salaris (Soort salaris = V)",
+      "messageEn": "Leave empty for fixed salary (Soort salaris = V)"
+    },
+    {
+      "if": {
+        "column": "Soort salaris",
+        "op": "==",
+        "value": "V"
+      },
+      "then": {
+        "column": "Periodenummer periodiek",
+        "op": "isEmpty"
+      },
+      "message": "Laat leeg bij vast salaris (Soort salaris = V)",
+      "messageEn": "Leave empty for fixed salary (Soort salaris = V)"
+    },
+    {
+      "if": {
+        "anyOf": [
+          { "column": "Gedrag periodiek toekennen code", "op": "==", "value": "1" },
+          { "column": "Gedrag periodiek toekennen code", "op": "==", "value": "J" },
+          { "column": "Gedrag periodiek toekennen code", "op": "==", "value": "Ja" }
+        ]
+      },
+      "then": {
+        "column": "Periodenummer periodiek",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht als 'Gedrag periodiek toekennen code' = 1 (volgens loonschalen)",
+      "messageEn": "Required when 'Gedrag periodiek toekennen code' = 1 (according to pay scales)"
+    },
+    {
+      "if": {
+        "anyOf": [
+          { "column": "Gedrag periodiek toekennen code", "op": "==", "value": "1" },
+          { "column": "Gedrag periodiek toekennen code", "op": "==", "value": "J" },
+          { "column": "Gedrag periodiek toekennen code", "op": "==", "value": "Ja" }
+        ]
+      },
+      "then": {
+        "column": "Loonschaal",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht als 'Gedrag periodiek toekennen code' = 1 (volgens loonschalen) — AFAS weigert de medewerker zonder loonschaal",
+      "messageEn": "Required when 'Gedrag periodiek toekennen code' = 1 (according to pay scales) — AFAS rejects the employee without a pay scale"
+    },
+    {
+      "if": {
+        "column": "Min/Max toepassen",
+        "op": "==",
+        "value": "J"
+      },
+      "then": {
+        "column": "Min. uren/wk",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht als 'Min/Max toepassen' = J",
+      "messageEn": "Required when 'Min/Max toepassen' = J"
+    },
+    {
+      "if": {
+        "column": "Min/Max toepassen",
+        "op": "==",
+        "value": "J"
+      },
+      "then": {
+        "column": "Max. uren/wk",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht als 'Min/Max toepassen' = J",
+      "messageEn": "Required when 'Min/Max toepassen' = J"
+    },
+    {
+      "if": {
+        "column": "Standaardrooster",
+        "op": "isEmpty"
+      },
+      "then": {
+        "column": "Aantal dagen per week",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht als 'Standaardrooster' leeg is",
+      "messageEn": "Required when 'Standaardrooster' is empty"
+    },
+    {
+      "if": {
+        "column": "Standaardrooster",
+        "op": "isEmpty"
+      },
+      "then": {
+        "column": "Aantal uren per week",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht als 'Standaardrooster' leeg is",
+      "messageEn": "Required when 'Standaardrooster' is empty"
+    },
+    {
+      "if": {
+        "column": "Mobiel werk",
+        "op": "isEmpty"
+      },
+      "then": {
+        "column": "Mobiel privé",
+        "op": "isNotEmpty"
+      },
+      "flag": "Mobiel werk",
+      "message": "Vul Mobiel werk of Mobiel privé in (minimaal één van beide)",
+      "messageEn": "Fill in Mobiel werk or Mobiel privé (at least one of the two)"
+    },
+    {
+      "if": {
+        "column": "Mobiel privé",
+        "op": "isEmpty"
+      },
+      "then": {
+        "column": "Mobiel werk",
+        "op": "isNotEmpty"
+      },
+      "flag": "Mobiel privé",
+      "message": "Vul Mobiel werk of Mobiel privé in (minimaal één van beide)",
+      "messageEn": "Fill in Mobiel werk or Mobiel privé (at least one of the two)"
+    },
+    {
+      "if": {
+        "column": "Oproepovereenkomst",
+        "op": "!=",
+        "value": "J"
+      },
+      "then": {
+        "column": "Aantal uren per week",
+        "op": ">",
+        "value": 0
+      },
+      "message": "Moet groter dan 0 zijn als er geen oproepovereenkomst is",
+      "messageEn": "Must be greater than 0 when there is no on-call contract"
+    },
+    {
+      "if": {
+        "allOf": [
+          {
+            "column": "Type rooster",
+            "op": "isNotEmpty"
+          },
+          {
+            "column": "Type rooster",
+            "op": "<=",
+            "value": 2
+          },
+          {
+            "column": "Oproepovereenkomst",
+            "op": "!=",
+            "value": "J"
+          }
+        ]
+      },
+      "then": {
+        "anyOf": [
+          {
+            "column": "Uren Maandag",
+            "op": ">",
+            "value": 0
+          },
+          {
+            "column": "Uren Dinsdag",
+            "op": ">",
+            "value": 0
+          },
+          {
+            "column": "Uren Woensdag",
+            "op": ">",
+            "value": 0
+          },
+          {
+            "column": "Uren Donderdag",
+            "op": ">",
+            "value": 0
+          },
+          {
+            "column": "Uren Vrijdag",
+            "op": ">",
+            "value": 0
+          },
+          {
+            "column": "Uren Zaterdag",
+            "op": ">",
+            "value": 0
+          },
+          {
+            "column": "Uren Zondag",
+            "op": ">",
+            "value": 0
+          }
+        ]
+      },
+      "flag": "Type rooster",
+      "message": "Type rooster 1 of 2 (uren per dag) vraagt uren in de kolommen Uren Maandag t/m Zondag — AFAS negeert dan 'Aantal uren per week'. Vul de dagen in of kies 5 (uren per week)",
+      "messageEn": "Type rooster 1 or 2 (hours per day) requires hours in the columns Uren Maandag to Uren Zondag — AFAS then ignores 'Aantal uren per week'. Fill in the days, or choose 5 (hours per week)"
+    }
+  ]
+}

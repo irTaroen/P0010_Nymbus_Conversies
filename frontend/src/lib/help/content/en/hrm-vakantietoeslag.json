@@ -1,0 +1,26 @@
+{
+  "general": [
+    "Holiday allowance is an accrued entitlement that must be correct on the first day in the new system — an incorrect accrual shows up immediately at the first salary run.",
+    "This tab contains the accrued holiday allowance basis per employee on the AFAS go-live date. Below are the columns with sample data and frequently asked questions."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Employee number in AFAS. Must match the Medewerker column in the employees file.",
+      "example": "100001"
+    },
+    "Bedrag": {
+      "description": "Holiday allowance still to be paid out on the reference date (gross). Use a period as the decimal separator.",
+      "example": "2306"
+    },
+    "Grondslag": {
+      "description": "Cumulative gross salary over the accrued months, as the basis for the holiday allowance calculation. Tip: check whether Bedrag ÷ Grondslag ≈ 0.08 (8%).",
+      "example": "28825"
+    }
+  },
+  "faq": [
+    {
+      "question": "How do I check the holiday allowance basis?",
+      "answer": "The basis is the cumulative gross salary over the accrual period (normally 1 June through 31 May). Check: Bedrag ÷ Grondslag × 100 ≈ 8%. Watch out for CAOs (collective labour agreements) with a deviating holiday allowance percentage."
+    }
+  ]
+}

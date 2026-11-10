@@ -1,0 +1,103 @@
+{
+  "columns": [
+    {
+      "column": "Debiteur of Crediteur",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "enum", "values": ["D", "C"], "message": "Moet D (debiteur) of C (crediteur) zijn", "messageEn": "Must be D (debtor) or C (creditor)" }
+      ]
+    },
+    {
+      "column": "Debiteur- of Crediteurnummer",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 16 }]
+    },
+    {
+      "column": "Fin Administratie",
+      "type": "integer",
+      "rules": [
+        { "check": "required" },
+        { "check": "min", "value": 1 },
+        {
+          "check": "codetabel",
+          "tableRef": "Administraties",
+          "message": "Onbekende administratie",
+          "messageEn": "Unknown administration"
+        }
+      ]
+    },
+    {
+      "column": "Boekstuknummer",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "unique",
+          "message": "Boekstuknummer komt meerdere keren voor — moet uniek zijn per administratie",
+          "messageEn": "Voucher number occurs more than once — must be unique per administration"
+        },
+        { "check": "regex", "pattern": "^\\S+$", "message": "Mag geen spaties bevatten", "messageEn": "Must not contain spaces" },
+        { "check": "length", "max": 32 }
+      ]
+    },
+    {
+      "column": "Dagboek",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 6 }]
+    },
+    {
+      "column": "Bedrag",
+      "type": "decimal",
+      "rules": [
+        { "check": "required" },
+        { "check": "min", "value": 0, "message": "Geen negatieve bedragen toegestaan", "messageEn": "Negative amounts are not allowed" }
+      ]
+    },
+    {
+      "column": "Incasseren",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Factuur",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 12 }]
+    },
+    {
+      "column": "Factuurdatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Vervaldatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Tussenrekening",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "codetabel", "tableRef": "Grootboekrekeningen", "message": "Onbekende grootboekrekening", "messageEn": "Unknown general ledger account" }
+      ]
+    }
+  ],
+  "crossField": [
+    {
+      "if": { "column": "Factuurdatum", "op": "isNotEmpty" },
+      "then": {
+        "column": "Vervaldatum",
+        "op": ">=",
+        "value": { "column": "Factuurdatum" }
+      },
+      "message": "Mag niet eerder liggen dan de factuurdatum",
+      "messageEn": "Must not be earlier than the invoice date"
+    }
+  ]
+}

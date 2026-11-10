@@ -1,0 +1,135 @@
+{
+  "general": [
+    "Met debiteuren houd je grip op je openstaande vorderingen en stamgegevens. Debiteuren vormen de basis van je verkoopproces — geen enkel systeem kan zonder deze bron werken. Een correcte conversie levert debiteurgegevens op die direct impact hebben op je structuur en factuurstroom.",
+    "Hieronder is het importsjabloon voor de debiteuren op veldniveau beschreven. Volg de invulregels nauwkeurig om een foutloze import in AFAS Profit te waarborgen.",
+    "Ook zijn er voorbeelddata en veelgestelde vragen beschreven om het vullen van het importsjabloon zo gemakkelijk mogelijk te maken."
+  ],
+  "columns": {
+    "Debiteur Nummer": {
+      "description": "Het unieke debiteurnummer uit het bronsysteem. Wordt overgenomen in AFAS Profit en dient als sleutel voor de debiteur. Elk nummer mag slechts één keer voorkomen in het bestand.",
+      "example": "10056"
+    },
+    "Organisatie of Persoon": {
+      "description": "Bepaalt of de debiteur een organisatie (O) of een natuurlijk persoon (P) is. Bij O is Organisatie Naam verplicht. Bij P zijn Voorletters, Voornaam en Achternaam verplicht.",
+      "example": "O"
+    },
+    "Organisatie Naam": {
+      "description": "De volledige bedrijfsnaam inclusief rechtsvorm (B.V., N.V., etc.), zoals geregistreerd bij de Kamer van Koophandel. Wordt weergegeven op facturen, aanmaningen en correspondentie. Maximaal 100 tekens. Verplicht wanneer Organisatie of Persoon = O. De naam wordt vergeleken met de debiteuren die al in AFAS (live) staan: staat dezelfde organisatie daar onder een ander debiteurnummer, dan verwijder je de regel of pas je het debiteurnummer in AFAS aan. Staat het debiteurnummer in AFAS al op een andere naam, dan krijgt Debiteur Nummer een fout.",
+      "example": "Animo Services B.V."
+    },
+    "Voorletters": {
+      "description": "De initialen van de persoon, inclusief punt. Formaat: X.X. — uitsluitend hoofdletters, elk gevolgd door een punt. Verplicht wanneer Organisatie of Persoon = P.",
+      "example": "F.K."
+    },
+    "Voornaam": {
+      "description": "De voornaam van de persoon. Verplicht wanneer Organisatie of Persoon = P.",
+      "example": "Frank"
+    },
+    "Voorvoegsel": {
+      "description": "Het tussenvoegsel van de achternaam, in kleine letters en zonder de achternaam zelf. Laat leeg wanneer de persoon geen tussenvoegsel heeft of wanneer de debiteur een organisatie is.",
+      "example": "de"
+    },
+    "Achternaam": {
+      "description": "De achternaam van de persoon, zonder tussenvoegsel. Verplicht wanneer Organisatie of Persoon = P.",
+      "example": "Koster"
+    },
+    "Verzamelrekening": {
+      "description": "De grootboekrekening waarop deze debiteur financieel wordt verzameld. Verplicht: er is geen standaardwaarde, dus vul hem voor elke debiteur in (meestal 1400). Wordt gecontroleerd tegen de verzamelrekeningen uit de AFAS-omgeving van dit project.",
+      "example": "1400"
+    },
+    "KvK-nummer": {
+      "description": "Het Kamer van Koophandel-nummer van de organisatie, indien bekend. Altijd 8 cijfers, zonder spaties of koppeltekens.",
+      "example": "78342341"
+    },
+    "BTW Nummer": {
+      "description": "Het BTW-identificatienummer, indien bekend, in het officiële formaat per land. Nederlands formaat: NL + 9 cijfers + B + 2 cijfers.",
+      "example": "NL860576838B01"
+    },
+    "Automatisch Incasseren": {
+      "description": "Geeft aan of openstaande facturen automatisch via SEPA-incasso worden afgeschreven van het opgegeven IBAN. Bij J is de kolom IBAN-Nummer verplicht.",
+      "example": "N"
+    },
+    "Betalingsvoorwaarde": {
+      "description": "De code van de betalingsvoorwaarde die de standaard betalingstermijn bepaalt, gecontroleerd tegen de betalingsvoorwaardentabel uit AFAS. Beschikbaar: de dagcodes 8, 14, 21, 30, 45, 60, 90 en 120 (aantal dagen na factuurdatum), cont (contant) en Inc. (automatische incasso). Let op: dit is de code, niet het aantal dagen — die twee zijn niet altijd hetzelfde.",
+      "example": "30"
+    },
+    "BTW Plicht": {
+      "description": "De BTW-categorie van de debiteur (codes uit de Hulptabel). Laat leeg wanneer de standaardinstellingen gelden. 1 = Verkopen standaard, 2 = Verlegd naar, 3 = Verkopen binnen EU, 4 = Import/Export buiten EU, 5 = Afstandsverkoop, 6 = Geen btw (intercompany), 7 = Margeregeling, 8 = Vrijgesteld.",
+      "example": "1"
+    },
+    "Aanmanen": {
+      "description": "Geeft aan of bij een betalingsachterstand automatisch een aanmaning wordt verstuurd.",
+      "example": "J"
+    },
+    "IBAN-Nummer": {
+      "description": "Het International Bank Account Number van de debiteur, zonder spaties. Verplicht wanneer automatisch incasseren op J staat; laat leeg wanneer op N.",
+      "example": "NL15INGB0750917199"
+    },
+    "Land van Bank": {
+      "description": "De AFAS-landcode van het land waar de bank is gevestigd, gecontroleerd tegen de landenlijst uit AFAS. Let op: dit is niet de ISO-code — België is B, Duitsland D. Verplicht wanneer IBAN-Nummer is ingevuld.",
+      "example": "NL"
+    },
+    "Email": {
+      "description": "Het algemene e-mailadres van de organisatie, in het formaat naam@domein.extensie. Eén adres per veld.",
+      "example": "administratie@animo-services.nl"
+    },
+    "Telefoon werk": {
+      "description": "Het algemene telefoonnummer van de organisatie, zonder spaties of koppeltekens. Internationale nummers mogen inclusief landcode (bijv. +31201234567).",
+      "example": "0201234567"
+    },
+    "Email Fin Adm": {
+      "description": "Het e-mailadres van de financiële administratie, voor aanmaningen, facturen en overige financiële correspondentie. Wordt gecontroleerd op een geldig e-mailadres, maar gaat in deze conversie niet mee naar AFAS: de debiteur heeft daar geen apart veld voor.",
+      "example": "administratie@animo-services.nl"
+    },
+    "Straatnaam": {
+      "description": "De straatnaam van het vestigingsadres, zonder huisnummer.",
+      "example": "Nieuwe Hemweg"
+    },
+    "Huisnummer": {
+      "description": "Het numerieke huisnummer van het vestigingsadres. Een eventuele toevoeging komt in 'Toevoeging Huisnummer'. Staat de toevoeging erbij (17-19, 12 A), dan splitst de tool het nummer zelf: 17 blijft hier staan, -19 gaat naar 'Toevoeging Huisnummer', vóór wat daar al staat (250- met toevoeging 252 wordt 250 en -252).",
+      "example": "7"
+    },
+    "Toevoeging Huisnummer": {
+      "description": "De toevoeging op het huisnummer (letter, verdieping of eenheidaanduiding). Laat leeg wanneer geen toevoeging van toepassing is.",
+      "example": "p"
+    },
+    "Postcode": {
+      "description": "De postcode van het vestigingsadres, in de notatie van het betreffende land. Bij Land NL controleert de tool de schrijfwijze: 4 cijfers en 2 letters, bijv. 1013 BG. Een buitenlandse postcode wordt niet op formaat gecontroleerd.",
+      "example": "1013 BG"
+    },
+    "Woonplaats": {
+      "description": "De officiële plaatsnaam van het vestigingsadres, gecontroleerd tegen de woonplaatsenlijst uit AFAS voor het land in de kolom Land (geen land ingevuld = NL). Gebruik de officiële schrijfwijze: 's-Gravenhage, niet Den Haag. Alleen Nederlandse plaatsen staan in die lijst; bij een buitenlands land wordt de plaats niet gecontroleerd.",
+      "example": "Amsterdam"
+    },
+    "Land": {
+      "description": "De AFAS-landcode van het vestigingsland, gecontroleerd tegen de landenlijst uit AFAS. Verplicht: AFAS heeft bij elk adres een land nodig, ook bij een Nederlands adres — vul dan NL in. Let op: dit is niet de ISO-code — België is B, Duitsland D, Afghanistan AFG.",
+      "example": "NL"
+    }
+  },
+  "faq": [
+    {
+      "question": "De nummering valt buiten de reeks.",
+      "answer": "Het debiteurnummer gebruikt een nummer dat niet binnen de ingestelde nummerreeks van AFAS bestaat. Controleer het nummer en probeer opnieuw."
+    },
+    {
+      "question": "Er kan geen geldige woonplaats bij de postcode worden gevonden.",
+      "answer": "AFAS heeft een onjuiste combinatie tussen woonplaats en postcode geconstateerd. Pas de woonplaatstabel of het conversiebestand aan."
+    },
+    {
+      "question": "Kan ik de debiteuren ook handmatig in AFAS zetten?",
+      "answer": "Bij een conversie denkt men automatisch aan 'importeren', maar een conversie kan ook handmatig via registratie. Het opbouwen van een import en het valideren van de data kost ook tijd — samen kun je afwegen wat efficiënter is. Handmatige invoer draagt bovendien bij aan training en systeemervaring. Deze keuze maak je met elkaar."
+    },
+    {
+      "question": "Een Excel-bestand is toch zo gevuld? Kan dit ook wachten tot een later moment?",
+      "answer": "Uit ervaring blijkt dat het 'vullen van een lijstje' altijd wordt onderschat en veel meer tijd kost dan vooraf gedacht. Dat geeft tijdsdruk en leidt tot inhoudelijke onjuistheden, waardoor correcties nodig zijn en er meer werk ontstaat. Bespreek dit tijdig met je consultant."
+    },
+    {
+      "question": "Hebben alle debiteuren echt een adres nodig?",
+      "answer": "Ja. Debiteuren hebben een volledig adres nodig volgens de Nederlandse adressering: straat, huisnummer, postcode en woonplaats."
+    },
+    {
+      "question": "Zijn ook de openstaande posten nodig?",
+      "answer": "Nee. De openstaande posten worden via een aparte conversie verwerkt. Deze conversie richt zich op de stamgegevens van de debiteuren."
+    }
+  ]
+}

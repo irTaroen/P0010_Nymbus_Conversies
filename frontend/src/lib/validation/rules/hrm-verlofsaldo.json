@@ -1,0 +1,47 @@
+{
+  "columns": [
+    {
+      "column": "Medewerker",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Type Verlof",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Verlofsoorten",
+          "message": "Onbekende verlofsoort",
+          "messageEn": "Unknown leave type"
+        }
+      ]
+    },
+    {
+      "column": "Boekjaar",
+      "type": "integer",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Datum Boeking",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Huidig Saldo (in Uren)",
+      "type": "decimal",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "regex",
+          "pattern": "^-?\\d+([.,]\\d{1,2})?$",
+          "message": "Maximaal 2 decimalen, punt als scheidingsteken",
+          "messageEn": "Maximum 2 decimals, with a point as decimal separator"
+        }
+      ]
+    }
+  ],
+  "crossField": []
+}

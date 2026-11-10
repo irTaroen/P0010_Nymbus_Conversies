@@ -1,0 +1,123 @@
+{
+  "general": [
+    "The fleet is directly linked to payroll administration. A lease car or lease bicycle means an additional tax liability (bijtelling), and an additional tax liability affects the employee's net salary. A correct mobility conversion ensures that AFAS Profit calculates the correct additional tax liability from day one — without manual corrections afterwards.",
+    "To carry out a complete and correct data conversion, it is important to have insight into the information required. Below, the import template for the fleet is described at column level — from licence plate and catalogue value to additional tax liability percentage and lease contract dates.",
+    "Example data and frequently asked questions are also described, to make filling in the import template as easy as possible."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Employee number. Must match the Medewerker column in the employee file. May be left empty — not every vehicle is linked to an employee (e.g. a pool car). When this column is filled in, Begindatum Contract and Leasemaatschappij are also required.",
+      "example": "12345"
+    },
+    "Kenteken": {
+      "description": "Licence plate including hyphens, as on the vehicle registration document. Serves as the unique identification in AFAS.",
+      "example": "Z-101-GH"
+    },
+    "Werkgever": {
+      "description": "Employer code of the entity to which the vehicle is linked. This does not have to be the same as the employee's employer. Checked against the employer table from the AFAS environment of this project.",
+      "example": "01"
+    },
+    "Begindatum registratie": {
+      "description": "Date of first use or the go-live date in AFAS.",
+      "example": "01-01-2024"
+    },
+    "Beginstand KM": {
+      "description": "Odometer reading on the start date, as a whole number. Required; enter 0 when the reading is not known.",
+      "example": "10"
+    },
+    "Bijtelling %": {
+      "description": "Additional tax liability percentage for wage tax. Common: 16% (electric), 22% (petrol/diesel). Check via RDW or the leasing company. The percentage on the date of first registration generally remains applicable for 60 months — adjust it in time if needed.",
+      "example": "22"
+    },
+    "Cataloguswaarde": {
+      "description": "Fiscal list price including BPM and VAT at the moment of first approval. Do not use the current market value. Check via RDW or the leasing company.",
+      "example": "24000"
+    },
+    "Datum 1e tenaamstelling": {
+      "description": "Date of first registration (tenaamstelling) as shown on the vehicle registration document. Determines the additional tax liability percentage.",
+      "example": "01-01-2024"
+    },
+    "Einddatum": {
+      "description": "End date of the fleet registration. Leave empty for an open end date. The additional tax liability ends on the basis of this date, so only fill it in when the car is actually returned.",
+      "example": "31-12-2030"
+    },
+    "Grijs Kenteken": {
+      "description": "When J, different additional tax liability rules apply (delivery van for entrepreneurs).",
+      "example": "N"
+    },
+    "Kilometers per jaar": {
+      "description": "Expected or contractual annual mileage for the trip administration. If no mileage has been agreed, enter a realistic estimate. If left empty, the check automatically assumes 0 (marked orange, not an error) — enter a real estimate if there is one.",
+      "example": "30000"
+    },
+    "Leasemaatschappij": {
+      "description": "The code of the leasing company from the leasing company table of the AFAS environment of this project, not the name: for example 1000111. Checked against that table; with the search button in the cell you choose the right leasing company from the list. Required for every vehicle, also for a pool car or a vehicle owned by the employer: then use the code set up for that purpose in the table.",
+      "example": "L"
+    },
+    "Merk": {
+      "description": "The code of the make from the make table of AFAS, not the make name: 2 for Volkswagen, 1 for Opel. Checked against that table; if a make name designates exactly one make, the tool offers the corresponding code. With the search button in the cell you choose the right make from the list.",
+      "example": "2"
+    },
+    "Model": {
+      "description": "The code of the body type from the model table of AFAS, such as 1 (Hatchback), 4 (Station wagon) or 7 (SUV) — not the model name such as Golf or XC60. Checked against that table; with the search button in the cell you choose the right model from the list. May be left empty.",
+      "example": "4"
+    },
+    "Begindatum Contract": {
+      "description": "Start date of the lease contract. May differ from Begindatum registratie. Required for every vehicle: if there is no lease contract, fill in the date on which the vehicle was taken into use or made available to the employee.",
+      "example": "01-01-2025"
+    },
+    "Einddatum Contract": {
+      "description": "End date of the lease contract. Leave empty for an open end date or when there is no contract.",
+      "example": "31-12-2030"
+    },
+    "Aanloopwagen": {
+      "description": "When J, different additional tax liability rules apply for the registration date. Always fill in J or N; leaving it empty is not allowed.",
+      "example": "N"
+    },
+    "Standaard eigen risico": {
+      "description": "Whether the standard own risk (eigen risico) applies to this vehicle: J or N. Required, because AFAS needs the field for every vehicle.",
+      "example": "J"
+    },
+    "Eigen bijdrage": {
+      "description": "Whether the employee pays a personal contribution: J or N. When J, a wage component is created for deduction from the net salary; then enter the amount under Eigen bijdrage privégebruik or Eigen bijdrage overige redenen. When J, the vehicle also goes into payroll.",
+      "example": "J"
+    },
+    "Mobiliteitsbudget": {
+      "description": "Indicates whether the employee takes part in a mobility budget scheme: J or N. Required as soon as Medewerker is filled in; for a vehicle without an employee the column may be left empty.",
+      "example": "J"
+    },
+    "Privégebruik": {
+      "description": "Indicates whether the employee also uses the vehicle privately. When N, the Tax Authorities assume a 'declaration of no private car use' or at most 500 private kilometres per year; if there is no such declaration, fill in J. Always fill in J or N. When J, the vehicle goes into payroll, so that the additional tax liability is processed.",
+      "example": "J"
+    },
+    "Eigen bijdrage privégebruik": {
+      "description": "The amount the employee pays themselves per period for the private use of the car, in euros with a point as decimal separator. Leave empty or enter 0 when there is no personal contribution; an empty cell is treated as 0 (marked orange). When Eigen bijdrage is J, this amount or Eigen bijdrage overige redenen must be greater than 0.",
+      "example": "50"
+    },
+    "Eigen bijdrage overige redenen": {
+      "description": "A personal contribution from the employee for a reason other than private use, for example for extra options on the lease car, in euros with a point as decimal separator. Leave empty or enter 0 when there is none; an empty cell is treated as 0 (marked orange).",
+      "example": "0"
+    }
+  },
+  "faq": [
+    {
+      "question": "How do I determine the correct additional tax liability percentage (Bijtelling %)?",
+      "answer": "It depends on the CO2 emission and the date of first approval (Datum 1e tenaamstelling). Check via RDW at https://ovi.rdw.nl/. The percentage on the date of first registration remains applicable for 60 months."
+    },
+    {
+      "question": "What is the difference between 'Begindatum registratie' and 'Begindatum Contract'?",
+      "answer": "Begindatum registratie is the date on which the vehicle is included in the AFAS fleet administration. Begindatum Contract is the actual start date of the lease contract. These may differ from each other."
+    },
+    {
+      "question": "What do I fill in for a vehicle owned by the employer (not leased)?",
+      "answer": "Leasemaatschappij and Begindatum Contract are also required in that case, with or without a linked employee: for Leasemaatschappij use the code set up for that purpose in the leasing company table of your AFAS environment, and for Begindatum Contract the date on which the vehicle was taken into use or made available to the employee. Kilometers per jaar may always be left empty — enter a realistic estimate if there is one, otherwise 0 is assumed during the check. Einddatum Contract may also be left empty."
+    },
+    {
+      "question": "How does 'Privégebruik' relate to 'Bijtelling %'?",
+      "answer": "Privégebruik says whether the vehicle is driven privately; Bijtelling % says how much is added. Both columns are required. If Privégebruik is N — for example with a 'declaration of no private car use' — there is no additional tax liability and you enter 0 for Bijtelling %. If Privégebruik is J, enter the actual percentage."
+    },
+    {
+      "question": "Which columns may be left empty?",
+      "answer": "May always be left empty: Medewerker (not every vehicle has a linked employee), Kilometers per jaar (set to 0 during the check if left empty, marked orange), Einddatum, Model, Einddatum Contract and Eigen bijdrage. Mobiliteitsbudget may only be left empty if Medewerker is also empty. All other columns are always required, including Leasemaatschappij, Begindatum Contract, Beginstand KM (enter 0 if the reading is unknown) and Standaard eigen risico. For Eigen bijdrage and Mobiliteitsbudget there is an additional rule: if the column is filled in, the value must be J or N."
+    }
+  ]
+}

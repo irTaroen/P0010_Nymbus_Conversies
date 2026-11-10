@@ -1,0 +1,20 @@
+{
+  "columns": [
+    {
+      "column": "Medewerker",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Bedrag",
+      "type": "decimal",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Grondslag",
+      "type": "decimal",
+      "rules": [{ "check": "required" }]
+    }
+  ],
+  "crossField": []
+}

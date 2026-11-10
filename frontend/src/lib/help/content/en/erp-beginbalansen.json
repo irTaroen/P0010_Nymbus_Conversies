@@ -1,0 +1,95 @@
+{
+  "general": [
+    "The opening balance is the financial starting position in AFAS: the balances per general ledger account at the moment of transition, plus the open debtor and creditor items that belong to them.",
+    "Each row is one journal line: an amount debit or credit on one account. Rows with the same journal entry number together form one booking, and within a booking the total debit must equal the total credit.",
+    "Note the distinction in the column Kenmerk rekening: for a general ledger account (1) only the balance is needed; for a debtor (2) or creditor (3) an outstanding item with invoice number and due date belongs to it.",
+    "The columns below are derived from the AFAS specification of the financial mutation (UpdateConnector FiEntries). The import template for this module is still to be delivered."
+  ],
+  "columns": {
+    "Administratie": {
+      "description": "The number of the financial administration this opening balance applies to. Checked against the administration table in the AFAS environment of this project.",
+      "example": "1"
+    },
+    "Boekjaar": {
+      "description": "The financial year in which the opening balance is booked — usually the first year in AFAS. A four-digit year.",
+      "example": "2026"
+    },
+    "Periode": {
+      "description": "The period within the financial year. For an opening balance this is almost always period 1. A number from 1 up to and including 53, matching the period table of the administration.",
+      "example": "1"
+    },
+    "Dagboek": {
+      "description": "The journal in which the booking is recorded. For an opening balance this is the memorial or balance journal. Maximum 6 characters.",
+      "example": "MEMO"
+    },
+    "Nummer journaalpost": {
+      "description": "The number that keeps the lines of one booking together. All lines with the same number together form one journal entry, and within that entry the total debit must equal the total credit. A whole number from 1.",
+      "example": "1"
+    },
+    "Kenmerk rekening": {
+      "description": "What kind of account is in Rekeningnummer: 1 = General ledger account, 2 = Debtor, 3 = Creditor. Determines how AFAS processes the line: with 2 or 3 an outstanding item is created, and then invoice number and due date are required.",
+      "example": "1"
+    },
+    "Rekeningnummer": {
+      "description": "The number of the general ledger account, debtor or creditor — matching what is in Kenmerk rekening. Maximum 16 characters.",
+      "example": "1300"
+    },
+    "Datum boeking": {
+      "description": "The date on which the line is booked in the administration. For an opening balance this is the first day of the financial year. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-01-2026"
+    },
+    "Boekstukdatum": {
+      "description": "The date of the underlying document. For an outstanding item this is the invoice date, which may be older than the booking date. The due date may not fall before this date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "15-12-2025"
+    },
+    "Boekstuknummer": {
+      "description": "The number of the underlying document, by which the booking can be traced back to the source system. Maximum 32 characters.",
+      "example": "BB-2026-0001"
+    },
+    "Omschrijving boeking": {
+      "description": "A short explanation of the line, as it appears on the booking in AFAS. Maximum 255 characters.",
+      "example": "Opening balance as at 01-01-2026"
+    },
+    "Bedrag debet": {
+      "description": "The debit amount of this line, positive. Leave empty when the line has a credit amount: a line is debit or credit, never both, and one of the two must be filled in.",
+      "example": "1000,00"
+    },
+    "Bedrag credit": {
+      "description": "The credit amount of this line, positive. Leave empty when the line has a debit amount: a line is debit or credit, never both, and one of the two must be filled in.",
+      "example": "1000,00"
+    },
+    "Factuurnummer": {
+      "description": "The invoice number of the outstanding item. Required on a debtor or creditor line, because otherwise the item cannot be matched against a payment. Leave empty on a general ledger line. Maximum 12 characters.",
+      "example": "2025-4471"
+    },
+    "Vervaldatum": {
+      "description": "The date by which the outstanding item must be paid. Required on a debtor or creditor line; this date determines the ageing analysis in AFAS. May not fall before the Boekstukdatum. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "14-01-2026"
+    },
+    "BTW-code": {
+      "description": "The VAT code of the line. For an opening balance this usually stays empty: the VAT has already been paid over in the old system. Maximum 3 characters.",
+      "example": "1"
+    },
+    "Valuta": {
+      "description": "The currency of the amount, as a three-character code. Enter EUR for euros. As soon as a currency is entered here, EUR included, the rate is required; for EUR it is 1.",
+      "example": "EUR"
+    },
+    "Koers": {
+      "description": "The rate at which the amount is converted to the base currency. Required as soon as a currency is filled in. For euros it is 1.",
+      "example": "1"
+    },
+    "Betalingskenmerk": {
+      "description": "The payment reference that belongs to the outstanding item, such as an acceptgiro reference. Maximum 32 characters.",
+      "example": "0012345678901234"
+    },
+    "Blokkeren voor betaling": {
+      "description": "Whether the item is blocked for payment (Ja) or simply goes along in the payment run (Nee). Use Ja for items that are in dispute.",
+      "example": "Nee"
+    },
+    "Projectnummer": {
+      "description": "The project the line is charged to, when the booking is project-related. Leave empty for general balance items. Maximum 15 characters.",
+      "example": "31508001"
+    }
+  },
+  "faq": []
+}

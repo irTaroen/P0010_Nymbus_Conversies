@@ -1,0 +1,1133 @@
+{
+  "group": "modules",
+  "connector": "KnEmployee",
+  "root": "AfasEmployee",
+  "file": "",
+  "sheet": "",
+  "fields": [
+    {
+      "object": [
+        "AfasEmployee"
+      ],
+      "field": "EmId",
+      "label": "Medewerker",
+      "mandatory": true,
+      "source": "column",
+      "column": "Medewerker",
+      "columnIndex": 0
+    },
+    {
+      "object": [
+        "AfasEmployee"
+      ],
+      "field": "ViSe",
+      "label": "Status",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "I"
+    },
+    {
+      "object": [
+        "AfasEmployee"
+      ],
+      "field": "LwOb",
+      "label": "Bezwaar tegen vastlegging",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "AfasEmployee"
+      ],
+      "field": "PsPv",
+      "label": "Verstrekking loonstrook",
+      "mandatory": false,
+      "source": "fixed",
+      "value": "E"
+    },
+    {
+      "object": [
+        "AfasEmployee"
+      ],
+      "field": "YsPv",
+      "label": "Verstrekking jaaropgave",
+      "mandatory": false,
+      "source": "fixed",
+      "value": "E"
+    },
+    {
+      "object": [
+        "AfasEmployee"
+      ],
+      "field": "EmAd",
+      "label": "E-mail voor digitale documenten",
+      "mandatory": false,
+      "source": "fixed",
+      "value": "P"
+    },
+    {
+      "object": [
+        "AfasEmployee"
+      ],
+      "field": "BeVo",
+      "label": "Bewindvoering",
+      "mandatory": false,
+      "source": "column",
+      "column": "Bewindvoering",
+      "columnIndex": 17
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "PadAdr",
+      "label": "Postadres is adres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "AutoNum",
+      "label": "Autonummering",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "MatchPer",
+      "label": "Persoon vergelijken op",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "7"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "CaNm",
+      "label": "Roepnaam",
+      "mandatory": false,
+      "source": "column",
+      "column": "Roepnaam",
+      "columnIndex": 2
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "FiNm",
+      "label": "Voornaam",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voornaam",
+      "columnIndex": 1
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "In",
+      "label": "Voorletters",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voorletters",
+      "columnIndex": 3
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "Is",
+      "label": "Voorvoegsel",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voorvoegsel",
+      "columnIndex": 4
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "LaNm",
+      "label": "Achternaam",
+      "mandatory": false,
+      "source": "column",
+      "column": "Achternaam",
+      "columnIndex": 5
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "SpNm",
+      "label": "Geboortenaam apart vastleggen",
+      "mandatory": false,
+      "source": "column",
+      "column": "Geboortenaam apart vastleggen",
+      "columnIndex": 6
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "IsBi",
+      "label": "Voorv. geb.naam",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voorv. geb.naam",
+      "columnIndex": 7
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "NmBi",
+      "label": "Geboortenaam",
+      "mandatory": false,
+      "source": "column",
+      "column": "Geboortenaam",
+      "columnIndex": 8
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "ViUs",
+      "label": "Naamgebruik",
+      "mandatory": false,
+      "source": "fixed",
+      "value": "0"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "ViGe",
+      "label": "Geslacht",
+      "mandatory": false,
+      "source": "column",
+      "column": "Geslacht",
+      "columnIndex": 9
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "PsNa",
+      "label": "Nationaliteit",
+      "mandatory": false,
+      "source": "column",
+      "column": "Nationaliteit",
+      "columnIndex": 10
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "DaBi",
+      "label": "Geboortedatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Geboortedatum",
+      "columnIndex": 11
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "CoBi",
+      "label": "Geboorteland",
+      "mandatory": false,
+      "source": "column",
+      "column": "Geboorteland",
+      "columnIndex": 13
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "RsBi",
+      "label": "Geboorteplaats",
+      "mandatory": false,
+      "source": "column",
+      "column": "Geboorteplaats",
+      "columnIndex": 14
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "SoSe",
+      "label": "BSN",
+      "mandatory": false,
+      "source": "column",
+      "column": "BSN",
+      "columnIndex": 15
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "ViCs",
+      "label": "Burgerlijke staat",
+      "mandatory": false,
+      "source": "column",
+      "column": "Burgerlijke staat",
+      "columnIndex": 16
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "TeNr",
+      "label": "Telefoonnr. werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Telefoonnr. werk",
+      "columnIndex": 20
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "TeN2",
+      "label": "Telefoonnr. privé",
+      "mandatory": false,
+      "source": "column",
+      "column": "Telefoonnr. privé",
+      "columnIndex": 21
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "MbNr",
+      "label": "Mobiel werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Mobiel werk",
+      "columnIndex": 18
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "MbN2",
+      "label": "Mobiel privé",
+      "mandatory": false,
+      "source": "column",
+      "column": "Mobiel privé",
+      "columnIndex": 19
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "EmAd",
+      "label": "E-mail werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "E-mail werk",
+      "columnIndex": 22
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson"
+      ],
+      "field": "EmA2",
+      "label": "E-mail privé",
+      "mandatory": false,
+      "source": "column",
+      "column": "E-mail privé",
+      "columnIndex": 23,
+      "fallback": {
+        "column": "E-mail werk",
+        "columnIndex": 22
+      }
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "CoId",
+      "label": "Land",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land (Adres)",
+      "columnIndex": 29
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "PbAd",
+      "label": "Postbusadres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Ad",
+      "label": "Straat",
+      "mandatory": false,
+      "source": "column",
+      "column": "Straat",
+      "columnIndex": 24
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmNr",
+      "label": "Huisnummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "Huisnummer",
+      "columnIndex": 25
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmAd",
+      "label": "Toev. aan huisnr.",
+      "mandatory": false,
+      "source": "column",
+      "column": "Toev. aan huisnr.",
+      "columnIndex": 26
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ZpCd",
+      "label": "Postcode",
+      "mandatory": false,
+      "source": "column",
+      "column": "Postcode",
+      "columnIndex": 27
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Rs",
+      "label": "Woonplaats",
+      "mandatory": false,
+      "source": "column",
+      "column": "Woonplaats",
+      "columnIndex": 28
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "DaBe",
+      "label": "Begindatum contract",
+      "mandatory": true,
+      "source": "column",
+      "column": "Datum in dienst",
+      "columnIndex": 33
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "ClId",
+      "label": "Cao",
+      "mandatory": true,
+      "source": "column",
+      "column": "Cao",
+      "columnIndex": 36
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "WcId",
+      "label": "Arbeidsvoorwaarde",
+      "mandatory": true,
+      "source": "column",
+      "column": "Arbeidsvoorwaarde",
+      "columnIndex": 37
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "ApCo",
+      "label": "Type contract",
+      "mandatory": true,
+      "source": "column",
+      "column": "Type contract",
+      "columnIndex": 40
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "DaEn",
+      "label": "Einddatum contract",
+      "mandatory": false,
+      "source": "column",
+      "column": "Einddatum contract",
+      "columnIndex": 42
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "CmId",
+      "label": "Werkgever",
+      "mandatory": true,
+      "source": "column",
+      "column": "Werkgever",
+      "columnIndex": 35
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "EmMt",
+      "label": "Soort medewerker",
+      "mandatory": true,
+      "source": "column",
+      "column": "Soort medewerker",
+      "columnIndex": 39
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "DbYs",
+      "label": "In dienst (i.v.m. dienstjaren)",
+      "mandatory": false,
+      "source": "column",
+      "column": "Datum in dienst i.v.m. dienstjaren",
+      "columnIndex": 34
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "ViEt",
+      "label": "Dienstbetrekking",
+      "mandatory": true,
+      "source": "column",
+      "column": "Dienstbetrekking",
+      "columnIndex": 38
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "DaSc",
+      "label": "Begindatum contractketen",
+      "mandatory": false,
+      "source": "column",
+      "column": "Begindatum contractketen",
+      "columnIndex": 43
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "ViKe",
+      "label": "Ketennummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "Ketennummer",
+      "columnIndex": 44
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "EnS2",
+      "label": "Nr. inkomstenverhouding",
+      "mandatory": false,
+      "source": "column",
+      "column": "Nr. inkomstenverhouding",
+      "columnIndex": 30
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasPeriodiek"
+      ],
+      "field": "InMe",
+      "label": "Gedrag periodiek toekennen",
+      "mandatory": false,
+      "source": "column",
+      "column": "Gedrag periodiek toekennen code",
+      "columnIndex": 53
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasPeriodiek"
+      ],
+      "field": "PeNo",
+      "label": "Periodenummer periodiek",
+      "mandatory": false,
+      "source": "column",
+      "column": "Periodenummer periodiek",
+      "columnIndex": 54
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasOrgunitFunction"
+      ],
+      "field": "DpId",
+      "label": "Organisatorische eenheid",
+      "mandatory": true,
+      "source": "column",
+      "column": "Org. Eenheid",
+      "columnIndex": 45
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasOrgunitFunction"
+      ],
+      "field": "FuId",
+      "label": "Functie",
+      "mandatory": true,
+      "source": "column",
+      "column": "Functie",
+      "columnIndex": 46
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasOrgunitFunction"
+      ],
+      "field": "CcId",
+      "label": "Kostendrager",
+      "mandatory": true,
+      "source": "column",
+      "column": "Kostendrager",
+      "columnIndex": 46
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasOrgunitFunction"
+      ],
+      "field": "CrId",
+      "label": "Kostenplaats",
+      "mandatory": true,
+      "source": "column",
+      "column": "Kostenplaats",
+      "columnIndex": 47
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "SeNo",
+      "label": "Standaardrooster",
+      "mandatory": false,
+      "source": "column",
+      "column": "Standaardrooster",
+      "columnIndex": 61
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "EtTy",
+      "label": "Type rooster",
+      "mandatory": false,
+      "source": "column",
+      "column": "Type rooster",
+      "columnIndex": 60
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "DyWk",
+      "label": "Aantal dagen per week",
+      "mandatory": false,
+      "source": "column",
+      "column": "Aantal dagen per week",
+      "columnIndex": 62
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrWk",
+      "label": "Aantal uren per week",
+      "mandatory": false,
+      "source": "column",
+      "column": "Aantal uren per week",
+      "columnIndex": 63
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "ClAg",
+      "label": "Oproepovereenkomst",
+      "mandatory": false,
+      "source": "column",
+      "column": "Oproepovereenkomst",
+      "columnIndex": 56
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "Immc",
+      "label": "Min/max-contract toepassen in Payroll",
+      "mandatory": false,
+      "source": "column",
+      "column": "Min/Max toepassen",
+      "columnIndex": 57
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrMn",
+      "label": "Minimum uren per week",
+      "mandatory": false,
+      "source": "column",
+      "column": "Min. uren/wk",
+      "columnIndex": 58
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrMx",
+      "label": "Maximum uren per week",
+      "mandatory": false,
+      "source": "column",
+      "column": "Max. uren/wk",
+      "columnIndex": 59
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrSu",
+      "label": "Uren Zondag",
+      "mandatory": false,
+      "source": "column",
+      "column": "Uren Zondag",
+      "columnIndex": 88
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrMo",
+      "label": "Uren Maandag",
+      "mandatory": false,
+      "source": "column",
+      "column": "Uren Maandag",
+      "columnIndex": 64
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrTu",
+      "label": "Uren Dinsdag",
+      "mandatory": false,
+      "source": "column",
+      "column": "Uren Dinsdag",
+      "columnIndex": 68
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrWe",
+      "label": "Uren Woensdag",
+      "mandatory": false,
+      "source": "column",
+      "column": "Uren Woensdag",
+      "columnIndex": 72
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrTh",
+      "label": "Uren Donderdag",
+      "mandatory": false,
+      "source": "column",
+      "column": "Uren Donderdag",
+      "columnIndex": 76
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrFr",
+      "label": "Uren Vrijdag",
+      "mandatory": false,
+      "source": "column",
+      "column": "Uren Vrijdag",
+      "columnIndex": 80
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasTimeTable"
+      ],
+      "field": "HrSa",
+      "label": "Uren Zaterdag",
+      "mandatory": false,
+      "source": "column",
+      "column": "Uren Zaterdag",
+      "columnIndex": 84
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasSalary"
+      ],
+      "field": "SaSt",
+      "label": "Trede",
+      "mandatory": false,
+      "source": "column",
+      "column": "Trede",
+      "columnIndex": 50
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasSalary"
+      ],
+      "field": "SaPe",
+      "label": "Soort salaris",
+      "mandatory": true,
+      "source": "column",
+      "column": "Soort salaris",
+      "columnIndex": 47
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasSalary"
+      ],
+      "field": "EmSa",
+      "label": "Salaris",
+      "mandatory": true,
+      "source": "column",
+      "column": "Salaris",
+      "columnIndex": 51
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasSalary"
+      ],
+      "field": "NtSa",
+      "label": "Netto salaris",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasSalary"
+      ],
+      "field": "SaYe",
+      "label": "Jaarloon BT",
+      "mandatory": true,
+      "source": "column",
+      "column": "Jaarloon BT",
+      "columnIndex": 52
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasSalary"
+      ],
+      "field": "TaId",
+      "label": "Soort loonschaal",
+      "mandatory": false,
+      "source": "column",
+      "column": "Soort loonschaal",
+      "columnIndex": 48
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasSalary"
+      ],
+      "field": "VaSc",
+      "label": "Loonschaal",
+      "mandatory": false,
+      "source": "column",
+      "column": "Loonschaal",
+      "columnIndex": 49
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasSalary"
+      ],
+      "field": "TtPy",
+      "label": "Rooster toepassen in Payroll",
+      "mandatory": false,
+      "source": "column",
+      "column": "Rooster toepassen in Payroll",
+      "columnIndex": 55
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasBankInfo"
+      ],
+      "field": "CoId",
+      "label": "Land",
+      "mandatory": false,
+      "source": "column",
+      "column": "Land (Bank)",
+      "columnIndex": 32
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasBankInfo"
+      ],
+      "field": "IbCk",
+      "label": "IBAN controle",
+      "mandatory": false,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasBankInfo"
+      ],
+      "field": "Iban",
+      "label": "IBAN nummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "IBAN",
+      "columnIndex": 31
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencyFiscus"
+      ],
+      "field": "AyId",
+      "label": "Instantie",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "F"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencyFiscus"
+      ],
+      "field": "ViIn",
+      "label": "Soort inkomstenverhouding",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "15"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencyFiscus"
+      ],
+      "field": "ViEm",
+      "label": "Aard arbeidsverhouding",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "1"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencyFiscus"
+      ],
+      "field": "ViTs",
+      "label": "Tabelkleur",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "W"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencyFiscus"
+      ],
+      "field": "ViCd",
+      "label": "Tabelcode",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "0"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencyFiscus"
+      ],
+      "field": "ViLk",
+      "label": "Loonheffingskorting",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "1"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencyFiscus"
+      ],
+      "field": "ViZv",
+      "label": "Zvw",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "K"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencyFiscus"
+      ],
+      "field": "ViOk",
+      "label": "Alleenstaande ouderenkorting",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "0"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencyFiscus"
+      ],
+      "field": "ViVb",
+      "label": "Vakantiebonnen",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "0"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencySfb"
+      ],
+      "field": "AyId",
+      "label": "Instantie",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "1000094"
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencySfb"
+      ],
+      "field": "ViSe",
+      "label": "APG beroep",
+      "mandatory": true,
+      "source": "fixed",
+      "value": 651
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasAgencySfb"
+      ],
+      "field": "ViSc",
+      "label": "APG CAO",
+      "mandatory": true,
+      "source": "column",
+      "column": "APG Cao",
+      "columnIndex": 96
+    }
+  ],
+  "savedAt": "2026-10-30T05:59:19Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

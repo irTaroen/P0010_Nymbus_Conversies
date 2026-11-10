@@ -1,0 +1,103 @@
+{
+  "general": [
+    "Contactpersonen zijn de mensen bij een debiteur of crediteur met wie je in de administratie te maken hebt: degene die de factuur ontvangt, de contactpersoon van de financiële administratie, de beheerder op locatie. Elke contactpersoon wordt aangemaakt op een bestaande debiteur of crediteur, dus zorg dat die al in AFAS staat voordat je deze conversie doet.",
+    "Hieronder is het importsjabloon voor de contactpersonen op veldniveau beschreven. Het sjabloon bevat één voorbeeldregel, waarvan de waarden hieronder als voorbeeld zijn overgenomen.",
+    "Heeft een debiteur of crediteur meerdere contactpersonen? Gebruik dan per contactpersoon een aparte rij met hetzelfde nummer in Contact bij / Debiteur/Crediteur nummer."
+  ],
+  "columns": {
+    "Contact bij": {
+      "description": "Geeft aan of het nummer in de volgende kolom een debiteur- of een crediteurnummer is: D voor Debiteur, C voor Crediteur. Nodig omdat debiteur- en crediteurnummers los van elkaar tellen, dus hetzelfde nummer kan bij een debiteur iets anders betekenen dan bij een crediteur.",
+      "example": "D"
+    },
+    "Debiteur/Crediteur nummer": {
+      "description": "Het bestaande debiteur- of crediteurnummer zoals dat in AFAS bekend is. Dit nummer koppelt de contactpersoon aan de juiste debiteur of crediteur; welke van de twee het is, staat in Contact bij. Gebruik het bestaande nummer uit AFAS; bij meerdere contactpersonen komt hetzelfde nummer op meerdere rijen te staan.",
+      "example": "10056"
+    },
+    "Afdeling": {
+      "description": "De afdeling waar de contactpersoon binnen de organisatie werkzaam is. Vul de afdelingsnaam in als vrije tekst; laat leeg wanneer de afdeling onbekend is.",
+      "example": "Financiële administratie"
+    },
+    "Functienaam": {
+      "description": "De functietitel van de contactpersoon, zoals die op het visitekaartje staat. Vrije tekst van maximaal 50 tekens; laat leeg wanneer onbekend.",
+      "example": "Hoofd financiële administratie"
+    },
+    "Telefoonnr. zakelijk": {
+      "description": "Het zakelijke telefoonnummer van de contactpersoon zelf, niet het algemene nummer van de organisatie.",
+      "example": "0201234567"
+    },
+    "Mobiel": {
+      "description": "Het mobiele telefoonnummer van de contactpersoon.",
+      "example": "0612345678"
+    },
+    "Email zakelijk": {
+      "description": "Het zakelijke e-mailadres van de contactpersoon zelf, niet het algemene e-mailadres van de organisatie.",
+      "example": "j.jansen@animo-services.nl"
+    },
+    "Zoeknaam": {
+      "description": "De zoeknaam van de contactpersoon zelf, waarmee AFAS de persoon terugvindt. Let op: AFAS staat hier maximaal 10 tekens toe, dus vaak is dit een afkorting en niet de volledige naam.",
+      "example": "JJANSEN"
+    },
+    "Roepnaam": {
+      "description": "De roepnaam van de contactpersoon. Vrije tekst; laat leeg wanneer die onbekend is.",
+      "example": "Jan"
+    },
+    "Voornaam": {
+      "description": "De volledige voornaam van de contactpersoon.",
+      "example": "Jan"
+    },
+    "Voorvoegsel": {
+      "description": "Het voorvoegsel bij de achternaam, zoals 'van' of 'de'. Laat leeg wanneer de achternaam geen voorvoegsel heeft.",
+      "example": "van"
+    },
+    "Achternaam": {
+      "description": "De achternaam van de contactpersoon, zonder het voorvoegsel; dat komt in de kolom Voorvoegsel. Verplicht, zodat elke contactpersoon in AFAS herkenbaar is.",
+      "example": "Jansen"
+    },
+    "Geslacht": {
+      "description": "Het geslacht van de contactpersoon, als AFAS-code: M (Man), V (Vrouw), X (Non-binair) of O (Onbekend).",
+      "example": "M"
+    },
+    "Land (persoon)": {
+      "description": "De landcode van het adres van de contactpersoon zelf — niet die van de debiteur/crediteur. Gecontroleerd tegen de landenlijst uit AFAS; gebruik uitsluitend codes uit het tabblad 'Landen' van het importsjabloon. Let op: dit zijn geen ISO-codes — NL (Nederland), B (België), D (Duitsland), A (Oostenrijk).",
+      "example": "NL"
+    },
+    "Postbusadres (persoon)": {
+      "description": "Of het adres van de contactpersoon een postbusadres is. Vul J (Ja) wanneer het adres een postbusadres is, en N (Nee) wanneer het een bezoek- of woonadres is.",
+      "example": "N"
+    },
+    "Plaats (persoon)": {
+      "description": "De woonplaats bij het adres van de contactpersoon, gespeld zoals AFAS hem kent voor het land in Land (persoon). Een onbekende plaats wordt afgekeurd; de knop in de cel toont de geldige woonplaatsen.",
+      "example": "Amsterdam"
+    },
+    "Straat (persoon)": {
+      "description": "De straatnaam van het adres van de contactpersoon, zonder huisnummer; dat komt in de kolom Huisnummer (persoon).",
+      "example": "Nieuwe Hemweg"
+    },
+    "Huisnummer (persoon)": {
+      "description": "Het huisnummer bij het adres van de contactpersoon, als heel getal zonder toevoeging. AFAS slaat het huisnummer op als getal en dit sjabloon heeft geen kolom voor een toevoeging, dus een waarde als 7a of 7-2 wordt afgekeurd.",
+      "example": "7"
+    },
+    "Postcode (persoon)": {
+      "description": "De postcode van het adres van de contactpersoon, in de lokale notatie. Is Land (persoon) NL, dan controleert de tool de Nederlandse schrijfwijze: 4 cijfers en 2 letters, bijvoorbeeld 1013 BG. Een buitenlandse postcode wordt niet op formaat gecontroleerd. AFAS zoekt de woonplaats zelf op bij de postcode, daarom heeft dit sjabloon geen kolom voor de woonplaats.",
+      "example": "1013 BG"
+    }
+  },
+  "faq": [
+    {
+      "question": "Een debiteur of crediteur heeft meerdere contactpersonen. Hoe leg ik die vast?",
+      "answer": "Gebruik per contactpersoon een aparte rij met dezelfde waarden in Contact bij en Debiteur/Crediteur nummer. Dat nummer komt dus meerdere keren in het bestand voor; dat is geen fout."
+    },
+    {
+      "question": "Moet de debiteur of crediteur al in AFAS staan?",
+      "answer": "Ja. Een contactpersoon wordt aangemaakt op een bestaande debiteur of crediteur, dus dat nummer moet al in AFAS bestaan voordat deze conversie kan worden ingelezen. Doe de conversie van de debiteuren en crediteuren dus eerst."
+    },
+    {
+      "question": "Is het adres in dit sjabloon het adres van de debiteur/crediteur?",
+      "answer": "Nee. Land/Postbusadres/Straat/Huisnummer/Postcode (persoon) zijn het adres van de contactpersoon zelf, niet van de organisatie — die heeft haar eigen adres al gekregen bij de conversie van de debiteuren/crediteuren."
+    },
+    {
+      "question": "Waarom wordt mijn landcode DE of BE afgekeurd?",
+      "answer": "AFAS gebruikt zijn eigen landcodes en geen ISO-codes: België is B en Duitsland D, niet BE en DE. Nederland is wel NL. Gebruik het tabblad 'Landen' van het importsjabloon, of klik de kolom aan om de landenlijst uit AFAS te bekijken."
+    }
+  ]
+}

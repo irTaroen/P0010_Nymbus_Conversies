@@ -1,0 +1,57 @@
+{
+  "connector": "KnEmployee",
+  "root": "AfasEmployee",
+  "file": "501342_HRM_1_5fMedewerkers_versie_2-3_2026-09-22_131709.xlsx",
+  "sheet": "Conversie",
+  "fields": [
+    {
+      "object": [
+        "AfasEmployee"
+      ],
+      "field": "EmId",
+      "label": "Medewerker",
+      "mandatory": true,
+      "source": "column",
+      "column": "Medewerker",
+      "columnIndex": 0
+    },
+    {
+      "object": [
+        "AfasEmployee"
+      ],
+      "field": "UF32326F070CC41109070275BB794C0A5",
+      "label": "Reismethode",
+      "mandatory": false,
+      "source": "column",
+      "column": "Personen Mobiliteit ",
+      "columnIndex": 101
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "U69E57E54F8E14D93BE07CC7A89FD563A",
+      "label": "Garantie uren",
+      "mandatory": false,
+      "source": "column",
+      "column": "Garantieuren",
+      "columnIndex": 99
+    },
+    {
+      "object": [
+        "AfasEmployee",
+        "AfasContract"
+      ],
+      "field": "UE244875279AD49539BCFA48475405A72",
+      "label": "Toelichting verzuim",
+      "mandatory": false,
+      "source": "column",
+      "column": "Toelichting",
+      "columnIndex": 100
+    }
+  ],
+  "savedAt": "2026-09-27T19:52:57Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

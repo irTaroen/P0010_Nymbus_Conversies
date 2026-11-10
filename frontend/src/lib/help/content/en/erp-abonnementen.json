@@ -1,0 +1,104 @@
+{
+  "general": [
+    "With subscriptions you invoice fixed amounts easily per period: per month, quarter or year. The conversion results in subscription data that directly determines the recurring invoice flow, so an error here comes back on an invoice in every period.",
+    "Always discuss the import with your consultant or administrator first. We advise doing the conversion first in the test environment, running a data check there, and only then exporting the import definition to the live environment. A standard import definition is already present in the environment.",
+    "Requirements for the import: basic knowledge of import definitions, a csv file with data, and at least sales relations and subscription articles in the environment. Each subscription needs at least one subscription line.",
+    "Each row in this file is one subscription line. The header columns (Projectnummer through Begindatum factuurcyclus) belong to the subscription as a whole and repeat on every line of the same subscription; the line columns (Artikel through Afwijkende prijs) describe the line itself. Equal values in Abonnement nummer are merged during import into one subscription with multiple lines.",
+    "Watch out for historical and long-running subscriptions: invoicing that was processed before you started using AFAS needs extra attention. The start date may lie far in the past while a period has already been invoiced. Align the 'Begindatum factuurcyclus' with the period that has already been invoiced and with the moment AFAS takes over the invoicing. This can mean that a subscription starts invoicing up to a year in the future, while you do keep the subscription's age insight."
+  ],
+  "columns": {
+    "Projectnummer": {
+      "description": "The project number to which the subscription is linked. The subscription's debtor (sales relation) and organisation are taken from this project in AFAS, so the project must already exist there, with a debtor and an organisation. The same number on every line of the subscription. Leave it empty and the subscription gets no debtor and no organisation.",
+      "example": "31508001"
+    },
+    "Abonnement nummer": {
+      "description": "The number of the subscription, numbered manually. All lines of the same subscription carry the same number: equal subscription numbers are merged during import into one subscription with multiple lines. Projectnummer, Type Abonnement, Begindatum and Einddatum Abonnement, Betaalvoorwaarde and Cyclus Facturering belong to the subscription, not to the line: they must be equal on every line with the same subscription number.",
+      "example": "350"
+    },
+    "Type Abonnement": {
+      "description": "The type of subscription, as a code from the subscription type table of AFAS. It is checked against that table; if the code is wrong, the tool shows the valid codes.",
+      "example": "SO"
+    },
+    "Begindatum Abonnement": {
+      "description": "The moment on which the subscription historically started. For a long-running subscription this may lie far in the past; invoicing only starts on the start date of the invoice cycle. Format DD-MM-YYYY or DD/MM/YYYY.",
+      "example": "01-01-2020"
+    },
+    "Einddatum Abonnement": {
+      "description": "The moment on which the subscription ended. Invoicing takes place up to and including this date, and not after it. Leave empty as long as the subscription continues — then on every line of the subscription; otherwise the same date appears on every line. Format DD-MM-YYYY or DD/MM/YYYY.",
+      "example": "31-12-2026"
+    },
+    "Betaalvoorwaarde": {
+      "description": "The code of the payment condition that determines the standard payment term of the subscription, checked against the payment conditions table from AFAS.",
+      "example": "30"
+    },
+    "Cyclus Facturering": {
+      "description": "The cycle in which invoicing takes place (e.g. month, quarter, year), as a code from the AFAS cycle table. It is checked against that table; if the code is wrong, the tool shows the valid codes. This is a free table, so the codes are set up per environment — if the table is not yet available in this environment, the tool cannot check the column and you should check the codes yourself via the search window in AFAS.",
+      "example": "M1"
+    },
+    "Begindatum factuurcyclus": {
+      "description": "The moment on which the subscription must start invoicing. It may differ from the subscription start date, but must never be earlier. For a subscription of which a period has already been invoiced outside AFAS, enter here the moment AFAS takes over the invoicing. Format DD-MM-YYYY or DD/MM/YYYY.",
+      "example": "01-01-2026"
+    },
+    "Artikel": {
+      "description": "The article code of the subscription line, checked against the articles in AFAS — only items of type Artikel count, so a work type or cost code is rejected even if that code exists. If the code is wrong, the tool shows the valid articles. Each subscription needs at least one line with an article code.",
+      "example": "GB"
+    },
+    "Begindatum Regel": {
+      "description": "The start date of this subscription line. Often the same as the start date in the header, and never earlier; with several lines, a line may start later than the header. Format DD-MM-YYYY or DD/MM/YYYY.",
+      "example": "01-01-2020"
+    },
+    "Einddatum Regel": {
+      "description": "The end date of this subscription line. It may not be later than the end date of the subscription, and it is mandatory when the header has an end date. Format DD-MM-YYYY or DD/MM/YYYY.",
+      "example": "31-12-2026"
+    },
+    "Factureren Vanaf": {
+      "description": "From which moment this line is included in invoicing. Often the same as the invoice cycle start date in the header, and never earlier; with several lines, a line may start later. Format DD-MM-YYYY or DD/MM/YYYY.",
+      "example": "01-01-2026"
+    },
+    "Afwijkende factuurtekst": {
+      "description": "A deviating invoice text for this line, instead of the standard text. Free text; leave empty when the standard text may be used."
+    },
+    "Afwijkende prijs": {
+      "description": "A price that deviates from the price associated with the article. This overrides the article price when invoices are generated. Leave empty when the standard price of the article applies.",
+      "example": "125.50"
+    }
+  },
+  "faq": [
+    {
+      "question": "Incorrecte datum. (Incorrect date)",
+      "answer": "The date is missing entirely, or it is incorrectly formatted or entered. Use the format DD-MM-YYYY or DD/MM/YYYY and check for a 0 date (an empty or zero value that is stored as a date in the file)."
+    },
+    {
+      "question": "Begindatum factuurcyclus moet groter zijn dan of gelijk zijn aan Begindatum Abonnement. (Begindatum factuurcyclus must be greater than or equal to Begindatum Abonnement)",
+      "answer": "As the message says: the invoice cycle cannot start earlier than the subscription itself. Adjust the dates where needed. The tool also checks this, so you see it before the import."
+    },
+    {
+      "question": "De ingevulde waarde voor veld 'Cyclus Facturering' bestaat niet. (The value entered for field 'Cyclus Facturering' does not exist)",
+      "answer": "The code is not in the cycle table of this environment. Click the search icon in the cell to see the valid codes and choose the right one. If the tool cannot see the table (in which case the column stays unchecked), select the code via the search window in AFAS."
+    },
+    {
+      "question": "Dit artikel is geen abonnementsartikel. (This article is not a subscription article)",
+      "answer": "AFAS only accepts an article on a subscription line if it is set up as a subscription article. The tool checks the column against the articles in AFAS and thereby catches codes that do not exist at all, or that are a work type or cost type; whether an existing article is also set up as a subscription article, the tool cannot see. If this message comes from AFAS, convert the article in AFAS into a valid subscription article, or choose a different article."
+    },
+    {
+      "question": "Er is geen waarde ingevuld in verplicht veld 'Itemcode' (ItCd). (No value is entered in mandatory field 'Itemcode' (ItCd))",
+      "answer": "The article code (column Artikel) is missing. At least one article is needed to set up a subscription."
+    },
+    {
+      "question": "Debiteur komt niet overeen met bestaand abonnement. (Debtor does not match the existing subscription)",
+      "answer": "You are trying to change an existing subscription, but the combination of subscription and sales relation does not match what is in AFAS."
+    },
+    {
+      "question": "Debiteur is niet gekoppeld aan deze relatie, kies een andere debiteur. (Debtor is not linked to this relation, choose a different debtor)",
+      "answer": "The sales relation differs from the organisation. Both are taken from the project: check in AFAS that the project's debtor is linked to the project's organisation."
+    },
+    {
+      "question": "How do I import the file into AFAS?",
+      "answer": "For new subscriptions: Abonnementen > Beheer > Import > Abonnement. Choose 'Import via bestaande definitie' (import via existing definition), go through the screens and select the definition, select the csv file, run the check, and only import when the check shows no errors. Then review the error report and keep a copy. For changes to existing subscriptions, go to Abonnementen > Beheer > Import > Abonnementmutatie, where you can also choose 'Bestaande definitie bewerken en importeren' (edit existing definition and import) to, for example, change only subscriptions or only subscription lines. Repeat the process for any failed rows."
+    },
+    {
+      "question": "Must the subscription number be unique in the file?",
+      "answer": "No. A subscription with multiple lines appears on multiple rows, each with the same subscription number; AFAS merges them into one subscription during import. Do make sure the header columns have the same values on all of those rows — the tool does not check that yet."
+    }
+  ]
+}

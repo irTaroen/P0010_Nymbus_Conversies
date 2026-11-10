@@ -1,0 +1,1156 @@
+{
+ "source": "https://github.com/AFASSoftware/OASContent",
+ "commit": "980d6cb6205d149e666cffbfd6d7527c24327cc6",
+ "connectors": [
+  {
+   "id": "CmForecast",
+   "description": "Forecast",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "CmForecastContactMoment",
+   "description": "Contactmoment forecast",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbArticleExtension",
+   "description": "Artikel specifiek",
+   "category": "Bakkerijen"
+  },
+  {
+   "id": "FbAssembly",
+   "description": "Productie",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbAssemblyPrep",
+   "description": "Productieorder",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbBatchNumber",
+   "description": "Partijnummer",
+   "category": "Artikelen"
+  },
+  {
+   "id": "FbBitVatTarifGroup",
+   "description": "Btw-tariefgroep per item",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FbComposition",
+   "description": "Samenstelling",
+   "category": "Artikelen"
+  },
+  {
+   "id": "FbConfrontation",
+   "description": "Confrontatie",
+   "category": "Mutaties"
+  },
+  {
+   "id": "FbCostPrice",
+   "description": "Kostprijs",
+   "category": "Artikelen"
+  },
+  {
+   "id": "FbDelNoteReceived",
+   "description": "Intercompany ontvangst van pakbon",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FbDeliveryNote",
+   "description": "Pakbon",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbDeliveryNoteFast",
+   "description": "Te genereren balie-/directfacturen",
+   "category": "Overige"
+  },
+  {
+   "id": "FbDirectInvoice",
+   "description": "Balie-/directfactuur",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbDough",
+   "description": "Deeg",
+   "category": "Bakkerijen"
+  },
+  {
+   "id": "FbDoughLines",
+   "description": "Deegregel",
+   "category": "Bakkerijen"
+  },
+  {
+   "id": "FbExtraBarcode",
+   "description": "Extra barcode",
+   "category": "Magazijn"
+  },
+  {
+   "id": "FbFreeOrder",
+   "description": "Vrijgeven order",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbGenSSCCForBit",
+   "description": "Genereren SSCC-labels voor item",
+   "category": "Artikelen"
+  },
+  {
+   "id": "FbGenSSCCForDen",
+   "description": "Genereren SSCC-labels voor pakbon",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbGoodsReceived",
+   "description": "Ontvangst",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FbGoodsReceivedPocket",
+   "description": "Ontvangst (Pocket)",
+   "category": "Overige"
+  },
+  {
+   "id": "FbIncomingGoods",
+   "description": "Binnenkomende goederen",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FbInstalment",
+   "description": "Factuurtermijn",
+   "category": "Mutaties"
+  },
+  {
+   "id": "FbItemArticle",
+   "description": "Artikel",
+   "category": "Artikelen"
+  },
+  {
+   "id": "FbItemCodeCustomer",
+   "description": "Itemcode verkooprelatie",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbItemCodeSupplier",
+   "description": "Itemcode inkooprelatie",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbItemCodeWarehouse",
+   "description": "Itemcode magazijn",
+   "category": "Magazijn"
+  },
+  {
+   "id": "FbProductGroup",
+   "description": "Productgroep",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbProductGroupLines",
+   "description": "Productgroepregel",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbPurRequisition",
+   "description": "Inkoopaanvraag",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FbPurch",
+   "description": "Inkooporder",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FbPurchPrice",
+   "description": "Inkoopprijs",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FbPurchQuotation",
+   "description": "Inkoopofferte",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FbPurchaseSales",
+   "description": "Toewijzing",
+   "category": "Magazijn"
+  },
+  {
+   "id": "FbRawMaterialIngredient",
+   "description": "Ingrediënt per grondstof",
+   "category": "Bakkerijen"
+  },
+  {
+   "id": "FbSSCC",
+   "description": "SSCC-labels update en delete",
+   "category": "Artikelen"
+  },
+  {
+   "id": "FbSales",
+   "description": "Verkooporder",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbSalesPrice",
+   "description": "Verkoopprijs",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbSalesQuotation",
+   "description": "Verkoopofferte",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbSerialNumber",
+   "description": "Serienummer",
+   "category": "Artikelen"
+  },
+  {
+   "id": "FbSettleOrder",
+   "description": "Afhandelen order",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbStandardPrice",
+   "description": "Verrekenprijs",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FbStockMutation",
+   "description": "Voorraadmutatie",
+   "category": "Magazijn"
+  },
+  {
+   "id": "FbSubscription",
+   "description": "Abonnement",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbUnitBasicItem",
+   "description": "Eenheid per item",
+   "category": "Artikelen"
+  },
+  {
+   "id": "FbUpdateActemiumDeliveryNote",
+   "description": "Pakbon Actemium",
+   "category": "Verkoop en Orders"
+  },
+  {
+   "id": "FbUpdateAdB",
+   "description": "Artikeldimensie per item",
+   "category": "Artikelen"
+  },
+  {
+   "id": "FbUpdateStocktaking",
+   "description": "Inventarisatie",
+   "category": "Magazijn"
+  },
+  {
+   "id": "FbWarTransferIn",
+   "description": "Magazijnverplaatsing (ontvangstbon)",
+   "category": "Magazijn"
+  },
+  {
+   "id": "FbWarTransferOut",
+   "description": "Magazijnverplaatsing (verzendbon)",
+   "category": "Magazijn"
+  },
+  {
+   "id": "FbWarTransferPrep",
+   "description": "Magazijnverplaatsing (voorbereiding verplaatsing)",
+   "category": "Magazijn"
+  },
+  {
+   "id": "FiBudget",
+   "description": "Budget",
+   "category": "Budgetten en activa"
+  },
+  {
+   "id": "FiBudgetRequest",
+   "description": "Budgetaanvraag",
+   "category": "Budgetten en activa"
+  },
+  {
+   "id": "FiCommitment",
+   "description": "Verplichting",
+   "category": "Budgetten en activa"
+  },
+  {
+   "id": "FiContract",
+   "description": "Contract",
+   "category": "Budgetten en activa"
+  },
+  {
+   "id": "FiElectronicInvoicePurchase",
+   "description": "E-inkoopfactuur",
+   "category": "Mutaties"
+  },
+  {
+   "id": "FiEntries",
+   "description": "Financiële mutatie",
+   "category": "Mutaties"
+  },
+  {
+   "id": "FiEntriesCustom",
+   "description": "Financiële mutatie vrije velden",
+   "category": "Mutaties"
+  },
+  {
+   "id": "FiFixedAssets",
+   "description": "Vaste activa",
+   "category": "Budgetten en activa"
+  },
+  {
+   "id": "FiFixedAssetsBuy",
+   "description": "Vaste activa investering",
+   "category": "Budgetten en activa"
+  },
+  {
+   "id": "FiFixedAssetsSale",
+   "description": "Vaste activa verkoop",
+   "category": "Budgetten en activa"
+  },
+  {
+   "id": "FiIVY",
+   "description": "Iv3-indeling per jaar",
+   "category": "Financiële Inrichting"
+  },
+  {
+   "id": "FiInvoice",
+   "description": "Financiële factuur",
+   "category": "Mutaties"
+  },
+  {
+   "id": "FiLoan",
+   "description": "Lening",
+   "category": "Mutaties"
+  },
+  {
+   "id": "FiProcurationLines",
+   "description": "Procuratieregel",
+   "category": "Inkoop"
+  },
+  {
+   "id": "FiReservation",
+   "description": "Reservering financieel",
+   "category": "Budgetten en activa"
+  },
+  {
+   "id": "FiSepaDirectDebit",
+   "description": "SEPA-incasso",
+   "category": "Mutaties"
+  },
+  {
+   "id": "HrAbsBalance",
+   "description": "Verlofsaldo",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "HrAbsCorrection",
+   "description": "Verlofcorrectie",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "HrAbsence",
+   "description": "Verlofboeking",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "HrAbsenceID",
+   "description": "Verlofboeking (regelnummer)",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "HrAbsenceInSite",
+   "description": "Verlofboeking InSite",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "HrApplicant",
+   "description": "Sollicitant",
+   "category": "Werving en selectie"
+  },
+  {
+   "id": "HrCalculationplan",
+   "description": "Salarisverwerkingsplan",
+   "category": "Loonadministratie"
+  },
+  {
+   "id": "HrCareerBreak",
+   "description": "Medewerker/schorsing",
+   "category": "Overige"
+  },
+  {
+   "id": "HrCompMut",
+   "description": "Loonmutatie",
+   "category": "Loonadministratie"
+  },
+  {
+   "id": "HrCompMutGUID",
+   "description": "Loonmutatie (unieke sleutel)",
+   "category": "Loonadministratie"
+  },
+  {
+   "id": "HrCostCarrier",
+   "description": "Kostendrager",
+   "category": "Werkgever"
+  },
+  {
+   "id": "HrCostCentre",
+   "description": "Kostenplaats",
+   "category": "Werkgever"
+  },
+  {
+   "id": "HrCreateApplicant",
+   "description": "Sollicitatie",
+   "category": "Werving en selectie"
+  },
+  {
+   "id": "HrDeclarationInSite",
+   "description": "Declaratie InSite",
+   "category": "Overige"
+  },
+  {
+   "id": "HrDvb",
+   "description": "Afwijkende instantiegegevens",
+   "category": "Medewerker en contract"
+  },
+  {
+   "id": "HrEmpAdrMutInsite",
+   "description": "Medewerker adresmutatie InSite",
+   "category": "Overige"
+  },
+  {
+   "id": "HrEmpBinMutInSite",
+   "description": "Medewerker salarisrekeningmutatie InSite",
+   "category": "Overige"
+  },
+  {
+   "id": "HrEmpCareerHistory",
+   "description": "Loopbaanhistorie",
+   "category": "Loonadministratie"
+  },
+  {
+   "id": "HrEmpCourse",
+   "description": "Cursus",
+   "category": "Overige"
+  },
+  {
+   "id": "HrEmpEwhMutInsite",
+   "description": "Thuiswerkdagenmutatie InSite",
+   "category": "Overige"
+  },
+  {
+   "id": "HrEmpMutInSite",
+   "description": "Medewerker mutatie InSite",
+   "category": "Overige"
+  },
+  {
+   "id": "HrEmpPayDoc",
+   "description": "Payrolldocumenten",
+   "category": "Medewerker en contract"
+  },
+  {
+   "id": "HrEmpPaySlip",
+   "description": "Loonstrook",
+   "category": "Loonadministratie"
+  },
+  {
+   "id": "HrEmpTravelDistance",
+   "description": "Reisafstanden",
+   "category": "Medewerker en contract"
+  },
+  {
+   "id": "HrEmpWorkLocation",
+   "description": "Roosterkalender",
+   "category": "Overige"
+  },
+  {
+   "id": "HrEmployeeDeposit",
+   "description": "Voorschot",
+   "category": "Loonadministratie"
+  },
+  {
+   "id": "HrEmployeeMobilityRegistrationMut",
+   "description": "Kilometerregistratiemutatie InSite",
+   "category": "Medewerker en contract"
+  },
+  {
+   "id": "HrEmployeeWorkweekTransition",
+   "description": "Medewerker werkweektransitie",
+   "category": "Overige"
+  },
+  {
+   "id": "HrEmployeeducationScope",
+   "description": "Wijzigen benoemingsgrondslag",
+   "category": "Overige"
+  },
+  {
+   "id": "HrEmployerDeclarationInSite",
+   "description": "Werkgeversverklaring InSite",
+   "category": "Werkgever"
+  },
+  {
+   "id": "HrFavTravelDeclarations",
+   "description": "Favoriete reis",
+   "category": "Overige"
+  },
+  {
+   "id": "HrIllness",
+   "description": "Verzuimmelding",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "HrIllnessGUID",
+   "description": "Verzuimmelding (unieke sleutel)",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "HrIllnessInSite",
+   "description": "Ziekmelding InSite",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "HrIllnessProgressInSite",
+   "description": "Ziekteverloop InSite",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "HrJudgement",
+   "description": "Beoordeling",
+   "category": "Overige"
+  },
+  {
+   "id": "HrMobility",
+   "description": "Vervoermiddel",
+   "category": "Overige"
+  },
+  {
+   "id": "HrOnboarding",
+   "description": "Onboarding",
+   "category": "Werving en selectie"
+  },
+  {
+   "id": "HrRelative",
+   "description": "Familielid",
+   "category": "Overige"
+  },
+  {
+   "id": "HrReservation",
+   "description": "Reservering Hrm",
+   "category": "Flex"
+  },
+  {
+   "id": "HrSalTable",
+   "description": "Loonschaal",
+   "category": "Werkgever"
+  },
+  {
+   "id": "HrSelectionModel",
+   "description": "Keuzemodel",
+   "category": "Overige"
+  },
+  {
+   "id": "HrTimeRegSocSec",
+   "description": "Tijdregistratieregel Sociaal secretariaat",
+   "category": "Overige"
+  },
+  {
+   "id": "HrVacancy",
+   "description": "Vacature",
+   "category": "Werving en selectie"
+  },
+  {
+   "id": "HrVacancyJobalert",
+   "description": "Vacature/Job alert",
+   "category": "Werving en selectie"
+  },
+  {
+   "id": "HrVarValue",
+   "description": "Looncomponent parameterwaarde",
+   "category": "Loonadministratie"
+  },
+  {
+   "id": "HrWellnessInSite",
+   "description": "Betermelding InSite",
+   "category": "Verlof en Ziekte"
+  },
+  {
+   "id": "KnAccount",
+   "description": "Grootboekrekening",
+   "category": "Financiële Inrichting"
+  },
+  {
+   "id": "KnAddress",
+   "description": "Adres",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnAppointment",
+   "description": "Afspraak",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnBankTransaction",
+   "description": "Transactie-instelling",
+   "category": "Financiële Inrichting"
+  },
+  {
+   "id": "KnCSRLine",
+   "description": "CSR",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnContact",
+   "description": "Contact",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnCourseEvent",
+   "description": "Evenement",
+   "category": "Cursusmanagement"
+  },
+  {
+   "id": "KnCourseGroupLines",
+   "description": "Cursusplanning",
+   "category": "Cursusmanagement"
+  },
+  {
+   "id": "KnCourseMember",
+   "description": "Deelnemer evenement",
+   "category": "Cursusmanagement"
+  },
+  {
+   "id": "KnCourseSessionMember",
+   "description": "Presentie",
+   "category": "Cursusmanagement"
+  },
+  {
+   "id": "KnCurrencyRates",
+   "description": "Koersupdate",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnCustomK01",
+   "description": "Vrij bestand 01",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomK02",
+   "description": "Vrij bestand 02",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomK03",
+   "description": "Vrij bestand 03",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomK04",
+   "description": "Vrij bestand 04",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomK05",
+   "description": "Vrij bestand 05",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomK06",
+   "description": "Vrij bestand 06",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomK07",
+   "description": "Vrij bestand 07",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomK08",
+   "description": "Vrij bestand 08",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomK09",
+   "description": "Vrij bestand 09",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomK10",
+   "description": "Vrij bestand 10",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC01",
+   "description": "Vrij contactbestand 01",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC02",
+   "description": "",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC03",
+   "description": "Vrij contactbestand 03",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC04",
+   "description": "Vrij contactbestand 04",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC05",
+   "description": "Vrij contactbestand 05",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC06",
+   "description": "Vrij contactbestand 06",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC07",
+   "description": "Vrij contactbestand 07",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC08",
+   "description": "Vrij contactbestand 08",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC09",
+   "description": "Vrij contactbestand 09",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC10",
+   "description": "Vrij contactbestand 10",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC11",
+   "description": "Vrij contactbestand 11",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC12",
+   "description": "Vrij contactbestand 12",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC13",
+   "description": "Vrij contactbestand 13",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC14",
+   "description": "Vrij contactbestand 14",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC15",
+   "description": "Vrij contactbestand 15",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC16",
+   "description": "Vrij contactbestand 16",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC17",
+   "description": "Vrij contactbestand 17",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC18",
+   "description": "Vrij contactbestand 18",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC19",
+   "description": "Vrij contactbestand 19",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnCustomLinkC20",
+   "description": "Vrij contactbestand 20",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnDayContract",
+   "description": "Dagcontract",
+   "category": "Overige"
+  },
+  {
+   "id": "KnDimCode",
+   "description": "Code verbijzondering",
+   "category": "Financiële Inrichting"
+  },
+  {
+   "id": "KnEmployee",
+   "description": "Medewerker",
+   "category": "Medewerker en contract"
+  },
+  {
+   "id": "KnEmployeeGUID",
+   "description": "Medewerker (unieke Id)",
+   "category": "Medewerker en contract"
+  },
+  {
+   "id": "KnKpiRow",
+   "description": "KPI-regel",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnOrgEmrFun",
+   "description": "Medewerker functie",
+   "category": "Medewerker en contract"
+  },
+  {
+   "id": "KnOrgUnit",
+   "description": "Organisatorische eenheid",
+   "category": "Werkgever"
+  },
+  {
+   "id": "KnOrganisation",
+   "description": "Organisatie",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnPeppol",
+   "description": "PeppolCallback",
+   "category": "Inrichting"
+  },
+  {
+   "id": "KnPerson",
+   "description": "Persoon",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnPocketNotStatus",
+   "description": "Pocket-notificatiestatus",
+   "category": "Overige"
+  },
+  {
+   "id": "KnProfile",
+   "description": "Profiel",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnProfileContactRole",
+   "description": "Profiel contact rol",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnProvApplication",
+   "description": "Afwijkende verstrekking",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnPurchaseRelationOrg",
+   "description": "Inkooprelatie organisatie",
+   "category": "Inkoop"
+  },
+  {
+   "id": "KnPurchaseRelationPer",
+   "description": "Inkooprelatie persoon",
+   "category": "Inkoop"
+  },
+  {
+   "id": "KnQuotation",
+   "description": "Voorcalculatie",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "KnRelationship",
+   "description": "Verband",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnSalesRelationOrg",
+   "description": "Verkooprelatie organisatie",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnSalesRelationPer",
+   "description": "Verkooprelatie persoon",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "KnSreCostCentre",
+   "description": "Kostenplaats per verkooprelatie",
+   "category": "Flex"
+  },
+  {
+   "id": "KnSubject",
+   "description": "Dossier",
+   "category": "Dossiers en bijlagen en workflows"
+  },
+  {
+   "id": "KnSubjectDynamic",
+   "description": "Dossieritem dynamische update",
+   "category": "Dossiers en bijlagen en workflows"
+  },
+  {
+   "id": "KnSubjectReaction",
+   "description": "Reactie bij dossieritem",
+   "category": "Dossiers en bijlagen en workflows"
+  },
+  {
+   "id": "KnSubjectWorkflowReaction",
+   "description": "Workflow reactie",
+   "category": "Dossiers en bijlagen en workflows"
+  },
+  {
+   "id": "KnTeamMember",
+   "description": "Teamlid",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "KnUser",
+   "description": "Gebruiker",
+   "category": "Organisaties en personen"
+  },
+  {
+   "id": "PtAllowedOutPurch",
+   "description": "Toegestaan buiten inkoop",
+   "category": "Bouw"
+  },
+  {
+   "id": "PtConProjectForecast",
+   "description": "Standopname per project",
+   "category": "Bouw"
+  },
+  {
+   "id": "PtConceptPlacementContract",
+   "description": "Concept plaatsingscontract",
+   "category": "Flex"
+  },
+  {
+   "id": "PtCostPriceComponent",
+   "description": "Kostprijscomponent",
+   "category": "Flex"
+  },
+  {
+   "id": "PtCostPriceModel",
+   "description": "Kostprijsmodel",
+   "category": "Flex"
+  },
+  {
+   "id": "PtCostPriceModelPerProject",
+   "description": "Kostprijsmodel per klantovereenkomst",
+   "category": "Flex"
+  },
+  {
+   "id": "PtDeclaration",
+   "description": "Declaratie",
+   "category": "Flex"
+  },
+  {
+   "id": "PtDeclarationCorrection",
+   "description": "Corrigeren nacalculatie per declaratie",
+   "category": "Flex"
+  },
+  {
+   "id": "PtFunction",
+   "description": "Functie",
+   "category": "Flex"
+  },
+  {
+   "id": "PtItemSet",
+   "description": "Itemset",
+   "category": "Flex"
+  },
+  {
+   "id": "PtItemSetFunction",
+   "description": "Functie per itemset",
+   "category": "Flex"
+  },
+  {
+   "id": "PtLinesToBeInvoiced",
+   "description": "Te factureren regel",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "PtLinesToBeUnraveled",
+   "description": "Te ontrafelen nacalculatieregels",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "PtMeasurement",
+   "description": "Meetstaat",
+   "category": "Bouw"
+  },
+  {
+   "id": "PtMonitor",
+   "description": "Bewakingscode",
+   "category": "Bouw"
+  },
+  {
+   "id": "PtOptionList",
+   "description": "Optielijst",
+   "category": "Bouw"
+  },
+  {
+   "id": "PtOptionListLine",
+   "description": "Optiekeuzelijstregel",
+   "category": "Bouw"
+  },
+  {
+   "id": "PtPlacementContract",
+   "description": "Plaatsing",
+   "category": "Flex"
+  },
+  {
+   "id": "PtPriceAgreement",
+   "description": "Prijsafspraak",
+   "category": "Flex"
+  },
+  {
+   "id": "PtPriceRevisionFormula",
+   "description": "Prijsherzieningsformule",
+   "category": "Artikelen"
+  },
+  {
+   "id": "PtPriceRevisionIndex",
+   "description": "Index prijsherziening",
+   "category": "Artikelen"
+  },
+  {
+   "id": "PtPrognosisProject",
+   "description": "Projectvoortgang",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "PtProject",
+   "description": "Project",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "PtProjectDimCode",
+   "description": "Project / verbijzondering",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "PtProjectProgress",
+   "description": "Voortgang",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "PtProjectRaiseRules",
+   "description": "Projectopslagregel",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "PtRealization",
+   "description": "Nacalculatie",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "PtRealizationWeek",
+   "description": "Nacalculatie per week",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "PtTariff",
+   "description": "Tarief",
+   "category": "Flex"
+  },
+  {
+   "id": "PtValComb",
+   "description": "Geldigheidscombinatie",
+   "category": "Projecten en nacalculatie"
+  },
+  {
+   "id": "TxCFVpb2021",
+   "description": "CF Vpb 2021",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxCFVpb2022",
+   "description": "CF Vpb 2022",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxCFVpb2023",
+   "description": "CF Vpb 2023",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxCFVpb2024",
+   "description": "CF Vpb 2024",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxCFVpb2025",
+   "description": "TxCFVpb2025",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientIB2021",
+   "description": "Client IB 2021",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientIB2022",
+   "description": "Client IB 2022",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientIB2023",
+   "description": "Cliënt IB 2023",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientIB2024",
+   "description": "Cliënt IB 2024",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientIB2025",
+   "description": "TxClientIB2025",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientVpb2021",
+   "description": "Client Vpb 2021",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientVpb2022",
+   "description": "Client Vpb 2022",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientVpb2023",
+   "description": "Cliënt Vpb 2023",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientVpb2024",
+   "description": "Cliënt Vpb 2024",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxClientVpb2025",
+   "description": "TxClientVpb2025",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxKlaarzettenAangifte",
+   "description": "Klaarzetten aangifte",
+   "category": "Fiscaal"
+  },
+  {
+   "id": "TxMachtiging",
+   "description": "Machtiging",
+   "category": "Fiscaal"
+  }
+ ]
+}

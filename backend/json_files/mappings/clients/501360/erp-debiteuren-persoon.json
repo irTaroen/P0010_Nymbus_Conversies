@@ -1,0 +1,385 @@
+{
+  "connector": "KnSalesRelationPer",
+  "root": "KnSalesRelationPer",
+  "file": "ERP_1_Debiteuren.xlsx",
+  "sheet": "Conversie",
+  "fields": [
+    {
+      "object": [
+        "KnSalesRelationPer"
+      ],
+      "field": "DbId",
+      "label": "Nummer debiteur",
+      "mandatory": false,
+      "source": "column",
+      "column": "Debiteur Nummer",
+      "columnIndex": 0
+    },
+    {
+      "object": [
+        "KnSalesRelationPer"
+      ],
+      "field": "IsDb",
+      "label": "Is debiteur",
+      "mandatory": false,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnSalesRelationPer"
+      ],
+      "field": "CuId",
+      "label": "Valuta",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "EUR"
+    },
+    {
+      "object": [
+        "KnSalesRelationPer"
+      ],
+      "field": "VaId",
+      "label": "Btw-identificatienummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "BTW Nummer",
+      "columnIndex": 9
+    },
+    {
+      "object": [
+        "KnSalesRelationPer"
+      ],
+      "field": "PaCd",
+      "label": "Betaalvoorwaarde",
+      "mandatory": false,
+      "source": "column",
+      "column": "Betalingsvoorwaarde",
+      "columnIndex": 11
+    },
+    {
+      "object": [
+        "KnSalesRelationPer"
+      ],
+      "field": "ColA",
+      "label": "Verzamelrekening",
+      "mandatory": false,
+      "source": "column",
+      "column": "Verzamelrekening",
+      "columnIndex": 7
+    },
+    {
+      "object": [
+        "KnSalesRelationPer"
+      ],
+      "field": "VaDu",
+      "label": "Btw-plicht",
+      "mandatory": false,
+      "source": "column",
+      "column": "BTW Plicht",
+      "columnIndex": 12
+    },
+    {
+      "object": [
+        "KnSalesRelationPer"
+      ],
+      "field": "DuYN",
+      "label": "Aanmaning verzenden",
+      "mandatory": false,
+      "source": "column",
+      "column": "Aanmanen",
+      "columnIndex": 13
+    },
+    {
+      "object": [
+        "KnSalesRelationPer"
+      ],
+      "field": "AuPa",
+      "label": "Automatisch incasseren",
+      "mandatory": false,
+      "source": "column",
+      "column": "Automatisch Incasseren",
+      "columnIndex": 10
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "PadAdr",
+      "label": "Postadres is adres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "AutoNum",
+      "label": "Autonummering",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "MatchPer",
+      "label": "Persoon vergelijken op",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "7"
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "FiNm",
+      "label": "Voornaam",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voornaam",
+      "columnIndex": 4
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "In",
+      "label": "Voorletters",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voorletters",
+      "columnIndex": 3
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "Is",
+      "label": "Voorvoegsel",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voorvoegsel",
+      "columnIndex": 5
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "LaNm",
+      "label": "Achternaam",
+      "mandatory": false,
+      "source": "column",
+      "column": "Achternaam",
+      "columnIndex": 6
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "CcNr",
+      "label": "KVK-nummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "KvK-nummer",
+      "columnIndex": 8
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "EmAd",
+      "label": "E-mail werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Email",
+      "columnIndex": 16
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "TeNr",
+      "label": "Telefoonnr. werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Telefoon werk",
+      "columnIndex": 17
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson"
+      ],
+      "field": "AddToPortal",
+      "label": "Persoon toegang geven tot afgeschermde deel van de portal(s)",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBankAccount"
+      ],
+      "field": "CoId",
+      "label": "Land van de bank",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land van Bank",
+      "columnIndex": 15
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBankAccount"
+      ],
+      "field": "Iban",
+      "label": "IBAN-nummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "IBAN-Nummer",
+      "columnIndex": 14
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "CoId",
+      "label": "Land",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land",
+      "columnIndex": 24
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "PbAd",
+      "label": "Postbusadres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Ad",
+      "label": "Straat",
+      "mandatory": false,
+      "source": "column",
+      "column": "Straatnaam",
+      "columnIndex": 19
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmNr",
+      "label": "Huisnummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "Huisnummer",
+      "columnIndex": 20
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmAd",
+      "label": "Toev. aan huisnr.",
+      "mandatory": false,
+      "source": "column",
+      "column": "Toevoeging Huisnummer",
+      "columnIndex": 21
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ZpCd",
+      "label": "Postcode",
+      "mandatory": false,
+      "source": "column",
+      "column": "Postcode",
+      "columnIndex": 22
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Rs",
+      "label": "Woonplaats",
+      "mandatory": false,
+      "source": "column",
+      "column": "Woonplaats",
+      "columnIndex": 23
+    },
+    {
+      "object": [
+        "KnSalesRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ResZip",
+      "label": "Zoek woonplaats bij postcode",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    }
+  ],
+  "notes": [
+    "This is one half of Debiteuren's mapping, not the whole module: the template's 'Organisatie of Persoon' column (O/P, required) decides which of two connectors a row actually goes through. This file covers 'P' rows via KnSalesRelationPer; 'O' rows go through the sibling file erp-debiteuren-organisatie.json (KnSalesRelationOrg) instead — same template, same columns, different object underneath (KnPerson here vs. KnOrganisation there). Whatever eventually turns rows into AFAS calls needs to branch on that column per row and pick the matching file. See erp-debiteuren-organisatie.json's first note for why this still reports as module `erp-debiteuren-persoon` (not `erp-debiteuren`) today, and why that isn't a one-line fix — it collides with `_module_connector()`'s one-connector-per-module assumption in the client-mapping feature landing the same day.",
+    "CuId (Valuta) is fixed 'EUR' (Taroen, 05-09-2026): the valuta of a debiteur is always EUR for this conversion. Mandatory on KnSalesRelationPer with no column in the template, so a fixed value is the right shape — a business decision that was made rather than one this file guesses. Live metainfo reports it as a free string(3) with no enumerated values, so 'EUR' is accepted on its face; AFAS's own valutatabel is what ultimately validates it.",
+    "MatchPer (Persoon vergelijken op) is fixed '7' — 'Altijd nieuw toevoegen' (Taroen, 05-09-2026), this side's counterpart to MatchOga on the organisatie file. Same reasoning: nothing in the sheet is assumed to exist in the target environment yet, so every row creates a new persoon. **Note the number differs from MatchOga's:** 'always insert new' is '6' on MatchOga but '7' on MatchPer, both read from live metainfo — the two lists are not the same list, which is exactly why neither was guessed. Revisit when updating existing personen becomes a case.",
+    "CdDa (Voorkeur afleveradres), mandatory, int(9), still has no value and no column. It is an internal AFAS reference to an address record, and live metainfo enumerates no allowed values, so there is nothing here to reason a constant from — a made-up '1' would point at whatever address happens to carry that id. Left unmapped deliberately; it needs either a decision from whoever configures the upload or confirmation that AFAS fills it itself when the nested KnBasicAddressAdr is created.",
+    "Not mapped at all, on either side of the split: the 'Organisatie of Persoon' switch column itself — see erp-debiteuren-organisatie.json's notes for why.",
+    "The template dropped 'Fiscaalnummer' and gained 'Verzamelrekening' (Taroen, 25-08-2026): FiNr's mapping is removed and KvK-nummer/BTW Nummer's columnIndex shifted from 7/8 to 8/9. 'Verzamelrekening' (column index 7) maps to ColA on KnSalesRelationPer (23-09-2026) — confirmed via live update_connector_metainfo: string(16), notzero, label 'Verzamelrekening'. Metainfo reports it optional, but AFAS rejects an insert without it ('Er is geen waarde ingevuld in verplicht veld Verzamelrekening (ColA)'), so the rule set makes Verzamelrekening required (06-11-2026; until then a blank cell was filled with 1400).",
+    "IsDb (Is debiteur) is fixed true for the same reason as the organisatie side: this module exists to create debiteuren.",
+    "BcId and BcCo are not mapped: AutoNum is fixed true, so AFAS assigns both.",
+    "AddToPortal (mandatory: give this person portal access) is fixed false — nothing about a debiteur conversion needs self-service portal access, and granting it would also need an activation flow this sheet has no data for. Low-risk default, unlike CuId/MatchPer above which are genuine dedup/config decisions.",
+    "'Email Fin Adm' has no column to map to on this side either — KnPerson does have a second e-mail field (EmA2, 'E-mail privé'), but that is a private address, not the financial administration's, so mapping the column there would write a plainly wrong value rather than an absent one. Left unmapped, same discipline as the organisatie side.",
+    "BeginDate is unmapped for the same reason as the organisatie side: it's ignored on a person's first address, which every row here is.",
+    "ResZip is fixed false: Woonplaats is already supplied directly.",
+    "The remaining optional fields on KnSalesRelationPer and on KnPerson (Roepnaam, Geboorte*/BSN/burgerlijke staat, Sociale netwerken, KnBasicAddressPad, the nested KnContact under KnPerson, etc.) have no column in this template — a debiteuren conversion sheet has no reason to carry an individual's birth or marital data — and are left out entirely. KnBasicAddressPad is never needed while PadAdr is fixed true."
+  ],
+  "verifiedAgainst": {
+    "description": "Live GET /api/afas/updateconnectors/modules/KnSalesRelationPer — root/name is 'KnSalesRelationPer' (same as the connector id), nested KnPerson → KnBankAccount / KnBasicAddressAdr / KnBasicAddressPad / KnContact (unused — no column represents this person's own further contactpersoon). Re-read 05-09-2026 to confirm the mandatory fields with no column: CuId is a free string(3); MatchOga enumerates '6'=Altijd nieuw toevoegen (not '9', which is 'Gebruik bovenliggende entiteit'), MatchPer enumerates '7' for the same meaning; CdDa is an int(9) with no enumerated values.",
+    "source": "GET /api/afas/updateconnectors/modules/KnSalesRelationPer",
+    "liveMetaInfoConfirmed": true,
+    "checkedAt": "2026-09-05"
+  },
+  "savedAt": "2026-08-13T15:41:00Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

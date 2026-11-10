@@ -1,0 +1,103 @@
+{
+  "general": [
+    "Contact persons are the people at a debtor or creditor whom you deal with in the administration: the person who receives the invoice, the contact person for the financial administration, the manager on site. Each contact person is created on an existing debtor or creditor, so make sure that debtor or creditor is already in AFAS before you do this conversion.",
+    "Below, the import template for the contact persons is described at field level. The template contains one example row, whose values are used below as examples.",
+    "Does a debtor or creditor have several contact persons? Then use a separate row per contact person, with the same number in Contact bij / Debiteur/Crediteur nummer."
+  ],
+  "columns": {
+    "Contact bij": {
+      "description": "Indicates whether the number in the next column is a debtor or a creditor number: D for Debiteur (debtor), C for Crediteur (creditor). This is needed because debtor and creditor numbers are counted separately, so the same number can mean something different for a debtor than for a creditor.",
+      "example": "D"
+    },
+    "Debiteur/Crediteur nummer": {
+      "description": "The existing debtor or creditor number as known in AFAS. This number links the contact person to the correct debtor or creditor; which of the two it is, is stated in Contact bij. Use the existing number from AFAS; with several contact persons, the same number appears on several rows.",
+      "example": "10056"
+    },
+    "Afdeling": {
+      "description": "The department where the contact person works within the organisation. Enter the department name as free text; leave empty when the department is unknown.",
+      "example": "Financial Administration"
+    },
+    "Functienaam": {
+      "description": "The job title of the contact person, as it appears on their business card. Free text of at most 50 characters; leave empty when unknown.",
+      "example": "Head of Financial Administration"
+    },
+    "Telefoonnr. zakelijk": {
+      "description": "The business phone number of the contact person themselves, not the general number of the organisation.",
+      "example": "0201234567"
+    },
+    "Mobiel": {
+      "description": "The mobile phone number of the contact person.",
+      "example": "0612345678"
+    },
+    "Email zakelijk": {
+      "description": "The business e-mail address of the contact person themselves, not the organisation's general e-mail address.",
+      "example": "j.jansen@animo-services.nl"
+    },
+    "Zoeknaam": {
+      "description": "The search name of the contact person themselves, by which AFAS finds the person. Note: AFAS allows at most 10 characters here, so this is often an abbreviation and not the full name.",
+      "example": "JJANSEN"
+    },
+    "Roepnaam": {
+      "description": "The usual first name of the contact person. Free text; leave empty when unknown.",
+      "example": "Jan"
+    },
+    "Voornaam": {
+      "description": "The full first name of the contact person.",
+      "example": "Jan"
+    },
+    "Voorvoegsel": {
+      "description": "The name prefix before the surname, such as 'van' or 'de'. Leave empty when the surname has no prefix.",
+      "example": "van"
+    },
+    "Achternaam": {
+      "description": "The surname of the contact person, without the prefix; the prefix goes in the Voorvoegsel column. Mandatory, so that every contact person is recognisable in AFAS.",
+      "example": "Jansen"
+    },
+    "Geslacht": {
+      "description": "The gender of the contact person, as an AFAS code: M (Man, male), V (Vrouw, female), X (non-binary) or O (unknown).",
+      "example": "M"
+    },
+    "Land (persoon)": {
+      "description": "The country code of the address of the contact person themselves — not that of the debtor/creditor. Checked against the country list from AFAS; use only codes from the 'Landen' tab of the import template. Note: these are not ISO codes — NL (Netherlands), B (Belgium), D (Germany), A (Austria).",
+      "example": "NL"
+    },
+    "Postbusadres (persoon)": {
+      "description": "Whether the address of the contact person is a PO box address. Enter J (yes) when the address is a PO box address, and N (no) when it is a visiting or home address.",
+      "example": "N"
+    },
+    "Plaats (persoon)": {
+      "description": "The town/city of the address of the contact person, spelled the way AFAS knows it for the country in Land (persoon). An unknown place is rejected; the button in the cell shows the valid towns/cities.",
+      "example": "Amsterdam"
+    },
+    "Straat (persoon)": {
+      "description": "The street name of the address of the contact person, without the house number; that goes in the column Huisnummer (persoon).",
+      "example": "Nieuwe Hemweg"
+    },
+    "Huisnummer (persoon)": {
+      "description": "The house number of the address of the contact person, as a whole number without an addition. AFAS stores the house number as a number and this template has no column for an addition, so a value such as 7a or 7-2 is rejected.",
+      "example": "7"
+    },
+    "Postcode (persoon)": {
+      "description": "The postcode of the address of the contact person, in local notation. If Land (persoon) is NL, the tool checks the Dutch format: 4 digits and 2 letters, for example 1013 BG. A foreign postcode is not checked for format. AFAS looks up the town/city itself from the postcode, which is why this template has no column for it.",
+      "example": "1013 BG"
+    }
+  },
+  "faq": [
+    {
+      "question": "A debtor or creditor has several contact persons. How do I record them?",
+      "answer": "Use a separate row per contact person, with the same values in Contact bij and Debiteur/Crediteur nummer. That number therefore appears several times in the file; that is not an error."
+    },
+    {
+      "question": "Does the debtor or creditor have to exist in AFAS already?",
+      "answer": "Yes. A contact person is created on an existing debtor or creditor, so that number must already exist in AFAS before this conversion can be imported. Do the conversion of the debtors and creditors first."
+    },
+    {
+      "question": "Is the address in this template the address of the debtor/creditor?",
+      "answer": "No. Land/Postbusadres/Straat/Huisnummer/Postcode (persoon) are the address of the contact person themselves, not of the organisation — the organisation already received its own address during the conversion of the debtors/creditors."
+    },
+    {
+      "question": "Why is my country code DE or BE rejected?",
+      "answer": "AFAS uses its own country codes, not ISO codes: Belgium is B and Germany is D, not BE and DE. The Netherlands is NL. Use the 'Landen' tab of the import template, or click the column to view the country list from AFAS."
+    }
+  ]
+}

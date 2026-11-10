@@ -1,0 +1,42 @@
+# Gitleaks config for the Nodge scan phase.
+#
+# The platform's Scan pipeline runs gitleaks against your working tree and
+# BLOCKS the pipeline if it finds anything that looks like a secret. It loads
+# this file automatically (no setup needed) so you can suppress false
+# positives without disabling the scan.
+#
+# `useDefault = true` keeps gitleaks' high-signal detectors active (AWS keys,
+# GitHub/Mollie/Mailjet tokens, SSH/RSA private keys, generic high-entropy
+# strings). The allowlist below only carves out things that are never live
+# secrets — build artifacts and confirmed-fake fixtures.
+#
+# Real secrets MUST be rotated, never allowlisted. Only add a regex/path below
+# for a confirmed non-secret (a fake test password, an example value, a public
+# token). Keep entries NARROW — a too-broad rule lets a real leak slip through.
+#
+# Example: a test fixture password trips the generic-api-key detector. Add the
+# literal value, not the whole file:
+#   regexes = [ '''my_fake_test_password123''' ]
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Paths and patterns that never contain live secrets."
+
+paths = [
+  '''node_modules/''',
+  '''(^|/)package-lock\.json$''',
+  '''(^|/)dist/''',
+  '''(^|/)build/''',
+  '''\.min\.js$''',
+  '''\.min\.css$''',
+]
+
+# Confirmed-safe matches in your code (fake fixtures, example values).
+# Matched against the secret VALUE itself. Prefer this over path-based
+# allowlisting so the scan still covers the rest of the file.
+regexes = []
+
+# Specific commits with confirmed-safe matches, if ever needed.
+commits = []

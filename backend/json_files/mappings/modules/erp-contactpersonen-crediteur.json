@@ -1,0 +1,51 @@
+{
+  "group": "modules",
+  "connector": "KnPurchaseRelationOrg",
+  "module": "erp-contactpersonen",
+  "root": "KnPurchaseRelationOrg",
+  "file": "ERP_3_Contacten.xlsx",
+  "sheet": "Conversie",
+  "fields": [
+    { "object": ["KnPurchaseRelationOrg"], "field": "CrId", "label": "Nummer crediteur", "mandatory": false, "source": "column", "column": "Debiteur/Crediteur nummer", "columnIndex": 1 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact"], "field": "PadAdr", "label": "Postadres is adres", "mandatory": true, "source": "fixed", "value": true },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact"], "field": "ExAd", "label": "Afdeling", "mandatory": false, "source": "column", "column": "Afdeling", "columnIndex": 2 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact"], "field": "FuDs", "label": "Functie op visitekaart", "mandatory": false, "source": "column", "column": "Functienaam", "columnIndex": 3 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact"], "field": "TeNr", "label": "Telefoonnr. werk", "mandatory": false, "source": "column", "column": "Telefoonnr. zakelijk", "columnIndex": 4 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact"], "field": "MbNr", "label": "Mobiel werk", "mandatory": false, "source": "column", "column": "Mobiel", "columnIndex": 5 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact"], "field": "EmAd", "label": "E-mail werk", "mandatory": false, "source": "column", "column": "Email zakelijk", "columnIndex": 6 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson"], "field": "AutoNum", "label": "Autonummering", "mandatory": true, "source": "fixed", "value": true },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson"], "field": "PadAdr", "label": "Postadres is adres", "mandatory": true, "source": "fixed", "value": true },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson"], "field": "AddToPortal", "label": "Persoon toegang geven tot afgeschermde deel van de portal(s)", "mandatory": true, "source": "fixed", "value": false },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson"], "field": "SeNm", "label": "Zoeknaam", "mandatory": false, "source": "column", "column": "Zoeknaam", "columnIndex": 7 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson"], "field": "CaNm", "label": "Roepnaam", "mandatory": false, "source": "column", "column": "Roepnaam", "columnIndex": 8 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson"], "field": "FiNm", "label": "Voornaam", "mandatory": false, "source": "column", "column": "Voornaam", "columnIndex": 9 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson"], "field": "Is", "label": "Voorvoegsel", "mandatory": false, "source": "column", "column": "Voorvoegsel", "columnIndex": 10 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson"], "field": "LaNm", "label": "Achternaam", "mandatory": false, "source": "column", "column": "Achternaam", "columnIndex": 11 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson"], "field": "ViGe", "label": "Geslacht", "mandatory": false, "source": "column", "column": "Geslacht", "columnIndex": 12 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson", "KnBasicAddressAdr"], "field": "CoId", "label": "Land", "mandatory": true, "source": "column", "column": "Land (persoon)", "columnIndex": 13 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson", "KnBasicAddressAdr"], "field": "PbAd", "label": "Postbusadres", "mandatory": true, "source": "column", "column": "Postbusadres (persoon)", "columnIndex": 14 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson", "KnBasicAddressAdr"], "field": "Rs", "label": "Woonplaats", "mandatory": false, "source": "column", "column": "Plaats (persoon)", "columnIndex": 15 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson", "KnBasicAddressAdr"], "field": "Ad", "label": "Straat", "mandatory": false, "source": "column", "column": "Straat (persoon)", "columnIndex": 16 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson", "KnBasicAddressAdr"], "field": "HmNr", "label": "Huisnummer", "mandatory": false, "source": "column", "column": "Huisnummer (persoon)", "columnIndex": 17 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson", "KnBasicAddressAdr"], "field": "ZpCd", "label": "Postcode", "mandatory": false, "source": "column", "column": "Postcode (persoon)", "columnIndex": 18 },
+    { "object": ["KnPurchaseRelationOrg", "KnOrganisation", "KnContact", "KnPerson", "KnBasicAddressAdr"], "field": "ResZip", "label": "Zoek woonplaats bij postcode", "mandatory": true, "source": "fixed", "value": false }
+  ],
+  "notes": [
+    "Sibling of `erp-contactpersonen-debiteur.json` — read that file's first three notes for the full reasoning behind the design (one `PUT` to the existing debiteur/crediteur's own connector, matched by `@CrId`, with a new `KnContact`→`KnPerson` inserted underneath rather than a two-call chain through standalone `KnPerson`/`KnContact` connectors). This file covers `Contact bij = C` rows.",
+    "One real schema difference from the Debiteur side, confirmed live rather than assumed symmetric: `KnPurchaseRelationOrg`'s nested `KnContact` has **no `ViKc`** field at all (the Debiteur side's nested `KnContact` does, fixed there to `'PRS'`). So there is nothing to set here, fixed or otherwise — this isn't an oversight, it's the connector's own schema. Every other field on this nested `KnContact` (`PadAdr`, `ExAd`, `ViFu`, `FuDs`, `Corr`, `ViMd`, `TeNr`, `FaNr`, `MbNr`, `EmAd`, `HoPa`, `Re`, `Bl`, `AtLn`, `LeHe`, `SocN`, `Face`, `Link`, `Twtr`) matches the Debiteur side exactly.",
+    "`CrId` here is the match key for an *existing* crediteur (`@CrId`, confirmed `primaryKey: true` live), the same role `DbId` plays on the Debiteur side and the opposite of its role in `erp-crediteuren-organisatie.json` (there it's a value being set on a brand-new crediteur).",
+    "`AddToPortal`/`PadAdr`/`ResZip` fixed, `MatchPer` left unmapped, `SeNm` capped at 10 characters, `HmNr` a strict `int`, `BeginDate` unmapped as ignored-on-first-address — all identical reasoning to the Debiteur sibling.",
+    "Ordering constraint: this `PUT` only succeeds against a crediteur that already exists, so a client's contactpersonen conversion can only run after their crediteuren conversion has landed. See docs/todo.md.",
+    "`erp-contactpersonen` has no deeltaakcode in AFAS, so this module cannot appear for a project today — groundwork, same as its sibling. No upload engine exists yet to run per-object `@Action` from a stored mapping at all.",
+    "Not grouped: one contactpersoon row produces one inserted KnContact + KnPerson pair, nested under the one existing crediteur the row names."
+  ],
+  "verifiedAgainst": {
+    "description": "Live GET metainfo/update/KnPurchaseRelationOrg via /api/afas/updateconnectors/modules/KnPurchaseRelationOrg — root/name 'KnPurchaseRelationOrg', `CrId` confirmed primaryKey. Nested tree: KnOrganisation → {KnBankAccount, KnBasicAddressAdr, KnBasicAddressPad, KnContact → {KnBasicAddressAdr, KnBasicAddressPad, KnPerson → {KnBankAccount, KnBasicAddressAdr, KnBasicAddressPad}}}. KnContact here has no BcCoOga/BcCoPer, same as the Debiteur side, and no ViKc, unlike it.",
+    "source": "GET /api/afas/updateconnectors/modules/KnPurchaseRelationOrg",
+    "liveMetaInfoConfirmed": true,
+    "checkedAt": "2026-08-19"
+  },
+  "savedAt": "2026-08-19T00:00:00Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

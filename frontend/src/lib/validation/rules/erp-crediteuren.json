@@ -1,0 +1,260 @@
+{
+  "columns": [
+    {
+      "column": "Crediteur Nummer",
+      "type": "integer",
+      "rules": [{ "check": "required" }, { "check": "unique" }]
+    },
+    {
+      "column": "Organisatie of Persoon",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "enum",
+          "values": ["O", "P"],
+          "message": "Moet O (Organisatie) of P (Persoon) zijn",
+          "messageEn": "Must be O (organisation) or P (person)"
+        }
+      ]
+    },
+    {
+      "column": "Organisatie Naam",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 100 },
+        {
+          "check": "existing-record",
+          "keyColumn": "Crediteur Nummer",
+          "when": { "column": "Organisatie of Persoon", "op": "==", "value": "O" },
+          "message": "Crediteur bestaat al in AFAS ({omgeving}) onder crediteurnummer {nummer} — verander het crediteurnummer in de sheet naar het nummer dat in AFAS bij jullie bekend is",
+          "messageEn": "Creditor already exists in AFAS ({omgeving}) under creditor number {nummer} — change the creditor number in the sheet to the number that is known to you in AFAS",
+          "keyMessage": "Crediteur id bestaat al in AFAS ({omgeving}), als \"{naam}\"",
+          "keyMessageEn": "Creditor id already exists in AFAS ({omgeving}), as \"{naam}\""
+        }
+      ]
+    },
+    {
+      "column": "Voorletters",
+      "type": "text",
+      "rules": [
+        {
+          "check": "regex",
+          "pattern": "^([A-Z]\\.)+$",
+          "message": "Formaat: X.X. — uitsluitend hoofdletters, elk gevolgd door een punt",
+          "messageEn": "Format: X.X. — uppercase letters only, each followed by a full stop"
+        },
+        { "check": "length", "max": 15 }
+      ]
+    },
+    {
+      "column": "Voornaam",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 50 }]
+    },
+    {
+      "column": "Voorvoegsel",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Achternaam",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 80 }]
+    },
+    {
+      "column": "KvK-nummer",
+      "type": "text",
+      "rules": [
+        {
+          "check": "regex",
+          "pattern": "^[0-9]{8}$",
+          "message": "Moet 8 cijfers zijn, zonder spaties of koppeltekens",
+          "messageEn": "Must be 8 digits, without spaces or hyphens"
+        }
+      ]
+    },
+    {
+      "column": "BTW Nummer",
+      "type": "text",
+      "rules": [{ "check": "btw" }]
+    },
+    {
+      "column": "Verzamelrekening",
+      "type": "text",
+      "rules": [
+        { "check": "default-if-empty", "defaultValue": "1600" },
+        { "check": "codetabel", "tableRef": "Grootboekrekeningen", "message": "Onbekende verzamelrekening", "messageEn": "Unknown collective account" }
+      ]
+    },
+    {
+      "column": "Automatisch betalen",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Betalingsvoorwaarde",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Betalingsvoorwaarden",
+          "message": "Onbekende betalingsvoorwaarde — gebruik een code uit de AFAS-betalingsvoorwaarden (bijv. 30, cont, Inc.)",
+          "messageEn": "Unknown payment condition — use a code from the AFAS payment conditions (e.g. 30, cont, Inc.)"
+        }
+      ]
+    },
+    {
+      "column": "Betaalspecificatie",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "BTW Plicht",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "enum",
+          "values": ["1", "2", "3", "4", "5", "6", "7", "8"],
+          "message": "Moet een code 1 t/m 8 uit de hulptabel zijn",
+          "messageEn": "Must be a code 1 to 8 from the lookup table"
+        }
+      ]
+    },
+    {
+      "column": "IBAN-Nummer",
+      "type": "text",
+      "rules": [{ "check": "iban" }]
+    },
+    {
+      "column": "Land van Bank",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Landen",
+          "message": "Onbekende landcode — gebruik een code uit de AFAS-landenlijst (bijv. NL, B, D)",
+          "messageEn": "Unknown country code — use a code from the AFAS country list (e.g. NL, B, D)"
+        }
+      ]
+    },
+    {
+      "column": "Email",
+      "type": "text",
+      "rules": [{ "check": "email" }]
+    },
+    {
+      "column": "Telefoon werk",
+      "type": "text",
+      "rules": [{ "check": "phone" }]
+    },
+    {
+      "column": "Email Fin Adm",
+      "type": "text",
+      "rules": [{ "check": "email" }]
+    },
+    {
+      "column": "Straatnaam",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 60 }]
+    },
+    {
+      "column": "Huisnummer",
+      "type": "integer",
+      "rules": [
+        { "check": "required" },
+        { "check": "split-huisnummer", "intoColumn": "Toevoeging Huisnummer" }
+      ]
+    },
+    {
+      "column": "Toevoeging Huisnummer",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 30 }]
+    },
+    {
+      "column": "Postcode",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "postcode",
+          "scopeColumn": "Land",
+          "scopeDefault": "NL",
+          "message": "Ongeldige postcode — een Nederlandse postcode is 4 cijfers en 2 letters (bijv. 1013 BG)",
+          "messageEn": "Invalid postcode — a Dutch postcode is 4 digits and 2 letters (e.g. 1013 BG)"
+        },
+        { "check": "length", "max": 15 }
+      ]
+    },
+    {
+      "column": "Woonplaats",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Woonplaatsen",
+          "scopeColumn": "Land",
+          "scopeDefault": "NL",
+          "message": "Onbekende woonplaats voor dit land",
+          "messageEn": "Unknown town/city for this country"
+        },
+        { "check": "length", "max": 50 }
+      ]
+    },
+    {
+      "column": "Land",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "codetabel", "tableRef": "Landen", "message": "Onbekende landcode — gebruik een code uit de AFAS-landenlijst (bijv. NL, B, D)", "messageEn": "Unknown country code — use a code from the AFAS country list (e.g. NL, B, D)" }
+      ]
+    }
+  ],
+  "crossField": [
+    {
+      "if": { "column": "Organisatie of Persoon", "op": "==", "value": "P" },
+      "then": { "column": "Voorletters", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Organisatie of Persoon = P",
+      "messageEn": "Required when Organisatie of Persoon = P"
+    },
+    {
+      "if": { "column": "Organisatie of Persoon", "op": "==", "value": "P" },
+      "then": { "column": "Voornaam", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Organisatie of Persoon = P",
+      "messageEn": "Required when Organisatie of Persoon = P"
+    },
+    {
+      "if": { "column": "Organisatie of Persoon", "op": "==", "value": "P" },
+      "then": { "column": "Achternaam", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Organisatie of Persoon = P",
+      "messageEn": "Required when Organisatie of Persoon = P"
+    },
+    {
+      "if": { "column": "Organisatie of Persoon", "op": "==", "value": "O" },
+      "then": { "column": "Organisatie Naam", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Organisatie of Persoon = O",
+      "messageEn": "Required when Organisatie of Persoon = O"
+    },
+    {
+      "if": { "column": "Automatisch betalen", "op": "==", "value": "J" },
+      "then": { "column": "IBAN-Nummer", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer automatisch betalen = J",
+      "messageEn": "Required when automatisch betalen = J"
+    },
+    {
+      "if": { "column": "IBAN-Nummer", "op": "isNotEmpty" },
+      "then": { "column": "Land van Bank", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer IBAN-Nummer is ingevuld",
+      "messageEn": "Required when IBAN-Nummer is filled in"
+    }
+  ]
+}

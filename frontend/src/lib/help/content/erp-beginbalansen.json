@@ -1,0 +1,95 @@
+{
+  "general": [
+    "De beginbalans is de financiële startpositie in AFAS: de saldi per grootboekrekening op het moment van overgang, plus de openstaande debiteuren- en crediteurenposten die daarbij horen.",
+    "Elke regel is één journaalregel: een bedrag debet óf credit op één rekening. Regels met hetzelfde nummer journaalpost vormen samen één boeking, en binnen een boeking moet het totaal debet gelijk zijn aan het totaal credit.",
+    "Let op het onderscheid in de kolom Kenmerk rekening: bij een grootboekrekening (1) is alleen het saldo nodig, bij een debiteur (2) of crediteur (3) hoort een openstaande post met factuurnummer en vervaldatum.",
+    "De kolommen hieronder zijn afgeleid van de AFAS-specificatie van de financiële mutatie (UpdateConnector FiEntries). Het importsjabloon voor deze module wordt nog opgeleverd."
+  ],
+  "columns": {
+    "Administratie": {
+      "description": "Het nummer van de financiële administratie waarvoor deze beginbalans geldt. Wordt gecontroleerd tegen de administratietabel uit de AFAS-omgeving van dit project.",
+      "example": "1"
+    },
+    "Boekjaar": {
+      "description": "Het boekjaar waarin de beginbalans wordt geboekt — doorgaans het eerste jaar in AFAS. Een jaartal van vier cijfers.",
+      "example": "2026"
+    },
+    "Periode": {
+      "description": "De periode binnen het boekjaar. Voor een beginbalans is dat vrijwel altijd periode 1. Een getal van 1 tot en met 53, passend bij de periodetabel van de administratie.",
+      "example": "1"
+    },
+    "Dagboek": {
+      "description": "Het dagboek waarin de boeking wordt vastgelegd. Voor een beginbalans is dat het memoriaal- of balansdagboek. Maximaal 6 tekens.",
+      "example": "MEMO"
+    },
+    "Nummer journaalpost": {
+      "description": "Het nummer dat de regels van één boeking bij elkaar houdt. Alle regels met hetzelfde nummer vormen samen één journaalpost, en binnen die post moet het totaal debet gelijk zijn aan het totaal credit. Een geheel getal vanaf 1.",
+      "example": "1"
+    },
+    "Kenmerk rekening": {
+      "description": "Wat voor rekening in Rekeningnummer staat: 1 = Grootboekrekening, 2 = Debiteur, 3 = Crediteur. Bepaalt hoe AFAS de regel verwerkt: bij 2 of 3 ontstaat een openstaande post, en dan zijn factuurnummer en vervaldatum verplicht.",
+      "example": "1"
+    },
+    "Rekeningnummer": {
+      "description": "Het nummer van de grootboekrekening, de debiteur of de crediteur — passend bij wat in Kenmerk rekening staat. Maximaal 16 tekens.",
+      "example": "1300"
+    },
+    "Datum boeking": {
+      "description": "De datum waarop de regel in de administratie wordt geboekt. Voor een beginbalans is dat de eerste dag van het boekjaar. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2026"
+    },
+    "Boekstukdatum": {
+      "description": "De datum van het onderliggende stuk. Bij een openstaande post is dat de factuurdatum, die ouder kan zijn dan de datum van boeken. De vervaldatum mag niet vóór deze datum liggen. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "15-12-2025"
+    },
+    "Boekstuknummer": {
+      "description": "Het nummer van het onderliggende stuk, waarmee de boeking naar het bronsysteem te herleiden is. Maximaal 32 tekens.",
+      "example": "BB-2026-0001"
+    },
+    "Omschrijving boeking": {
+      "description": "Een korte toelichting op de regel, zoals die in AFAS bij de boeking komt te staan. Maximaal 255 tekens.",
+      "example": "Beginbalans per 01-01-2026"
+    },
+    "Bedrag debet": {
+      "description": "Het debetbedrag van deze regel, positief. Laat leeg wanneer de regel een creditbedrag heeft: een regel is debet óf credit, nooit beide, en één van de twee moet gevuld zijn.",
+      "example": "1000,00"
+    },
+    "Bedrag credit": {
+      "description": "Het creditbedrag van deze regel, positief. Laat leeg wanneer de regel een debetbedrag heeft: een regel is debet óf credit, nooit beide, en één van de twee moet gevuld zijn.",
+      "example": "1000,00"
+    },
+    "Factuurnummer": {
+      "description": "Het factuurnummer van de openstaande post. Verplicht bij een debiteur- of crediteurregel, omdat de post anders niet af te letteren is tegen een betaling. Laat leeg bij een grootboekregel. Maximaal 12 tekens.",
+      "example": "2025-4471"
+    },
+    "Vervaldatum": {
+      "description": "De datum waarop de openstaande post moet zijn betaald. Verplicht bij een debiteur- of crediteurregel; deze datum bepaalt de ouderdomsanalyse in AFAS. Mag niet eerder liggen dan de boekstukdatum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "14-01-2026"
+    },
+    "BTW-code": {
+      "description": "De btw-code van de regel. Bij een beginbalans blijft deze doorgaans leeg: de btw is in het oude systeem al afgedragen. Maximaal 3 tekens.",
+      "example": "1"
+    },
+    "Valuta": {
+      "description": "De valuta van het bedrag, als driekarakterige code. Vul EUR in bij euro's. Zodra hier een valuta staat, ook EUR, is de koers verplicht; bij EUR is die 1.",
+      "example": "EUR"
+    },
+    "Koers": {
+      "description": "De koers waartegen het bedrag naar de basisvaluta wordt omgerekend. Verplicht zodra een valuta is ingevuld. Bij euro's is dat 1.",
+      "example": "1"
+    },
+    "Betalingskenmerk": {
+      "description": "Het betalingskenmerk dat bij de openstaande post hoort, zoals een acceptgirokenmerk. Maximaal 32 tekens.",
+      "example": "0012345678901234"
+    },
+    "Blokkeren voor betaling": {
+      "description": "Of de post geblokkeerd is voor betaling (Ja) of gewoon meegaat in de betaalrun (Nee). Gebruik Ja voor posten die in geschil zijn.",
+      "example": "Nee"
+    },
+    "Projectnummer": {
+      "description": "Het project waaraan de regel wordt toegerekend, wanneer de boeking projectgebonden is. Laat leeg bij algemene balansposten. Maximaal 15 tekens.",
+      "example": "31508001"
+    }
+  },
+  "faq": []
+}

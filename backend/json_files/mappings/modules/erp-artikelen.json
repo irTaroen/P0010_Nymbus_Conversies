@@ -1,0 +1,32 @@
+{
+  "group": "modules",
+  "connector": "FbItemArticle",
+  "module": "erp-artikelen",
+  "root": "FbItemArticle",
+  "file": "ERP_4_Artikelen.xlsx",
+  "sheet": "Conversie",
+  "fields": [
+    { "object": ["FbItemArticle"], "field": "ItCd", "label": "Itemcode", "mandatory": false, "source": "column", "column": "Itemcode", "columnIndex": 0 },
+    { "object": ["FbItemArticle"], "field": "Ds", "label": "Omschrijving", "mandatory": false, "source": "column", "column": "Omschrijving", "columnIndex": 1 },
+    { "object": ["FbItemArticle"], "field": "BiSt", "label": "Voorraad bijhouden", "mandatory": false, "source": "column", "column": "Voorraad bijhouden", "columnIndex": 2 },
+    { "object": ["FbItemArticle"], "field": "Grp", "label": "Artikelgroep", "mandatory": true, "source": "column", "column": "Artikelgroep", "columnIndex": 3 },
+    { "object": ["FbItemArticle"], "field": "BiUn", "label": "Basiseenheid", "mandatory": true, "source": "column", "column": "Basiseenheid", "columnIndex": 4 },
+    { "object": ["FbItemArticle"], "field": "VaRc", "label": "Tariefgroep", "mandatory": false, "source": "column", "column": "BTW-Tariefgroep", "columnIndex": 5 }
+  ],
+  "notes": [
+    "AuId (Autonummering) is deliberately left unmapped: the demo payload sends it `false`, meaning the itemcode is supplied rather than generated, which is exactly what the sheet's own Itemcode column already does by being present — AFAS defaults a missing boolean field to false, so leaving it out has the same effect as sending it explicitly.",
+    "`Grp` and `BiUn` are AFAS's only two mandatory fields on this connector (confirmed live) and both come straight from the sheet, so nothing had to be faked with a fixed value the way other modules' mandatory-but-columnless fields are.",
+    "Artikelgroep, Basiseenheid and BTW-Tariefgroep are all AFAS lookup fields (`controlType` 5/1, i.e. codes from another table), but only the latter two have their valid codes shipped inside the sjabloon itself — a 'Hulptabellen' tab listing Basiseenheid (BLK, DOZ, FLS, GEEN, KG, KM, KRT, L, M, STK, UUR) and BTW-Tariefgroep (0, 1, 2, Geen, U) — so the rule set checks those two with a plain `enum`, same pattern as erp-debiteuren's `BTW Plicht`. Artikelgroep has no such list in the sjabloon (artikelgroepen are inrichting-specific, like erp-projecten's Projectgroep) and is only checked as required text; see docs/todo.md for wiring a `codetabel` check once a connector for it exists in the customer's environment.",
+    "Not grouped: one artikel is one FbItemArticle record, the ordinary one-row-one-record path.",
+    "The other 113 fields on this connector (multi-language descriptions, prijzen, voorraadparameters, CBS/douane, verpakking, barcodes, …) have no column in this sjabloon and are left unmapped — none of them are mandatory."
+  ],
+  "verifiedAgainst": {
+    "description": "Live GET metainfo/update/FbItemArticle via update_connector_metainfo — root/name 'FbItemArticle' (same as the connector id, no divergence), 119 fields, one nested object (FbArticleCustom, no fields of its own). Matches the demo payload's field codes (ItCd, AuId, Ds, Grp, BiSt, BiUn, VaRc) exactly.",
+    "source": "GET /api/afas/updateconnectors/modules/FbItemArticle",
+    "liveMetaInfoConfirmed": true,
+    "checkedAt": "2026-08-19"
+  },
+  "savedAt": "2026-08-19T00:00:00Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

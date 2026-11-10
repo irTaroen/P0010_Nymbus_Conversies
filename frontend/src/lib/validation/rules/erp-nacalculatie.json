@@ -1,0 +1,171 @@
+{
+  "columns": [
+    {
+      "column": "Projectnummer",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 15 }
+      ]
+    },
+    {
+      "column": "Projectfase",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Datum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Type item",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "enum",
+          "values": ["Wst", "Art", "Kst", "Sam"],
+          "message": "Moet Wst (Werksoort), Art (Artikel), Kst (Kosten) of Sam (Samenstelling) zijn",
+          "messageEn": "Must be Wst (work type), Art (item), Kst (costs) or Sam (composition)"
+        }
+      ]
+    },
+    {
+      "column": "Itemcode",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 40 },
+        {
+          "check": "codetabel",
+          "tableRef": "Items",
+          "message": "Onbekende itemcode",
+          "messageEn": "Unknown item code"
+        }
+      ]
+    },
+    {
+      "column": "Aantal",
+      "type": "decimal",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Eenheid",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Medewerker",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Urensoort",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 5 }]
+    },
+    {
+      "column": "Omschrijving",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 255 }]
+    },
+    {
+      "column": "Kostprijs",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Verkoopprijs",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Kortingspercentage",
+      "type": "decimal",
+      "rules": [
+        { "check": "min", "value": 0 },
+        { "check": "max", "value": 100 }
+      ]
+    },
+    {
+      "column": "Doorbelasten",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["Ja", "Nee"],
+          "message": "Moet Ja of Nee zijn",
+          "messageEn": "Must be Ja or Nee"
+        }
+      ]
+    },
+    {
+      "column": "Type projectkosten",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["MA", "A", "ME", "OA", "O"],
+          "message": "Moet MA (Materiaal), A (Arbeid), ME (Materieel), OA (Onderaanneming) of O (Overig) zijn",
+          "messageEn": "Must be MA (material), A (labour), ME (equipment), OA (subcontracting) or O (other)"
+        }
+      ]
+    },
+    {
+      "column": "Kostenplaats",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 30 }]
+    },
+    {
+      "column": "Kostendrager",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 30 }]
+    },
+    {
+      "column": "Organisatorische eenheid",
+      "type": "text",
+      "rules": [
+        { "check": "length", "max": 10 },
+        {
+          "check": "codetabel",
+          "tableRef": "Organisatie-eenheden",
+          "message": "Onbekende organisatorische eenheid",
+          "messageEn": "Unknown organisational unit"
+        }
+      ]
+    },
+    {
+      "column": "Geaccordeerd",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["Ja", "Nee"],
+          "message": "Moet Ja of Nee zijn",
+          "messageEn": "Must be Ja or Nee"
+        }
+      ]
+    },
+    {
+      "column": "Externe sleutel",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 40 }]
+    }
+  ],
+  "crossField": [
+    {
+      "if": { "column": "Type item", "op": "==", "value": "Wst" },
+      "then": { "column": "Medewerker", "op": "isNotEmpty" },
+      "message": "Bij een werksoort is de medewerker verplicht",
+      "messageEn": "For a work type the employee is required"
+    },
+    {
+      "if": { "column": "Doorbelasten", "op": "==", "value": "Ja" },
+      "then": { "column": "Verkoopprijs", "op": "isNotEmpty" },
+      "message": "Bij doorbelasten is een verkoopprijs verplicht",
+      "messageEn": "When recharging, a sales price is required"
+    }
+  ]
+}

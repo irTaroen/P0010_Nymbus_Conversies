@@ -1,0 +1,32 @@
+{
+  "columns": [
+    {
+      "column": "Medewerker",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Parameter",
+      "type": "integer",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 9 }]
+    },
+    {
+      "column": "Begindatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Einddatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Waarde",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 20 }]
+    }
+  ],
+  "crossField": []
+}

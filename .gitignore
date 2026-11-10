@@ -1,0 +1,22 @@
+node_modules/
+
+# Secrets — never commit (the .example files next to them document the shape)
+.env
+.env.*
+!.env.example
+backend/json_files/client_tokens.json
+backend/json_files/dossier_migration_settings.json
+backend/json_files/state/
+
+# Build output and caches
+.next/
+out/
+*.tsbuildinfo
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ruff_cache/
+
+# OS / editor
+.DS_Store

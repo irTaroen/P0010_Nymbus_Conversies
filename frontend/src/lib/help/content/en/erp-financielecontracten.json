@@ -1,0 +1,151 @@
+{
+  "general": [
+    "Financial contracts are ongoing obligations with a supplier: maintenance contracts, insurance, service subscriptions, and rental and lease contracts. AFAS uses them to forecast and check obligations and periodic invoices.",
+    "Each row is one contract line. A contract with one line is therefore one row. If a contract has more lines, repeat the contract columns (Contractnummer to Opmerking) on every row with the same contract number; the columns from Contractwaarde o.b.v. onwards describe the line itself.",
+    "Choose per line how the value is recorded. With Contractwaarde o.b.v. 01 you enter the amount per invoice period (Cyclus facturering leverancier, Factuurwaarde periode and Genereren verplichting); with 02 you enter the total amount in the column Contractwaarde.",
+    "The suppliers you refer to here must also appear in the conversion of the Crediteuren module. The Vrij Veld columns are client-specific and are linked per client separately."
+  ],
+  "columns": {
+    "Contractnummer": {
+      "description": "The number of the contract. Filled in by Nymbus, but it must be filled in before the file can go to AFAS. All lines of the same contract carry the same number. Maximum 16 characters.",
+      "example": "C26000000000001"
+    },
+    "Profiel": {
+      "description": "The number of the contract profile in AFAS. The profile fills in default settings for the contract. Leave empty when no profile is used.",
+      "example": "1"
+    },
+    "In overweging": {
+      "description": "Whether the contract is not yet final. J = the contract is still under consideration, N = the contract has been concluded.",
+      "example": "N"
+    },
+    "Omschrijving": {
+      "description": "What the contract is about, in one line. This is what users see as the name of the contract in AFAS. Maximum 255 characters.",
+      "example": "Head office cleaning"
+    },
+    "Referentie inkooprelatie": {
+      "description": "The contract or policy number that the supplier uses itself. Useful when checking invoices. Maximum 50 characters.",
+      "example": "CT-2024-0815"
+    },
+    "Inkooprelatie": {
+      "description": "The creditor number of the supplier in AFAS. Must match the conversion of the Crediteuren module. Maximum 16 characters.",
+      "example": "50004"
+    },
+    "Contactpersoon": {
+      "description": "The number of the contact person at the supplier. Not (yet) sent to AFAS: the contract has no field for it.",
+      "example": "100234"
+    },
+    "Verantwoordelijke": {
+      "description": "The employee number of the employee responsible for the contract. Maximum 15 characters.",
+      "example": "000123"
+    },
+    "Contracteigenaar": {
+      "description": "The employee number of the owner or budget holder of the contract. Maximum 15 characters.",
+      "example": "000045"
+    },
+    "Contractbeheerder": {
+      "description": "The employee number of the employee who administers the contract. Maximum 15 characters.",
+      "example": "000078"
+    },
+    "Type contract": {
+      "description": "The code for the type of contract, for example cleaning, lease or insurance, as set up in the AFAS environment. Maximum 20 characters.",
+      "example": "02"
+    },
+    "Locatie": {
+      "description": "The code of the location the contract belongs to. Maximum 25 characters.",
+      "example": "000001"
+    },
+    "Opzegtermijn": {
+      "description": "How far in advance the contract must be terminated, in months. A whole number from 0 up to and including 99.",
+      "example": "3"
+    },
+    "Looptijd verlenging": {
+      "description": "The period by which the contract is extended each time: M1, M3, M6 and M9 for 1, 3, 6 and 9 months, J1 to J10 for 1 to 10 years. Required with tacit renewal.",
+      "example": "J1"
+    },
+    "Betalingsvoorwaarde": {
+      "description": "The code of the payment condition, for example 30 (days). Leave empty to use the supplier's. Maximum 5 characters.",
+      "example": "30"
+    },
+    "Overschrijding contractwaarde niet toegestaan": {
+      "description": "J = booking above the contract value is not allowed, N = it is allowed.",
+      "example": "N"
+    },
+    "Valuta": {
+      "description": "The currency code of the contract, three characters. Empty means EUR.",
+      "example": "EUR"
+    },
+    "Verzekerd bedrag": {
+      "description": "The insured amount. Only fill in for an insurance contract.",
+      "example": "250000"
+    },
+    "Opmerking": {
+      "description": "Any explanation of the contract, in free text.",
+      "example": "Including window cleaning"
+    },
+    "Contractwaarde o.b.v.": {
+      "description": "How the value of the line is recorded. 01 = value per invoice period: then fill in Cyclus facturering leverancier, Factuurwaarde periode and Genereren verplichting. 02 = total contract value: then fill in the column Contractwaarde.",
+      "example": "01"
+    },
+    "Begindatum": {
+      "description": "The start date of the contract. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-01-2025"
+    },
+    "Einddatum": {
+      "description": "The end date of the contract. Must not be earlier than the start date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "31-12-2026"
+    },
+    "Stilzwijgende verlenging": {
+      "description": "J = the contract is extended automatically, N = the contract stops on the end date. With J the extension period is required.",
+      "example": "J"
+    },
+    "Contractwaarde": {
+      "description": "The total amount of the contract. Required with Contractwaarde o.b.v. 02, and only fill it in then: with 01 the amount goes in Factuurwaarde periode.",
+      "example": "30000"
+    },
+    "Cyclus facturering leverancier": {
+      "description": "How often the supplier invoices: W4 = every 4 weeks, M1 = monthly, M3 = quarterly, M6 = half-yearly, J1 = yearly. Required with Contractwaarde o.b.v. 01.",
+      "example": "M1"
+    },
+    "Factuurwaarde periode": {
+      "description": "The amount the supplier invoices per period. Required with Contractwaarde o.b.v. 01.",
+      "example": "1250"
+    },
+    "Pro rata periode start": {
+      "description": "A different amount for the first, incomplete period. Leave empty to let AFAS calculate it.",
+      "example": "625"
+    },
+    "Pro rata periode eind": {
+      "description": "A different amount for the last, incomplete period. Leave empty to let AFAS calculate it.",
+      "example": "625"
+    },
+    "Genereren verplichting": {
+      "description": "Whether and how AFAS creates obligations for the contract, as code 0 to 6 from the Hulptabel: 0 = do not generate an obligation (then fill in the Grootboekrekening), 1 and 2 per year, 3 and 4 per month, 5 and 6 per period of 4 weeks. Required with Contractwaarde o.b.v. 01.",
+      "example": "0"
+    },
+    "Reservering": {
+      "description": "The number of the budget reservation the contract is booked against.",
+      "example": "1001"
+    },
+    "Reservering volledig afboeken": {
+      "description": "J = the reservation is fully written off, N = only the used part. J can only be used together with a reservation.",
+      "example": "N"
+    },
+    "Grootboekrekening": {
+      "description": "The general ledger account the costs are booked to. Required if Genereren verplichting is 0. Maximum 16 characters.",
+      "example": "4510"
+    },
+    "Blokkeren voor betaling": {
+      "description": "J = invoices are only paid after approval, N = do not block.",
+      "example": "N"
+    },
+    "Kostenplaats": {
+      "description": "The code of the cost centre the costs are booked to. Maximum 16 characters.",
+      "example": "100"
+    },
+    "Project": {
+      "description": "The project code the costs are booked to. Leave empty for contracts not tied to a project. Maximum 15 characters.",
+      "example": "P2025-001"
+    }
+  },
+  "faq": []
+}

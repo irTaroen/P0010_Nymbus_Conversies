@@ -1,0 +1,311 @@
+{
+  "general": [
+    "Medewerkers zijn het hart van je HR- en salarisadministratie. Zonder een volledige en correcte medewerkerstamkaart kan AFAS Profit geen salarissen verwerken, verlof bijhouden of uren registreren. De dataconversie legt de basis voor alles wat daarna komt: van de eerste salarisrun tot de maandelijkse loonaangifte bij de Belastingdienst.",
+    "Om een volledige en correcte dataconversie te kunnen doen is het belangrijk om inzicht te hebben in de benodigde informatie. Hieronder is het importsjabloon beschreven op veldniveau — van persoonsgegevens en contractgegevens tot salarisschalen, roosters en instantiekoppelingen.",
+    "Ook zijn er voorbeelddata en veelgestelde vragen beschreven om het vullen van het importsjabloon zo gemakkelijk mogelijk te maken."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Het unieke medewerkernummer in AFAS Profit. Primaire sleutel voor alle verdere imports.",
+      "example": "100001"
+    },
+    "Voornaam": {
+      "description": "De officiële voornaam zoals vastgelegd in het BRP.",
+      "example": "Frank"
+    },
+    "Roepnaam": {
+      "description": "De naam waarop de medewerker dagelijks wordt aangesproken. Wordt gebruikt op salarisstroken en in interne communicatie.",
+      "example": "Frank"
+    },
+    "Voorletters": {
+      "description": "De initialen inclusief punt. Formaat: X.X. — uitsluitend hoofdletters.",
+      "example": "F.K."
+    },
+    "Voorvoegsel": {
+      "description": "Tussenvoegsel van de achternaam in kleine letters. Laat leeg indien niet van toepassing.",
+      "example": "de"
+    },
+    "Achternaam": {
+      "description": "Officiële achternaam zonder tussenvoegsel zoals vastgelegd in het BRP.",
+      "example": "Boer"
+    },
+    "Geboortenaam apart vastleggen": {
+      "description": "Geeft aan of de geboortenaam afwijkt van de huidige achternaam en apart vastgelegd moet worden (J of N).",
+      "example": "J"
+    },
+    "Voorv. geb.naam": {
+      "description": "Tussenvoegsel van de geboortenaam. Alleen invullen wanneer 'Geboortenaam apart vastleggen' op J staat.",
+      "example": "de"
+    },
+    "Geboortenaam": {
+      "description": "Geboortenaam (meisjesnaam). Alleen invullen wanneer 'Geboortenaam apart vastleggen' op J staat.",
+      "example": "Boer"
+    },
+    "Geslacht": {
+      "description": "Het geslacht: M (Man), V (Vrouw) of X (Non-binair). Andere waarden worden afgekeurd. Let op: APG accepteert alleen M en V.",
+      "example": "M"
+    },
+    "Nationaliteit": {
+      "description": "De nationaliteit als code. Wordt gecontroleerd tegen de actuele nationaliteitenlijst uit AFAS — de waarde moet een code uit die lijst zijn, niet de omschrijving. Bijvoorbeeld NL (Nederlandse), B (Belgische), 000 (onbekend), 499 (staatloos).",
+      "example": "NL"
+    },
+    "Geboortedatum": {
+      "description": "De geboortedatum. Let op de datumopmaak in Excel — controleer het formaat na export.",
+      "example": "15-09-1983"
+    },
+    "Leeftijd": {
+      "description": "Informatief veld; AFAS herberekent dit automatisch op basis van de geboortedatum.",
+      "example": "41"
+    },
+    "Geboorteland": {
+      "description": "Het land van geboorte als AFAS-landcode, gecontroleerd tegen de landenlijst uit AFAS. Let op: dit is niet de ISO-code — België is B, Duitsland D, Afghanistan AFG. Een code die niet in die lijst staat wordt geel gemarkeerd; geboorteland en geboorteplaats gaan dan allebei niet naar AFAS, de rest van de medewerker wel.",
+      "example": "NL"
+    },
+    "Geboorteplaats": {
+      "description": "De geboorteplaats zoals vermeld in het identiteitsbewijs of GBA-uittreksel. Bij Geboorteland NL gecontroleerd tegen de woonplaatsenlijst uit AFAS, dus in de officiële schrijfwijze ('s-Gravenhage, niet Den Haag); bij een buitenlands geboorteland wordt de plaats niet gecontroleerd. Staat de plaats niet in die lijst, dan wordt de cel geel gemarkeerd in plaats van rood: dat blokkeert het aanleveren niet, maar geboorteland en geboorteplaats gaan dan allebei niet naar AFAS. Een beheerder kan hem laten toevoegen aan AFAS.",
+      "example": "Sittard"
+    },
+    "BSN": {
+      "description": "Het Burgerservicenummer zoals vastgelegd in het BRP. Verplicht voor de loonaangifte. Voer in zonder spaties of koppeltekens.",
+      "example": "111222333"
+    },
+    "Burgerlijke staat": {
+      "description": "De burgerlijke staat, gecontroleerd tegen de tabel Burgerlijke staat uit de AFAS-omgeving van dit project. Staat er een onbekende waarde in de cel, klik dan op het zoekicoon rechtsboven in de cel om de geldige codes te bekijken.",
+      "example": "OG"
+    },
+    "Bewindvoering": {
+      "description": "Geeft aan of de medewerker onder bewindvoering staat. Bij J kan het nettosalaris naar de bewindvoerder worden overgemaakt en kan de medewerker zijn/haar salarisrekeningnummer niet aanpassen.",
+      "example": "N"
+    },
+    "Mobiel werk": {
+      "description": "Zakelijk mobiel telefoonnummer. Formaat: 06-XXXXXXX. Verplicht tenzij 'Mobiel privé' is ingevuld: er moet per medewerker minimaal één mobiel nummer bekend zijn.",
+      "example": "06-1234567"
+    },
+    "Mobiel privé": {
+      "description": "Persoonlijk mobiel telefoonnummer. Formaat: 06-XXXXXXX. Verplicht tenzij 'Mobiel werk' is ingevuld: er moet per medewerker minimaal één mobiel nummer bekend zijn.",
+      "example": "06-1234568"
+    },
+    "Telefoonnr. werk": {
+      "description": "Vast zakelijk telefoonnummer. Laat leeg indien niet van toepassing.",
+      "example": "088-1234568"
+    },
+    "Telefoonnr. privé": {
+      "description": "Vast privé telefoonnummer. Laat leeg indien niet van toepassing.",
+      "example": "0182-123456"
+    },
+    "E-mail werk": {
+      "description": "Zakelijk e-mailadres. Wordt gebruikt voor AFAS-notificaties en selfservice-uitnodigingen (InSite).",
+      "example": "naam@bedrijf.nl"
+    },
+    "E-mail privé": {
+      "description": "Privé e-mailadres. Kan worden gebruikt bij de uitnodiging voor de AFAS Pocket App.",
+      "example": "naam@gmail.com"
+    },
+    "Straat": {
+      "description": "Straatnaam zonder huisnummer.",
+      "example": "Marsstraat"
+    },
+    "Huisnummer": {
+      "description": "Alleen het getal; de toevoeging komt in 'Toev. aan huisnr.'. Staat de toevoeging erbij (17-19, 12 A), dan splitst de tool het nummer zelf: 17 blijft hier staan, -19 gaat naar 'Toev. aan huisnr.', vóór wat daar al staat (250- met toevoeging 252 wordt 250 en -252).",
+      "example": "27"
+    },
+    "Toev. aan huisnr.": {
+      "description": "Toevoeging zoals B, bis of hoog. Laat leeg indien niet van toepassing.",
+      "example": "B"
+    },
+    "Postcode": {
+      "description": "De postcode van het woonadres. De tool controleert de schrijfwijze van het land in Land (Adres): NL 4 cijfers en 2 letters (bijv. 1013 BG), B 4 cijfers (1000), D 5 cijfers (10115), PL 2 cijfers, een streepje en 3 cijfers (00-950), E (Spanje) 5 cijfers (28013). Een postcode uit een ander land wordt niet op formaat gecontroleerd.",
+      "example": "6133 WL"
+    },
+    "Woonplaats": {
+      "description": "Officiële woonplaats zoals vastgelegd in het BRP. Bij Land (Adres) NL gecontroleerd tegen de woonplaatsenlijst uit AFAS, dus in de officiële schrijfwijze ('s-Gravenhage, niet Den Haag); bij een buitenlands land wordt de plaats niet gecontroleerd. Staat de plaats niet in die lijst, dan wordt de cel geel gemarkeerd in plaats van rood: dat blokkeert het aanleveren niet, en een beheerder kan de plaats laten toevoegen aan AFAS.",
+      "example": "Sittard"
+    },
+    "Land (Adres)": {
+      "description": "Land van het woonadres als AFAS-landcode, gecontroleerd tegen de landenlijst uit AFAS. Voor Nederland: NL. Let op: dit is niet de ISO-code — België is B, Duitsland D.",
+      "example": "NL"
+    },
+    "Nr. inkomstenverhouding": {
+      "description": "Nummer van de inkomstenverhouding. Neem dit over uit je oude systeem — voor de pensioenaangifte moet dit nummer hetzelfde zijn, anders krijg je een onverwerkbare fout bij de eerste aanlevering.",
+      "example": "1"
+    },
+    "IBAN": {
+      "description": "Rekeningnummer voor de salarisoverschrijving. Voer in zonder spaties; AFAS valideert bij import. Controleer alle IBAN-nummers op schrijffouten vóór import — een fout IBAN leidt direct tot een mislukte salarisoverschrijving.",
+      "example": "NL39BNGH0285149000"
+    },
+    "Land (Bank)": {
+      "description": "Land van de bank als AFAS-landcode, gecontroleerd tegen de landenlijst uit AFAS. Doorgaans NL. Let op: dit is niet de ISO-code — België is B, Duitsland D.",
+      "example": "NL"
+    },
+    "Datum in dienst": {
+      "description": "Officiële startdatum van het dienstverband bij de huidige werkgever.",
+      "example": "15-06-2016"
+    },
+    "Datum in dienst i.v.m. dienstjaren": {
+      "description": "De (afwijkende) ingangsdatum voor de berekening van dienstjaren, bijv. bij overname van anciënniteit na een fusie of van een vorige werkgever.",
+      "example": "01-06-2015"
+    },
+    "Werkgever": {
+      "description": "Werkgeverscode in AFAS Profit. Bij meerdere juridische entiteiten zorgvuldig controleren. Wordt gecontroleerd tegen de werkgeverstabel uit de AFAS-omgeving van dit project.",
+      "example": "01"
+    },
+    "Cao": {
+      "description": "Code van de van toepassing zijnde CAO, zoals ingericht bij de werkgever in AFAS. Welke codes bestaan verschilt per werkgever, dus wordt gecontroleerd tegen de CAO-tabel uit de AFAS-omgeving van dit project.",
+      "example": "SG"
+    },
+    "Arbeidsvoorwaarde": {
+      "description": "Arbeidsvoorwaardecode die bepaalt welk pakket secundaire arbeidsvoorwaarden geldt. Een arbeidsvoorwaarde hoort bij precies één CAO, dus de geldige codes hangen af van de kolom Cao op dezelfde regel: dezelfde code kan onder de ene CAO bestaan en onder de andere niet. Wordt gecontroleerd tegen de arbeidsvoorwaardentabel uit de AFAS-omgeving van dit project, beperkt tot de CAO van die regel.",
+      "example": "SG"
+    },
+    "Dienstbetrekking": {
+      "description": "Classificatie van het type dienstbetrekking, bijvoorbeeld V (vaste medewerker), S (stagiair), UI (uitzendkracht/inhuur) of O (oproepkracht). Welke codes bestaan is inrichting per cao: een dienstbetrekking hoort bij één cao, dus de geldige codes hangen af van de kolom Cao op dezelfde regel. Wordt gecontroleerd tegen de dienstbetrekkingentabel uit de AFAS-omgeving van dit project, beperkt tot de cao van die regel.",
+      "example": "V"
+    },
+    "Soort medewerker": {
+      "description": "Classificatie van het type medewerker, als AFAS-code: 1 = personeelslid, 2 = uitzendkracht, 6 = stagiair met stagevergoeding. AFAS kent daarnaast de codes 3, 4, 5, 7, 8, E, N en T; raadpleeg de AFAS-stamgegevens voor hun betekenis. Andere waarden worden afgekeurd.",
+      "example": "1"
+    },
+    "Type contract": {
+      "description": "Code uit de contracttypentabel van de klant, bijvoorbeeld O = onbepaalde tijd, B = bepaalde tijd. Bepalend voor de relevantie van 'Einddatum contract'.",
+      "example": "O"
+    },
+    "Einddatum contract": {
+      "description": "Verplicht bij type contract = B. Laat leeg bij O.",
+      "example": "15-06-2016"
+    },
+    "Begindatum contractketen": {
+      "description": "Startdatum van de contractketen voor de Wwz-ketenbepaling.",
+      "example": "15-06-2016"
+    },
+    "Ketennummer": {
+      "description": "Volgnummer van het contract in de keten. Begin bij 0 voor het eerste contract. AFAS accepteert 0 tot en met 6, of Ntb; bij type contract O hoort hier 0.",
+      "example": "1"
+    },
+    "Org. eenheid": {
+      "description": "Organisatorische eenheid (afdeling), zoals in het organigram is ingericht. Codes zijn hoofdlettergevoelig en worden gecontroleerd tegen het organigram uit de AFAS-omgeving van dit project.",
+      "example": "MDW-FIN"
+    },
+    "Functie": {
+      "description": "Functiecode zoals gedefinieerd bij de werkgever van de medewerker in AFAS (tabblad Functie). Functies horen bij één werkgever, dus de geldige codes hangen af van de kolom Werkgever op dezelfde regel; gecontroleerd tegen de functietabel uit de AFAS-omgeving van dit project.",
+      "example": "MC.3"
+    },
+    "Kostendrager": {
+      "description": "Kostendragercode waaraan de medewerker wordt toegewezen, gebruikt voor de kostenverdeling in de salarisadministratie. Neem over zoals ingericht bij de werkgever in AFAS. Laat je een cel leeg, dan vult de tool 'Profit' in; de kolom zelf moet wel in het bestand staan.",
+      "example": "1"
+    },
+    "Kostenplaats": {
+      "description": "Kostenplaatscode waaraan de medewerker wordt toegewezen, gebruikt voor de kostenverdeling in de salarisadministratie. Neem over zoals ingericht bij de werkgever in AFAS. Laat je een cel leeg, dan vult de tool 'Profit' in; de kolom zelf moet wel in het bestand staan.",
+      "example": "1"
+    },
+    "Soort salaris": {
+      "description": "U = uurloon, V = vast salaris, S = schaalsalaris, Su = schaal uurloon. Bij een schaalsalaris (S of Su) zijn Soort loonschaal, Loonschaal, Trede en Salaris verplicht, en legt de tool een periodiek vast.",
+      "example": "V"
+    },
+    "Soort loonschaal": {
+      "description": "Verplicht bij schaalsalaris (S) en schaaluurloon (Su). Een geheel getal dat via de CAO-tabellen naar de loonschaal verwijst: 530 bij maandverloning, 529 bij 4-wekenverloning.",
+      "example": "530"
+    },
+    "Loonschaal": {
+      "description": "Specifieke loonschaal (loongroep) binnen de structuur: GR1 t/m GR12. Verplicht bij schaalsalaris of schaaluurloon.",
+      "example": "GR1"
+    },
+    "Trede": {
+      "description": "Periodiektrede binnen de loonschaal. Verplicht bij schaaluurloon.",
+      "example": "2"
+    },
+    "Salaris": {
+      "description": "Bruto uurloon (Su) of bruto maandloon (V). Gebruik een punt als decimaalteken. Bij schaaluurloon gaat dit automatisch aan de hand van de trede en loongroep.",
+      "example": "16.45"
+    },
+    "Jaarloon BT": {
+      "description": "Belastbaar jaarloon. Op basis hiervan berekent AFAS het bijzonder tarief van extra inkomsten.",
+      "example": "39789"
+    },
+    "Gedrag periodiek toekennen code": {
+      "description": "Of er periodieken worden toegekend: 1 bij schaaluurloon, 0 bij vast salaris. J/N wordt niet geaccepteerd.",
+      "example": "1"
+    },
+    "Periodenummer periodiek": {
+      "description": "Maand van de periodieke verhoging (1 = januari, 12 = december). Verplicht als Gedrag periodiek toekennen code 1 is (volgens loonschalen); AFAS weigert de medewerker anders.",
+      "example": "6"
+    },
+    "Rooster toepassen in Payroll": {
+      "description": "Zet dit op N voor medewerkers waarbij de uren in Appreo worden geboekt en op J voor kantoorpersoneel met een vast salaris.",
+      "example": "J"
+    },
+    "Oproepovereenkomst": {
+      "description": "Geeft aan of de medewerker een oproepcontract heeft.",
+      "example": "N"
+    },
+    "Min/Max toepassen": {
+      "description": "Bij J worden 'Min. uren/wk' en 'Max. uren/wk' gebruikt voor de contracturen.",
+      "example": "N"
+    },
+    "Min. uren/wk": {
+      "description": "Minimum contracturen per week. Verplicht bij 'Min/Max toepassen' = J.",
+      "example": "0"
+    },
+    "Max. uren/wk": {
+      "description": "Maximum contracturen per week. Verplicht bij 'Min/Max toepassen' = J.",
+      "example": "0"
+    },
+    "Type rooster": {
+      "description": "Zet dit op 5 (uren per week) voor medewerkers waarbij de uren in Appreo worden geboekt, en op 1 of 2 (uren per dag, gelijke of wisselende weken) voor kantoorpersoneel; 3 en 4 zijn werktijden (begin- en eindtijden) in gelijke of wisselende weken. Bij 1 of 2 telt AFAS de uren uit 'Uren Maandag' t/m 'Uren Zondag' en negeert het 'Aantal uren per week' — vul dan de dagkolommen, anders ziet AFAS een rooster van 0 uur en weigert het. Wisselende weken (2 en 4) kunnen niet geïmporteerd worden: de tool maakt het rooster aan als 1 of 3 (gelijke weken) en markeert de cel geel. Leg de wisselende weken daarna handmatig vast in AFAS.",
+      "example": "5"
+    },
+    "Standaardrooster": {
+      "description": "Het nummer van het standaardrooster, als dit in de AFAS-omgeving is ingericht; een geheel getal. Vul je deze kolom, dan mogen 'Aantal dagen per week' en 'Aantal uren per week' leegblijven: het rooster bepaalt die dan. Laat je hem leeg, dan zijn die twee wel verplicht.",
+      "example": "5"
+    },
+    "Aantal dagen per week": {
+      "description": "Contractueel aantal werkdagen per week. Verplicht als 'Standaardrooster' leeg is; vul je daar wel een rooster in, dan mag deze kolom leegblijven.",
+      "example": "4"
+    },
+    "Aantal uren per week": {
+      "description": "Totale contracturen per week. Verplicht als 'Standaardrooster' leeg is; vul je daar wel een rooster in, dan mag deze kolom leegblijven. Moet gelijk zijn aan de som van de daguren (Maandag t/m Zondag). Die daguren hoef je alleen te vullen bij type rooster 'uren per dag'. Tip: controleer altijd of de daguren optellen tot dit totaal.",
+      "example": "36"
+    },
+    "Uren Maandag": {
+      "description": "Contracturen op maandag. Vul 0 of laat leeg voor niet-werkdagen.",
+      "example": "8"
+    },
+    "Uren Dinsdag": {
+      "description": "Contracturen op dinsdag. Vul 0 of laat leeg voor niet-werkdagen.",
+      "example": "8"
+    },
+    "Uren Woensdag": {
+      "description": "Contracturen op woensdag. Vul 0 of laat leeg voor niet-werkdagen.",
+      "example": "8"
+    },
+    "Uren Donderdag": {
+      "description": "Contracturen op donderdag. Vul 0 of laat leeg voor niet-werkdagen.",
+      "example": "8"
+    },
+    "Uren Vrijdag": {
+      "description": "Contracturen op vrijdag. Vul 0 of laat leeg voor niet-werkdagen.",
+      "example": "4"
+    },
+    "Uren Zaterdag": {
+      "description": "Contracturen op zaterdag. Vul 0 of laat leeg voor niet-werkdagen.",
+      "example": "0"
+    },
+    "Uren Zondag": {
+      "description": "Contracturen op zondag. Vul 0 of laat leeg voor niet-werkdagen.",
+      "example": "0"
+    },
+    "APG Beroep": {
+      "description": "Beroepscode conform APG-classificatie. Verplicht bij medewerkers die pensioen opbouwen via APG.",
+      "example": "502"
+    }
+  },
+  "faq": [
+    {
+      "question": "Wat is het verschil tussen 'Datum in dienst' en 'Datum in dienst i.v.m. dienstjaren'?",
+      "answer": "De 'Datum in dienst' is de officiële startdatum van het huidige dienstverband bij de werkgever. De 'Datum in dienst i.v.m. dienstjaren' kan eerder liggen en wordt gebruikt voor berekeningen waarbij voorafgaande dienstjaren (bij een vorige entiteit of werkgever) worden meegeteld — zoals bij jubileumregelingen, periodieken of anciënniteitstoeslag."
+    },
+    {
+      "question": "Wat is het verschil tussen de tabbladen Appreo Medewerkers en Kantoor Medewerkers?",
+      "answer": "De kolomstructuur is identiek (A t/m BW). Appreo Medewerkers bevat het operationeel veldpersoneel dat via Appreo wordt ingepland. Kantoor Medewerkers bevat het overige personeel."
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "general": [
+    "Purchase orders are the orders actually placed with suppliers: what was ordered, from whom, at what price, and what has already been received. In a conversion, open purchase orders represent the deliveries and obligations still to be expected.",
+    "Each row is one order line. The order header columns (order number, order date, creditor) repeat on every line of that same order; the other columns describe the ordered item.",
+    "The creditors and items you refer to here must also appear in the conversion of the Crediteuren and Artikelen modules.",
+    "The columns below are derived from the AFAS specification of the purchase order (UpdateConnector FbPurch). The import template for this module is still to be delivered."
+  ],
+  "columns": {
+    "Ordernummer": {
+      "description": "The number of the purchase order from the source system. Lines of the same purchase order carry the same number; that is how AFAS knows which lines belong together. Maximum 12 characters.",
+      "example": "IO2026-001"
+    },
+    "Orderdatum": {
+      "description": "The date of the purchase order. No delivery date or due date on the line may fall before this. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-02-2026"
+    },
+    "Crediteur Nummer": {
+      "description": "The creditor number of the supplier. Must match the conversion of the Crediteuren module. Maximum 16 characters.",
+      "example": "50014"
+    },
+    "Omschrijving": {
+      "description": "What the purchase order is about, in one line. Maximum 255 characters.",
+      "example": "Filters and maintenance materials"
+    },
+    "Administratie": {
+      "description": "The number of the financial administration. Checked against the administration table in the AFAS environment of this project.",
+      "example": "1"
+    },
+    "Gewenste leverdatum": {
+      "description": "The date on which delivery is wanted. Must not be earlier than the order date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "15-02-2026"
+    },
+    "Datum levering toegezegd": {
+      "description": "The delivery date the supplier has promised, when it differs from the wanted date. Leave empty when nothing has been promised. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "18-02-2026"
+    },
+    "Vervaldatum": {
+      "description": "The date on which the purchase order expires or must be paid. Must not be earlier than the order date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-03-2026"
+    },
+    "Valuta": {
+      "description": "The currency of the amounts, as a three-character code. Enter EUR for euros. As soon as a currency is entered here, EUR included, the exchange rate is required; for EUR it is 1.",
+      "example": "EUR"
+    },
+    "Valutakoers": {
+      "description": "The rate at which the amounts are converted to the base currency. Required as soon as a currency is filled in. For euros it is 1.",
+      "example": "1"
+    },
+    "Referentie leverancier": {
+      "description": "The reference the supplier uses itself, as it appears on its documents. Maximum 50 characters.",
+      "example": "REF-88231"
+    },
+    "Betalingsvoorwaarde": {
+      "description": "The payment condition. Checked against the payment condition table in the AFAS environment of this project. Leave empty to use the creditor's. Maximum 5 characters.",
+      "example": "14"
+    },
+    "Automatisch betalen": {
+      "description": "Whether invoices on this order are paid automatically (Ja) or released manually (Nee). With Ja the payment condition is required.",
+      "example": "Nee"
+    },
+    "Creditorder": {
+      "description": "Whether this is a credit order (Ja), where goods go back to the supplier, or a regular order (Nee).",
+      "example": "Nee"
+    },
+    "Magazijn": {
+      "description": "The warehouse where the goods are received. Leave empty for services or when only one warehouse is used. Maximum 15 characters.",
+      "example": "01"
+    },
+    "Dagboek factuur": {
+      "description": "The purchase journal in which the invoice for this order is booked. Leave empty to use the default journal of the administration. Maximum 6 characters.",
+      "example": "IN"
+    },
+    "Projectnummer": {
+      "description": "The project the purchasing is charged to. Required when Type projectkosten is filled in. Maximum 15 characters.",
+      "example": "31508001"
+    },
+    "Regelnummer": {
+      "description": "The line number within the purchase order, which fixes the order of the lines. Leave empty to use the order in the file. A whole number from 1.",
+      "example": "1"
+    },
+    "Type item": {
+      "description": "What the line is about: Wst = work type, Art = article, Kst = cost, Sam = composition. Determines how AFAS processes the line.",
+      "example": "Art"
+    },
+    "Itemcode": {
+      "description": "The code of the article, work type, cost type or composition, matching Type item. Checked against the item table in the AFAS environment of this project. Maximum 40 characters.",
+      "example": "9901"
+    },
+    "Omschrijving regel": {
+      "description": "A different description for this line. Leave empty to use the item's standard description. Maximum 255 characters.",
+      "example": "Filter set type B"
+    },
+    "Eenheid": {
+      "description": "The unit in which the quantity is expressed, such as pieces, hours or box. Maximum 15 characters.",
+      "example": "stk"
+    },
+    "Aantal eenheden": {
+      "description": "The number of units per order unit — how many are in one box, set or package. Enter 1 when ordering per piece. Not negative.",
+      "example": "1"
+    },
+    "Aantal besteld": {
+      "description": "The quantity ordered. Not negative.",
+      "example": "10"
+    },
+    "Aantal ontvangen": {
+      "description": "The quantity already received. Enter 0 for an order on which nothing has been delivered yet. Can never be higher than the quantity ordered — in a conversion of open orders, the difference is exactly what is still expected.",
+      "example": "0"
+    },
+    "Prijs per eenheid": {
+      "description": "The purchase price per unit, excluding VAT, in the currency of the order. For an order this price is required: without a price the obligation cannot be determined. Not negative.",
+      "example": "200,00"
+    },
+    "BTW-tariefgroep": {
+      "description": "The VAT rate group of the line. Leave empty to use that of the item or the creditor. Maximum 4 characters.",
+      "example": "1"
+    },
+    "Regelkorting percentage": {
+      "description": "The discount percentage on this line. Leave empty or enter 0 when there is no discount. A value between 0 and 100.",
+      "example": "5"
+    },
+    "Afwijkende afleverdatum": {
+      "description": "A delivery date that applies to this line only. Leave empty when the date in the header applies. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "20-02-2026"
+    },
+    "Grootboekrekening": {
+      "description": "The general ledger account the costs are booked to. Required on a cost line (Type item Kst), because a cost line without an account cannot be booked. Maximum 16 characters. The tool does not check the number against the chart of accounts; check yourself that the account exists in AFAS.",
+      "example": "4300"
+    },
+    "Type projectkosten": {
+      "description": "The cost type in the project administration: MA = material, A = labour (Arbeid), ME = equipment (Materieel), OA = subcontracting (Onderaanneming), O = other (Overig). Only to be used with a project.",
+      "example": "MA"
+    }
+  },
+  "faq": []
+}

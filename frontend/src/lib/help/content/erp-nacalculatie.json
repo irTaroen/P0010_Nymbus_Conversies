@@ -1,0 +1,91 @@
+{
+  "general": [
+    "De nacalculatie bevat de werkelijk bestede uren, materialen en kosten per project: wat er daadwerkelijk is gerealiseerd, tegenover de begroting uit de voorcalculatie.",
+    "Elke regel in dit bestand is één nacalculatieregel: één boeking van een aantal op een project, op een datum, met een item (werksoort, artikel, kostensoort of samenstelling).",
+    "De projecten en items waarnaar je hier verwijst moeten ook in de conversie van de modules Projecten en Artikelen voorkomen — een nacalculatieregel op een onbekend project of item neemt AFAS niet aan.",
+    "De kolommen hieronder zijn afgeleid van de AFAS-specificatie van de nacalculatie (UpdateConnector PtRealization). Het importsjabloon voor deze module wordt nog opgeleverd."
+  ],
+  "columns": {
+    "Projectnummer": {
+      "description": "Het project waarop deze regel wordt geboekt. Moet exact overeenkomen met het projectnummer uit de conversie van de module Projecten; een boeking op een onbekend project neemt AFAS niet aan. Maximaal 15 tekens.",
+      "example": "31508001"
+    },
+    "Projectfase": {
+      "description": "De fase binnen het project waarop de regel betrekking heeft. Laat leeg wanneer het project niet in fasen is opgedeeld. Maximaal 15 tekens.",
+      "example": "01"
+    },
+    "Datum": {
+      "description": "De datum waarop de uren zijn besteed of de kosten zijn gemaakt — niet de datum van invoeren of factureren. Deze datum bepaalt in welke periode de realisatie valt. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "15-01-2026"
+    },
+    "Type item": {
+      "description": "Waar deze regel over gaat: Wst = Werksoort (uren), Art = Artikel, Kst = Kosten, Sam = Samenstelling. Bepaalt hoe AFAS de regel verwerkt en welke andere kolommen nodig zijn — bij Wst is de medewerker verplicht.",
+      "example": "Wst"
+    },
+    "Itemcode": {
+      "description": "De code van de werksoort, het artikel, de kostensoort of de samenstelling, passend bij wat in Type item staat. Wordt gecontroleerd tegen de itemtabel uit de AFAS-omgeving van dit project; klopt de code niet, dan toont de tool de geldige codes. Maximaal 40 tekens.",
+      "example": "UUR001"
+    },
+    "Aantal": {
+      "description": "Het gerealiseerde aantal: bij een werksoort het aantal uren, bij een artikel het aantal stuks. Decimalen zijn toegestaan, zodat een half uur als 0,5 kan worden aangeleverd.",
+      "example": "7,5"
+    },
+    "Eenheid": {
+      "description": "De eenheid waarin het aantal is uitgedrukt. Laat leeg om de standaardeenheid van het item te gebruiken. Maximaal 15 tekens.",
+      "example": "uur"
+    },
+    "Medewerker": {
+      "description": "Het medewerkernummer van degene die de uren heeft besteed. Verplicht bij Type item Wst, omdat uren in AFAS altijd aan een medewerker hangen. Moet overeenkomen met de conversie van de module Medewerkers. Maximaal 15 tekens.",
+      "example": "1001"
+    },
+    "Urensoort": {
+      "description": "De soort uren, waarmee AFAS onderscheid maakt tussen bijvoorbeeld normale, overwerk- en reisuren. Laat leeg wanneer het bronsysteem dit onderscheid niet kent. Maximaal 5 tekens.",
+      "example": "NOR"
+    },
+    "Omschrijving": {
+      "description": "Een korte toelichting op de regel: wat is er gedaan. Komt in AFAS mee als omschrijving van de realisatie en kan op een factuurspecificatie terechtkomen. Maximaal 255 tekens.",
+      "example": "Onderhoud installatie"
+    },
+    "Kostprijs": {
+      "description": "De interne kostprijs van deze regel per eenheid. Laat leeg om AFAS de kostprijs van het item of de medewerker te laten bepalen. Niet negatief.",
+      "example": "45,00"
+    },
+    "Verkoopprijs": {
+      "description": "Het te factureren tarief per eenheid. Verplicht wanneer de regel wordt doorbelast; laat anders leeg om AFAS het tarief uit de prijsafspraak te laten bepalen. Niet negatief.",
+      "example": "95,00"
+    },
+    "Kortingspercentage": {
+      "description": "Het kortingspercentage op de verkoopprijs van deze regel. Laat leeg of vul 0 in wanneer er geen korting is. Een waarde tussen 0 en 100.",
+      "example": "10"
+    },
+    "Doorbelasten": {
+      "description": "Of deze regel aan de klant wordt gefactureerd (Ja) of alleen intern wordt vastgelegd (Nee). Bij Ja is een verkoopprijs verplicht.",
+      "example": "Ja"
+    },
+    "Type projectkosten": {
+      "description": "De kostensoort waaronder de regel in de projectadministratie valt: MA = Materiaal, A = Arbeid, ME = Materieel, OA = Onderaanneming, O = Overig. Laat leeg wanneer het bronsysteem deze indeling niet kent.",
+      "example": "A"
+    },
+    "Kostenplaats": {
+      "description": "De kostenplaats waarop de regel wordt geboekt. Laat leeg om de kostenplaats van de medewerker of het project te gebruiken. Maximaal 30 tekens.",
+      "example": "KP100"
+    },
+    "Kostendrager": {
+      "description": "De kostendrager waarop de regel wordt geboekt. Laat leeg om de kostendrager van de medewerker of het project te gebruiken. Maximaal 30 tekens.",
+      "example": "KD100"
+    },
+    "Organisatorische eenheid": {
+      "description": "De organisatorische eenheid waarbinnen het werk is verricht. Wordt gecontroleerd tegen de organisatie-eenhedentabel uit de AFAS-omgeving van dit project. Maximaal 10 tekens.",
+      "example": "OE01"
+    },
+    "Geaccordeerd": {
+      "description": "Of de regel al is goedgekeurd (Ja) of nog ter beoordeling openstaat (Nee). Historische, reeds afgehandelde realisatie lever je doorgaans als Ja aan.",
+      "example": "Ja"
+    },
+    "Externe sleutel": {
+      "description": "De unieke identificatie van deze regel in het bronsysteem. Handig om na de conversie te kunnen herleiden waar een regel vandaan komt, en om dubbele import te voorkomen. Maximaal 40 tekens.",
+      "example": "NC-2026-000123"
+    }
+  },
+  "faq": []
+}

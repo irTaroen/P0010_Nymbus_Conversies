@@ -1,0 +1,13 @@
+{
+  "501342": [
+    {
+      "id": "hrm-medewerkers--vrijde-velden-medewerkers",
+      "label": "Vrijde velden Medewerkers",
+      "parentModuleId": "hrm-medewerkers",
+      "connector": "KnEmployee",
+      "createdAt": "2026-09-27T19:49:43Z",
+      "createdBy": "lokaal@localhost",
+      "createdByName": "Taroen Sitaldin"
+    }
+  ]
+}

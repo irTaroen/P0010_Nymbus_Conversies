@@ -1,0 +1,38 @@
+{
+  "general": [
+    "Artikelen zijn de producten of diensten die worden in- of verkocht. Hieronder is het importsjabloon voor artikelen op veldniveau beschreven.",
+    "Basiseenheid en BTW-Tariefgroep worden gevuld met een code uit het tabblad Hulptabellen van dit sjabloon — niet met de omschrijving ernaast."
+  ],
+  "columns": {
+    "Itemcode": {
+      "description": "De unieke code waarmee het artikel in AFAS wordt aangemaakt. Elke rij moet een andere itemcode hebben.",
+      "example": "ART001"
+    },
+    "Omschrijving": {
+      "description": "De omschrijving van het artikel, zoals die op offertes en facturen verschijnt.",
+      "example": "Bureaustoel model X"
+    },
+    "Voorraad bijhouden": {
+      "description": "Geeft aan of AFAS de voorraad van dit artikel bijhoudt: J voor ja, N voor nee.",
+      "example": "J"
+    },
+    "Artikelgroep": {
+      "description": "De code van de artikelgroep waaronder dit artikel valt, zoals die al in AFAS is ingericht.",
+      "example": "001"
+    },
+    "Basiseenheid": {
+      "description": "De eenheid waarin het artikel wordt geregistreerd, als code uit het tabblad Hulptabellen (bijv. STK, KG, DOZ, L).",
+      "example": "STK"
+    },
+    "BTW-Tariefgroep": {
+      "description": "De BTW-tariefgroep van het artikel, als code uit het tabblad Hulptabellen: 0 = nul, 1 = laag, 2 = hoog, Geen = geen btw, U = uitgesloten van btw/icp. Laat leeg wanneer onbekend.",
+      "example": "1"
+    }
+  },
+  "faq": [
+    {
+      "question": "Welke codes mag ik gebruiken bij Basiseenheid en BTW-Tariefgroep?",
+      "answer": "Precies de codes uit het tabblad Hulptabellen van dit sjabloon, niet de omschrijving ernaast — bijvoorbeeld STK voor Stuks of 1 voor Laag."
+    }
+  ]
+}

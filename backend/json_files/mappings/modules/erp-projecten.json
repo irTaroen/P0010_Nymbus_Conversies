@@ -1,0 +1,253 @@
+{
+  "group": "modules",
+  "connector": "PtProject",
+  "root": "PtProject",
+  "file": "501342_ERP 3_5fProjecten versie 3_2026-10-09_024352.xlsx",
+  "sheet": "Conversie",
+  "fields": [
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "PrId",
+      "label": "Project",
+      "mandatory": false,
+      "source": "column",
+      "column": "Projectnummer",
+      "columnIndex": 0
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "Prof",
+      "label": "Projectprofiel",
+      "mandatory": false,
+      "source": "column",
+      "column": "Profiel",
+      "columnIndex": 18
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "PrGp",
+      "label": "Projectgroep",
+      "mandatory": true,
+      "source": "column",
+      "column": "Projectgroep",
+      "columnIndex": 2
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "Ds",
+      "label": "Omschrijving",
+      "mandatory": false,
+      "source": "column",
+      "column": "Project Naam",
+      "columnIndex": 1
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "EmId",
+      "label": "Interne projectleider",
+      "mandatory": false,
+      "source": "column",
+      "column": "Interne projectleider",
+      "columnIndex": 17
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "DaSt",
+      "label": "Begindatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Begindatum",
+      "columnIndex": 6
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "DbId",
+      "label": "Verkooprelatie",
+      "mandatory": false,
+      "source": "column",
+      "column": "Debiteur Nummer",
+      "columnIndex": 4,
+      "lookup": {
+        "connector": "CON_ERP_Debiteuren",
+        "matchField": "Debiteur",
+        "valueField": "Debiteur",
+        "noun": "Debiteur"
+      }
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "PrSt",
+      "label": "Projectstatus",
+      "mandatory": false,
+      "source": "fixed",
+      "value": "200"
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "WaPc",
+      "label": "Loonsom (%)",
+      "mandatory": false,
+      "source": "fixed",
+      "value": 100
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "UnFi",
+      "label": "Administratie",
+      "mandatory": false,
+      "source": "column",
+      "column": "Administratie",
+      "columnIndex": 3
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "U0BAFF362DED84198B2DCF76EFA7AC7E4",
+      "label": "School object",
+      "mandatory": false,
+      "source": "column",
+      "column": "School Object",
+      "columnIndex": 19
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "U7499E47FA40144FC9C8779C6382A34FC",
+      "label": "Vakantie regio",
+      "mandatory": false,
+      "source": "column",
+      "column": "Vakantie Regio",
+      "columnIndex": 20
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "U4A6F6F489CC549C6B451B4747D48F00C",
+      "label": "Segment",
+      "mandatory": false,
+      "source": "column",
+      "column": "Segment",
+      "columnIndex": 14
+    },
+    {
+      "object": [
+        "PtProject"
+      ],
+      "field": "U51C5CCDCD96140D79A943BB53759F7FC",
+      "label": "Type project/object",
+      "mandatory": false,
+      "source": "column",
+      "column": "Type project/object",
+      "columnIndex": 13
+    },
+    {
+      "object": [
+        "PtProject",
+        "KnBasicAddressAdr"
+      ],
+      "field": "CoId",
+      "label": "Land",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land Adres",
+      "columnIndex": 12
+    },
+    {
+      "object": [
+        "PtProject",
+        "KnBasicAddressAdr"
+      ],
+      "field": "PbAd",
+      "label": "Postbusadres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "PtProject",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Ad",
+      "label": "Straat",
+      "mandatory": false,
+      "source": "column",
+      "column": "Straatnaam Adres",
+      "columnIndex": 7
+    },
+    {
+      "object": [
+        "PtProject",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmNr",
+      "label": "Huisnummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "Nummer Adres",
+      "columnIndex": 8
+    },
+    {
+      "object": [
+        "PtProject",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmAd",
+      "label": "Toev. aan huisnr.",
+      "mandatory": false,
+      "source": "column",
+      "column": "Nummer toevoeging Adres",
+      "columnIndex": 9
+    },
+    {
+      "object": [
+        "PtProject",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ZpCd",
+      "label": "Postcode",
+      "mandatory": false,
+      "source": "column",
+      "column": "Postcode Adres",
+      "columnIndex": 10
+    },
+    {
+      "object": [
+        "PtProject",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Rs",
+      "label": "Woonplaats",
+      "mandatory": false,
+      "source": "column",
+      "column": "Plaats Adres",
+      "columnIndex": 11
+    }
+  ],
+  "savedAt": "2026-10-09T00:47:26Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

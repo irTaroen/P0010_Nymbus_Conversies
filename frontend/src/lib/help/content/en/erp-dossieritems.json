@@ -1,0 +1,91 @@
+{
+  "general": [
+    "Dossier items (dossieritems) are the records that hang in AFAS on an employee, relation, project or invoice: correspondence, appointments, complaints, notifications and the attachments with them. Scanned purchase invoices also come along as a dossier item.",
+    "Each row is one dossier item. The column Type bestemming (destination type) determines what the item hangs on, and therefore which column below must be filled: for destination Medewerker the Medewerker column, for Organisatie/persoon the Organisatie of persoon column.",
+    "If you want to bring along documents, every row with a file name must also have the file itself supplied. Agree with Nymbus how the attachments will be transferred.",
+    "The columns below are derived from the AFAS specification of the dossier item (UpdateConnector KnSubject). The import template for this module is still to be delivered."
+  ],
+  "columns": {
+    "Type dossieritem": {
+      "description": "The number of the dossier item type, which determines what kind of record this is — for example a complaint, an appointment or a scanned invoice. The available types are set up in the AFAS environment; agree with Nymbus which numbers apply to this conversion.",
+      "example": "1"
+    },
+    "Onderwerp": {
+      "description": "The title of the dossier item: what it is about in one line. This is what users see in the dossier in AFAS. Maximum 255 characters.",
+      "example": "Complaint about delivery"
+    },
+    "Toelichting": {
+      "description": "The full text or explanation of the dossier item. A longer description can be included here; line breaks are retained.",
+      "example": "Delivery was incomplete; the supplier has promised to deliver the remainder."
+    },
+    "Instuurdatum": {
+      "description": "The date on which the dossier item was created or submitted. In a conversion this is the original date from the source system, not the date of conversion. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-02-2026"
+    },
+    "Instuurder": {
+      "description": "The name or number of the person who submitted the dossier item. Maximum 80 characters.",
+      "example": "1001"
+    },
+    "Verantwoordelijke": {
+      "description": "The name or number of the person who must handle the dossier item. Maximum 80 characters.",
+      "example": "1002"
+    },
+    "Prioriteit": {
+      "description": "How urgent the item is: H = Hoog (high), N = Normaal (normal), L = Laag (low). Leave empty to use the standard priority of the type.",
+      "example": "N"
+    },
+    "Begindatum": {
+      "description": "The date on which the item takes effect or the action starts. Leave empty when only the submission date matters. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-02-2026"
+    },
+    "Einddatum": {
+      "description": "The date on which the item expires or the action must be completed at the latest. May not be earlier than the start date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "15-02-2026"
+    },
+    "Afgehandeld": {
+      "description": "Whether the dossier item is completed (Ja) or still open (Nee). With Ja the date of handling is required; with Nee it must be left empty.",
+      "example": "Ja"
+    },
+    "Datum afgehandeld": {
+      "description": "The date on which the item was handled. Only to be filled in when Afgehandeld is Ja, and not earlier than the submission date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "05-02-2026"
+    },
+    "Type bestemming": {
+      "description": "What the dossier item hangs on, as a code: 1 = Geen (none), 2 = Medewerker (employee), 3 = Organisatie/persoon (organisation/person), 4 = Verkooprelatie (sales relation), and further 8, 9, 10, 11, 17 and 66 for the other destinations. This column determines which of the columns below must be filled.",
+      "example": "2"
+    },
+    "Bestemming": {
+      "description": "The free designation of the destination, for destination types that have no own column in this template. Leave empty when you use Medewerker or Organisatie of persoon. Maximum 50 characters.",
+      "example": "1001"
+    },
+    "Organisatie of persoon": {
+      "description": "The number of the organisation or person to which the item hangs. Required with Type bestemming 3. Maximum 15 characters.",
+      "example": "50014"
+    },
+    "Medewerker": {
+      "description": "The employee number to which the item hangs. Required with Type bestemming 2, and must match the conversion of the Employees module. Maximum 15 characters.",
+      "example": "1001"
+    },
+    "Projectnummer": {
+      "description": "The project to which the dossier item hangs, when it is project-bound. Maximum 15 characters.",
+      "example": "31508001"
+    },
+    "Contractnummer": {
+      "description": "The contract to which the dossier item hangs, when it belongs to a contract. Must match the conversion of the Financial contracts module. Maximum 16 characters.",
+      "example": "CON0001"
+    },
+    "Organisatorische eenheid": {
+      "description": "The organisational unit under which the item falls. Checked against the organisational unit table from the AFAS environment of this project. Maximum 10 characters.",
+      "example": "OE01"
+    },
+    "Geblokkeerd": {
+      "description": "Whether the dossier item is blocked for further editing (Ja) or is simply accessible (Nee).",
+      "example": "Nee"
+    },
+    "Bestandsnaam bijlage": {
+      "description": "The name of the attached file, including extension. If there is a file name here, the file itself must also be supplied; agree with Nymbus how. Maximum 255 characters.",
+      "example": "klacht-20260201.pdf"
+    }
+  },
+  "faq": []
+}

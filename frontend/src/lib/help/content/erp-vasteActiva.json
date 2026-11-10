@@ -1,0 +1,98 @@
+{
+  "general": [
+    "Activa en activagroepen zorgen samen voor de activastaat en verwerken de afschrijvingen. In de activagroep leg je de algemene instellingen vast — afschrijvingsmethode, aantal jaren en de journaalstructuur — en bij het aanmaken van een individueel actief koppel je dat actief aan zo'n groep. Daarmee ligt de structuur voor de toekomst vast.",
+    "Activagroepen kunnen ook geïmporteerd worden, maar de ervaring is dat ze handmatig invoeren en daarna blokkeren effectiever is. Leg de activagroepen dus eerst in AFAS vast; dit bestand bevat alleen de activa zelf.",
+    "Hieronder is het importsjabloon voor de activa op veldniveau beschreven. Het tabblad 'Conversie' bevat de activadata en het tabblad 'Hulptabel' kun je gebruiken om bepaalde kolommen te vullen. Het sjabloon bevat één voorbeeldregel, waarvan de waarden hieronder als voorbeeld zijn overgenomen.",
+    "De kolommen met (F) horen bij de fiscale afschrijving. Heb je activa die al gedeeltelijk zijn afgeschreven in het bronsysteem, gebruik dan de drie initieel-kolommen (Afschrijving initieel, Jaar en Periode) om die beginsituatie over te nemen."
+  ],
+  "columns": {
+    "Naam actief": {
+      "description": "De omschrijving waaronder het actief in de administratie herkenbaar is. Gebruik een duidelijke, eenduidige naam en houd de naamgeving consistent wanneer je meerdere gelijksoortige activa importeert.",
+      "example": "iPhone type X"
+    },
+    "Datum aanschaf": {
+      "description": "De datum waarop het actief is aangeschaft. Deze datum wordt gebruikt voor de financiële verantwoording en is de basis voor de berekening van de afschrijvingen. Moet gelijk aan of eerder zijn dan de datum ingebruikname en dan de begindatum afschrijving. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2022"
+    },
+    "Datum in gebruik": {
+      "description": "De datum waarop het actief daadwerkelijk in gebruik is genomen — de relevante datum voor de start van de afschrijving wanneer er geen afwijkende begindatum afschrijving is opgegeven. Mag niet eerder liggen dan de aanschafdatum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2022"
+    },
+    "Verbijzondering 1": {
+      "description": "De eerste verbijzondering die op het actief van toepassing is (kostenplaats, kostendrager of een andere as). Verplicht wanneer op de rekening de optie 'Verbijzonderen aan' is ingeschakeld; laat leeg wanneer verbijzondering niet van toepassing is. Raadpleeg de administratie-instellingen voor de geldige waarden — de tool kan die niet voor je controleren."
+    },
+    "Verbijzondering 2": {
+      "description": "De tweede verbijzondering op het actief. Verplicht wanneer de rekening een tweede verbijzondering vereist; verder dezelfde regels als Verbijzondering 1."
+    },
+    "Administratie": {
+      "description": "Het administratienummer in AFAS waaronder dit actief wordt vastgelegd. Activagroepcodes verschillen per administratie, dus deze kolom is vooral nodig bij een conversie met meerdere administraties. Laat leeg wanneer je met één administratie werkt. Wordt gecontroleerd tegen de administratietabel uit de AFAS-omgeving van dit project. AFAS schrijft de codes met een voorloopnul (01, 02); een 1 uit Excel wordt als dezelfde administratie gelezen.",
+      "example": "1"
+    },
+    "Activagroep": {
+      "description": "De activagroepcode waaraan het actief wordt toegewezen. De activagroep bepaalt onder meer de grootboekrekeningen voor aanschaf, afschrijving en boekwaarde. Activagroepen worden per administratie geregistreerd en hebben per administratie een eigen code, dus controleer welke codes in de juiste administratie beschikbaar zijn voordat je importeert.",
+      "example": "1"
+    },
+    "Aanschafwaarde": {
+      "description": "Het totale aanschafbedrag van het actief, inclusief de bijkomende kosten die worden geactiveerd. Dit bedrag is de basis voor de berekening van de afschrijvingen. Voer een bedrag in zonder valutasymbool en zonder duizendtalscheiding; 1250.00 en 1250,00 worden beide gelezen.",
+      "example": "1000"
+    },
+    "Restwaarde (F)": {
+      "description": "De fiscale restwaarde van het actief aan het einde van de gebruiksduur. Tot aan de restwaarde wordt afgeschreven; het resterende bedrag blijft op de balans staan. Kan niet hoger zijn dan de aanschafwaarde. Laat leeg of vul 0 wanneer er geen restwaarde is.",
+      "example": "0"
+    },
+    "Begindatum afschrijving (F)": {
+      "description": "De datum waarop de fiscale afschrijving voor de eerste keer plaatsvindt: de startdatum van de afschrijvingscyclus. Mag niet eerder liggen dan de aanschafdatum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2022"
+    },
+    "Afschrijvingstermijn (F)": {
+      "description": "De fiscale gebruiksduur van het actief in hele jaren. Op basis van deze termijn wordt het afschrijvingspercentage per jaar berekend wanneer de methode 'Percentage lineaire afschrijving' (P) is gekozen. Voer een positief geheel getal in; raadpleeg de fiscale regelgeving of je belastingadviseur voor de termijn per activacategorie.",
+      "example": "5"
+    },
+    "Afschrijvingsmethode (F)": {
+      "description": "De fiscale methode waarmee het actief wordt afgeschreven; de methode bepaalt de systematiek van de jaarlijkse afschrijving. Gebruik een code uit de Hulptabel: L = Bedrag lineaire afschrijving, M = Degressieve methode, D = Direct afschrijven, P = Percentage lineaire afschrijving, B = Percentage van de boekwaarde, W = Willekeurig afschrijven.",
+      "example": "P"
+    },
+    "Afschrijving initieel (F)": {
+      "description": "Het bedrag dat op dit actief al is afgeschreven vóór de import, wanneer een actief in het bronsysteem al gedeeltelijk is afgeschreven en de lopende afschrijving wordt overgenomen. Kan niet hoger zijn dan de aanschafwaarde. Vul je dit, dan zijn Jaar (initieel) en Periode (initieel) ook nodig; laat alle drie leeg wanneer er nog niet is afgeschreven.",
+      "example": "200"
+    },
+    "Fiscale afschrijving (F)": {
+      "description": "Of op het actief fiscaal wordt afgeschreven. Bij J doet het actief mee in de fiscale afschrijvingscyclus, bij N niet.",
+      "example": "J"
+    },
+    "Jaar (initieel) (F)": {
+      "description": "Het kalenderjaar tot wanneer er in het bronsysteem al is afgeschreven, samen met Periode (initieel) de beginsituatie van de afschrijving. Verplicht wanneer Afschrijving initieel is opgegeven. Voer het viercijferige jaartal in.",
+      "example": "2022"
+    },
+    "Periode (initieel) (F)": {
+      "description": "Het periodenummer (de maand, 1 tot en met 12) tot en met wanneer er in het bronsysteem al is afgeschreven. Verplicht wanneer Afschrijving initieel is opgegeven.",
+      "example": "12"
+    }
+  },
+  "faq": [
+    {
+      "question": "Moet ik voor elk actief een apart activum maken?",
+      "answer": "Bij voorkeur registreer je zoveel mogelijk activa apart. Het verdichten van meerdere activa op één activanummer geeft later onduidelijkheid over de inhoud en over eventuele correcties."
+    },
+    {
+      "question": "Heeft ieder actief een activagroep nodig?",
+      "answer": "Ja, een activagroep is verplicht."
+    },
+    {
+      "question": "De activagroep bestaat niet, maar is wel zichtbaar bij andere activa.",
+      "answer": "Activagroepen registreer je per administratie, en binnen iedere administratie heeft een activagroep een eigen code. Werk je met verschillende administraties? Controleer dan eerst of je de juiste activagroep uit de juiste administratie voor ogen hebt, en of er groepen geblokkeerd zijn."
+    },
+    {
+      "question": "Hoe ga ik om met historische afschrijvingen in voorgaande jaren?",
+      "answer": "Gebruik de kolommen Afschrijving initieel, Jaar (initieel) en Periode (initieel) en geef daar het bedrag, de periode en het jaar op. Voorbeeld: je start per januari 2030 met AFAS en hebt al afgeschreven tot en met december 2029, in totaal 1000 EUR. Vul dan periode 12, jaar 2029 en als afschrijving het bedrag 1000 in."
+    },
+    {
+      "question": "Kan ik activa toevoegen zonder dat er straks nog afgeschreven moet worden?",
+      "answer": "Ja. Dat komt vaak voor bij activa zonder restwaarde of bij activa die buiten gebruik zijn gesteld of verkocht. Je kunt historische activa naar AFAS meenemen zonder afschrijvingen door de situatie rondom historische afschrijvingen te gebruiken — zie de vorige vraag."
+    },
+    {
+      "question": "Waarom controleert de tool mijn activagroep en verbijzondering niet?",
+      "answer": "Die codes worden per administratie in jouw eigen AFAS-omgeving ingericht, en die omgeving kan de tool nog niet uitlezen. De tool controleert daarom alleen of er een getal of code staat, niet of die in jouw administratie bestaat. Controleer die kolommen dus zelf in AFAS voordat je het bestand aanlevert."
+    }
+  ]
+}

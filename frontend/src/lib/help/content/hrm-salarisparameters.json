@@ -1,0 +1,29 @@
+{
+  "general": [
+    "Salarisparameters zijn medewerkerspecifieke waarden die worden gebruikt in de salarisberekening, zoals vaste toeslagen, afwijkende grondslagen of persoonlijke toekenningen.",
+    "Hieronder is het importsjabloon op kolomniveau beschreven, met voorbeelddata om het invullen zo gemakkelijk mogelijk te maken."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Medewerkernummer in AFAS. Moet overeenkomen met de kolom Medewerker uit het medewerkersbestand.",
+      "example": "100001"
+    },
+    "Parameter": {
+      "description": "Numerieke code van de salarisparameter. Inrichtingsafhankelijk — raadpleeg de salarisparameterstamgegevens in AFAS.",
+      "example": "110284604"
+    },
+    "Begindatum": {
+      "description": "Ingangsdatum van de parameter. Gebruik de livegangdatum van AFAS, bijvoorbeeld 01-01-2026.",
+      "example": "01-10-2025"
+    },
+    "Einddatum": {
+      "description": "Laat leeg bij doorlopende toekenning. Vul in bij tijdelijk toegekende waarden.",
+      "example": "30-09-2028"
+    },
+    "Waarde": {
+      "description": "De waarde: een numeriek bedrag in euro's of een indicator (J/N). Het type is afhankelijk van de parameterdefinitie in AFAS.",
+      "example": "4000 / J"
+    }
+  },
+  "faq": []
+}

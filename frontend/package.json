@@ -1,0 +1,39 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3010",
+    "build": "next build",
+    "start": "next start -p 3010",
+    "lint": "eslint",
+    "help:sync": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/sync-module-help.mts",
+    "help:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/sync-module-help.mts --check",
+    "templates:sync": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/sync-template-explanations.mts",
+    "templates:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/sync-template-explanations.mts --check",
+    "templates:translate": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/translate-templates.mts",
+    "templates:translate:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/translate-templates.mts --check",
+    "check:control-bytes": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-control-bytes.mts"
+  },
+  "dependencies": {
+    "@tanstack/react-virtual": "^3.14.3",
+    "exceljs": "^4.4.0",
+    "jspdf": "^4.2.1",
+    "jszip": "^3.10.1",
+    "lucide-react": "^1.21.0",
+    "next": "16.4.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

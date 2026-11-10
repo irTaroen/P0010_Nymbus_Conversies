@@ -1,0 +1,250 @@
+{
+  "connector": "KnQuotation",
+  "root": "KnQuotation",
+  "file": "501281_ERP_6_Voorcalculatie_2026-11-04_114405.xlsx",
+  "sheet": "Conversie",
+  "fields": [
+    {
+      "object": [
+        "KnQuotation"
+      ],
+      "field": "QuId",
+      "label": "Nummer offerte",
+      "mandatory": false,
+      "source": "column",
+      "column": "Offerte",
+      "columnIndex": 1,
+      "key": true
+    },
+    {
+      "object": [
+        "KnQuotation"
+      ],
+      "field": "QuDa",
+      "label": "Datum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Begindatum Offerte",
+      "columnIndex": 2,
+      "key": true
+    },
+    {
+      "object": [
+        "KnQuotation"
+      ],
+      "field": "PrId",
+      "label": "Project",
+      "mandatory": false,
+      "source": "column",
+      "column": "Projectnummer",
+      "columnIndex": 0,
+      "key": true,
+      "lookup": {
+        "connector": "CON_ERP_Projecten",
+        "matchField": "Project",
+        "valueField": "Project",
+        "noun": "Project"
+      }
+    },
+    {
+      "object": [
+        "KnQuotation"
+      ],
+      "field": "VaDa",
+      "label": "Geldigheidsdatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Einddatum Offerte",
+      "columnIndex": 3,
+      "key": true
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "VaIt",
+      "label": "Type item",
+      "mandatory": true,
+      "source": "column",
+      "column": "Type item",
+      "columnIndex": 6,
+      "valueMap": {
+        "Wst": "1",
+        "Art": "2",
+        "Kst": "6",
+        "Sam": "7"
+      }
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "ItCd",
+      "label": "Itemcode",
+      "mandatory": false,
+      "source": "column",
+      "column": "Itemcode",
+      "columnIndex": 7
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UA4C1F38C4767EA1B16B571AF1B33EAA2",
+      "label": "Werksoort",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Werksoort",
+      "columnIndex": 15
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U49E4BD6F4682C83B5C2DDD91BE3BAEED",
+      "label": "Afwijkende factuurtekst",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Afwijkende Factuurtekst",
+      "columnIndex": 12
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UE1D7ED504E80C1FD7400B39F7BF65ACF",
+      "label": "Planuren per week/beurt",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Planuren",
+      "columnIndex": 10
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U5B16130742B0275A821FC897815E9786",
+      "label": "Facturatie",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Facturatie",
+      "columnIndex": 8
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UC7CD98FD4EBDEBC91BB29093A5CCB30A",
+      "label": "Frequentie",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Frequentie Uitvoer",
+      "columnIndex": 9
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UC31265064AF8444A7B8B92A35976693D",
+      "label": "Onderaannemer",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Onderaannemer",
+      "columnIndex": 16
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "UDB1AFF3949738A2D91F24B862713ACA4",
+      "label": "Werkinstructie",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Werkinstructies",
+      "columnIndex": 13
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U7850903E41E607EE7325C3A7CB8A0E03",
+      "label": "Status",
+      "mandatory": false,
+      "source": "fixed",
+      "value": "2"
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U734366F14163E86CA6E8D98C6E5C872A",
+      "label": "Einddatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Einddatum Regel",
+      "columnIndex": 5
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U8D2F47074CCF67717BB33C89AC8987F9",
+      "label": "Begindatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Begindatum Regel",
+      "columnIndex": 4
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U9C679752E4334B64AE3E5FD3C326F304",
+      "label": "Afwijkende prijs",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO Afwijkende Prijs",
+      "columnIndex": 14
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U447F219F4C1E4BBE5B5993B2E8FE7B60",
+      "label": "Plantype",
+      "mandatory": false,
+      "source": "column",
+      "column": "APPREO OE",
+      "columnIndex": 11
+    },
+    {
+      "object": [
+        "KnQuotation",
+        "KnQuotationLine"
+      ],
+      "field": "U53793860D71A484882D0724929004712",
+      "label": "Calculatieuren",
+      "mandatory": false,
+      "source": "column",
+      "column": "Vrij veld 2",
+      "columnIndex": 18
+    }
+  ],
+  "savedAt": "2026-11-04T10:47:13Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

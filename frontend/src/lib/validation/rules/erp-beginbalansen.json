@@ -1,0 +1,202 @@
+{
+  "columns": [
+    {
+      "column": "Administratie",
+      "type": "integer",
+      "rules": [
+        { "check": "required" },
+        { "check": "min", "value": 1 },
+        {
+          "check": "codetabel",
+          "tableRef": "Administraties",
+          "message": "Onbekende administratie",
+          "messageEn": "Unknown administration"
+        }
+      ]
+    },
+    {
+      "column": "Boekjaar",
+      "type": "integer",
+      "rules": [
+        { "check": "required" },
+        { "check": "min", "value": 2000 },
+        { "check": "max", "value": 2100 }
+      ]
+    },
+    {
+      "column": "Periode",
+      "type": "integer",
+      "rules": [
+        { "check": "required" },
+        { "check": "min", "value": 1 },
+        { "check": "max", "value": 53 }
+      ]
+    },
+    {
+      "column": "Dagboek",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 6 }
+      ]
+    },
+    {
+      "column": "Nummer journaalpost",
+      "type": "integer",
+      "rules": [
+        { "check": "required" },
+        { "check": "min", "value": 1 }
+      ]
+    },
+    {
+      "column": "Kenmerk rekening",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "enum",
+          "values": ["1", "2", "3"],
+          "message": "Moet 1 (Grootboekrekening), 2 (Debiteur) of 3 (Crediteur) zijn",
+          "messageEn": "Must be 1 (general ledger account), 2 (debtor) or 3 (creditor)"
+        }
+      ]
+    },
+    {
+      "column": "Rekeningnummer",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 16 }
+      ]
+    },
+    {
+      "column": "Datum boeking",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Boekstukdatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Boekstuknummer",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 32 }]
+    },
+    {
+      "column": "Omschrijving boeking",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 255 }]
+    },
+    {
+      "column": "Bedrag debet",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Bedrag credit",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Factuurnummer",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 12 }]
+    },
+    {
+      "column": "Vervaldatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "BTW-code",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 3 }]
+    },
+    {
+      "column": "Valuta",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 3 }]
+    },
+    {
+      "column": "Koers",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Betalingskenmerk",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 32 }]
+    },
+    {
+      "column": "Blokkeren voor betaling",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["Ja", "Nee"],
+          "message": "Moet Ja of Nee zijn",
+          "messageEn": "Must be Ja or Nee"
+        }
+      ]
+    },
+    {
+      "column": "Projectnummer",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    }
+  ],
+  "crossField": [
+    {
+      "if": { "column": "Bedrag debet", "op": "isEmpty" },
+      "then": { "column": "Bedrag credit", "op": "isNotEmpty" },
+      "message": "Vul een bedrag debet of een bedrag credit in",
+      "messageEn": "Fill in a debit amount or a credit amount"
+    },
+    {
+      "if": { "column": "Bedrag credit", "op": "isEmpty" },
+      "then": { "column": "Bedrag debet", "op": "isNotEmpty" },
+      "message": "Vul een bedrag debet of een bedrag credit in",
+      "messageEn": "Fill in a debit amount or a credit amount"
+    },
+    {
+      "if": { "column": "Bedrag debet", "op": ">", "value": 0 },
+      "then": { "column": "Bedrag credit", "op": "isEmpty" },
+      "flag": "Bedrag credit",
+      "message": "Een regel is debet of credit, niet beide",
+      "messageEn": "A line is debit or credit, not both"
+    },
+    {
+      "if": { "column": "Kenmerk rekening", "op": "!=", "value": "1" },
+      "then": { "column": "Vervaldatum", "op": "isNotEmpty" },
+      "message": "Bij een debiteur- of crediteurpost is de vervaldatum verplicht",
+      "messageEn": "For a debtor or creditor entry the due date is required"
+    },
+    {
+      "if": { "column": "Kenmerk rekening", "op": "!=", "value": "1" },
+      "then": { "column": "Factuurnummer", "op": "isNotEmpty" },
+      "message": "Bij een debiteur- of crediteurpost is het factuurnummer verplicht",
+      "messageEn": "For a debtor or creditor entry the invoice number is required"
+    },
+    {
+      "if": { "column": "Boekstukdatum", "op": "isNotEmpty" },
+      "then": {
+        "column": "Vervaldatum",
+        "op": ">=",
+        "value": { "column": "Boekstukdatum" }
+      },
+      "message": "Mag niet eerder liggen dan de boekstukdatum",
+      "messageEn": "Must not be earlier than the voucher date"
+    },
+    {
+      "if": { "column": "Valuta", "op": "isNotEmpty" },
+      "then": { "column": "Koers", "op": "isNotEmpty" },
+      "message": "Bij een valuta is de koers verplicht",
+      "messageEn": "For a foreign currency the exchange rate is required"
+    }
+  ]
+}

@@ -1,0 +1,636 @@
+@import "tailwindcss";
+
+/* ─── Nymbus ──────────────────────────────────────────────────────────────────
+   Soft neumorphism on a warm cream canvas, a warm-purple night theme, Poppins,
+   and one brand colour: cloud-blue. The whole system is docs/nymbus-styling.md;
+   this file is its §3.6 minus the shadcn/Kairos-only parts, plus the few
+   additions this app needs (marked "Conversies:").
+
+   Rules that matter when editing a component:
+   - every colour, shadow and surface comes from a --k-* variable;
+   - depth, not borders: separate with paired shadows;
+   - components never branch on theme — fix the token here instead. */
+
+/* Dark mode via the data-theme attribute the theme script sets on <html>. */
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+@theme inline {
+  --font-sans: var(--font-poppins), system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Radius scale — Nymbus overrides Tailwind's (rounded-lg is 16px, not 8px). */
+  --radius-pill: 9999px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 22px;
+  --radius-3xl: 28px;
+  --radius-4xl: 32px;
+
+  /* Surface + text */
+  --color-k-bg: var(--k-bg);
+  --color-k-shade: var(--k-shade);
+  --color-k-highlight: var(--k-highlight);
+  --color-k-divider: var(--k-divider);
+  --color-k-tint: var(--k-tint);
+  --color-k-text-primary: var(--k-text-primary);
+  --color-k-text-secondary: var(--k-text-secondary);
+  --color-k-text-tertiary: var(--k-text-tertiary);
+
+  /* Brand — cloud-blue */
+  --color-k-cloud-light: var(--k-cloud-light);
+  --color-k-cloud-mid: var(--k-cloud-mid);
+  --color-k-cloud-deep: var(--k-cloud-deep);
+
+  /* Semantic pairs */
+  --color-k-amber-fg: var(--k-amber-fg);
+  --color-k-amber-bg: var(--k-amber-bg);
+  --color-k-red-fg: var(--k-red-fg);
+  --color-k-red-bg: var(--k-red-bg);
+  --color-k-purple-fg: var(--k-purple-fg);
+  --color-k-purple-bg: var(--k-purple-bg);
+  --color-k-orange-fg: var(--k-orange-fg);
+  --color-k-orange-bg: var(--k-orange-bg);
+  --color-k-cyan-fg: var(--k-cyan-fg);
+  --color-k-cyan-bg: var(--k-cyan-bg);
+  --color-k-green-fg: var(--k-green-fg);
+  --color-k-green-bg: var(--k-green-bg);
+  --color-k-grey-fg: var(--k-grey-fg);
+  --color-k-grey-bg: var(--k-grey-bg);
+  --color-k-yellow-fg: var(--k-yellow-fg);
+  --color-k-yellow-bg: var(--k-yellow-bg);
+
+  /* Neumorphic shadows — compose from k-highlight/k-shade, so they re-light per theme */
+  --shadow-raised: var(--k-shadow-raised);
+  --shadow-raised-sm: var(--k-shadow-raised-sm);
+  --shadow-raised-xs: var(--k-shadow-raised-xs);
+  --shadow-lifted: var(--k-shadow-lifted);
+  --shadow-lifted-sm: var(--k-shadow-lifted-sm);
+  --shadow-inset: var(--k-shadow-inset);
+  --shadow-inset-sm: var(--k-shadow-inset-sm);
+  --shadow-modal: var(--k-shadow-modal);
+  --shadow-hover-card: var(--k-shadow-hover-card);
+  --shadow-card-active: var(--k-shadow-card-active);
+}
+
+/* ─── Tokens — light theme ───────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+
+  /* Surface */
+  --k-bg: #f5f0eb; /* warm cream canvas */
+  --k-shade: #c9c2b8; /* shadow side — darker than bg */
+  --k-highlight: #ffffff; /* highlight side — lighter than bg */
+  --k-divider: #d9d2c8;
+  /* Conversies: the ground of a hovered or selected row in a dense data table, where
+     a per-row shadow can't be drawn (a <tr> takes no box-shadow) and would cost a
+     repaint per row. A shade of the canvas, not a new colour. */
+  --k-tint: color-mix(in srgb, var(--k-shade) 22%, var(--k-bg));
+
+  /* Text */
+  --k-text-primary: #31344b; /* deep slate-blue */
+  --k-text-secondary: #6b6f8e;
+  --k-text-tertiary: #9a9db4; /* em-dashes, placeholders */
+
+  /* Brand — cloud-blue (the only brand-owned colour) */
+  --k-cloud-light: #cfe8f5;
+  --k-cloud-mid: #a5d3ec;
+  --k-cloud-deep: #5fa8d3;
+
+  /* Semantic pairs: fg for text/icons/dots, bg for tinted fills */
+  --k-amber-fg: #b87333;  --k-amber-bg: #f0d9b8;  /* incomplete, pending */
+  --k-red-fg: #b04545;    --k-red-bg: #f0c8c8;    /* error, rejected */
+  --k-purple-fg: #7a5fb3; --k-purple-bg: #d8cfeb; /* done / afgerond */
+  --k-orange-fg: #c4763a; --k-orange-bg: #f2d5b8; /* deviation */
+  --k-cyan-fg: #4a8fa8;   --k-cyan-bg: #c8e0e8;   /* informational, live */
+  --k-green-fg: #5a8a4a;  --k-green-bg: #d2e2c0;  /* all clear */
+  --k-grey-fg: #6b6f7e;   --k-grey-bg: #dcdbd4;   /* neutral, unknown */
+  --k-yellow-fg: #a38a2a; --k-yellow-bg: #ece1b8; /* needs attention */
+
+  /* Shadow primitives — never override these per theme; change highlight/shade. */
+  --k-shadow-raised: -6px -6px 12px var(--k-highlight), 6px 6px 12px var(--k-shade);
+  --k-shadow-raised-sm: -4px -4px 8px var(--k-highlight), 4px 4px 8px var(--k-shade);
+  --k-shadow-raised-xs: -2px -2px 4px var(--k-highlight), 2px 2px 4px var(--k-shade);
+  --k-shadow-lifted: -8px -8px 16px var(--k-highlight), 8px 8px 16px var(--k-shade);
+  --k-shadow-lifted-sm: -6px -6px 12px var(--k-highlight), 6px 6px 12px var(--k-shade);
+  --k-shadow-inset: inset -4px -4px 8px var(--k-highlight), inset 4px 4px 8px var(--k-shade);
+  --k-shadow-inset-sm: inset -3px -3px 6px var(--k-highlight), inset 3px 3px 6px var(--k-shade);
+
+  /* Hover card — lifted-sm + a soft blue glow */
+  --k-shadow-hover-card:
+    -6px -6px 12px var(--k-highlight), 6px 6px 12px var(--k-shade),
+    0 0 18px color-mix(in srgb, var(--k-cloud-deep) 22%, transparent);
+
+  /* Pressed/selected card. Light mode: plain inset. */
+  --k-shadow-card-active: var(--k-shadow-inset);
+
+  /* Modal — raised, with a tighter half-strength highlight so it doesn't glow
+     over the dimmed backdrop. */
+  --k-shadow-modal:
+    -4px -4px 8px color-mix(in srgb, var(--k-highlight) 50%, transparent),
+    6px 6px 12px var(--k-shade);
+
+  /* Ambient background — none in light mode */
+  --k-ambient: none;
+}
+
+/* ─── Tokens — dark theme ──────────────────────────────────────────────────────
+   Warm-purple-black, NOT a cold-blue inversion of light. Same depth language,
+   different room. */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --k-bg: #1a1626;
+  --k-shade: #0f0c18;
+  --k-highlight: #2a2438;
+  --k-divider: #2f2940;
+  --k-tint: color-mix(in srgb, var(--k-highlight) 55%, var(--k-bg));
+
+  /* Softer inset: the near-black shade makes pressed wells read as holes. */
+  --k-shadow-inset: inset -3px -3px 6px var(--k-highlight), inset 3px 3px 6px #15111f;
+  --k-shadow-inset-sm: inset -2px -2px 4px var(--k-highlight), inset 2px 2px 4px #15111f;
+
+  /* Selected card keeps its raised outer footprint, inset on top. */
+  --k-shadow-card-active:
+    -6px -6px 12px var(--k-highlight), 6px 6px 12px var(--k-shade),
+    var(--k-shadow-inset);
+
+  --k-shadow-hover-card:
+    -6px -6px 12px var(--k-highlight), 6px 6px 12px var(--k-shade),
+    0 0 22px color-mix(in srgb, var(--k-cloud-deep) 30%, transparent);
+
+  --k-text-primary: #e8e4f0;
+  --k-text-secondary: #a8a2bc;
+  --k-text-tertiary: #6c6580;
+
+  /* Brand shifts brighter to glow against dark */
+  --k-cloud-light: #7ac4e8;
+  --k-cloud-mid: #5fa8d3;
+  --k-cloud-deep: #a5d8f0;
+
+  /* Brighter fg, deep tinted bg so inset wells still recede */
+  --k-amber-fg: #f5a04f;  --k-amber-bg: #3a2818;
+  --k-red-fg: #e87878;    --k-red-bg: #3a1f1f;
+  --k-purple-fg: #b794f6; --k-purple-bg: #2e2348;
+  --k-orange-fg: #f59e4f; --k-orange-bg: #3a2614;
+  --k-cyan-fg: #7ac4e0;   --k-cyan-bg: #1a2c32;
+  --k-green-fg: #9bcf85;  --k-green-bg: #1f2e1a;
+  --k-grey-fg: #9d9db4;   --k-grey-bg: #28253a;
+  --k-yellow-fg: #f5d76e; --k-yellow-bg: #352c14;
+
+  /* Ambient cosmic glow — body background-image */
+  --k-ambient:
+    radial-gradient(ellipse at 20% 10%, rgba(139, 92, 246, 0.12), transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(245, 158, 79, 0.08), transparent 50%),
+    radial-gradient(ellipse at 60% 50%, rgba(245, 215, 110, 0.05), transparent 60%);
+}
+
+@layer base {
+  * {
+    border-color: var(--k-divider);
+  }
+  html {
+    font-family: var(--font-sans);
+  }
+  body {
+    background-color: var(--k-bg);
+    background-image: var(--k-ambient);
+    background-attachment: fixed;
+    color: var(--k-text-primary);
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--k-cloud-mid) 45%, transparent);
+  }
+}
+
+/* ─── Component classes ─────────────────────────────────────────────────────── */
+@layer components {
+  .neu-form-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--k-text-secondary);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .neu-form-field {
+    background: var(--k-bg);
+    box-shadow: var(--k-shadow-inset-sm);
+    border: none !important;
+    border-radius: 99px;
+    padding: 11px 18px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--k-text-primary);
+    width: 100%;
+    text-align: left;
+    transition: box-shadow 0.2s ease;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .neu-form-field:focus,
+  .neu-form-field:focus-visible,
+  .neu-form-field[data-state="open"],
+  .neu-form-field[aria-expanded="true"] {
+    outline: none;
+    box-shadow: var(--k-shadow-inset-sm), 0 0 0 2px var(--k-cloud-light);
+  }
+  .neu-form-field[data-placeholder],
+  .neu-form-field:placeholder-shown,
+  .neu-form-field .placeholder {
+    color: var(--k-text-tertiary);
+    font-weight: 400;
+  }
+  .neu-form-field svg {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    color: var(--k-text-tertiary);
+  }
+  .neu-form-field[aria-expanded="true"] svg,
+  .neu-form-field:focus svg {
+    color: var(--k-cloud-deep);
+  }
+
+  /* Quiet 36px icon button: flat at rest, inset + cloud-deep on hover. */
+  .neu-icon-btn {
+    background: var(--k-bg);
+    box-shadow: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    color: var(--k-text-tertiary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: box-shadow 0.2s ease, color 0.2s ease;
+  }
+  .neu-icon-btn:hover:not(:disabled) {
+    box-shadow: var(--k-shadow-inset-sm);
+    color: var(--k-cloud-deep);
+  }
+  .neu-icon-btn:focus-visible {
+    outline: 2px solid var(--k-cloud-mid);
+    outline-offset: 2px;
+  }
+  .neu-icon-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+  /* "On" state for header toggles: pressed in deeper, tinted cloud-deep. */
+  .neu-icon-btn[data-active="true"] {
+    box-shadow: var(--k-shadow-inset);
+    color: var(--k-cloud-deep);
+  }
+  @media (pointer: coarse) {
+    .neu-icon-btn {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  .neu-action-primary {
+    background: var(--k-bg);
+    box-shadow: var(--k-shadow-raised);
+    color: var(--k-text-primary);
+    border: none;
+    outline: none;
+    border-radius: 99px;
+    padding: 11px 22px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: box-shadow 0.25s ease, transform 0.2s ease, color 0.2s ease;
+  }
+  .neu-action-primary:hover:not(:disabled) {
+    box-shadow: var(--k-shadow-lifted);
+    color: var(--k-cloud-deep);
+  }
+  .neu-action-primary:active:not(:disabled) {
+    box-shadow: var(--k-shadow-inset);
+    transform: translateY(0);
+  }
+  .neu-action-primary:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    box-shadow: var(--k-shadow-inset-sm);
+  }
+
+  .neu-action-secondary {
+    background: var(--k-bg);
+    box-shadow: var(--k-shadow-raised-sm);
+    color: var(--k-text-secondary);
+    border: none;
+    outline: none;
+    border-radius: 99px;
+    padding: 9px 18px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: box-shadow 0.2s ease, transform 0.15s ease, color 0.2s ease;
+  }
+  .neu-action-secondary:hover:not(:disabled) {
+    box-shadow: var(--k-shadow-lifted-sm);
+    color: var(--k-cloud-deep);
+  }
+  .neu-action-secondary:active:not(:disabled) {
+    box-shadow: var(--k-shadow-inset-sm);
+    transform: translateY(0);
+  }
+  .neu-action-secondary:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    box-shadow: var(--k-shadow-inset-sm);
+  }
+
+  /* Conversies: a destructive action — the neutral secondary pill whose label is
+     red, and stays red on hover. Colour on a button only ever signals intent. */
+  .neu-action-danger {
+    background: var(--k-bg);
+    box-shadow: var(--k-shadow-raised-sm);
+    color: var(--k-red-fg);
+    border: none;
+    outline: none;
+    border-radius: 99px;
+    padding: 9px 18px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
+  }
+  .neu-action-danger:hover:not(:disabled) {
+    box-shadow: var(--k-shadow-lifted-sm);
+  }
+  .neu-action-danger:active:not(:disabled) {
+    box-shadow: var(--k-shadow-inset-sm);
+  }
+  .neu-action-danger:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    box-shadow: var(--k-shadow-inset-sm);
+  }
+
+  /* Conversies: the page's single commit action (Verzenden naar AFAS) — the one
+     filled button the guide allows (§5.4): cloud-deep with k-bg letters. */
+  .neu-action-commit {
+    background: var(--k-cloud-deep);
+    box-shadow: var(--k-shadow-raised-sm);
+    color: var(--k-bg);
+    border: none;
+    outline: none;
+    border-radius: 99px;
+    padding: 9px 20px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: box-shadow 0.2s ease, transform 0.15s ease, filter 0.2s ease;
+  }
+  .neu-action-commit:hover:not(:disabled) {
+    box-shadow: var(--k-shadow-lifted-sm);
+    filter: brightness(1.05);
+  }
+  .neu-action-commit:active:not(:disabled) {
+    box-shadow: var(--k-shadow-inset-sm);
+  }
+  .neu-action-commit:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .neu-action-primary:focus-visible,
+  .neu-action-secondary:focus-visible,
+  .neu-action-danger:focus-visible,
+  .neu-action-commit:focus-visible {
+    outline: 2px solid var(--k-cloud-mid);
+    outline-offset: 2px;
+  }
+
+  /* Popover / menu surface */
+  .neu-popover {
+    background: var(--k-bg);
+    box-shadow: var(--k-shadow-raised);
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 6px;
+    font-family: var(--font-sans);
+  }
+}
+
+/* ─── Utility classes ───────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Three-state interactive button (rest → hover → active) */
+  .neu-button {
+    background: var(--k-bg);
+    box-shadow: var(--k-shadow-raised-sm);
+    color: var(--k-text-primary);
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.15s ease, color 0.2s ease;
+  }
+  .neu-button:hover:not(:disabled) {
+    box-shadow: var(--k-shadow-lifted-sm);
+    color: var(--k-cloud-deep);
+  }
+  .neu-button:active:not(:disabled),
+  .neu-button[data-active="true"],
+  .neu-button[aria-pressed="true"] {
+    box-shadow: var(--k-shadow-inset-sm);
+    transform: translateY(0);
+    color: var(--k-cloud-deep);
+  }
+  .neu-button:disabled {
+    cursor: not-allowed;
+    box-shadow: var(--k-shadow-inset-sm);
+    color: var(--k-text-tertiary);
+  }
+  .neu-button:focus-visible {
+    outline: 2px solid var(--k-cloud-mid);
+    outline-offset: 2px;
+  }
+
+  /* Primary action — larger raised/lifted/inset than neu-button */
+  .neu-button-primary {
+    background: var(--k-bg);
+    box-shadow: var(--k-shadow-raised);
+    color: var(--k-text-primary);
+    cursor: pointer;
+    transition: box-shadow 0.25s ease, transform 0.2s ease, color 0.2s ease;
+  }
+  .neu-button-primary:hover:not(:disabled) {
+    box-shadow: var(--k-shadow-lifted);
+    color: var(--k-cloud-deep);
+  }
+  .neu-button-primary:active:not(:disabled) {
+    box-shadow: var(--k-shadow-inset);
+    transform: translateY(0);
+    color: var(--k-cloud-deep);
+  }
+  .neu-button-primary:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    box-shadow: var(--k-shadow-inset-sm);
+  }
+
+  /* Input — inset at rest; focus adds the cloud-blue ring */
+  .neu-input {
+    background: var(--k-bg);
+    box-shadow: var(--k-shadow-inset-sm);
+    border: none;
+    color: var(--k-text-primary);
+    transition: box-shadow 0.2s ease;
+  }
+  .neu-input:focus,
+  .neu-input:focus-visible {
+    outline: none;
+    box-shadow: var(--k-shadow-inset-sm), 0 0 0 2px var(--k-cloud-light);
+  }
+  .neu-input::placeholder {
+    color: var(--k-text-tertiary);
+  }
+  .neu-input:disabled {
+    cursor: not-allowed;
+    color: var(--k-text-tertiary);
+  }
+
+  /* Starfield — fixed behind all content; painted with stars in dark mode only */
+  .starfield {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  [data-theme="dark"] .starfield {
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(245, 215, 110, 0.5), transparent),
+      radial-gradient(1px 1px at 70% 60%, rgba(183, 148, 246, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 45% 80%, rgba(245, 158, 79, 0.5), transparent),
+      radial-gradient(1px 1px at 85% 15%, rgba(122, 196, 232, 0.4), transparent),
+      radial-gradient(1px 1px at 15% 75%, rgba(245, 215, 110, 0.3), transparent),
+      radial-gradient(1.5px 1.5px at 60% 25%, rgba(245, 160, 79, 0.4), transparent),
+      radial-gradient(1px 1px at 90% 85%, rgba(183, 148, 246, 0.5), transparent),
+      radial-gradient(1px 1px at 30% 90%, rgba(122, 196, 232, 0.3), transparent),
+      radial-gradient(2px 2px at 75% 45%, rgba(245, 215, 110, 0.4), transparent),
+      radial-gradient(1px 1px at 5% 50%, rgba(255, 255, 255, 0.4), transparent);
+  }
+
+  /* Row reveal — stagger set inline per row: animationDelay: `${i * 30}ms` */
+  .day-row {
+    animation: slideDown 0.25s ease both;
+  }
+}
+
+/* Phones: keep the shell out of the notch and off the home indicator. The insets
+   are only non-zero with `viewport-fit=cover` (layout.tsx) on a device that has
+   them, so a desktop gets 0 on every side. */
+body {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
+/* Touch devices: iOS zooms into any field under 16px when it takes focus. Unlayered,
+   so it outranks the `text-sm`/`text-xs` utilities on the fields themselves. A
+   single-line input keeps `text-sm`'s 1.25rem line, so its height doesn't change. */
+@media (pointer: coarse) {
+  input:not([type="checkbox"], [type="radio"], [type="range"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  input {
+    line-height: 1.25rem;
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Renamed from the guide's `pulse` so it can't collide with Tailwind's
+   animate-pulse (nymbus-styling.md §17.6). */
+@keyframes status-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--k-amber-fg) 40%, transparent); }
+  70% { box-shadow: 0 0 0 10px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* The module page's two views (Data / Payloads) coming in: each mounts fresh on
+   the switch, so a short fade and a 4px rise replace the hard cut. */
+@keyframes view-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+.view-enter {
+  animation: view-enter 200ms ease-out;
+}
+
+.brand-logo {
+  animation: drift 6s ease-in-out infinite;
+}
+
+/* Toolbar: signals that validation is stale after inline edits — the button
+   breathes a cloud-blue glow around its raised shadow. */
+@keyframes stale-glow {
+  0%, 100% {
+    box-shadow: var(--k-shadow-raised-sm), 0 0 0 0 color-mix(in srgb, var(--k-cloud-deep) 0%, transparent);
+  }
+  50% {
+    box-shadow: var(--k-shadow-raised-sm), 0 0 14px 2px color-mix(in srgb, var(--k-cloud-deep) 45%, transparent);
+  }
+}
+
+.toolbar-btn-pulse {
+  animation: stale-glow 1.6s ease-in-out infinite;
+  color: var(--k-cloud-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

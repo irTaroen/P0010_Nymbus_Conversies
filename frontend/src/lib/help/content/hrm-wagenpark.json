@@ -1,0 +1,123 @@
+{
+  "general": [
+    "Het wagenpark is direct gekoppeld aan de salarisadministratie. Een leaseauto of leasefiets betekent bijtelling, en bijtelling betekent impact op het nettosalaris van de medewerker. Een correcte mobiliteitsconversie zorgt ervoor dat AFAS Profit vanaf dag één de juiste bijtelling berekent — zonder handmatige correcties achteraf.",
+    "Om een volledige en correcte dataconversie te kunnen doen is het belangrijk om inzicht te hebben in de benodigde informatie. Hieronder is het importsjabloon voor het wagenpark beschreven op kolomniveau — van kenteken en cataloguswaarde tot bijtellingspercentage en leasecontractdata.",
+    "Ook zijn er voorbeelddata en veelgestelde vragen beschreven om het vullen van het importsjabloon zo gemakkelijk mogelijk te maken."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Medewerkernummer. Moet overeenkomen met de kolom Medewerker uit het medewerkersbestand. Mag leeg blijven — niet elk voertuig is aan een medewerker gekoppeld (bijv. een poolauto). Wanneer deze kolom wel is gevuld, zijn Begindatum Contract en Leasemaatschappij ook verplicht.",
+      "example": "12345"
+    },
+    "Kenteken": {
+      "description": "Kenteken inclusief koppeltekens zoals op het kentekenbewijs. Fungeert als unieke identificatie in AFAS.",
+      "example": "Z-101-GH"
+    },
+    "Werkgever": {
+      "description": "Werkgeverscode van de entiteit waaraan het voertuig is gekoppeld. Dit hoeft niet dezelfde te zijn als de werkgever van de medewerker. Wordt gecontroleerd tegen de werkgeverstabel uit de AFAS-omgeving van dit project.",
+      "example": "01"
+    },
+    "Begindatum registratie": {
+      "description": "Datum van eerste ingebruikname of de datum van livegang in AFAS.",
+      "example": "01-01-2024"
+    },
+    "Beginstand KM": {
+      "description": "Kilometerstand op de begindatum, als geheel getal. Verplicht; vul 0 in wanneer de stand niet bekend is.",
+      "example": "10"
+    },
+    "Bijtelling %": {
+      "description": "Bijtellingspercentage voor de loonbelasting. Gangbaar: 16% (elektrisch), 22% (brandstof). Controleer via RDW of de leasemaatschappij. Het percentage op datum eerste tenaamstelling blijft doorgaans 60 maanden van toepassing — pas dit op tijd aan indien nodig.",
+      "example": "22"
+    },
+    "Cataloguswaarde": {
+      "description": "Fiscale catalogusprijs incl. BPM en BTW op moment van eerste toelating. Gebruik niet de actuele dagwaarde. Controleer via RDW of de leasemaatschappij.",
+      "example": "24000"
+    },
+    "Datum 1e tenaamstelling": {
+      "description": "Datum van eerste tenaamstelling zoals op het kentekenbewijs. Bepalend voor het bijtellingspercentage.",
+      "example": "01-01-2024"
+    },
+    "Einddatum": {
+      "description": "Einddatum van de wagenparkregistratie. Laat leeg bij open einddatum. Op basis van deze datum eindigt de bijtelling, dus vul pas in als de auto echt wordt ingeleverd.",
+      "example": "31-12-2030"
+    },
+    "Grijs Kenteken": {
+      "description": "Bij J gelden afwijkende bijtellingsregels (bestelauto voor ondernemers).",
+      "example": "N"
+    },
+    "Kilometers per jaar": {
+      "description": "Verwacht of contractueel jaarkilometrage voor de rittenadministratie. Is er geen kilometrage afgesproken, vul dan een realistische schatting in. Leeg gelaten wordt bij de controle automatisch 0 aangehouden (oranje gemarkeerd, geen fout) — vul een echte schatting in als die er is.",
+      "example": "30000"
+    },
+    "Leasemaatschappij": {
+      "description": "De code van de leasemaatschappij uit de leasemaatschappijentabel van de AFAS-omgeving van dit project, niet de naam: bijvoorbeeld 1000111. Gecontroleerd tegen die tabel; met de zoekknop in de cel kies je de juiste leasemaatschappij uit de lijst. Verplicht bij elk voertuig, ook bij een poolauto of een voertuig in eigendom van de werkgever: gebruik dan de code die daarvoor in de tabel is ingericht.",
+      "example": "L"
+    },
+    "Merk": {
+      "description": "De code van het merk uit de merkentabel van AFAS, niet de merknaam: 2 voor Volkswagen, 1 voor Opel. Gecontroleerd tegen die tabel; staat er een merknaam die precies één merk aanduidt, dan biedt de tool de bijbehorende code aan. Met de zoekknop in de cel kies je het juiste merk uit de lijst.",
+      "example": "2"
+    },
+    "Model": {
+      "description": "De code van de carrosserievorm uit de modellentabel van AFAS, zoals 1 (Hatchback), 4 (Station) of 7 (SUV) — niet het typemodel zoals Golf of XC60. Gecontroleerd tegen die tabel; met de zoekknop in de cel kies je het juiste model uit de lijst. Mag leeg blijven.",
+      "example": "4"
+    },
+    "Begindatum Contract": {
+      "description": "Ingangsdatum van het leasecontract. Kan afwijken van de begindatum registratie. Verplicht bij elk voertuig: is er geen leasecontract, vul dan de datum waarop het voertuig in gebruik is genomen of aan de medewerker ter beschikking is gesteld.",
+      "example": "01-01-2025"
+    },
+    "Einddatum Contract": {
+      "description": "Einddatum van het leasecontract. Laat leeg bij een open einddatum of wanneer er geen contract is.",
+      "example": "31-12-2030"
+    },
+    "Aanloopwagen": {
+      "description": "Bij J gelden andere bijtellingsregels voor de tenaamstellingsdatum. Vul altijd J of N in; leeg laten is niet toegestaan.",
+      "example": "N"
+    },
+    "Standaard eigen risico": {
+      "description": "Of voor dit voertuig het standaard eigen risico geldt: J of N. Verplicht, omdat AFAS het veld bij elk voertuig nodig heeft.",
+      "example": "J"
+    },
+    "Eigen bijdrage": {
+      "description": "Of de medewerker een eigen bijdrage betaalt: J of N. Bij J wordt een looncomponent aangemaakt voor inhouding op het nettosalaris; vul dan het bedrag in bij Eigen bijdrage privégebruik of Eigen bijdrage overige redenen. Bij J gaat het voertuig ook mee in de verloning.",
+      "example": "J"
+    },
+    "Mobiliteitsbudget": {
+      "description": "Geeft aan of de medewerker deelneemt aan een mobiliteitsbudgetregeling: J of N. Verplicht zodra Medewerker is ingevuld; bij een voertuig zonder medewerker mag de kolom leeg blijven.",
+      "example": "J"
+    },
+    "Privégebruik": {
+      "description": "Geeft aan of de medewerker het voertuig ook privé gebruikt. Bij N gaat de Belastingdienst uit van een 'Verklaring geen privégebruik auto' of van maximaal 500 privékilometers per jaar; is die er niet, vul dan J. Vul altijd J of N in. Bij J gaat het voertuig mee in de verloning, zodat de bijtelling verwerkt wordt.",
+      "example": "J"
+    },
+    "Eigen bijdrage privégebruik": {
+      "description": "Het bedrag dat de medewerker per periode zelf betaalt voor het privégebruik van de auto, in euro's met een punt als decimaalteken. Laat leeg of vul 0 in wanneer er geen eigen bijdrage is; een lege cel wordt als 0 aangehouden (oranje gemarkeerd). Bij Eigen bijdrage J moet dit bedrag of Eigen bijdrage overige redenen groter zijn dan 0.",
+      "example": "50"
+    },
+    "Eigen bijdrage overige redenen": {
+      "description": "Een eigen bijdrage van de medewerker om een andere reden dan privégebruik, bijvoorbeeld voor extra opties op de leaseauto, in euro's met een punt als decimaalteken. Laat leeg of vul 0 in wanneer die er niet is; een lege cel wordt als 0 aangehouden (oranje gemarkeerd).",
+      "example": "0"
+    }
+  },
+  "faq": [
+    {
+      "question": "Hoe bepaal ik het juiste bijtellingspercentage (Bijtelling %)?",
+      "answer": "Afhankelijk van de CO2-uitstoot en de datum eerste toelating (Datum 1e tenaamstelling). Controleer via RDW op https://ovi.rdw.nl/. Het percentage op datum eerste tenaamstelling blijft 60 maanden van toepassing."
+    },
+    {
+      "question": "Wat is het verschil tussen 'Begindatum registratie' en 'Begindatum Contract'?",
+      "answer": "Begindatum registratie is de datum waarop het voertuig in de AFAS-wagenparkadministratie wordt opgenomen. Begindatum Contract is de feitelijke ingangsdatum van het leasecontract. Deze kunnen van elkaar afwijken."
+    },
+    {
+      "question": "Wat vul ik in bij een voertuig dat eigendom is van de werkgever (geen lease)?",
+      "answer": "Leasemaatschappij en Begindatum Contract zijn ook dan verplicht, met of zonder gekoppelde medewerker: gebruik bij Leasemaatschappij de code die daarvoor in de leasemaatschappijentabel van jullie AFAS-omgeving is ingericht, en bij Begindatum Contract de datum waarop het voertuig in gebruik is genomen of aan de medewerker ter beschikking is gesteld. Kilometers per jaar mag altijd leeg blijven — vul een realistische schatting in als die er is, anders wordt bij de controle 0 aangehouden. Einddatum Contract mag ook leeg blijven."
+    },
+    {
+      "question": "Hoe verhoudt 'Privégebruik' zich tot 'Bijtelling %'?",
+      "answer": "Privégebruik zegt of er privé met het voertuig wordt gereden; Bijtelling % zegt hoeveel er wordt bijgeteld. Beide kolommen zijn verplicht. Staat Privégebruik op N — bijvoorbeeld bij een 'Verklaring geen privégebruik auto' — dan is er geen bijtelling en vul je 0 bij Bijtelling %. Staat Privégebruik op J, vul dan het werkelijke percentage in."
+    },
+    {
+      "question": "Welke kolommen mogen leeg blijven?",
+      "answer": "Altijd leeg mogen blijven: Medewerker (niet elk voertuig heeft een gekoppelde medewerker), Kilometers per jaar (wordt bij de controle op 0 gezet als het leeg blijft, oranje gemarkeerd), Einddatum, Model, Einddatum Contract en Eigen bijdrage. Mobiliteitsbudget mag alleen leeg blijven als Medewerker ook leeg is. Alle overige kolommen zijn altijd verplicht, ook Leasemaatschappij, Begindatum Contract, Beginstand KM (vul 0 in als de stand onbekend is) en Standaard eigen risico. Bij Eigen bijdrage en Mobiliteitsbudget geldt daarnaast: is de kolom gevuld, dan moet de waarde J of N zijn."
+    }
+  ]
+}

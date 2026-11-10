@@ -1,0 +1,26 @@
+{
+  "general": [
+    "Vakantietoeslag is een opgebouwd recht dat moet kloppen op de eerste dag in het nieuwe systeem — een foutieve opbouw valt direct op bij de eerste salarisrun.",
+    "Dit tabblad bevat de opgebouwde vakantietoeslaggrondslag per medewerker op de livegangdatum van AFAS. Hieronder de kolommen met voorbeelddata en veelgestelde vragen."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Medewerkernummer in AFAS. Moet overeenkomen met de kolom Medewerker uit het medewerkersbestand.",
+      "example": "100001"
+    },
+    "Bedrag": {
+      "description": "Nog uit te betalen vakantietoeslag op de peildatum (bruto). Gebruik een punt als decimaalteken.",
+      "example": "2306"
+    },
+    "Grondslag": {
+      "description": "Cumulatief brutoloon over de opgebouwde maanden als basis voor de VT-berekening. Tip: controleer of Bedrag ÷ Grondslag ≈ 0,08 (8%).",
+      "example": "28825"
+    }
+  },
+  "faq": [
+    {
+      "question": "Hoe controleer ik de vakantietoeslag-grondslag?",
+      "answer": "De grondslag is het cumulatief brutoloon over de opbouwperiode (normaal 1 juni t/m 31 mei). Controleer: Bedrag ÷ Grondslag × 100 ≈ 8%. Let op CAO's met een afwijkend VT-percentage."
+    }
+  ]
+}

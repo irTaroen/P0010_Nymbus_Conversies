@@ -1,0 +1,127 @@
+{
+  "general": [
+    "The creditors file is the basis for all purchasing processes — purchase requests, purchase orders and invoices refer to it. A clean and well-organised creditors file makes it easy to create and assess new purchase orders.",
+    "Now that the creditors data conversion is around the corner, this is a good moment to clean up the current file. Only bring along the creditors you will actually use, and check that creditors do not occur twice.",
+    "Below, the import template for creditors is described at field level, with example data and frequently asked questions to make filling it in as easy as possible."
+  ],
+  "columns": {
+    "Crediteur Nummer": {
+      "description": "The unique creditor number under which the creditor is already registered in the source system. Used as the key during import. Each number may appear only once in the file.",
+      "example": "10056"
+    },
+    "Organisatie of Persoon": {
+      "description": "Determines whether the creditor is an organisation (O) or a natural person (P). For O, Organisatie Naam is required; for P, Voorletters, Voornaam and Achternaam are required.",
+      "example": "O"
+    },
+    "Organisatie Naam": {
+      "description": "The full company name including legal form (B.V., N.V., etc.), as registered with the Chamber of Commerce. Shown on purchase invoices and correspondence. Maximum 100 characters. Required when Organisatie of Persoon = O. The name is compared with the creditors already in AFAS (live): if the same organisation is there under a different creditor number, remove the row or adjust the creditor number in AFAS. If the creditor number in AFAS already belongs to a different name, Crediteur Nummer will give an error.",
+      "example": "Animo Services B.V."
+    },
+    "Voorletters": {
+      "description": "The initials of the person, including the full stop. Format: X.X. — uppercase letters only, each followed by a full stop. Required when Organisatie of Persoon = P.",
+      "example": "F.K."
+    },
+    "Voornaam": {
+      "description": "The first name of the person. Required when Organisatie of Persoon = P.",
+      "example": "Frank"
+    },
+    "Voorvoegsel": {
+      "description": "The name prefix of the surname (tussenvoegsel), in lowercase and without the surname itself. Leave empty when the person has no name prefix or when the creditor is an organisation.",
+      "example": "de"
+    },
+    "Achternaam": {
+      "description": "The surname of the person, without name prefix. Required when Organisatie of Persoon = P.",
+      "example": "Koster"
+    },
+    "KvK-nummer": {
+      "description": "The Chamber of Commerce (KvK) number of the organisation. Always 8 digits, without spaces or hyphens. Strongly recommended for organisations established in the Netherlands.",
+      "example": "78342341"
+    },
+    "BTW Nummer": {
+      "description": "The VAT identification number, in the official format per country. Dutch format: NL + 9 digits + B + 2 digits. Not required: leave empty if the creditor has no VAT number; a number that is filled in must be valid.",
+      "example": "NL860576838B01"
+    },
+    "Verzamelrekening": {
+      "description": "The general ledger account on which this creditor is collected financially (verzamelrekening). Leave empty to use the default collective account 1600. Checked against the collective accounts in the AFAS environment of this project.",
+      "example": "1600"
+    },
+    "Automatisch betalen": {
+      "description": "Indicates whether payments for this creditor are processed automatically via a payment batch. When J, the IBAN-Nummer column is required.",
+      "example": "N"
+    },
+    "Betalingsvoorwaarde": {
+      "description": "The code of the payment condition that determines the standard payment term, checked against the payment condition table from AFAS. Available: the day codes 8, 14, 21, 30, 45, 60, 90 and 120 (number of days after invoice date), cont (cash) and Inc. (automatic direct debit creditors). Note: this is the code, not the number of days — the two are not always the same.",
+      "example": "30"
+    },
+    "Betaalspecificatie": {
+      "description": "Indicates whether a payment specification is sent to the creditor when payments are made.",
+      "example": "J"
+    },
+    "BTW Plicht": {
+      "description": "The VAT category that applies to purchases from this creditor (codes from the lookup table). Always fill in. 1 = Standard sales, 2 = Reverse charge, 3 = Sales within the EU, 4 = Import/export outside the EU, 5 = Distance selling, 6 = No VAT (intercompany), 7 = Margin scheme, 8 = Exempt.",
+      "example": "1"
+    },
+    "IBAN-Nummer": {
+      "description": "The International Bank Account Number of the creditor, without spaces. Required when Automatisch betalen is J.",
+      "example": "NL15INGB0750917199"
+    },
+    "Land van Bank": {
+      "description": "The AFAS country code of the country where the bank is established, checked against the country list from AFAS. Note: this is not the ISO code — Belgium is B, Germany D. Required when IBAN-Nummer is filled in.",
+      "example": "NL"
+    },
+    "Email": {
+      "description": "The general business e-mail address of the organisation, in the format name@domain.extension. One address per field.",
+      "example": "administratie@animo-services.nl"
+    },
+    "Telefoon werk": {
+      "description": "The business telephone number of the organisation, preferably in the full international format including country code. Spaces and hyphens are allowed.",
+      "example": "+31201234567"
+    },
+    "Email Fin Adm": {
+      "description": "The e-mail address of the financial administration, for payment reminders, invoices and other financial correspondence. It is checked for a valid e-mail address, but in this conversion it does not go to AFAS: the creditor has no separate field for it there.",
+      "example": "administratie@animo-services.nl"
+    },
+    "Straatnaam": {
+      "description": "The street name of the business address, without house number.",
+      "example": "Nieuwe Hemweg"
+    },
+    "Huisnummer": {
+      "description": "The numeric house number of the business address. Any addition goes in 'Toevoeging Huisnummer'. If the addition is included (17-19, 12 A), the tool splits the number itself: 17 stays here, -19 goes to 'Toevoeging Huisnummer', in front of what is already there (250- with addition 252 becomes 250 and -252).",
+      "example": "7"
+    },
+    "Toevoeging Huisnummer": {
+      "description": "The possible addition to the house number (letter, floor or apartment number). Leave empty if there is no addition.",
+      "example": "p"
+    },
+    "Postcode": {
+      "description": "The postcode of the business address, in the notation of the relevant country. For Land NL the tool checks the spelling: 4 digits and 2 letters, e.g. 1013 BG. A foreign postcode is not checked for format.",
+      "example": "1013 BG"
+    },
+    "Woonplaats": {
+      "description": "The official place name of the business address, without abbreviations. Checked against the list of places from AFAS for the country in the column Land (no country filled in = NL): use 's-Gravenhage, not Den Haag. Only Dutch places are in that list; for a foreign country the place is not checked.",
+      "example": "Amsterdam"
+    },
+    "Land": {
+      "description": "The AFAS country code of the business country, checked against the country list from AFAS. Used for address formatting on invoices and for the VAT treatment. Required: AFAS needs a country for every address, also for a Dutch address — then fill in NL. Note: this is not the ISO code — NL (Netherlands), B (Belgium), D (Germany), AFG (Afghanistan).",
+      "example": "NL"
+    }
+  },
+  "faq": [
+    {
+      "question": "Which number will new creditors get that we add in AFAS after the conversion?",
+      "answer": "New creditors get an automatic number from AFAS, so it is clearly visible which data is historical and which is new."
+    },
+    {
+      "question": "Can I link contact persons to the creditors?",
+      "answer": "Contact persons are brought along in a separate conversion."
+    },
+    {
+      "question": "Is it possible to include extra information in the creditors conversion?",
+      "answer": "Discuss this with the conversion consultant. Keep in mind that the project scope and lead times will change as a result."
+    },
+    {
+      "question": "I have another question, how can I ask it to the conversion consultant?",
+      "answer": "Contact your Nymbus conversion consultant; they will be glad to help you further."
+    }
+  ]
+}

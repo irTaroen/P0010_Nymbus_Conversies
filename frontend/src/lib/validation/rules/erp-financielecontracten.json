@@ -1,0 +1,289 @@
+{
+  "columns": [
+    {
+      "column": "Contractnummer",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 16 }]
+    },
+    {
+      "column": "Profiel",
+      "type": "integer",
+      "rules": [{ "check": "min", "value": 1 }]
+    },
+    {
+      "column": "In overweging",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Omschrijving",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 255 }]
+    },
+    {
+      "column": "Referentie inkooprelatie",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 50 }]
+    },
+    {
+      "column": "Inkooprelatie",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 16 }]
+    },
+    {
+      "column": "Contactpersoon",
+      "type": "text",
+      "rules": []
+    },
+    {
+      "column": "Verantwoordelijke",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Contracteigenaar",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Contractbeheerder",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Type contract",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 20 }]
+    },
+    {
+      "column": "Locatie",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 25 }]
+    },
+    {
+      "column": "Opzegtermijn",
+      "type": "integer",
+      "rules": [
+        { "check": "min", "value": 0 },
+        { "check": "max", "value": 99 }
+      ]
+    },
+    {
+      "column": "Looptijd verlenging",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": [
+            "M1", "M3", "M6", "M9",
+            "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10"
+          ],
+          "message": "Moet een maand- (M1, M3, M6, M9) of jaarcode (J1 t/m J10) zijn",
+          "messageEn": "Must be a month code (M1, M3, M6, M9) or a year code (J1 to J10)"
+        }
+      ]
+    },
+    {
+      "column": "Betalingsvoorwaarde",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 5 }]
+    },
+    {
+      "column": "Overschrijding contractwaarde niet toegestaan",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Valuta",
+      "type": "text",
+      "rules": [
+        { "check": "default-if-empty", "defaultValue": "EUR" },
+        { "check": "length", "min": 3, "max": 3 }
+      ]
+    },
+    {
+      "column": "Verzekerd bedrag",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Opmerking",
+      "type": "text",
+      "rules": []
+    },
+    {
+      "column": "Contractwaarde o.b.v.",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "enum",
+          "values": ["01", "02"],
+          "message": "Moet 01 (Factuurwaarde) of 02 (Contractwaarde) zijn",
+          "messageEn": "Must be 01 (invoice value) or 02 (contract value)"
+        }
+      ]
+    },
+    {
+      "column": "Begindatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Einddatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Stilzwijgende verlenging",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Contractwaarde",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Cyclus facturering leverancier",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["W4", "M1", "M3", "M6", "J1"],
+          "message": "Moet W4 (4 weken), M1 (maand), M3 (kwartaal), M6 (halfjaar) of J1 (jaar) zijn",
+          "messageEn": "Must be W4 (4 weeks), M1 (month), M3 (quarter), M6 (half year) or J1 (year)"
+        }
+      ]
+    },
+    {
+      "column": "Factuurwaarde periode",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Pro rata periode start",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Pro rata periode eind",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Genereren verplichting",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["0", "1", "2", "3", "4", "5", "6"],
+          "message": "Moet 0 t/m 6 zijn (zie de Hulptabel in het sjabloon)",
+          "messageEn": "Must be 0 to 6 (see the Lookup table in the template)"
+        }
+      ]
+    },
+    {
+      "column": "Reservering",
+      "type": "integer",
+      "rules": [{ "check": "min", "value": 1 }]
+    },
+    {
+      "column": "Reservering volledig afboeken",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Grootboekrekening",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 16 }]
+    },
+    {
+      "column": "Blokkeren voor betaling",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Kostenplaats",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 16 }]
+    },
+    {
+      "column": "Project",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    }
+  ],
+  "crossField": [
+    {
+      "if": { "column": "Begindatum", "op": "isNotEmpty" },
+      "then": {
+        "column": "Einddatum",
+        "op": ">=",
+        "value": { "column": "Begindatum" }
+      },
+      "message": "Moet gelijk aan of later dan Begindatum zijn",
+      "messageEn": "Must be the same as or later than Begindatum"
+    },
+    {
+      "if": { "column": "Contractwaarde o.b.v.", "op": "==", "value": "01" },
+      "then": { "column": "Cyclus facturering leverancier", "op": "isNotEmpty" },
+      "message": "Verplicht bij Contractwaarde o.b.v. 01 (factuurwaarde)",
+      "messageEn": "Required when Contractwaarde o.b.v. 01 (invoice value)"
+    },
+    {
+      "if": { "column": "Contractwaarde o.b.v.", "op": "==", "value": "01" },
+      "then": { "column": "Factuurwaarde periode", "op": "isNotEmpty" },
+      "message": "Verplicht bij Contractwaarde o.b.v. 01 (factuurwaarde)",
+      "messageEn": "Required when Contractwaarde o.b.v. 01 (invoice value)"
+    },
+    {
+      "if": { "column": "Contractwaarde o.b.v.", "op": "==", "value": "01" },
+      "then": { "column": "Genereren verplichting", "op": "isNotEmpty" },
+      "message": "Verplicht bij Contractwaarde o.b.v. 01 (factuurwaarde)",
+      "messageEn": "Required when Contractwaarde o.b.v. 01 (invoice value)"
+    },
+    {
+      "if": { "column": "Contractwaarde o.b.v.", "op": "==", "value": "02" },
+      "then": { "column": "Contractwaarde", "op": "isNotEmpty" },
+      "message": "Verplicht bij Contractwaarde o.b.v. 02 (contractwaarde)",
+      "messageEn": "Required when Contractwaarde o.b.v. 02 (contract value)"
+    },
+    {
+      "if": { "column": "Contractwaarde o.b.v.", "op": "==", "value": "01" },
+      "then": { "column": "Contractwaarde", "op": "isEmpty" },
+      "message": "Alleen invullen bij Contractwaarde o.b.v. 02; bij 01 geldt de Factuurwaarde periode",
+      "messageEn": "Only fill in when Contractwaarde o.b.v. 02; with 01 the Factuurwaarde period applies"
+    },
+    {
+      "if": { "column": "Genereren verplichting", "op": "==", "value": "0" },
+      "then": { "column": "Grootboekrekening", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer er geen verplichting wordt gegenereerd (Genereren verplichting 0)",
+      "messageEn": "Required when no commitment is generated (Genereren verplichting 0)"
+    },
+    {
+      "if": { "column": "Stilzwijgende verlenging", "op": "==", "value": "J" },
+      "then": { "column": "Looptijd verlenging", "op": "isNotEmpty" },
+      "message": "Bij stilzwijgende verlenging is de looptijd van de verlenging verplicht",
+      "messageEn": "For tacit renewal the term of the renewal is required"
+    },
+    {
+      "if": { "column": "Reservering volledig afboeken", "op": "==", "value": "J" },
+      "then": { "column": "Reservering", "op": "isNotEmpty" },
+      "message": "Een reservering volledig afboeken kan alleen met een reservering",
+      "messageEn": "Fully writing off a reservation can only be done with a reservation"
+    }
+  ]
+}

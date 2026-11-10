@@ -1,0 +1,151 @@
+{
+  "general": [
+    "Financiële contracten zijn doorlopende verplichtingen met een leverancier: onderhoudscontracten, verzekeringen, abonnementen op diensten en huur- en leasecontracten. AFAS gebruikt ze om verplichtingen en periodieke facturen te voorspellen en te controleren.",
+    "Elke rij is één contractregel. Een contract met één regel is dus één rij. Heeft een contract meer regels, dan herhaal je de contractkolommen (Contractnummer t/m Opmerking) op elke rij met hetzelfde contractnummer; de kolommen vanaf Contractwaarde o.b.v. beschrijven de regel zelf.",
+    "Kies per regel hoe de waarde wordt vastgelegd. Bij Contractwaarde o.b.v. 01 vul je het bedrag per factuurperiode in (Cyclus facturering leverancier, Factuurwaarde periode en Genereren verplichting), bij 02 het totale bedrag in de kolom Contractwaarde.",
+    "De leveranciers waarnaar je hier verwijst moeten ook in de conversie van de module Crediteuren voorkomen. De kolommen Vrij Veld zijn klantspecifiek en worden per klant apart gekoppeld."
+  ],
+  "columns": {
+    "Contractnummer": {
+      "description": "Het nummer van het contract. Wordt ingevuld door Nymbus, maar moet gevuld zijn voordat het bestand naar AFAS kan. Alle regels van hetzelfde contract dragen hetzelfde nummer. Maximaal 16 tekens.",
+      "example": "C26000000000001"
+    },
+    "Profiel": {
+      "description": "Het nummer van het contractprofiel in AFAS. Het profiel vult standaardinstellingen van het contract in. Laat leeg wanneer er geen profiel wordt gebruikt.",
+      "example": "1"
+    },
+    "In overweging": {
+      "description": "Of het contract nog niet definitief is. J = het contract is nog in overweging, N = het contract is afgesloten.",
+      "example": "N"
+    },
+    "Omschrijving": {
+      "description": "Waar het contract over gaat, in één regel. Dit is wat gebruikers in AFAS als naam van het contract zien. Maximaal 255 tekens.",
+      "example": "Schoonmaak hoofdkantoor"
+    },
+    "Referentie inkooprelatie": {
+      "description": "Het contract- of polisnummer dat de leverancier zelf gebruikt. Handig bij het controleren van facturen. Maximaal 50 tekens.",
+      "example": "CT-2024-0815"
+    },
+    "Inkooprelatie": {
+      "description": "Het crediteurnummer van de leverancier in AFAS. Moet overeenkomen met de conversie van de module Crediteuren. Maximaal 16 tekens.",
+      "example": "50004"
+    },
+    "Contactpersoon": {
+      "description": "Het nummer van de contactpersoon bij de leverancier. Wordt (nog) niet naar AFAS gestuurd: het contract heeft daar geen veld voor.",
+      "example": "100234"
+    },
+    "Verantwoordelijke": {
+      "description": "Het medewerkernummer van de medewerker die verantwoordelijk is voor het contract. Maximaal 15 tekens.",
+      "example": "000123"
+    },
+    "Contracteigenaar": {
+      "description": "Het medewerkernummer van de eigenaar of budgethouder van het contract. Maximaal 15 tekens.",
+      "example": "000045"
+    },
+    "Contractbeheerder": {
+      "description": "Het medewerkernummer van de medewerker die het contract administratief beheert. Maximaal 15 tekens.",
+      "example": "000078"
+    },
+    "Type contract": {
+      "description": "De code van het soort contract, bijvoorbeeld schoonmaak, lease of verzekering, zoals in de AFAS-omgeving ingericht. Maximaal 20 tekens.",
+      "example": "02"
+    },
+    "Locatie": {
+      "description": "De code van de locatie waar het contract bij hoort. Maximaal 25 tekens.",
+      "example": "000001"
+    },
+    "Opzegtermijn": {
+      "description": "Hoe lang van tevoren het contract moet worden opgezegd, in maanden. Een geheel getal van 0 tot en met 99.",
+      "example": "3"
+    },
+    "Looptijd verlenging": {
+      "description": "Met welke periode het contract per keer wordt verlengd: M1, M3, M6 en M9 voor 1, 3, 6 en 9 maanden, J1 t/m J10 voor 1 tot 10 jaar. Verplicht bij stilzwijgende verlenging.",
+      "example": "J1"
+    },
+    "Betalingsvoorwaarde": {
+      "description": "De code van de betalingsvoorwaarde, bijvoorbeeld 30 (dagen). Laat leeg om die van de leverancier te gebruiken. Maximaal 5 tekens.",
+      "example": "30"
+    },
+    "Overschrijding contractwaarde niet toegestaan": {
+      "description": "J = boeken boven de contractwaarde is niet toegestaan, N = dat mag wel.",
+      "example": "N"
+    },
+    "Valuta": {
+      "description": "De valutacode van het contract, drie tekens. Leeg wordt EUR.",
+      "example": "EUR"
+    },
+    "Verzekerd bedrag": {
+      "description": "Het verzekerde bedrag. Alleen invullen bij een verzekeringscontract.",
+      "example": "250000"
+    },
+    "Opmerking": {
+      "description": "Eventuele toelichting bij het contract, in vrije tekst.",
+      "example": "Inclusief glasbewassing"
+    },
+    "Contractwaarde o.b.v.": {
+      "description": "Hoe de waarde van de regel wordt vastgelegd. 01 = waarde per factuurperiode: vul dan Cyclus facturering leverancier, Factuurwaarde periode en Genereren verplichting. 02 = totale contractwaarde: vul dan de kolom Contractwaarde.",
+      "example": "01"
+    },
+    "Begindatum": {
+      "description": "De ingangsdatum van het contract. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-01-2025"
+    },
+    "Einddatum": {
+      "description": "De einddatum van het contract. Mag niet eerder liggen dan de begindatum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "31-12-2026"
+    },
+    "Stilzwijgende verlenging": {
+      "description": "J = het contract wordt automatisch verlengd, N = het contract stopt op de einddatum. Bij J is de looptijd van de verlenging verplicht.",
+      "example": "J"
+    },
+    "Contractwaarde": {
+      "description": "Het totale bedrag van het contract. Verplicht bij Contractwaarde o.b.v. 02, en alleen dan invullen: bij 01 staat het bedrag in Factuurwaarde periode.",
+      "example": "30000"
+    },
+    "Cyclus facturering leverancier": {
+      "description": "Hoe vaak de leverancier factureert: W4 = elke 4 weken, M1 = maandelijks, M3 = per kwartaal, M6 = per halfjaar, J1 = jaarlijks. Verplicht bij Contractwaarde o.b.v. 01.",
+      "example": "M1"
+    },
+    "Factuurwaarde periode": {
+      "description": "Het bedrag dat de leverancier per periode factureert. Verplicht bij Contractwaarde o.b.v. 01.",
+      "example": "1250"
+    },
+    "Pro rata periode start": {
+      "description": "Een afwijkend bedrag voor de eerste, onvolledige periode. Laat leeg om AFAS het zelf te laten berekenen.",
+      "example": "625"
+    },
+    "Pro rata periode eind": {
+      "description": "Een afwijkend bedrag voor de laatste, onvolledige periode. Laat leeg om AFAS het zelf te laten berekenen.",
+      "example": "625"
+    },
+    "Genereren verplichting": {
+      "description": "Of en hoe AFAS verplichtingen voor het contract aanmaakt, als code 0 t/m 6 uit de Hulptabel: 0 = geen verplichting genereren (vul dan de Grootboekrekening), 1 en 2 per jaar, 3 en 4 per maand, 5 en 6 per periode van 4 weken. Verplicht bij Contractwaarde o.b.v. 01.",
+      "example": "0"
+    },
+    "Reservering": {
+      "description": "Het nummer van de budgetreservering waarop het contract wordt geboekt.",
+      "example": "1001"
+    },
+    "Reservering volledig afboeken": {
+      "description": "J = de reservering wordt volledig afgeboekt, N = alleen het gebruikte deel. J kan alleen samen met een reservering.",
+      "example": "N"
+    },
+    "Grootboekrekening": {
+      "description": "De grootboekrekening waarop de kosten worden geboekt. Verplicht als Genereren verplichting 0 is. Maximaal 16 tekens.",
+      "example": "4510"
+    },
+    "Blokkeren voor betaling": {
+      "description": "J = facturen worden pas betaald na goedkeuring, N = niet blokkeren.",
+      "example": "N"
+    },
+    "Kostenplaats": {
+      "description": "De code van de kostenplaats waarop de kosten worden geboekt. Maximaal 16 tekens.",
+      "example": "100"
+    },
+    "Project": {
+      "description": "De projectcode waarop de kosten worden geboekt. Laat leeg bij contracten die niet aan een project gebonden zijn. Maximaal 15 tekens.",
+      "example": "P2025-001"
+    }
+  },
+  "faq": []
+}

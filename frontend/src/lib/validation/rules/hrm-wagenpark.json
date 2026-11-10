@@ -1,0 +1,212 @@
+{
+  "columns": [
+    {
+      "column": "Medewerker",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Kenteken",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "unique" }, { "check": "length", "max": 16 }]
+    },
+    {
+      "column": "Werkgever",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Werkgevers",
+          "message": "Onbekende werkgever. Gebruik de zoek functie om de juiste werkgever te selecteren.",
+          "messageEn": "Unknown employer. Use the search function to select the correct employer."
+        }
+      ]
+    },
+    {
+      "column": "Begindatum registratie",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Beginstand KM",
+      "type": "integer",
+      "rules": [{ "check": "required" }, { "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Bijtelling %",
+      "type": "integer",
+      "rules": [
+        { "check": "required" },
+        { "check": "min", "value": 0 },
+        { "check": "max", "value": 100 }
+      ]
+    },
+    {
+      "column": "Cataloguswaarde",
+      "type": "decimal",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Datum 1e tenaamstelling",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Einddatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Grijs Kenteken",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Kilometers per jaar",
+      "type": "integer",
+      "rules": [{ "check": "default-if-empty", "defaultValue": "0" }]
+    },
+    {
+      "column": "Leasemaatschappij",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 15 },
+        {
+          "check": "codetabel",
+          "tableRef": "Leasemaatschappijen",
+          "message": "Onbekende leasemaatschappij. Gebruik de zoek functie om de juiste code te selecteren.",
+          "messageEn": "Unknown leasing company. Use the search function to select the correct code."
+        }
+      ]
+    },
+    {
+      "column": "Merk",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Automerken",
+          "message": "Onbekend merk. Gebruik de zoek functie om de juiste merkcode te selecteren.",
+          "messageEn": "Unknown brand. Use the search function to select the correct brand code."
+        }
+      ]
+    },
+    {
+      "column": "Model",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Automodellen",
+          "message": "Onbekend model. Gebruik de zoek functie om de juiste modelcode te selecteren.",
+          "messageEn": "Unknown model. Use the search function to select the correct model code."
+        }
+      ]
+    },
+    {
+      "column": "Begindatum Contract",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Einddatum Contract",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Aanloopwagen",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["J", "N"],
+          "message": "Moet J of N zijn",
+          "messageEn": "Must be J (yes) or N (no)"
+        },
+        { "check": "required" }
+      ]
+    },
+    {
+      "column": "Standaard eigen risico",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Eigen bijdrage",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Mobiliteitsbudget",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Privégebruik",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["J", "N"],
+          "message": "Moet J of N zijn",
+          "messageEn": "Must be J (yes) or N (no)"
+        },
+        { "check": "required" }
+      ]
+    },
+    {
+      "column": "Eigen bijdrage privégebruik",
+      "type": "decimal",
+      "rules": [{ "check": "default-if-empty", "defaultValue": "0" }, { "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Eigen bijdrage overige redenen",
+      "type": "decimal",
+      "rules": [{ "check": "default-if-empty", "defaultValue": "0" }, { "check": "min", "value": 0 }]
+    }
+  ],
+  "crossField": [
+    {
+      "if": {
+        "column": "Medewerker",
+        "op": "isNotEmpty"
+      },
+      "then": {
+        "column": "Mobiliteitsbudget",
+        "op": "isNotEmpty"
+      },
+      "message": "Verplicht wanneer Medewerker is gevuld",
+      "messageEn": "Required when Medewerker is filled in"
+    },
+    {
+      "if": { "column": "Eigen bijdrage", "op": "==", "value": "J" },
+      "then": {
+        "anyOf": [
+          { "column": "Eigen bijdrage privégebruik", "op": ">", "value": 0 },
+          { "column": "Eigen bijdrage overige redenen", "op": ">", "value": 0 }
+        ]
+      },
+      "flag": "Eigen bijdrage",
+      "message": "Bij Eigen bijdrage J hoort een bedrag: vul Eigen bijdrage privégebruik of overige redenen in",
+      "messageEn": "When Eigen bijdrage is J, an amount belongs with it: fill in Eigen bijdrage privégebruik or overige redenen"
+    }
+  ]
+}

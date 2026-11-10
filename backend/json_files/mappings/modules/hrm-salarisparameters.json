@@ -1,0 +1,29 @@
+{
+  "group": "modules",
+  "connector": "HrVarValue",
+  "module": "hrm-salarisparameters",
+  "root": "HrVarValue",
+  "file": "HRM_6_Salarisparameter.xlsx",
+  "sheet": "Salarisparameters",
+  "fields": [
+    { "object": ["HrVarValue"], "field": "EmId", "label": "Medewerker", "mandatory": true, "source": "column", "column": "Medewerker", "columnIndex": 0 },
+    { "object": ["HrVarValue"], "field": "VaId", "label": "Parameter", "mandatory": true, "source": "column", "column": "Parameter", "columnIndex": 1 },
+    { "object": ["HrVarValue"], "field": "DaBe", "label": "Begindatum", "mandatory": true, "source": "column", "column": "Begindatum", "columnIndex": 2 },
+    { "object": ["HrVarValue"], "field": "DaEn", "label": "Einddatum", "mandatory": false, "source": "column", "column": "Einddatum", "columnIndex": 3 },
+    { "object": ["HrVarValue"], "field": "Va", "label": "Waarde", "mandatory": true, "source": "column", "column": "Waarde", "columnIndex": 4 }
+  ],
+  "notes": [
+    "Va (Waarde) isn't mandatory per AFAS's own schema, but the template's rules require it — per policy the template wins, so mandatory is true here.",
+    "Four AFAS fields have no column and are left unmapped; none are required by AFAS or by the template, so nothing is blocked: EnSe (Dienstverband — which employment record this parameter applies to, relevant only if an employee has more than one; same ambiguity already flagged on hrm-verlofsaldo and hrm-uitzendkrachten), DiTp (Toepassing, enum T/V/H — how the value is spread across multiple dienstverbanden), ReAu (Reden — a blob-typed field, unusual for this connector, possibly a free-text or attachment reason), PcId (Plaatsing).",
+    "Cleanest mapping so far: all 5 sheet columns land on an AFAS field, required-ness lines up everywhere except Va above, and there are no object-choice judgment calls or missing structural fields the way there were for erp-projecten, hrm-medewerkers, hrm-uitzendkrachten, hrm-wagenpark and hrm-verlofsaldo."
+  ],
+  "verifiedAgainst": {
+    "description": "Live GET /api/afas/updateconnectors/modules/HrVarValue — 9 fields total, no nested objects.",
+    "source": "GET /api/afas/updateconnectors/modules/HrVarValue",
+    "liveMetaInfoConfirmed": true,
+    "checkedAt": "2026-08-13"
+  },
+  "savedAt": "2026-08-13T11:37:58Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

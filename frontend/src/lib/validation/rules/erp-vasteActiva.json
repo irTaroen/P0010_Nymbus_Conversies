@@ -1,0 +1,195 @@
+{
+  "columns": [
+    {
+      "column": "Naam actief",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 120 }]
+    },
+    {
+      "column": "Datum aanschaf",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Datum in gebruik",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Verbijzondering 1",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 16 }]
+    },
+    {
+      "column": "Verbijzondering 2",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 16 }]
+    },
+    {
+      "column": "Administratie",
+      "type": "integer",
+      "rules": [
+        { "check": "min", "value": 1 },
+        {
+          "check": "codetabel",
+          "tableRef": "Administraties",
+          "message": "Onbekende administratie",
+          "messageEn": "Unknown administration"
+        }
+      ]
+    },
+    {
+      "column": "Activagroep",
+      "type": "integer",
+      "rules": [{ "check": "required" }, { "check": "min", "value": 1 }]
+    },
+    {
+      "column": "Aanschafwaarde",
+      "type": "decimal",
+      "rules": [{ "check": "required" }, { "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Restwaarde (F)",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Begindatum afschrijving (F)",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Afschrijvingstermijn (F)",
+      "type": "integer",
+      "rules": [{ "check": "required" }, { "check": "min", "value": 1 }]
+    },
+    {
+      "column": "Afschrijvingsmethode (F)",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "enum",
+          "values": ["L", "M", "D", "P", "B", "W"],
+          "message": "Moet L (Bedrag lineair), M (Degressief), D (Direct afschrijven), P (Percentage lineair), B (Percentage van de boekwaarde) of W (Willekeurig) zijn",
+          "messageEn": "Must be L (linear amount), M (degressive), D (immediate write-off), P (linear percentage), B (percentage of book value) or W (arbitrary)"
+        }
+      ]
+    },
+    {
+      "column": "Afschrijving initieel (F)",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Fiscale afschrijving (F)",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Jaar (initieel) (F)",
+      "type": "integer",
+      "rules": [
+        {
+          "check": "length",
+          "min": 4,
+          "max": 4,
+          "message": "Voer het viercijferige kalenderjaar in (bijv. 2022)",
+          "messageEn": "Enter the four-digit calendar year (e.g. 2022)"
+        }
+      ]
+    },
+    {
+      "column": "Periode (initieel) (F)",
+      "type": "integer",
+      "rules": [
+        { "check": "min", "value": 1 },
+        { "check": "max", "value": 12 }
+      ]
+    }
+  ],
+  "crossField": [
+    {
+      "if": { "column": "Datum aanschaf", "op": "isNotEmpty" },
+      "then": {
+        "column": "Datum in gebruik",
+        "op": ">=",
+        "value": { "column": "Datum aanschaf" }
+      },
+      "message": "Mag niet eerder liggen dan Datum aanschaf",
+      "messageEn": "Must not be earlier than Datum aanschaf"
+    },
+    {
+      "if": { "column": "Datum aanschaf", "op": "isNotEmpty" },
+      "then": {
+        "column": "Begindatum afschrijving (F)",
+        "op": ">=",
+        "value": { "column": "Datum aanschaf" }
+      },
+      "message": "Mag niet eerder liggen dan Datum aanschaf",
+      "messageEn": "Must not be earlier than Datum aanschaf"
+    },
+    {
+      "if": { "column": "Restwaarde (F)", "op": "isNotEmpty" },
+      "then": {
+        "column": "Restwaarde (F)",
+        "op": "<=",
+        "value": { "column": "Aanschafwaarde" }
+      },
+      "message": "Mag niet hoger zijn dan de Aanschafwaarde",
+      "messageEn": "Must not be higher than the Aanschafwaarde"
+    },
+    {
+      "if": { "column": "Afschrijving initieel (F)", "op": "isNotEmpty" },
+      "then": {
+        "column": "Afschrijving initieel (F)",
+        "op": "<=",
+        "value": { "column": "Aanschafwaarde" }
+      },
+      "message": "Mag niet hoger zijn dan de Aanschafwaarde",
+      "messageEn": "Must not be higher than the Aanschafwaarde"
+    },
+    {
+      "if": { "column": "Afschrijving initieel (F)", "op": "isNotEmpty" },
+      "then": { "column": "Jaar (initieel) (F)", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Afschrijving initieel (F) is ingevuld",
+      "messageEn": "Required when Afschrijving initieel (F) is filled in"
+    },
+    {
+      "if": { "column": "Afschrijving initieel (F)", "op": "isNotEmpty" },
+      "then": { "column": "Periode (initieel) (F)", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Afschrijving initieel (F) is ingevuld",
+      "messageEn": "Required when Afschrijving initieel (F) is filled in"
+    },
+    {
+      "if": { "column": "Jaar (initieel) (F)", "op": "isNotEmpty" },
+      "then": { "column": "Afschrijving initieel (F)", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Jaar (initieel) (F) is ingevuld — de drie initieel-kolommen horen bij elkaar",
+      "messageEn": "Required when Jaar (initieel) (F) is filled in — the three initieel columns belong together"
+    },
+    {
+      "if": { "column": "Periode (initieel) (F)", "op": "isNotEmpty" },
+      "then": { "column": "Afschrijving initieel (F)", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Periode (initieel) (F) is ingevuld — de drie initieel-kolommen horen bij elkaar",
+      "messageEn": "Required when Periode (initieel) (F) is filled in — the three initieel columns belong together"
+    },
+    {
+      "if": { "column": "Jaar (initieel) (F)", "op": "isNotEmpty" },
+      "then": { "column": "Periode (initieel) (F)", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Jaar (initieel) (F) is ingevuld — de drie initieel-kolommen horen bij elkaar",
+      "messageEn": "Required when Jaar (initieel) (F) is filled in — the three initieel columns belong together"
+    },
+    {
+      "if": { "column": "Periode (initieel) (F)", "op": "isNotEmpty" },
+      "then": { "column": "Jaar (initieel) (F)", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer Periode (initieel) (F) is ingevuld — de drie initieel-kolommen horen bij elkaar",
+      "messageEn": "Required when Periode (initieel) (F) is filled in — the three initieel columns belong together"
+    }
+  ]
+}

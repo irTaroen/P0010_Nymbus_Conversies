@@ -1,0 +1,181 @@
+{
+  "columns": [
+    {
+      "column": "Projectnummer",
+      "type": "integer",
+      "rules": [{ "check": "same-in-group", "groupColumn": "Abonnement nummer" }]
+    },
+    {
+      "column": "Abonnement nummer",
+      "type": "integer",
+      "rules": [{ "check": "required" }, { "check": "min", "value": 1 }, { "check": "length", "max": 9 }]
+    },
+    {
+      "column": "Type Abonnement",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Abonnementtypes",
+          "message": "Onbekend abonnementtype",
+          "messageEn": "Unknown subscription type"
+        },
+        { "check": "same-in-group", "groupColumn": "Abonnement nummer" }
+      ]
+    },
+    {
+      "column": "Begindatum Abonnement",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }, { "check": "same-in-group", "groupColumn": "Abonnement nummer" }]
+    },
+    {
+      "column": "Einddatum Abonnement",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "same-in-group", "groupColumn": "Abonnement nummer" }]
+    },
+    {
+      "column": "Betaalvoorwaarde",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Betalingsvoorwaarden",
+          "message": "Onbekende betalingsvoorwaarde — gebruik een code uit de AFAS-betalingsvoorwaarden (bijv. 30, cont, Inc.)",
+          "messageEn": "Unknown payment condition — use a code from the AFAS payment conditions (e.g. 30, cont, Inc.)"
+        },
+        { "check": "same-in-group", "groupColumn": "Abonnement nummer" }
+      ]
+    },
+    {
+      "column": "Cyclus Facturering",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Cycli",
+          "message": "Onbekende factureringscyclus \u2014 gebruik een code uit de cyclitabel van deze omgeving (bijv. M1 maand, M3 kwartaal, J1 jaar)",
+          "messageEn": "Unknown billing cycle — use a code from the cycle table of this environment (e.g. M1 month, M3 quarter, J1 year)"
+        },
+        { "check": "same-in-group", "groupColumn": "Abonnement nummer" }
+      ]
+    },
+    {
+      "column": "Begindatum factuurcyclus",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Artikel",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Artikelen",
+          "message": "Onbekend artikel \u2014 gebruik een itemcode van het type Artikel",
+          "messageEn": "Unknown item — use an item code of type Artikel"
+        }
+      ]
+    },
+    {
+      "column": "Begindatum Regel",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Einddatum Regel",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Factureren Vanaf",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Afwijkende factuurtekst",
+      "type": "text",
+      "rules": []
+    },
+    {
+      "column": "Afwijkende prijs",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    }
+  ],
+  "crossField": [
+    {
+      "if": { "column": "Begindatum Abonnement", "op": "isNotEmpty" },
+      "then": {
+        "column": "Begindatum factuurcyclus",
+        "op": ">=",
+        "value": { "column": "Begindatum Abonnement" }
+      },
+      "message": "Moet gelijk aan of later dan Begindatum Abonnement zijn",
+      "messageEn": "Must be the same as or later than Begindatum Abonnement"
+    },
+    {
+      "if": { "column": "Begindatum Abonnement", "op": "isNotEmpty" },
+      "then": {
+        "column": "Einddatum Abonnement",
+        "op": ">=",
+        "value": { "column": "Begindatum Abonnement" }
+      },
+      "message": "Mag niet eerder liggen dan Begindatum Abonnement",
+      "messageEn": "Must not be earlier than Begindatum Abonnement"
+    },
+    {
+      "if": { "column": "Einddatum Abonnement", "op": "isNotEmpty" },
+      "then": { "column": "Einddatum Regel", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer het abonnement een einddatum heeft — elke regel moet dan ook beëindigd zijn",
+      "messageEn": "Required when the subscription has an end date — every line must then also be ended"
+    },
+    {
+      "if": { "column": "Begindatum Abonnement", "op": "isNotEmpty" },
+      "then": {
+        "column": "Begindatum Regel",
+        "op": ">=",
+        "value": { "column": "Begindatum Abonnement" }
+      },
+      "message": "Mag niet eerder liggen dan Begindatum Abonnement (kop)",
+      "messageEn": "Must not be earlier than Begindatum Abonnement (header)"
+    },
+    {
+      "if": { "column": "Begindatum factuurcyclus", "op": "isNotEmpty" },
+      "then": {
+        "column": "Factureren Vanaf",
+        "op": ">=",
+        "value": { "column": "Begindatum factuurcyclus" }
+      },
+      "message": "Mag niet eerder liggen dan Begindatum factuurcyclus (kop)",
+      "messageEn": "Must not be earlier than Begindatum factuurcyclus (header)"
+    },
+    {
+      "if": { "column": "Begindatum Regel", "op": "isNotEmpty" },
+      "then": {
+        "column": "Einddatum Regel",
+        "op": ">=",
+        "value": { "column": "Begindatum Regel" }
+      },
+      "message": "Moet gelijk aan of later dan Begindatum Regel zijn",
+      "messageEn": "Must be the same as or later than Begindatum Regel"
+    },
+    {
+      "if": { "column": "Einddatum Abonnement", "op": "isNotEmpty" },
+      "then": {
+        "column": "Einddatum Regel",
+        "op": "<=",
+        "value": { "column": "Einddatum Abonnement" }
+      },
+      "message": "Mag niet later liggen dan Einddatum Abonnement (kop)",
+      "messageEn": "Must not be later than Einddatum Abonnement (header)"
+    }
+  ]
+}

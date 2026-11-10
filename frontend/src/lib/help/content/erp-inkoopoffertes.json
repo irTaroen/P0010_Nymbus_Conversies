@@ -1,0 +1,115 @@
+{
+  "general": [
+    "Inkoopoffertes zijn prijsaanvragen bij leveranciers: wat is er gevraagd, bij wie, tegen welke prijs en met welke gewenste leverdatum. Ze vormen de eerste stap van het inkoopproces, vóór de inkooporder.",
+    "Elke regel is één offerteregel. De kolommen van de offertekop (offertenummer, datum, crediteur) herhalen zich op elke regel van diezelfde offerte; de overige kolommen beschrijven het aangevraagde item.",
+    "De crediteuren en items waarnaar je hier verwijst moeten ook in de conversie van de modules Crediteuren en Artikelen voorkomen.",
+    "De kolommen hieronder zijn afgeleid van de AFAS-specificatie van de inkoopofferte (UpdateConnector FbPurchQuotation). Het importsjabloon voor deze module wordt nog opgeleverd."
+  ],
+  "columns": {
+    "Offertenummer": {
+      "description": "Het nummer van de inkoopofferte uit het bronsysteem. Regels van dezelfde inkoopofferte dragen hetzelfde nummer; daaraan ziet AFAS welke regels bij elkaar horen. Maximaal 12 tekens.",
+      "example": "Q2026-001"
+    },
+    "Datum": {
+      "description": "De datum van de inkoopofferte. Geen enkele leverdatum of vervaldatum op de regel mag hiervoor liggen. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-02-2026"
+    },
+    "Crediteur Nummer": {
+      "description": "Het crediteurnummer van de leverancier. Moet overeenkomen met de conversie van de module Crediteuren. Maximaal 16 tekens.",
+      "example": "50014"
+    },
+    "Omschrijving": {
+      "description": "Waar de inkoopofferte over gaat, in één regel. Maximaal 255 tekens.",
+      "example": "Filters en onderhoudsmateriaal"
+    },
+    "Administratie": {
+      "description": "Het nummer van de financiële administratie. Wordt gecontroleerd tegen de administratietabel uit de AFAS-omgeving van dit project.",
+      "example": "1"
+    },
+    "Gewenste leverdatum": {
+      "description": "De datum waarop de levering gewenst is. Mag niet eerder liggen dan de datum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "15-02-2026"
+    },
+    "Datum levering toegezegd": {
+      "description": "De leverdatum die de leverancier heeft toegezegd, wanneer die afwijkt van de gewenste datum. Laat leeg wanneer er niets is toegezegd. Mag niet eerder liggen dan de offertedatum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "18-02-2026"
+    },
+    "Vervaldatum": {
+      "description": "De datum waarop de inkoopofferte vervalt of betaald moet zijn. Mag niet eerder liggen dan de datum. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "01-03-2026"
+    },
+    "Valuta": {
+      "description": "De valuta van de bedragen, als driekarakterige code. Vul EUR in bij euro's. Zodra hier een valuta staat, ook EUR, is de valutakoers verplicht; bij EUR is die 1.",
+      "example": "EUR"
+    },
+    "Valutakoers": {
+      "description": "De koers waartegen de bedragen naar de basisvaluta worden omgerekend. Verplicht zodra een valuta is ingevuld. Bij euro's is dat 1.",
+      "example": "1"
+    },
+    "Referentie leverancier": {
+      "description": "Het kenmerk dat de leverancier zelf gebruikt, zoals het op zijn stukken staat. Maximaal 50 tekens.",
+      "example": "REF-88231"
+    },
+    "Betalingsvoorwaarde": {
+      "description": "De betalingsvoorwaarde. Wordt gecontroleerd tegen de betalingsvoorwaardentabel uit de AFAS-omgeving van dit project. Laat leeg om die van de crediteur te gebruiken. Maximaal 5 tekens.",
+      "example": "14"
+    },
+    "Magazijn": {
+      "description": "Het magazijn waar de goederen worden ontvangen. Laat leeg bij diensten of wanneer er met één magazijn wordt gewerkt. Maximaal 15 tekens.",
+      "example": "01"
+    },
+    "Projectnummer": {
+      "description": "Het project waaraan de inkoop wordt toegerekend. Verplicht wanneer Type projectkosten is gevuld. Maximaal 15 tekens.",
+      "example": "31508001"
+    },
+    "Regelnummer": {
+      "description": "Het regelnummer binnen de inkoopofferte, dat de volgorde van de regels vastlegt. Laat leeg om de volgorde in het bestand te gebruiken. Een geheel getal vanaf 1.",
+      "example": "1"
+    },
+    "Type item": {
+      "description": "Waar de regel over gaat: Wst = Werksoort, Art = Artikel, Kst = Kosten, Sam = Samenstelling. Bepaalt hoe AFAS de regel verwerkt.",
+      "example": "Art"
+    },
+    "Itemcode": {
+      "description": "De code van het artikel, de werksoort, de kostensoort of de samenstelling, passend bij Type item. Wordt gecontroleerd tegen de itemtabel uit de AFAS-omgeving van dit project. Maximaal 40 tekens.",
+      "example": "9901"
+    },
+    "Omschrijving regel": {
+      "description": "Een afwijkende omschrijving voor deze regel. Laat leeg om de standaardomschrijving van het item te gebruiken. Maximaal 255 tekens.",
+      "example": "Filterset type B"
+    },
+    "Eenheid": {
+      "description": "De eenheid waarin het aantal is uitgedrukt, zoals stuks, uur of doos. Maximaal 15 tekens.",
+      "example": "stk"
+    },
+    "Aantal eenheden": {
+      "description": "Het aantal eenheden per besteleenheid — hoeveel er in één doos, set of verpakking zit. Vul 1 in wanneer er per stuk wordt besteld. Niet negatief.",
+      "example": "1"
+    },
+    "Aantal besteld": {
+      "description": "Het aangevraagde aantal. Verplicht bij een artikelregel, omdat een prijsaanvraag zonder aantal geen prijs oplevert. Niet negatief.",
+      "example": "10"
+    },
+    "Prijs per eenheid": {
+      "description": "De inkoopprijs per eenheid, exclusief btw, in de valuta van de order. Niet negatief.",
+      "example": "200,00"
+    },
+    "BTW-tariefgroep": {
+      "description": "De btw-tariefgroep van de regel. Laat leeg om die van het item of de crediteur te gebruiken. Maximaal 4 tekens.",
+      "example": "1"
+    },
+    "Regelkorting percentage": {
+      "description": "Het kortingspercentage op deze regel. Laat leeg of vul 0 in wanneer er geen korting is. Een waarde tussen 0 en 100.",
+      "example": "5"
+    },
+    "Afwijkende afleverdatum": {
+      "description": "Een afleverdatum die alleen voor deze regel geldt. Laat leeg wanneer de datum van de kop van toepassing is. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "20-02-2026"
+    },
+    "Type projectkosten": {
+      "description": "De kostensoort in de projectadministratie: MA = Materiaal, A = Arbeid, ME = Materieel, OA = Onderaanneming, O = Overig. Alleen te gebruiken bij een project.",
+      "example": "MA"
+    }
+  },
+  "faq": []
+}

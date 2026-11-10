@@ -1,0 +1,38 @@
+{
+  "general": [
+    "Articles are the products or services that are bought or sold. Below, the import template for articles is described at field level.",
+    "Basiseenheid and BTW-Tariefgroep are filled with a code from the Hulptabellen tab of this template — not with the description next to it."
+  ],
+  "columns": {
+    "Itemcode": {
+      "description": "The unique code under which the article is created in AFAS. Each row must have a different item code.",
+      "example": "ART001"
+    },
+    "Omschrijving": {
+      "description": "The description of the article, as it appears on quotes and invoices.",
+      "example": "Office chair model X"
+    },
+    "Voorraad bijhouden": {
+      "description": "Indicates whether AFAS keeps track of the stock of this article: J for yes, N for no.",
+      "example": "J"
+    },
+    "Artikelgroep": {
+      "description": "The code of the article group this article falls under, as already set up in AFAS.",
+      "example": "001"
+    },
+    "Basiseenheid": {
+      "description": "The unit in which the article is registered, as a code from the Hulptabellen tab (e.g. STK, KG, DOZ, L).",
+      "example": "STK"
+    },
+    "BTW-Tariefgroep": {
+      "description": "The VAT rate group of the article, as a code from the Hulptabellen tab: 0 = zero, 1 = low, 2 = high, Geen = no VAT, U = excluded from VAT/ICP. Leave empty when unknown.",
+      "example": "1"
+    }
+  },
+  "faq": [
+    {
+      "question": "Which codes may I use for Basiseenheid and BTW-Tariefgroep?",
+      "answer": "Exactly the codes from the Hulptabellen tab of this template, not the description next to it — for example STK for Stuks (pieces) or 1 for Laag (low)."
+    }
+  ]
+}

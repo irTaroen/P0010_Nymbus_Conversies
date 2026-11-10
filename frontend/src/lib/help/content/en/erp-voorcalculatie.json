@@ -1,0 +1,91 @@
+{
+  "general": [
+    "Pre-calculations (voorcalculaties) are project budgets of hours and materials. The pre-calculation in AFAS goes via the API integration to APPREO, where it can be scheduled as a work order (werkbon). A pre-calculation can also be issued as a quotation to the sales relation.",
+    "For the APPREO workshop it is important that projects with pre-calculations are present in the AFAS environment. So make sure the projects you refer to here also appear in the conversion of the Projects module.",
+    "Each row in this file is one quotation line. The columns Projectnummer, Offerte, Begindatum Offerte and Einddatum Offerte belong to the quotation as a whole and therefore repeat on every row of the same quotation; the other columns describe the line itself.",
+    "Below, the import template for the pre-calculation is described at field level. The 'Conversie' (conversion) tab contains the pre-calculation data; the 'Hulptabel' (lookup table) and 'Landen' (countries) tabs can be used to fill certain columns. The template contains one example pre-calculation, whose values are used below as examples."
+  ],
+  "columns": {
+    "Projectnummer": {
+      "description": "The unique identification code of the project to which the quotation and its lines are linked. This number must match the project number from the source system exactly — and therefore the project number in the conversion of the Projects module. No spaces or special characters. All lines of one quotation have the same project number.",
+      "example": "31508001"
+    },
+    "Offerte": {
+      "description": "The quotation number within the project. Several quotation lines share the same quotation number when they are part of the same quotation; a new number means a new pre-calculation. Projectnummer, Begindatum Offerte and Einddatum Offerte belong to the quotation, not to the line: they must be the same on every line with the same quotation number.",
+      "example": "VC001"
+    },
+    "Begindatum Offerte": {
+      "description": "The start date of the quotation as a whole: from when the quotation is valid or applicable. This date must be the same as or earlier than the start date of all related quotation lines, and the same on every line of the quotation. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-01-2026"
+    },
+    "Einddatum Offerte": {
+      "description": "The end date of the quotation as a whole: until when the quotation is valid. This date must be the same as or later than the end date of all related quotation lines. Leave empty when the quotation has no end date — then on every line of the quotation; otherwise every line carries the same date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "31-12-2026"
+    },
+    "Begindatum Regel": {
+      "description": "The start date of this specific quotation line. May differ from the start date of the quotation, but must never be earlier. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-01-2026"
+    },
+    "Einddatum Regel": {
+      "description": "The end date of this specific quotation line; it may not be later than the end date of the quotation. Leave empty when the end date is the same as that of the quotation or when no specific end date applies. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "31-05-2026"
+    },
+    "Type item": {
+      "description": "The type of item this quotation line relates to, from the fixed values of the Hulptabel: Art = Artikel (article), Kst = Kosten (costs), Sam = Samenstelling (composition), Wst = Werksoort (work type). AFAS does not accept deviating or additional values. Note the spelling with one capital letter.",
+      "example": "Wst"
+    },
+    "Itemcode": {
+      "description": "The code of the article, cost type, composition or work type — depending on what is in Type item. Checked against the item table from the AFAS environment of this project; if the code is wrong, the tool shows the valid codes with their type. Note: that table currently contains no compositions, so a code of type Sam is rejected for as long as it is not set up in AFAS.",
+      "example": "SK0001"
+    },
+    "APPREO Facturatie": {
+      "description": "Invoicing parameter for APPREO: determines how invoicing takes place from APPREO. Required when the line is invoiced via APPREO. Refer to the APPREO documentation for the permitted values and scope."
+    },
+    "APPREO Frequentie Uitvoer": {
+      "description": "The execution frequency as configured in APPREO: how often the work order is carried out per year. Required when the line is scheduled as a work order in APPREO. Refer to the APPREO documentation for the valid frequency codes."
+    },
+    "APPREO Planuren": {
+      "description": "The number of planned hours per execution, in line with the APPREO configuration. For a job that is one-off or recurs a number of times per year: the number of hours the visit takes in that week or weeks. For a job that recurs weekly: the total number of hours per week. Enter a decimal number — 2,5 is two and a half hours.",
+      "example": "2,5"
+    },
+    "APPREO OE": {
+      "description": "The organisational unit (OE) as defined in APPREO. This field links the quotation line to a department or cost centre within the APPREO environment. Refer to APPREO for the valid OE codes."
+    },
+    "APPREO Afwijkende Factuurtekst": {
+      "description": "An alternative description that appears on the invoice instead of the standard item description. Leave empty when the standard description of the item suffices. Free text field; maximum length and formatting depend on the APPREO settings.",
+      "example": "Central heating maintenance, 1st quarter"
+    },
+    "APPREO Werkinstructies": {
+      "description": "Specific work instructions passed on to the executing employee via APPREO: additional task descriptions, safety rules or client-specific agreements that are not in the item description. Leave empty when there are no specific instructions.",
+      "example": "Collect key from the caretaker; carry out between 08:00 and 16:00"
+    },
+    "APPREO Afwijkende Prijs": {
+      "description": "A price for this specific quotation line that deviates from the standard item price. Leave empty when the standard price of the item applies. Enter a decimal number; both 125.50 and 125,50 are read.",
+      "example": "125.50"
+    },
+    "APPREO Werksoort": {
+      "description": "The work type that the hours receive which are booked in Nacalculatie via the work order in APPREO. Refer to APPREO for the valid work type codes and for when this field must be filled in."
+    },
+    "APPREO Onderaannemer": {
+      "description": "The code or name of the subcontractor carrying out the work, in line with the APPREO registration. Only applies when this quotation line is carried out by a subcontractor; leave empty when own staff does the work. Make sure the subcontractor is set up as a supplier in the system before the import."
+    }
+  },
+  "faq": [
+    {
+      "question": "Can a project have more than one pre-calculation?",
+      "answer": "Yes. The quotation number is unique within the project, so a project can have several pre-calculations: VC001, VC002, and so on. All lines of the same pre-calculation share the same quotation number and the same start and end date of the quotation."
+    },
+    {
+      "question": "Will all pre-calculations in AFAS go along to APPREO with the API link?",
+      "answer": "Not automatically. The integration looks at the project status — projects with status 200 (Active / In progress) go along — and a line can only be scheduled as a work order when the APPREO columns are filled in. Which pre-calculations go along in your situation, you agree with your conversion consultant."
+    },
+    {
+      "question": "What do I fill in the APPREO columns with?",
+      "answer": "Those fields are conditionally required: they are needed as soon as the quotation line must be scheduled as a work order in APPREO, and otherwise they may be left empty. The permitted codes come from APPREO and not from AFAS, which is why the tool does not check them. Refer to the APPREO documentation or your consultant."
+    },
+    {
+      "question": "Why is my date rejected when it looks correct in Excel?",
+      "answer": "The tool reads the cell as it is in the file and expects day-month-year with four digits for the year: 01-01-2026 or 01/01/2026. A cell in another notation (2026-01-01 or 1-1-26) or a date that does not exist (31-02-2026) is rejected. Set the column in Excel to one of those two notations, or enter the date as text."
+    }
+  ]
+}

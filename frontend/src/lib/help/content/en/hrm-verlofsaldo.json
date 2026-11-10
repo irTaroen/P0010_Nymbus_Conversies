@@ -1,0 +1,42 @@
+{
+  "general": [
+    "Leave is an accrued entitlement that must be correct on the first day in the new system — an incorrect leave balance is noticed immediately at the first leave request.",
+    "This tab contains the starting position of the leave balances per employee per leave type, as an opening balance on the go-live date of AFAS. Below are the columns with example data and frequently asked questions."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Employee number in AFAS. Must match the Medewerker column in the employee file. Note: multiple rows per employee are possible (one per leave type/financial year).",
+      "example": "100001"
+    },
+    "Type Verlof": {
+      "description": "Leave code in AFAS. Usually contains the year (W2025 = statutory 2025, B2025 = above-statutory 2025), so the table differs per year and per client. Checked against the leave type table in the AFAS environment of this project.",
+      "example": "W2025"
+    },
+    "Boekjaar": {
+      "description": "The financial year the balance relates to. Use the year that matches the year in the leave code. Needed when leave from several years is present at the same time.",
+      "example": "2025"
+    },
+    "Datum Boeking": {
+      "description": "The booking date of this leave correction. If you leave this empty, the tool chooses itself: if the Boekjaar falls in the year of go-live, the go-live date; otherwise 31 December of the Boekjaar.",
+      "example": "31-12-2025"
+    },
+    "Huidig Saldo (in Uren)": {
+      "description": "Leave balance in hours on the reference date. Max. 2 decimals, point as the decimal separator. A negative balance is only possible if employees are allowed to go negative or have accrued enough in the new year. Tip: check deviations of more than 1 hour compared with the source system before importing.",
+      "example": "37.25"
+    }
+  },
+  "faq": [
+    {
+      "question": "What is the Boekjaar column for?",
+      "answer": "Boekjaar links the balance to a specific leave accrual year. It also ensures a financial reservation of leave in that year."
+    },
+    {
+      "question": "How do I determine the leave balance on the reference date?",
+      "answer": "Export the leave registration from the source system as at the agreed conversion reference date. Check per leave type: accrued leave minus taken leave = the balance to import in the column Huidig Saldo."
+    },
+    {
+      "question": "Which leave types can I import?",
+      "answer": "You can import all leave types that were implemented when the terms of employment were set up for the employee in AFAS."
+    }
+  ]
+}

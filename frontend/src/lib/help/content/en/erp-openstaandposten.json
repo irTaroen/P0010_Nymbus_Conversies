@@ -1,0 +1,75 @@
+{
+  "general": [
+    "The sub-ledgers of debtors and creditors together provide the specification of your general ledger. When you start with AFAS you deal with outstanding debtors and creditors from another system: those outstanding items must be brought along as of a specific date. This conversion is also called the opening balance (beginbalans).",
+    "For the opening balance, the closing balance of the old system is needed first, and that is often only known on the last day. That is why the opening balance usually takes place after go-live. You can prepare it and make an estimate of the expected opening balance, so that you still have figures at go-live.",
+    "The import template has one tab for debtors and creditors together. The column 'Debiteur of Crediteur' (D or C) indicates per row which of the two it is; the other columns apply to both.",
+    "For processing, use the journal 'Beginbalans' (opening balance) and not the sales or purchase journal."
+  ],
+  "columns": {
+    "Debiteur of Crediteur": {
+      "description": "Indicates per row which of the two it is: D for an outstanding debtor item, C for an outstanding creditor item. This letter determines, among other things, in which field the amount ends up in AFAS Profit.",
+      "example": "D"
+    },
+    "Debiteur- of Crediteurnummer": {
+      "description": "The debtor or creditor number as registered in AFAS Profit, depending on what is in the column 'Debiteur of Crediteur'. This number must already exist in the master data before you import this file.",
+      "example": "12345"
+    },
+    "Fin Administratie": {
+      "description": "The number of the financial administration in AFAS Profit to which the outstanding item is linked; this determines in which administration the item is entered. Check the correct number with the system administrator or consultant. Checked against the administration table from the AFAS environment of this project. AFAS writes the codes with a leading zero (01, 02); a 1 from Excel is read as the same administration.",
+      "example": "1"
+    },
+    "Boekstuknummer": {
+      "description": "The entry number of the outstanding item from the source system. This number is carried over into AFAS Profit and serves as a reference for identifying the item. No spaces, and each entry number may occur only once per administration. If several administrations are in one tab, the tool also reports a number that occurs in two administrations as a duplicate — in that case check yourself whether it really is a duplicate.",
+      "example": "V1002542152"
+    },
+    "Dagboek": {
+      "description": "The journal code under which the outstanding item is booked; the journal determines the general ledger processing. Use the journal 'Beginbalans' and not the sales or purchase journal. The code differs per administration, and the journal for creditors is usually a different one from that for debtors — check the valid journals in the administration settings."
+    },
+    "Bedrag": {
+      "description": "The outstanding amount, for both types of items: for a debtor item (D) what the debtor still owes the organisation, for a creditor item (C) what the organisation still owes the creditor — the column 'Debiteur of Crediteur' determines whether it is booked as debit or credit. Only positive amounts, no negative numbers. Do not enter a currency symbol or thousands separator; 404.99 and 404,99 are both read.",
+      "example": "404,99"
+    },
+    "Incasseren": {
+      "description": "Whether the outstanding item is processed via automatic direct debit; this controls the SEPA direct debit processing in AFAS Profit. J = via automatic direct debit, N = manual payment. With J the debtor's IBAN must be registered in AFAS Profit.",
+      "example": "J"
+    },
+    "Factuur": {
+      "description": "The invoice number that belongs to the outstanding item — an additional reference alongside the entry number, shown on reminders and overviews. Leave empty when there is no separate invoice number or when it is the same as the entry number.",
+      "example": "F1234"
+    },
+    "Factuurdatum": {
+      "description": "The date of the original invoice. AFAS Profit uses it as the entry date, so that the aging analysis and reminders count from the real invoice date. If you leave it empty, the go-live date is used. The booking itself (booking date, financial year and period) always falls on the go-live date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "15-08-2025"
+    },
+    "Vervaldatum": {
+      "description": "The date on which the outstanding item expires and payment is expected at the latest. Used for the reminder process and the aging analysis. Leave empty when there is no specific due date or when the payment condition of the relation governs. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "31-12-2025"
+    },
+    "Tussenrekening": {
+      "description": "The general ledger account on which the counter-entry of this item goes (tussenrekening, intermediate account). A journal entry must be in balance, so the tool books the same amount on the other side of this account next to each outstanding item — for a debtor item a credit, for a creditor item a debit. Usually this is the same intermediate account for all rows, which is written off against the opening balance after conversion. The number must exist in the general ledger accounts of AFAS; the button in the cell shows the valid accounts.",
+      "example": "2999"
+    }
+  },
+  "faq": [
+    {
+      "question": "Can I import outstanding items without an existing debtor or creditor?",
+      "answer": "No. The system always needs a debtor or creditor to open the opening balance correctly. Make sure, therefore, that all debtors and creditors are already in AFAS before you start this conversion."
+    },
+    {
+      "question": "Can I convert both the invoices and the payments?",
+      "answer": "No, and that is not necessary either. This is only about the invoices that are still outstanding as of a certain date — not all historical invoices with the associated payments. Bring along only those outstanding items."
+    },
+    {
+      "question": "Can I do the conversion in parts?",
+      "answer": "That is possible, as long as you keep close track of what has already been done and what is still missing. Our advice is to carry it out in one go."
+    },
+    {
+      "question": "Why is there an extra line per item on the intermediate account?",
+      "answer": "A journal entry in AFAS must be in balance, and outstanding debtors together are only debit (creditors only credit). That is why the tool books, for each row, a counter-entry of the same amount on the general ledger account from the column Tussenrekening. This way each entry is in balance on its own; the intermediate account is afterwards written off against the opening balance of the general ledger."
+    },
+    {
+      "question": "Can I combine debtor and creditor items in one file?",
+      "answer": "Yes, that is exactly the intention: one tab for both, with the column 'Debiteur of Crediteur' (D/C) indicating per row which it is."
+    }
+  ]
+}

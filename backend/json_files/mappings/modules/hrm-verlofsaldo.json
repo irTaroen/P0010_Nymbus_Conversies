@@ -1,0 +1,35 @@
+{
+  "group": "modules",
+  "connector": "HrAbsCorrection",
+  "module": "hrm-verlofsaldo",
+  "root": "HrAbsCorrection",
+  "file": "HRM_4_Verlofsaldo.xlsx",
+  "sheet": "Verlofsaldo",
+  "fields": [
+    { "object": ["HrAbsCorrection"], "field": "EmId", "label": "Medewerker", "mandatory": true, "source": "column", "column": "Medewerker", "columnIndex": 0 },
+    { "object": ["HrAbsCorrection"], "field": "ViAt", "label": "Type verlof", "mandatory": true, "source": "column", "column": "Type Verlof", "columnIndex": 1 },
+    { "object": ["HrAbsCorrection"], "field": "RgDa", "label": "Datum boeking", "mandatory": false, "source": "column", "column": "Datum Boeking", "columnIndex": 3 },
+    { "object": ["HrAbsCorrection"], "field": "HhMm", "label": "Aantal uren", "mandatory": true, "source": "column", "column": "Huidig Saldo (in Uren)", "columnIndex": 4, "multiply": 60 },
+    { "object": ["HrAbsCorrection"], "field": "ViCr", "label": "Reden correctie", "mandatory": false, "source": "fixed", "value": "C" }
+  ],
+  "notes": [
+    "REWRITTEN: this module now maps to HrAbsCorrection, not HrAbsBalance — HrAbsBalance's 7 fields were all composite-key, with no field to actually carry a saldo, which is why the previous version of this mapping was stuck. HrAbsCorrection fixes that: it has a real value field (HhMm) and, tellingly, its own 'Reden correctie' enum includes 'C' = 'Conversie' as one of its options — a strong signal this connector is the one AFAS expects a leave-balance conversion to go through, not a guess on my part.",
+    "Unit conversion confirmed and built (13-10-2026): HhMm ('Aantal uren') is NOT hours despite the label — AFAS's own help center (help.afas.nl, UpdateConnector HrAbsCorrection) states this field is duration in MINUTES: 0.5 uur = 30, 1 uur = 60, 4 uur = 240. Clients provide hours in 'Huidig Saldo (in Uren)' because it's simpler for them, so the field carries `multiply: 60`: the payload sends the cell × 60, rounded to a whole number since HhMm is an int (37.25 → 2235).",
+    "HhMm isn't mandatory per AFAS's own schema, but the template's rules require 'Huidig Saldo (in Uren)' (required, regex-checked) — per policy the template wins, so mandatory is true here.",
+    "Boekjaar → RgDa, built 13-10-2026: Boekjaar (column C) has no AFAS field of its own on HrAbsCorrection, but it decides RgDa (Datum boeking) whenever Datum Boeking (column D) is empty — the livegangdatum when it falls in that Boekjaar, otherwise 31 december of the Boekjaar (Taroen, 13-10-2026). Not expressible in a mapping, so it is a `derive` override in MODULE_OVERRIDES (frontend/src/lib/module-phases.ts); this file keeps RgDa mapped to the column, which the override uses first when it is filled.",
+    "ViCr (Reden correctie) is set to a fixed 'C' (Conversie) since that option exists specifically for this situation and nothing in the sheet says otherwise — a reasonable default, not a certainty, so flagging it as a choice rather than treating it as verified.",
+    "EnSe (Dienstverband) has no column and isn't mandatory — same recurring ambiguity already flagged on hrm-salarisparameters/hrm-uitzendkrachten/the old hrm-verlofsaldo notes: which employment record this correction applies to, relevant only if an employee has more than one.",
+    "BlId (Verlofsaldo, an int) reads like a foreign key to an existing leave-balance record being corrected, but AFAS's own help page didn't say whether it's required to reference one or can be left empty so AFAS creates/targets the right balance implicitly from EmId+ViAt (+ verlofjaar). Since this is a green-field conversion with no pre-existing balance records, leaving it unmapped assumes the latter — worth confirming before a real upload rather than assuming silently.",
+    "CcPy (Verrekenen in salarisverwerking — whether this correction gets settled through payroll processing) has no column and is left as a real open decision, not defaulted: unlike a boolean such as Postbusadres where 'false' is an obviously safe default, whether a leave correction should trigger a payroll settlement plausibly depends on the leave type, and getting it wrong has payroll consequences.",
+    "Re (Opmerking, blob) and CoWk (Aantal weken ouderverlof, only relevant for parental-leave-type corrections) have no column and aren't mandatory — left unmapped."
+  ],
+  "verifiedAgainst": {
+    "description": "Live GET /api/afas/updateconnectors/modules/HrAbsCorrection — 10 fields total, no nested objects. HhMm's minutes-not-hours format confirmed against AFAS's own public help page (help.afas.nl/help/EN/SE/App_Conect_UpdDsc_165.htm), not guessed.",
+    "source": "GET /api/afas/updateconnectors/modules/HrAbsCorrection",
+    "liveMetaInfoConfirmed": true,
+    "checkedAt": "2026-08-13"
+  },
+  "savedAt": "2026-08-13T11:37:58Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

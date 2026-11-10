@@ -1,0 +1,29 @@
+{
+  "general": [
+    "Salary parameters are employee-specific values used in the salary calculation, such as fixed allowances, deviating bases or personal grants.",
+    "Below, the import template is described at column level, with sample data to make filling it in as easy as possible."
+  ],
+  "columns": {
+    "Medewerker": {
+      "description": "Employee number in AFAS. Must match the Medewerker column in the employees file.",
+      "example": "100001"
+    },
+    "Parameter": {
+      "description": "Numeric code of the salary parameter. Depends on the configuration — see the salary parameter master data in AFAS.",
+      "example": "110284604"
+    },
+    "Begindatum": {
+      "description": "Start date of the parameter. Use the AFAS go-live date, for example 01-01-2026.",
+      "example": "01-10-2025"
+    },
+    "Einddatum": {
+      "description": "Leave empty for an ongoing grant. Fill in for temporarily granted values.",
+      "example": "30-09-2028"
+    },
+    "Waarde": {
+      "description": "The value: a numeric amount in euros or an indicator (J/N). The type depends on the parameter definition in AFAS.",
+      "example": "4000 / J"
+    }
+  },
+  "faq": []
+}

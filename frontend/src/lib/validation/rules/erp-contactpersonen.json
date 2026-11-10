@@ -1,0 +1,137 @@
+{
+  "columns": [
+    {
+      "column": "Contact bij",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "enum", "values": ["D", "C"], "message": "Moet D (Debiteur) of C (Crediteur) zijn", "messageEn": "Must be D (debtor) or C (creditor)" }
+      ]
+    },
+    {
+      "column": "Debiteur/Crediteur nummer",
+      "type": "integer",
+      "rules": [{ "check": "required" }, { "check": "min", "value": 1 }]
+    },
+    {
+      "column": "Afdeling",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 255 }]
+    },
+    {
+      "column": "Functienaam",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 50 }]
+    },
+    {
+      "column": "Telefoonnr. zakelijk",
+      "type": "text",
+      "rules": [{ "check": "phone" }]
+    },
+    {
+      "column": "Mobiel",
+      "type": "text",
+      "rules": [{ "check": "phone" }]
+    },
+    {
+      "column": "Email zakelijk",
+      "type": "text",
+      "rules": [{ "check": "email" }]
+    },
+    {
+      "column": "Zoeknaam",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 10, "message": "Mag maximaal 10 tekens zijn", "messageEn": "Must be at most 10 characters" }]
+    },
+    {
+      "column": "Roepnaam",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 80 }]
+    },
+    {
+      "column": "Voornaam",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 50 }]
+    },
+    {
+      "column": "Voorvoegsel",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Achternaam",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 80 }]
+    },
+    {
+      "column": "Geslacht",
+      "type": "text",
+      "rules": [
+        { "check": "enum", "values": ["M", "O", "V", "X"], "message": "Moet M (Man), V (Vrouw), X (Non-binair) of O (Onbekend) zijn", "messageEn": "Must be M (male), V (female), X (non-binary) or O (unknown)" }
+      ]
+    },
+    {
+      "column": "Land (persoon)",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Landen",
+          "message": "Onbekende landcode — gebruik een code uit de AFAS-landenlijst (bijv. NL, B, D, A)",
+          "messageEn": "Unknown country code — use a code from the AFAS country list (e.g. NL, B, D, A)"
+        }
+      ]
+    },
+    {
+      "column": "Postbusadres (persoon)",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "enum", "values": ["J", "N"], "message": "Moet J of N zijn", "messageEn": "Must be J (yes) or N (no)" }
+      ]
+    },
+    {
+      "column": "Plaats (persoon)",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Woonplaatsen",
+          "scopeColumn": "Land (persoon)",
+          "scopeDefault": "NL",
+          "message": "Onbekende woonplaats voor dit land",
+          "messageEn": "Unknown town/city for this country"
+        },
+        { "check": "length", "max": 50 }
+      ]
+    },
+    {
+      "column": "Straat (persoon)",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 60 }]
+    },
+    {
+      "column": "Huisnummer (persoon)",
+      "type": "integer",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Postcode (persoon)",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "postcode",
+          "scopeColumn": "Land (persoon)",
+          "scopeDefault": "NL",
+          "message": "Ongeldige postcode — een Nederlandse postcode is 4 cijfers en 2 letters (bijv. 1013 BG)",
+          "messageEn": "Invalid postcode — a Dutch postcode is 4 digits and 2 letters (e.g. 1013 BG)"
+        },
+        { "check": "length", "max": 15 }
+      ]
+    }
+  ],
+  "crossField": []
+}

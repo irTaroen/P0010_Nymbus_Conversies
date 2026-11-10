@@ -1,0 +1,245 @@
+{
+  "columns": [
+    {
+      "column": "Offertenummer",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 12 }
+      ]
+    },
+    {
+      "column": "Datum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Crediteur Nummer",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 16 }
+      ]
+    },
+    {
+      "column": "Omschrijving",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 255 }]
+    },
+    {
+      "column": "Administratie",
+      "type": "integer",
+      "rules": [
+        { "check": "required" },
+        { "check": "min", "value": 1 },
+        {
+          "check": "codetabel",
+          "tableRef": "Administraties",
+          "message": "Onbekende administratie",
+          "messageEn": "Unknown administration"
+        }
+      ]
+    },
+    {
+      "column": "Gewenste leverdatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Datum levering toegezegd",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Vervaldatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Valuta",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 3 }]
+    },
+    {
+      "column": "Valutakoers",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Referentie leverancier",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 50 }]
+    },
+    {
+      "column": "Betalingsvoorwaarde",
+      "type": "text",
+      "rules": [
+        { "check": "length", "max": 5 },
+        {
+          "check": "codetabel",
+          "tableRef": "Betalingsvoorwaarden",
+          "message": "Onbekende betalingsvoorwaarde",
+          "messageEn": "Unknown payment condition"
+        }
+      ]
+    },
+    {
+      "column": "Magazijn",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Projectnummer",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 15 }]
+    },
+    {
+      "column": "Regelnummer",
+      "type": "integer",
+      "rules": [{ "check": "min", "value": 1 }]
+    },
+    {
+      "column": "Type item",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "enum",
+          "values": ["Wst", "Art", "Kst", "Sam"],
+          "message": "Moet Wst (Werksoort), Art (Artikel), Kst (Kosten) of Sam (Samenstelling) zijn",
+          "messageEn": "Must be Wst (work type), Art (item), Kst (costs) or Sam (composition)"
+        }
+      ]
+    },
+    {
+      "column": "Itemcode",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 40 },
+        {
+          "check": "codetabel",
+          "tableRef": "Items",
+          "message": "Onbekende itemcode",
+          "messageEn": "Unknown item code"
+        }
+      ]
+    },
+    {
+      "column": "Omschrijving regel",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 255 }]
+    },
+    {
+      "column": "Eenheid",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        { "check": "length", "max": 15 }
+      ]
+    },
+    {
+      "column": "Aantal eenheden",
+      "type": "decimal",
+      "rules": [
+        { "check": "required" },
+        { "check": "min", "value": 0 }
+      ]
+    },
+    {
+      "column": "Aantal besteld",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "Prijs per eenheid",
+      "type": "decimal",
+      "rules": [{ "check": "min", "value": 0 }]
+    },
+    {
+      "column": "BTW-tariefgroep",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 4 }]
+    },
+    {
+      "column": "Regelkorting percentage",
+      "type": "decimal",
+      "rules": [
+        { "check": "min", "value": 0 },
+        { "check": "max", "value": 100 }
+      ]
+    },
+    {
+      "column": "Afwijkende afleverdatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": []
+    },
+    {
+      "column": "Type projectkosten",
+      "type": "text",
+      "rules": [
+        {
+          "check": "enum",
+          "values": ["MA", "A", "ME", "OA", "O"],
+          "message": "Moet MA (Materiaal), A (Arbeid), ME (Materieel), OA (Onderaanneming) of O (Overig) zijn",
+          "messageEn": "Must be MA (material), A (labour), ME (equipment), OA (subcontracting) or O (other)"
+        }
+      ]
+    }
+  ],
+  "crossField": [
+    {
+      "if": { "column": "Datum", "op": "isNotEmpty" },
+      "then": {
+        "column": "Gewenste leverdatum",
+        "op": ">=",
+        "value": { "column": "Datum" }
+      },
+      "message": "Mag niet eerder liggen dan de offertedatum",
+      "messageEn": "Must not be earlier than the quote date"
+    },
+    {
+      "if": { "column": "Datum", "op": "isNotEmpty" },
+      "then": {
+        "column": "Vervaldatum",
+        "op": ">=",
+        "value": { "column": "Datum" }
+      },
+      "message": "Mag niet eerder liggen dan de offertedatum",
+      "messageEn": "Must not be earlier than the quote date"
+    },
+    {
+      "if": { "column": "Datum", "op": "isNotEmpty" },
+      "then": {
+        "column": "Datum levering toegezegd",
+        "op": ">=",
+        "value": { "column": "Datum" }
+      },
+      "message": "Mag niet eerder liggen dan de offertedatum",
+      "messageEn": "Must not be earlier than the quote date"
+    },
+    {
+      "if": { "column": "Valuta", "op": "isNotEmpty" },
+      "then": { "column": "Valutakoers", "op": "isNotEmpty" },
+      "message": "Bij een valuta is de valutakoers verplicht",
+      "messageEn": "For a foreign currency the exchange rate is required"
+    },
+    {
+      "if": { "column": "Type item", "op": "==", "value": "Art" },
+      "then": { "column": "Aantal besteld", "op": "isNotEmpty" },
+      "message": "Bij een artikel is het aantal besteld verplicht",
+      "messageEn": "For an item the quantity ordered is required"
+    },
+    {
+      "if": { "column": "Type projectkosten", "op": "isNotEmpty" },
+      "then": { "column": "Projectnummer", "op": "isNotEmpty" },
+      "message": "Type projectkosten kan alleen bij een project",
+      "messageEn": "Type projectkosten can only be used with a project"
+    }
+  ]
+}

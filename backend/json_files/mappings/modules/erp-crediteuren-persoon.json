@@ -1,0 +1,355 @@
+{
+  "group": "modules",
+  "connector": "KnPurchaseRelationPer",
+  "module": "erp-crediteuren",
+  "root": "KnPurchaseRelationPer",
+  "file": "",
+  "sheet": "",
+  "fields": [
+    {
+      "object": [
+        "KnPurchaseRelationPer"
+      ],
+      "field": "CrId",
+      "label": "Nummer crediteur",
+      "mandatory": false,
+      "source": "column",
+      "column": "Crediteur Nummer",
+      "columnIndex": 0
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer"
+      ],
+      "field": "IsCr",
+      "label": "Is crediteur",
+      "mandatory": false,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer"
+      ],
+      "field": "CuId",
+      "label": "Valuta",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "EUR"
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer"
+      ],
+      "field": "VaId",
+      "label": "Btw-identificatienummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "BTW Nummer",
+      "columnIndex": 8
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer"
+      ],
+      "field": "PaCd",
+      "label": "Betaalvoorwaarde",
+      "mandatory": false,
+      "source": "column",
+      "column": "Betalingsvoorwaarde",
+      "columnIndex": 11
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer"
+      ],
+      "field": "VaDu",
+      "label": "Btw-plicht",
+      "mandatory": false,
+      "source": "column",
+      "column": "BTW Plicht",
+      "columnIndex": 13
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer"
+      ],
+      "field": "PaSp",
+      "label": "Betaalspecificatie",
+      "mandatory": false,
+      "source": "column",
+      "column": "Betaalspecificatie",
+      "columnIndex": 12
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer"
+      ],
+      "field": "AuPa",
+      "label": "Automatisch betalen",
+      "mandatory": false,
+      "source": "column",
+      "column": "Automatisch betalen",
+      "columnIndex": 10
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer"
+      ],
+      "field": "ColA",
+      "label": "Verzamelrekening",
+      "mandatory": false,
+      "source": "column",
+      "column": "Verzamelrekening",
+      "columnIndex": 9
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "PadAdr",
+      "label": "Postadres is adres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "AutoNum",
+      "label": "Autonummering",
+      "mandatory": true,
+      "source": "fixed",
+      "value": true
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "FiNm",
+      "label": "Voornaam",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voornaam",
+      "columnIndex": 4
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "In",
+      "label": "Voorletters",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voorletters",
+      "columnIndex": 3
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "Is",
+      "label": "Voorvoegsel",
+      "mandatory": false,
+      "source": "column",
+      "column": "Voorvoegsel",
+      "columnIndex": 5
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "LaNm",
+      "label": "Achternaam",
+      "mandatory": false,
+      "source": "column",
+      "column": "Achternaam",
+      "columnIndex": 6
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "TeNr",
+      "label": "Telefoonnr. werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Telefoon werk",
+      "columnIndex": 17
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "EmAd",
+      "label": "E-mail werk",
+      "mandatory": false,
+      "source": "column",
+      "column": "Email",
+      "columnIndex": 16
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "CcNr",
+      "label": "KVK-nummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "KvK-nummer",
+      "columnIndex": 7
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson"
+      ],
+      "field": "AddToPortal",
+      "label": "Persoon toegang geven tot afgeschermde deel van de portal(s)",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBankAccount"
+      ],
+      "field": "CoId",
+      "label": "Land van de bank",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land van Bank",
+      "columnIndex": 15
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBankAccount"
+      ],
+      "field": "Iban",
+      "label": "IBAN-nummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "IBAN-Nummer",
+      "columnIndex": 14
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "CoId",
+      "label": "Land",
+      "mandatory": true,
+      "source": "column",
+      "column": "Land",
+      "columnIndex": 24
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "PbAd",
+      "label": "Postbusadres",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Ad",
+      "label": "Straat",
+      "mandatory": false,
+      "source": "column",
+      "column": "Straatnaam",
+      "columnIndex": 19
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmNr",
+      "label": "Huisnummer",
+      "mandatory": false,
+      "source": "column",
+      "column": "Huisnummer",
+      "columnIndex": 20
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "HmAd",
+      "label": "Toev. aan huisnr.",
+      "mandatory": false,
+      "source": "column",
+      "column": "Toevoeging Huisnummer",
+      "columnIndex": 21
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ZpCd",
+      "label": "Postcode",
+      "mandatory": false,
+      "source": "column",
+      "column": "Postcode",
+      "columnIndex": 22
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "Rs",
+      "label": "Woonplaats",
+      "mandatory": false,
+      "source": "column",
+      "column": "Woonplaats",
+      "columnIndex": 23
+    },
+    {
+      "object": [
+        "KnPurchaseRelationPer",
+        "KnPerson",
+        "KnBasicAddressAdr"
+      ],
+      "field": "ResZip",
+      "label": "Zoek woonplaats bij postcode",
+      "mandatory": true,
+      "source": "fixed",
+      "value": false
+    }
+  ],
+  "savedAt": "2026-09-21T09:45:30Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

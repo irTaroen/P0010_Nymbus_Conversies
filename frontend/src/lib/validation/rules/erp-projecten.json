@@ -1,0 +1,174 @@
+{
+  "columns": [
+    {
+      "column": "Projectnummer",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "unique" }]
+    },
+    {
+      "column": "Project Naam",
+      "type": "text",
+      "rules": [{ "check": "required" }, { "check": "length", "max": 80 }]
+    },
+    {
+      "column": "Projectgroep",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Projectgroepen",
+          "message": "Onbekende projectgroep",
+          "messageEn": "Unknown project group"
+        }
+      ]
+    },
+    {
+      "column": "Administratie",
+      "type": "text",
+      "rules": [
+        { "check": "required" },
+        {
+          "check": "codetabel",
+          "tableRef": "Administraties",
+          "message": "Onbekende administratie",
+          "messageEn": "Unknown administration"
+        }
+      ]
+    },
+    {
+      "column": "Debiteur Nummer",
+      "type": "integer",
+      "rules": [{ "check": "required" }, { "check": "min", "value": 1 }]
+    },
+    {
+      "column": "Begindatum",
+      "type": "date",
+      "format": "DD-MM-YYYY | DD/MM/YYYY",
+      "rules": [{ "check": "required" }]
+    },
+    {
+      "column": "Straatnaam Adres",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 60 }]
+    },
+    {
+      "column": "Nummer Adres",
+      "type": "integer",
+      "rules": [{ "check": "split-huisnummer", "intoColumn": "Nummer toevoeging Adres" }]
+    },
+    {
+      "column": "Nummer toevoeging Adres",
+      "type": "text",
+      "rules": [{ "check": "length", "max": 30 }]
+    },
+    {
+      "column": "Postcode Adres",
+      "type": "text",
+      "rules": [
+        {
+          "check": "postcode",
+          "scopeColumn": "Land Adres",
+          "scopeDefault": "NL",
+          "message": "Ongeldige postcode — een Nederlandse postcode is 4 cijfers en 2 letters (bijv. 1054 BW)",
+          "messageEn": "Invalid postcode — a Dutch postcode is 4 digits and 2 letters (e.g. 1054 BW)"
+        },
+        { "check": "length", "max": 15 }
+      ]
+    },
+    {
+      "column": "Plaats Adres",
+      "type": "text",
+      "rules": [
+        {
+          "check": "codetabel",
+          "tableRef": "Woonplaatsen",
+          "scopeColumn": "Land Adres",
+          "scopeDefault": "NL",
+          "message": "Onbekende woonplaats voor dit land",
+          "messageEn": "Unknown town/city for this country"
+        },
+        { "check": "length", "max": 50 }
+      ]
+    },
+    {
+      "column": "Land Adres",
+      "type": "text",
+      "rules": [
+        { "check": "codetabel", "tableRef": "Landen", "message": "Onbekende landcode — gebruik een code uit de AFAS-landenlijst (bijv. NL, B, D)", "messageEn": "Unknown country code — use a code from the AFAS country list (e.g. NL, B, D)" }
+      ]
+    }
+  ],
+  "crossField": [
+    {
+      "if": {
+        "anyOf": [
+          { "column": "Nummer Adres", "op": "isNotEmpty" },
+          { "column": "Nummer toevoeging Adres", "op": "isNotEmpty" },
+          { "column": "Postcode Adres", "op": "isNotEmpty" },
+          { "column": "Plaats Adres", "op": "isNotEmpty" },
+          { "column": "Land Adres", "op": "isNotEmpty" }
+        ]
+      },
+      "then": { "column": "Straatnaam Adres", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer het projectadres is ingevuld",
+      "messageEn": "Required when the project address is filled in"
+    },
+    {
+      "if": {
+        "anyOf": [
+          { "column": "Straatnaam Adres", "op": "isNotEmpty" },
+          { "column": "Nummer toevoeging Adres", "op": "isNotEmpty" },
+          { "column": "Postcode Adres", "op": "isNotEmpty" },
+          { "column": "Plaats Adres", "op": "isNotEmpty" },
+          { "column": "Land Adres", "op": "isNotEmpty" }
+        ]
+      },
+      "then": { "column": "Nummer Adres", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer het projectadres is ingevuld",
+      "messageEn": "Required when the project address is filled in"
+    },
+    {
+      "if": {
+        "anyOf": [
+          { "column": "Straatnaam Adres", "op": "isNotEmpty" },
+          { "column": "Nummer Adres", "op": "isNotEmpty" },
+          { "column": "Nummer toevoeging Adres", "op": "isNotEmpty" },
+          { "column": "Plaats Adres", "op": "isNotEmpty" },
+          { "column": "Land Adres", "op": "isNotEmpty" }
+        ]
+      },
+      "then": { "column": "Postcode Adres", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer het projectadres is ingevuld",
+      "messageEn": "Required when the project address is filled in"
+    },
+    {
+      "if": {
+        "anyOf": [
+          { "column": "Straatnaam Adres", "op": "isNotEmpty" },
+          { "column": "Nummer Adres", "op": "isNotEmpty" },
+          { "column": "Nummer toevoeging Adres", "op": "isNotEmpty" },
+          { "column": "Postcode Adres", "op": "isNotEmpty" },
+          { "column": "Land Adres", "op": "isNotEmpty" }
+        ]
+      },
+      "then": { "column": "Plaats Adres", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer het projectadres is ingevuld",
+      "messageEn": "Required when the project address is filled in"
+    },
+    {
+      "if": {
+        "anyOf": [
+          { "column": "Straatnaam Adres", "op": "isNotEmpty" },
+          { "column": "Nummer Adres", "op": "isNotEmpty" },
+          { "column": "Nummer toevoeging Adres", "op": "isNotEmpty" },
+          { "column": "Postcode Adres", "op": "isNotEmpty" },
+          { "column": "Plaats Adres", "op": "isNotEmpty" }
+        ]
+      },
+      "then": { "column": "Land Adres", "op": "isNotEmpty" },
+      "message": "Verplicht wanneer het projectadres is ingevuld",
+      "messageEn": "Required when the project address is filled in"
+    }
+  ]
+}

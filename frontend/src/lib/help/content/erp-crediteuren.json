@@ -1,0 +1,127 @@
+{
+  "general": [
+    "Het crediteurenbestand is de basis voor alle inkoopprocessen — inkoopaanvragen, inkooporders en facturen verwijzen ernaar. Een schoon en overzichtelijk crediteurenbestand zorgt ervoor dat nieuwe inkooporders gemakkelijk aangemaakt en beoordeeld kunnen worden.",
+    "Nu de dataconversie van crediteuren voor de deur staat, is dit een mooi moment om het huidige bestand op te schonen. Neem alleen de crediteuren mee die je echt gaat gebruiken en controleer of crediteuren niet dubbel voorkomen.",
+    "Hieronder is het importsjabloon voor de crediteuren op veldniveau beschreven, met voorbeelddata en veelgestelde vragen om het invullen zo gemakkelijk mogelijk te maken."
+  ],
+  "columns": {
+    "Crediteur Nummer": {
+      "description": "Het unieke crediteurnummer waarmee de crediteur reeds in het bronsysteem geregistreerd staat. Wordt gebruikt als sleutel bij de import. Elk nummer mag slechts één keer voorkomen in het bestand.",
+      "example": "10056"
+    },
+    "Organisatie of Persoon": {
+      "description": "Bepaalt of de crediteur een organisatie (O) of een natuurlijk persoon (P) is. Bij O is Organisatie Naam verplicht, bij P zijn Voorletters, Voornaam en Achternaam verplicht.",
+      "example": "O"
+    },
+    "Organisatie Naam": {
+      "description": "De volledige bedrijfsnaam inclusief rechtsvorm (B.V., N.V., etc.), zoals geregistreerd bij de Kamer van Koophandel. Wordt weergegeven op inkoopfacturen en correspondentie. Maximaal 100 tekens. Verplicht wanneer Organisatie of Persoon = O. De naam wordt vergeleken met de crediteuren die al in AFAS (live) staan: staat dezelfde organisatie daar onder een ander crediteurnummer, dan verwijder je de regel of pas je het crediteurnummer in AFAS aan. Staat het crediteurnummer in AFAS al op een andere naam, dan krijgt Crediteur Nummer een fout.",
+      "example": "Animo Services B.V."
+    },
+    "Voorletters": {
+      "description": "De initialen van de persoon, inclusief punt. Formaat: X.X. — uitsluitend hoofdletters, elk gevolgd door een punt. Verplicht wanneer Organisatie of Persoon = P.",
+      "example": "F.K."
+    },
+    "Voornaam": {
+      "description": "De voornaam van de persoon. Verplicht wanneer Organisatie of Persoon = P.",
+      "example": "Frank"
+    },
+    "Voorvoegsel": {
+      "description": "Het tussenvoegsel van de achternaam, in kleine letters en zonder de achternaam zelf. Laat leeg wanneer de persoon geen tussenvoegsel heeft of wanneer de crediteur een organisatie is.",
+      "example": "de"
+    },
+    "Achternaam": {
+      "description": "De achternaam van de persoon, zonder tussenvoegsel. Verplicht wanneer Organisatie of Persoon = P.",
+      "example": "Koster"
+    },
+    "KvK-nummer": {
+      "description": "Het Kamer van Koophandel-nummer van de organisatie. Altijd 8 cijfers, zonder spaties of koppeltekens. Sterk aanbevolen voor in Nederland gevestigde organisaties.",
+      "example": "78342341"
+    },
+    "BTW Nummer": {
+      "description": "Het BTW-identificatienummer, in het officiële formaat per land. Nederlands formaat: NL + 9 cijfers + B + 2 cijfers. Niet verplicht: laat leeg als de crediteur geen BTW-nummer heeft; een ingevuld nummer moet wel geldig zijn.",
+      "example": "NL860576838B01"
+    },
+    "Verzamelrekening": {
+      "description": "De grootboekrekening waarop deze crediteur financieel wordt verzameld. Laat leeg om de standaard verzamelrekening 1600 te gebruiken. Wordt gecontroleerd tegen de verzamelrekeningen uit de AFAS-omgeving van dit project.",
+      "example": "1600"
+    },
+    "Automatisch betalen": {
+      "description": "Geeft aan of betalingen voor deze crediteur automatisch worden verwerkt via een betaalbatch. Bij J is de kolom IBAN-Nummer verplicht.",
+      "example": "N"
+    },
+    "Betalingsvoorwaarde": {
+      "description": "De code van de betalingsvoorwaarde die de standaard betalingstermijn bepaalt, gecontroleerd tegen de betalingsvoorwaardentabel uit AFAS. Beschikbaar: de dagcodes 8, 14, 21, 30, 45, 60, 90 en 120 (aantal dagen na factuurdatum), cont (contant) en Inc. (automatische incasso crediteuren). Let op: dit is de code, niet het aantal dagen — die twee zijn niet altijd hetzelfde.",
+      "example": "30"
+    },
+    "Betaalspecificatie": {
+      "description": "Geeft aan of bij het uitvoeren van betalingen een betaalspecificatie aan de crediteur wordt meegestuurd.",
+      "example": "J"
+    },
+    "BTW Plicht": {
+      "description": "De BTW-categorie die van toepassing is op de inkopen bij deze crediteur (codes uit de hulptabel). Altijd invullen. 1 = Verkopen standaard, 2 = Verlegd naar, 3 = Verkopen binnen EU, 4 = Import/Export buiten EU, 5 = Afstandsverkoop, 6 = Geen btw (intercompany), 7 = Margeregeling, 8 = Vrijgesteld.",
+      "example": "1"
+    },
+    "IBAN-Nummer": {
+      "description": "Het International Bank Account Number van de crediteur, zonder spaties. Verplicht wanneer automatisch betalen op J staat.",
+      "example": "NL15INGB0750917199"
+    },
+    "Land van Bank": {
+      "description": "De AFAS-landcode van het land waar de bank is gevestigd, gecontroleerd tegen de landenlijst uit AFAS. Let op: dit is niet de ISO-code — België is B, Duitsland D. Verplicht wanneer IBAN-Nummer is ingevuld.",
+      "example": "NL"
+    },
+    "Email": {
+      "description": "Het algemene zakelijke e-mailadres van de organisatie, in het formaat naam@domein.extensie. Eén adres per veld.",
+      "example": "administratie@animo-services.nl"
+    },
+    "Telefoon werk": {
+      "description": "Het zakelijke telefoonnummer van de organisatie, bij voorkeur in het volledige internationale formaat inclusief landcode. Spaties en koppeltekens zijn toegestaan.",
+      "example": "+31201234567"
+    },
+    "Email Fin Adm": {
+      "description": "Het e-mailadres van de financiële administratie, voor aanmaningen, facturen en overige financiële correspondentie. Wordt gecontroleerd op een geldig e-mailadres, maar gaat in deze conversie niet mee naar AFAS: de crediteur heeft daar geen apart veld voor.",
+      "example": "administratie@animo-services.nl"
+    },
+    "Straatnaam": {
+      "description": "De straatnaam van het vestigingsadres, zonder huisnummer.",
+      "example": "Nieuwe Hemweg"
+    },
+    "Huisnummer": {
+      "description": "Het numerieke huisnummer van het vestigingsadres. Een eventuele toevoeging komt in 'Toevoeging Huisnummer'. Staat de toevoeging erbij (17-19, 12 A), dan splitst de tool het nummer zelf: 17 blijft hier staan, -19 gaat naar 'Toevoeging Huisnummer', vóór wat daar al staat (250- met toevoeging 252 wordt 250 en -252).",
+      "example": "7"
+    },
+    "Toevoeging Huisnummer": {
+      "description": "De eventuele toevoeging bij het huisnummer (letter, verdieping of appartementnummer). Laat leeg indien er geen toevoeging is.",
+      "example": "p"
+    },
+    "Postcode": {
+      "description": "De postcode van het vestigingsadres, in de notatie van het betreffende land. Bij Land NL controleert de tool de schrijfwijze: 4 cijfers en 2 letters, bijv. 1013 BG. Een buitenlandse postcode wordt niet op formaat gecontroleerd.",
+      "example": "1013 BG"
+    },
+    "Woonplaats": {
+      "description": "De officiële plaatsnaam van het vestigingsadres, zonder afkortingen. Gecontroleerd tegen de woonplaatsenlijst uit AFAS voor het land in de kolom Land (geen land ingevuld = NL): gebruik 's-Gravenhage, niet Den Haag. Alleen Nederlandse plaatsen staan in die lijst; bij een buitenlands land wordt de plaats niet gecontroleerd.",
+      "example": "Amsterdam"
+    },
+    "Land": {
+      "description": "De AFAS-landcode van het vestigingsland, gecontroleerd tegen de landenlijst uit AFAS. Wordt gebruikt voor adresopmaak op facturen en voor de BTW-behandeling. Verplicht: AFAS heeft bij elk adres een land nodig, ook bij een Nederlands adres — vul dan NL in. Let op: dit is niet de ISO-code — NL (Nederland), B (België), D (Duitsland), AFG (Afghanistan).",
+      "example": "NL"
+    }
+  },
+  "faq": [
+    {
+      "question": "Welk nummer krijgen nieuwe crediteuren die we na de conversie in AFAS opvoeren?",
+      "answer": "Nieuwe crediteuren krijgen een autonummer van AFAS, zodat duidelijk inzichtelijk is wat historische en wat nieuwe data is."
+    },
+    {
+      "question": "Kan ik contactpersonen koppelen aan de crediteuren?",
+      "answer": "Contactpersonen worden in een aparte conversie meegenomen."
+    },
+    {
+      "question": "Is het mogelijk om extra informatie mee te nemen in de crediteuren conversie?",
+      "answer": "Bespreek dit met de conversie consultant. Houd er rekening mee dat de projectscope en de doorlooptijden hierdoor wijzigen."
+    },
+    {
+      "question": "Ik heb een andere vraag, hoe kan ik deze stellen aan de conversie consultant?",
+      "answer": "Neem contact op met je Nymbus conversie consultant; zij helpen je graag verder."
+    }
+  ]
+}

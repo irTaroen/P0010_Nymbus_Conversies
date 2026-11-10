@@ -1,0 +1,91 @@
+{
+  "general": [
+    "The post-calculation (nacalculatie) contains the actually spent hours, materials and costs per project: what has actually been realised, compared with the budget from the pre-calculation.",
+    "Each row in this file is one post-calculation line: one booking of a quantity on a project, on a date, with an item (work type, article, cost type or composition).",
+    "The projects and items you refer to here must also appear in the conversion of the Projects and Articles modules — a post-calculation line on an unknown project or item is not accepted by AFAS.",
+    "The columns below are derived from the AFAS specification of the post-calculation (UpdateConnector PtRealization). The import template for this module is still to be delivered."
+  ],
+  "columns": {
+    "Projectnummer": {
+      "description": "The project on which this line is booked. Must match the project number from the conversion of the Projects module exactly; a booking on an unknown project is not accepted by AFAS. Maximum 15 characters.",
+      "example": "31508001"
+    },
+    "Projectfase": {
+      "description": "The phase within the project to which the line relates. Leave empty when the project is not divided into phases. Maximum 15 characters.",
+      "example": "01"
+    },
+    "Datum": {
+      "description": "The date on which the hours were spent or the costs were incurred — not the date of entry or invoicing. This date determines the period in which the realisation falls. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "15-01-2026"
+    },
+    "Type item": {
+      "description": "What this line is about: Wst = Werksoort (work type, hours), Art = Artikel (article), Kst = Kosten (costs), Sam = Samenstelling (composition). Determines how AFAS processes the line and which other columns are needed — for Wst the employee is required.",
+      "example": "Wst"
+    },
+    "Itemcode": {
+      "description": "The code of the work type, article, cost type or composition, matching what is in Type item. Checked against the item table from the AFAS environment of this project; if the code is wrong, the tool shows the valid codes. Maximum 40 characters.",
+      "example": "UUR001"
+    },
+    "Aantal": {
+      "description": "The realised quantity: for a work type the number of hours, for an article the number of pieces. Decimals are allowed, so half an hour can be supplied as 0,5.",
+      "example": "7,5"
+    },
+    "Eenheid": {
+      "description": "The unit in which the quantity is expressed. Leave empty to use the standard unit of the item. Maximum 15 characters.",
+      "example": "uur"
+    },
+    "Medewerker": {
+      "description": "The employee number of the person who spent the hours. Required for Type item Wst, because hours in AFAS always hang on an employee. Must match the conversion of the Employees module. Maximum 15 characters.",
+      "example": "1001"
+    },
+    "Urensoort": {
+      "description": "The type of hours, with which AFAS distinguishes between, for example, normal, overtime and travel hours. Leave empty when the source system does not know this distinction. Maximum 5 characters.",
+      "example": "NOR"
+    },
+    "Omschrijving": {
+      "description": "A brief explanation of the line: what was done. Comes along in AFAS as the description of the realisation and may end up on an invoice specification. Maximum 255 characters.",
+      "example": "Installation maintenance"
+    },
+    "Kostprijs": {
+      "description": "The internal cost price of this line per unit. Leave empty to let AFAS determine the cost price of the item or the employee. Not negative.",
+      "example": "45,00"
+    },
+    "Verkoopprijs": {
+      "description": "The rate per unit to be invoiced. Required when the line is charged on; otherwise leave empty to let AFAS determine the rate from the price agreement. Not negative.",
+      "example": "95,00"
+    },
+    "Kortingspercentage": {
+      "description": "The discount percentage on the sales price of this line. Leave empty or enter 0 when there is no discount. A value between 0 and 100.",
+      "example": "10"
+    },
+    "Doorbelasten": {
+      "description": "Whether this line is invoiced to the client (Ja) or only recorded internally (Nee). With Ja a sales price is required.",
+      "example": "Ja"
+    },
+    "Type projectkosten": {
+      "description": "The cost type under which the line falls in the project administration: MA = Materiaal (materials), A = Arbeid (labour), ME = Materieel (equipment), OA = Onderaanneming (subcontracting), O = Overig (other). Leave empty when the source system does not know this classification.",
+      "example": "A"
+    },
+    "Kostenplaats": {
+      "description": "The cost centre (kostenplaats) on which the line is booked. Leave empty to use the cost centre of the employee or the project. Maximum 30 characters.",
+      "example": "KP100"
+    },
+    "Kostendrager": {
+      "description": "The cost unit (kostendrager) on which the line is booked. Leave empty to use the cost unit of the employee or the project. Maximum 30 characters.",
+      "example": "KD100"
+    },
+    "Organisatorische eenheid": {
+      "description": "The organisational unit within which the work was performed. Checked against the organisational unit table from the AFAS environment of this project. Maximum 10 characters.",
+      "example": "OE01"
+    },
+    "Geaccordeerd": {
+      "description": "Whether the line has already been approved (Ja) or is still pending assessment (Nee). Historical, already settled realisation is usually supplied as Ja.",
+      "example": "Ja"
+    },
+    "Externe sleutel": {
+      "description": "The unique identification of this line in the source system. Useful to trace after conversion where a line comes from, and to prevent a duplicate import. Maximum 40 characters.",
+      "example": "NC-2026-000123"
+    }
+  },
+  "faq": []
+}

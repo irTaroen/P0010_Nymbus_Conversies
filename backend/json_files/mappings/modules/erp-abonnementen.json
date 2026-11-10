@@ -1,0 +1,218 @@
+{
+  "group": "modules",
+  "connector": "FbSubscription",
+  "root": "FbSubscription",
+  "file": "ERP_7_Abonnementen.xlsx",
+  "sheet": "Conversie",
+  "fields": [
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "SuNr",
+      "label": "Nummer abonnement",
+      "mandatory": true,
+      "source": "column",
+      "column": "Abonnement nummer",
+      "columnIndex": 1,
+      "key": true
+    },
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "BcId",
+      "label": "Organisatie/persoon",
+      "mandatory": false,
+      "source": "column",
+      "column": "Projectnummer",
+      "columnIndex": 0,
+      "lookup": {
+        "connector": "CON_ERP_Projecten",
+        "matchField": "Project",
+        "valueField": "Organisatie_nummer",
+        "noun": "Project"
+      }
+    },
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "DbId",
+      "label": "Verkooprelatie",
+      "mandatory": false,
+      "source": "column",
+      "column": "Projectnummer",
+      "columnIndex": 0,
+      "lookup": {
+        "connector": "CON_ERP_Projecten",
+        "matchField": "Project",
+        "valueField": "Debiteur_nummer",
+        "noun": "Project"
+      }
+    },
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "SuSt",
+      "label": "Begindatum abonnement",
+      "mandatory": false,
+      "source": "column",
+      "column": "Begindatum Abonnement",
+      "columnIndex": 3
+    },
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "VaIn",
+      "label": "Cyclus facturering",
+      "mandatory": false,
+      "source": "column",
+      "column": "Cyclus Facturering",
+      "columnIndex": 6
+    },
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "DaSt",
+      "label": "Begindatum factuurcyclus",
+      "mandatory": false,
+      "source": "column",
+      "column": "Begindatum factuurcyclus",
+      "columnIndex": 7
+    },
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "SuEn",
+      "label": "Einddatum abonnement",
+      "mandatory": false,
+      "source": "column",
+      "column": "Einddatum Abonnement",
+      "columnIndex": 4
+    },
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "VaSu",
+      "label": "Type abonnement",
+      "mandatory": false,
+      "source": "column",
+      "column": "Type Abonnement",
+      "columnIndex": 2
+    },
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "PaCd",
+      "label": "Betaalvoorwaarde",
+      "mandatory": false,
+      "source": "column",
+      "column": "Betaalvoorwaarde",
+      "columnIndex": 5
+    },
+    {
+      "object": [
+        "FbSubscription"
+      ],
+      "field": "PrId",
+      "label": "Project",
+      "mandatory": false,
+      "source": "column",
+      "column": "Projectnummer",
+      "columnIndex": 0
+    },
+    {
+      "object": [
+        "FbSubscription",
+        "FbSubscriptionLines"
+      ],
+      "field": "VaIt",
+      "label": "Type item",
+      "mandatory": true,
+      "source": "fixed",
+      "value": "2"
+    },
+    {
+      "object": [
+        "FbSubscription",
+        "FbSubscriptionLines"
+      ],
+      "field": "ItCd",
+      "label": "Itemcode",
+      "mandatory": true,
+      "source": "column",
+      "column": "Artikel",
+      "columnIndex": 8
+    },
+    {
+      "object": [
+        "FbSubscription",
+        "FbSubscriptionLines"
+      ],
+      "field": "DaSt",
+      "label": "Begindatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Begindatum Regel",
+      "columnIndex": 9
+    },
+    {
+      "object": [
+        "FbSubscription",
+        "FbSubscriptionLines"
+      ],
+      "field": "Pric",
+      "label": "Afwijkende prijs basisvaluta",
+      "mandatory": false,
+      "source": "column",
+      "column": "Afwijkende prijs",
+      "columnIndex": 13
+    },
+    {
+      "object": [
+        "FbSubscription",
+        "FbSubscriptionLines"
+      ],
+      "field": "UCE9391A2DE6C4A8A816D4B749C9F4FB5",
+      "label": "Afwijkende factuurtekst",
+      "mandatory": false,
+      "source": "column",
+      "column": "Afwijkende factuurtekst",
+      "columnIndex": 12
+    },
+    {
+      "object": [
+        "FbSubscription",
+        "FbSubscriptionLines"
+      ],
+      "field": "DaEn",
+      "label": "Einddatum",
+      "mandatory": false,
+      "source": "column",
+      "column": "Einddatum Regel",
+      "columnIndex": 10
+    },
+    {
+      "object": [
+        "FbSubscription",
+        "FbSubscriptionLines"
+      ],
+      "field": "InFr",
+      "label": "Factureren vanaf",
+      "mandatory": true,
+      "source": "column",
+      "column": "Factureren Vanaf",
+      "columnIndex": 11
+    }
+  ],
+  "savedAt": "2026-09-23T10:09:01Z",
+  "savedBy": "lokaal@localhost",
+  "savedByName": "Taroen Sitaldin"
+}

@@ -1,0 +1,75 @@
+{
+  "general": [
+    "De subadministraties van debiteuren en crediteuren zorgen samen voor de specificatie van je grootboek. Bij de start met AFAS krijg je te maken met openstaande debiteuren en crediteuren die uit een ander systeem komen: die openstaande posten moeten per een specifieke datum worden meegenomen. Deze conversie wordt ook wel de beginbalans genoemd.",
+    "Voor de beginbalans is eerst de eindbalans van het oude systeem nodig, en die weet je vaak pas op de laatste dag. Daarom vindt de beginbalans meestal ná livegang plaats. Je kunt hem wel voorbereiden en een inschatting maken van de verwachte beginbalans, zodat je bij livegang toch cijfers hebt.",
+    "Het importsjabloon heeft één tabblad voor debiteuren én crediteuren samen. De kolom 'Debiteur of Crediteur' (D of C) geeft per rij aan om welke van de twee het gaat; de overige kolommen gelden voor beide.",
+    "Gebruik voor het verwerken het dagboek 'Beginbalans' en niet het verkoop- of inkoopdagboek."
+  ],
+  "columns": {
+    "Debiteur of Crediteur": {
+      "description": "Geeft per rij aan om welke van de twee het gaat: D voor een openstaande debiteurenpost, C voor een openstaande crediteurenpost. Deze letter bepaalt onder andere in welk veld het bedrag in AFAS Profit terechtkomt.",
+      "example": "D"
+    },
+    "Debiteur- of Crediteurnummer": {
+      "description": "Het debiteur- of crediteurnummer zoals dat in AFAS Profit is geregistreerd, afhankelijk van wat er in de kolom 'Debiteur of Crediteur' staat. Dit nummer moet al in de stamgegevens bestaan vóórdat je dit bestand importeert.",
+      "example": "12345"
+    },
+    "Fin Administratie": {
+      "description": "Het nummer van de financiële administratie in AFAS Profit waaraan de openstaande post wordt gekoppeld; dit bepaalt in welke administratie de post wordt ingelezen. Controleer het juiste nummer bij de systeembeheerder of consultant. Wordt gecontroleerd tegen de administratietabel uit de AFAS-omgeving van dit project. AFAS schrijft de codes met een voorloopnul (01, 02); een 1 uit Excel wordt als dezelfde administratie gelezen.",
+      "example": "1"
+    },
+    "Boekstuknummer": {
+      "description": "Het boekstuknummer van de openstaande post uit het bronsysteem. Dit nummer wordt overgenomen in AFAS Profit en dient als referentie voor de identificatie van de post. Geen spaties, en elk boekstuknummer mag per administratie maar één keer voorkomen. Staan er meerdere administraties in één tabblad, dan meldt de tool een nummer dat in twee administraties voorkomt ook als dubbel — controleer in dat geval zelf of het echt om een duplicaat gaat.",
+      "example": "V1002542152"
+    },
+    "Dagboek": {
+      "description": "De dagboekcode waaronder de openstaande post wordt geboekt; het dagboek bepaalt de grootboekmatige verwerking. Gebruik het dagboek 'Beginbalans' en niet het verkoop- of inkoopdagboek. De code verschilt per administratie, en het dagboek voor crediteuren is doorgaans een ander dan dat voor debiteuren — controleer de geldige dagboeken in de administratie-instellingen."
+    },
+    "Bedrag": {
+      "description": "Het openstaande bedrag, voor beide soorten posten: bij een debiteurenpost (D) wat de debiteur nog aan de organisatie verschuldigd is, bij een crediteurenpost (C) wat de organisatie nog aan de crediteur verschuldigd is — de kolom 'Debiteur of Crediteur' bepaalt of het debet of credit wordt geboekt. Alleen positieve bedragen, geen negatieve getallen. Voer geen valutasymbool en geen duizendtalscheiding in; 404.99 en 404,99 worden beide gelezen.",
+      "example": "404,99"
+    },
+    "Incasseren": {
+      "description": "Of de openstaande post via automatische incasso wordt verwerkt; dit stuurt de SEPA-incassoverwerking in AFAS Profit. J = via automatische incasso, N = handmatige betaling. Bij J moet het IBAN van de debiteur in AFAS Profit geregistreerd zijn.",
+      "example": "J"
+    },
+    "Factuur": {
+      "description": "Het factuurnummer dat bij de openstaande post hoort — een aanvullende referentie naast het boekstuknummer, die op aanmaningen en overzichten wordt weergegeven. Laat leeg wanneer er geen afzonderlijk factuurnummer is of wanneer het gelijk is aan het boekstuknummer.",
+      "example": "F1234"
+    },
+    "Factuurdatum": {
+      "description": "De datum van de oorspronkelijke factuur. AFAS Profit gebruikt hem als boekstukdatum, zodat de ouderdomsanalyse en aanmaningen rekenen vanaf de echte factuurdatum. Laat je hem leeg, dan wordt de datum livegang gebruikt. De boeking zelf (datum boeking, boekjaar en periode) komt altijd op de datum livegang. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "15-08-2025"
+    },
+    "Vervaldatum": {
+      "description": "De datum waarop de openstaande post vervalt en betaling uiterlijk wordt verwacht. Wordt gebruikt voor het aanmaanproces en de ouderdomsanalyse. Laat leeg wanneer er geen specifieke vervaldatum is of wanneer de betalingsvoorwaarde van de relatie leidend is. Formaat DD-MM-JJJJ of DD/MM/JJJJ.",
+      "example": "31-12-2025"
+    },
+    "Tussenrekening": {
+      "description": "De grootboekrekening waarop de tegenboeking van deze post komt. Een journaalpost moet in balans zijn, dus de tool boekt naast elke openstaande post hetzelfde bedrag aan de andere kant op deze rekening — bij een debiteurenpost credit, bij een crediteurenpost debet. Meestal is dit voor alle rijen dezelfde tussenrekening, die na de conversie wordt weggeboekt tegen de beginbalans. Het nummer moet bestaan in de grootboekrekeningen van AFAS; de knop in de cel toont de geldige rekeningen.",
+      "example": "2999"
+    }
+  },
+  "faq": [
+    {
+      "question": "Kan ik openstaande posten importeren zonder bestaande debiteur of crediteur?",
+      "answer": "Nee. Het systeem heeft altijd een debiteur of crediteur nodig om de beginbalans op de juiste manier te openen. Zorg er daarom voor dat alle debiteuren en crediteuren al in AFAS staan zodra je met deze conversie begint."
+    },
+    {
+      "question": "Kan ik zowel de facturen als de betalingen converteren?",
+      "answer": "Nee, en dat is ook niet nodig. Het gaat hier alleen om de facturen die per een bepaalde datum nog openstaan — niet om alle historische facturen met de bijbehorende betalingen. Neem alleen die openstaande posten mee."
+    },
+    {
+      "question": "Kan ik de conversie ook in delen doen?",
+      "answer": "Dat kan, zolang je zelf goed zicht houdt op wat er al gedaan is en wat nog mist. Ons advies is om het in één keer uit te voeren."
+    },
+    {
+      "question": "Waarom staat er per post een extra regel op de tussenrekening?",
+      "answer": "Een journaalpost in AFAS moet in balans zijn, en openstaande debiteuren zijn samen alleen debet (crediteuren alleen credit). Daarom boekt de tool bij elke rij een tegenboeking van hetzelfde bedrag op de grootboekrekening uit de kolom Tussenrekening. Zo is elk boekstuk op zich in balans; de tussenrekening wordt daarna weggeboekt tegen de beginbalans van het grootboek."
+    },
+    {
+      "question": "Kan ik debiteuren- en crediteurenposten in één bestand combineren?",
+      "answer": "Ja, dat is juist de bedoeling: één tabblad voor beide, met de kolom 'Debiteur of Crediteur' (D/C) die per rij aangeeft om welke het gaat."
+    }
+  ]
+}

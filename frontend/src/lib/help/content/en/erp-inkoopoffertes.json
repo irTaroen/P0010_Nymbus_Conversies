@@ -1,0 +1,115 @@
+{
+  "general": [
+    "Purchase quotations are price requests to suppliers: what has been requested, from whom, at what price and with what desired delivery date. They form the first step of the purchasing process, before the purchase order.",
+    "Each row is one quotation line. The columns of the quotation header (quotation number, date, creditor) repeat on every row of that same quotation; the other columns describe the requested item.",
+    "The creditors and items you refer to here must also appear in the conversion of the Creditors and Articles modules.",
+    "The columns below are derived from the AFAS specification of the purchase quotation (UpdateConnector FbPurchQuotation). The import template for this module is still to be delivered."
+  ],
+  "columns": {
+    "Offertenummer": {
+      "description": "The number of the purchase quotation from the source system. Lines of the same purchase quotation carry the same number; that is how AFAS knows which lines belong together. Maximum 12 characters.",
+      "example": "Q2026-001"
+    },
+    "Datum": {
+      "description": "The date of the purchase quotation. No delivery date or due date on the line may fall before this date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-02-2026"
+    },
+    "Crediteur Nummer": {
+      "description": "The creditor number of the supplier. Must match the conversion of the Creditors module. Maximum 16 characters.",
+      "example": "50014"
+    },
+    "Omschrijving": {
+      "description": "What the purchase quotation is about, in one line. Maximum 255 characters.",
+      "example": "Filters and maintenance materials"
+    },
+    "Administratie": {
+      "description": "The number of the financial administration. Checked against the administration table from the AFAS environment of this project.",
+      "example": "1"
+    },
+    "Gewenste leverdatum": {
+      "description": "The date on which delivery is desired. May not be earlier than Datum. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "15-02-2026"
+    },
+    "Datum levering toegezegd": {
+      "description": "The delivery date promised by the supplier, when it differs from the desired date. Leave empty when nothing has been promised. May not be earlier than the quotation date. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "18-02-2026"
+    },
+    "Vervaldatum": {
+      "description": "The date on which the purchase quotation expires or must be paid. May not be earlier than Datum. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "01-03-2026"
+    },
+    "Valuta": {
+      "description": "The currency of the amounts, as a three-character code. Fill in EUR for euros. As soon as a currency is entered here, the exchange rate is required too; for EUR it is 1.",
+      "example": "EUR"
+    },
+    "Valutakoers": {
+      "description": "The rate at which the amounts are converted to the base currency. Required as soon as a currency is filled in. For euros this is 1.",
+      "example": "1"
+    },
+    "Referentie leverancier": {
+      "description": "The reference the supplier uses itself, as it appears on its documents. Maximum 50 characters.",
+      "example": "REF-88231"
+    },
+    "Betalingsvoorwaarde": {
+      "description": "The payment condition. Checked against the payment condition table from the AFAS environment of this project. Leave empty to use that of the creditor. Maximum 5 characters.",
+      "example": "14"
+    },
+    "Magazijn": {
+      "description": "The warehouse where the goods are received. Leave empty for services or when working with one warehouse. Maximum 15 characters.",
+      "example": "01"
+    },
+    "Projectnummer": {
+      "description": "The project to which the purchase is charged. Required when Type projectkosten is filled in. Maximum 15 characters.",
+      "example": "31508001"
+    },
+    "Regelnummer": {
+      "description": "The line number within the purchase quotation, which fixes the order of the lines. Leave empty to use the order in the file. A whole number from 1.",
+      "example": "1"
+    },
+    "Type item": {
+      "description": "What the line is about: Wst = Werksoort (work type), Art = Artikel (article), Kst = Kosten (costs), Sam = Samenstelling (composition). Determines how AFAS processes the line.",
+      "example": "Art"
+    },
+    "Itemcode": {
+      "description": "The code of the article, work type, cost type or composition, matching Type item. Checked against the item table from the AFAS environment of this project. Maximum 40 characters.",
+      "example": "9901"
+    },
+    "Omschrijving regel": {
+      "description": "A deviating description for this line. Leave empty to use the standard description of the item. Maximum 255 characters.",
+      "example": "Filterset type B"
+    },
+    "Eenheid": {
+      "description": "The unit in which the quantity is expressed, such as stk (pieces), uur (hours) or doos (box). Maximum 15 characters.",
+      "example": "stk"
+    },
+    "Aantal eenheden": {
+      "description": "The number of units per order unit — how many are in one box, set or packaging. Enter 1 when ordering per piece. Not negative.",
+      "example": "1"
+    },
+    "Aantal besteld": {
+      "description": "The requested quantity. Required on an article line, because a price request without a quantity produces no price. Not negative.",
+      "example": "10"
+    },
+    "Prijs per eenheid": {
+      "description": "The purchase price per unit, excluding VAT, in the currency of the order. Not negative.",
+      "example": "200,00"
+    },
+    "BTW-tariefgroep": {
+      "description": "The VAT rate group of the line. Leave empty to use that of the item or the creditor. Maximum 4 characters.",
+      "example": "1"
+    },
+    "Regelkorting percentage": {
+      "description": "The discount percentage on this line. Leave empty or enter 0 when there is no discount. A value between 0 and 100.",
+      "example": "5"
+    },
+    "Afwijkende afleverdatum": {
+      "description": "A delivery date that applies to this line only. Leave empty when the date in the header applies. Format DD-MM-JJJJ or DD/MM/JJJJ.",
+      "example": "20-02-2026"
+    },
+    "Type projectkosten": {
+      "description": "The cost type in the project administration: MA = Materiaal (materials), A = Arbeid (labour), ME = Materieel (equipment), OA = Onderaanneming (subcontracting), O = Overig (other). Only to be used with a project.",
+      "example": "MA"
+    }
+  },
+  "faq": []
+}
